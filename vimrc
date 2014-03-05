@@ -44,7 +44,7 @@ set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
@@ -66,9 +66,6 @@ if has("gui_running")
 endif
 
 " Swap h, j, k & l around
-"nnoremap j h
-"nnoremap k j
-"nnoremap h k
 set langmap=hk,jh,kj
 
 " Omni completion
@@ -94,16 +91,29 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Shortcuts for paste buffers
-map <F11> "*
-map <F12> "_
+map <F9> "*
+map <F10> "_
 
 " Very magic
-"nnoremap / /\v
-"nnoremap ? ?\v
 cnoremap s/ s/\v
 cnoremap g/ g/\v
 cnoremap g!/ g!/\v
+" Very nomagic
+nnoremap / /\V
+nnoremap ? ?\V
 
 set autochdir
 
 let python_highlight_all=1
+
+" Fix Y (no pun intended)
+nnoremap Y y$
+
+" Various from http://derekwyatt.org/2009/08/20/the-absolute-bare-minimum.html
+set lazyredraw
+set showmode
+set wildmenu
+
+" Insert single character
+nmap <space> i <esc>r
+nmap <s-space> a <esc>r
