@@ -91,6 +91,7 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Shortcuts for paste buffers
+map <F8> "+
 map <F9> "*
 map <F10> "_
 
@@ -115,5 +116,10 @@ set showmode
 set wildmenu
 
 " Insert single character
-nmap <space> i <esc>r
-nmap <s-space> a <esc>r
+function! RepeatChar(char, count)
+    return repeat(a:char, a:count)
+endfunction
+nnoremap <space> :<C-U>exec
+            \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
+nnoremap <s-space> :<C-U>exec
+            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
