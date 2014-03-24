@@ -123,3 +123,6 @@ nnoremap <space> :<C-U>exec
             \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
 nnoremap <s-space> :<C-U>exec
             \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
+
+let g:haskell_indent_if = 4
+let g:haskell_indent_case = 4
