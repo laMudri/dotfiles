@@ -14,6 +14,15 @@ runtime! debian.vim
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
 
+" Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -40,8 +49,8 @@ endif
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
+"set ignorecase		" Do case insensitive matching
+"set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
@@ -58,6 +67,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+set encoding=utf-8
+
 imap <C-F> <C-O>diw
 
 " Full height
@@ -67,6 +78,8 @@ endif
 
 " Swap h, j, k & l around
 set langmap=hk,jh,kj
+" Another Colemak mod
+noremap <C-n> <C-y>
 
 " Omni completion
 filetype plugin on
@@ -77,6 +90,9 @@ nnoremap , :
 nnoremap : ,
 vnoremap , :
 vnoremap : ,
+
+" Set a mapleader
+let mapleader="\\"
 
 " Pathogen
 execute pathogen#infect()
@@ -124,5 +140,14 @@ nnoremap <space> :<C-U>exec
 nnoremap <s-space> :<C-U>exec
             \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 
-let g:haskell_indent_if = 4
-let g:haskell_indent_case = 4
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 5
+
+let g:haddock_browser = "/usr/bin/google-chrome"
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
