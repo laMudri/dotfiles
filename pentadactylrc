@@ -1,0 +1,55 @@
+"1.1
+
+loadplugins '\.(js|penta)$'
+group user
+set guioptions=bCrsT
+
+" vim: set ft=pentadactyl:
+
+" Swap : and ;
+map -b , :
+map -b : ,
+
+"set langmap=hk,jh,kj
+map -b j h
+map -b h k
+map -b k j
+map -b J H
+map -b H K
+map -b K J
+
+map -b <C-n> 6k
+
+set incfind
+set hintkeys=esirntoahd
+
+" Replacement for gt and <C-n>
+map -b gt <C-n>
+map -b <C-1> 1gt
+map -b <C-2> 2gt
+map -b <C-3> 3gt
+map -b <C-4> 4gt
+map -b <C-5> 5gt
+map -b <C-6> 6gt
+map -b <C-7> 7gt
+map -b <C-8> 8gt
+map -b <C-9> 9gt
+map -b <C-0> g$
+
+map -b <C-y> 6k
+map -b <C-e> 6j
+
+gr twitter -locations="twitter.com"
+map -group=twitter -javascript . $('div.new-tweets-bar').click();
+"set passkeys+=twitter.com:.
+set passkeys+=feedly.com:k
+
+gr theoldreader -locations theoldreader.com
+map -b -group theoldreader h <C-v>k
+map -b -group theoldreader k <C-v>j
+map -group theoldreader o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
+"map -group theoldreader . -js $('#unread_count').click();
+"map -group theoldreader . normal fsr<ESC>
+
+set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
+set defsearch=g
