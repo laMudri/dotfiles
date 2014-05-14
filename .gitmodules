@@ -28,3 +28,9 @@
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "vim/bundle/eventloop.vim"]
+	path = vim/bundle/eventloop.vim
+	url = https://github.com/ardagnir/eventloop.vim
+[submodule "vim/bundle/pterosaur"]
+	path = vim/bundle/pterosaur
+	url = http://github.com/ardagnir/pterosaur
