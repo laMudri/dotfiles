@@ -18,7 +18,7 @@ map -b J H
 map -b H K
 map -b K J
 
-map -b <C-n> 6k
+map -b e :tab 
 
 set incfind
 set hintkeys=esirntoahd
@@ -36,6 +36,7 @@ map -b <C-8> 8gt
 map -b <C-9> 9gt
 map -b <C-0> g$
 
+map -b <C-n> 6k
 map -b <C-y> 6k
 map -b <C-e> 6j
 
@@ -53,3 +54,4 @@ map -group theoldreader o -js let h = $('.list-post:not([style="display: none;"]
 
 set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
 set defsearch=g
+set guioptions=bCrsT
