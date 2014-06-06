@@ -75,11 +75,6 @@ set encoding=utf-8
 
 imap <C-F> <C-O>diw
 
-" Full height
-if has("gui_running")
-    set lines=999
-endif
-
 " Swap h, j, k & l around
 set langmap=hk,jh,kj
 " Another Colemak mod
