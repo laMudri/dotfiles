@@ -18,10 +18,11 @@ map -b J H
 map -b H K
 map -b K J
 
+" Trailing space intentional!
 map -b e :tab 
 
 set incfind
-set hintkeys=esirntoahd
+set hintkeys=desirntoaufh
 
 " Replacement for gt and <C-n>
 map -b gt <C-n>
@@ -51,6 +52,11 @@ map -b -group theoldreader k <C-v>j
 map -group theoldreader o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
 "map -group theoldreader . -js $('#unread_count').click();
 "map -group theoldreader . normal fsr<ESC>
+
+gr goproblems -locations goproblems.com
+map -group goproblems x -js $('a.bigbutton').click();
+gr mal -locations myanimelist.net
+map -group mal x -js $('#fancybox-close').click();
 
 set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
 set defsearch=g
