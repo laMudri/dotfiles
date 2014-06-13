@@ -18,7 +18,9 @@ if filereadable("/etc/vim/gvimrc.local")
   source /etc/vim/gvimrc.local
 endif
 
-set guioptions-=amT
+set guioptions-=a
+set guioptions-=m
+set guioptions-=T
 set guioptions+=Pc
 
 set lines=999

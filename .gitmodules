@@ -34,3 +34,6 @@
 [submodule "vim/bundle/pterosaur"]
 	path = vim/bundle/pterosaur
 	url = http://github.com/ardagnir/pterosaur
+[submodule "vim/bundle/vim-fish"]
+	path = vim/bundle/vim-fish
+	url = https://github.com/dag/vim-fish.git
