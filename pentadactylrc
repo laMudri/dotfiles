@@ -22,7 +22,7 @@ map -b K J
 map -b e :tab 
 
 set incfind
-set hintkeys=desirntoaufh
+set hintkeys=esntiroaufhd
 
 " Replacement for gt and <C-n>
 map -b gt <C-n>
