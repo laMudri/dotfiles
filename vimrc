@@ -11,10 +11,9 @@ set shell=/bin/bash
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
+" Set a mapleader
+let mapleader='\'
+let maplocalleader='\'
 
 " Vundle
 set nocompatible
@@ -24,11 +23,34 @@ set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-surround'
+Bundle 'ardagnir/eventloop.vim'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'ardagnir/pterosaur'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-commentary'
+Bundle 'dag/vim-fish'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'mhinz/vim-startify'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'vim-scripts/swap-parameters'
+Bundle 'townk/vim-autoclose'
+Bundle 'https://gist.github.com/3762227.git'
+Bundle 'idris-hackers/idris-vim'
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
   syntax on
+endif
+
+if has("filetype")
+    filetype plugin indent on
+else
+    set smartindent
 endif
 
 " If using a dark background within the editing area and syntax highlighting
@@ -43,9 +65,9 @@ endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-if has("autocmd")
-  filetype plugin indent on
-endif
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -80,22 +102,17 @@ set langmap=hk,jh,kj
 " Another Colemak mod
 noremap <C-n> <C-y>
 
-" Omni completion
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
 " Swap : and ;
 nnoremap , :
 nnoremap : ,
 vnoremap , :
 vnoremap : ,
 
-" Set a mapleader
-let mapleader="\\"
+" Omni completion
+set omnifunc=syntaxcomplete#Complete
 
 " Pathogen
-execute pathogen#infect()
-filetype plugin indent on
+"execute pathogen#infect()
 
 " tab navigation like firefox
 nnoremap <C-S-tab> :tabprevious<CR>
@@ -118,7 +135,8 @@ cnoremap g!/ g!/\v
 nnoremap / /\V
 nnoremap ? ?\V
 
-set autochdir
+" Breaks vimshell
+"set autochdir
 
 let python_highlight_all=1
 
@@ -146,7 +164,11 @@ let g:haddock_browser = "/usr/bin/google-chrome"
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+if has("autocmd")
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+endif
+
+hi clear Conceal
