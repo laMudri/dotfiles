@@ -24,6 +24,8 @@ map -b e :tab
 set incfind
 " set hintkeys=esntiroaufhd
 set hintkeys=aesntiro
+map -b w f\
+map -b W F\
 
 " Replacement for gt and <C-n>
 map -b gt <C-n>
