@@ -36,10 +36,17 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'mhinz/vim-startify'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
 Bundle 'vim-scripts/swap-parameters'
 Bundle 'townk/vim-autoclose'
 Bundle 'https://gist.github.com/3762227.git'
 Bundle 'idris-hackers/idris-vim'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'dag/vim2hs'
+Bundle 'godlygeek/tabular'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'Valloric/YouCompleteMe'
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -148,14 +155,18 @@ set lazyredraw
 set showmode
 set wildmenu
 
+set relativenumber
+
 " Insert single character
-function! RepeatChar(char, count)
-    return repeat(a:char, a:count)
-endfunction
-nnoremap <space> :<C-U>exec
-            \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
-nnoremap <s-space> :<C-U>exec
-            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
+"function! RepeatChar(char, count)
+"    return repeat(a:char, a:count)
+"endfunction
+"nnoremap <space> :<C-U>exec
+"            \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
+"nnoremap <s-space>h :<C-U>exec
+"            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
+nnoremap <space> i <esc>r
+nnoremap <s-space> a <esc>r
 
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 5
@@ -172,3 +183,8 @@ if has("autocmd")
 endif
 
 hi clear Conceal
+
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+set whichwrap+=<,>,h,l,[,]
