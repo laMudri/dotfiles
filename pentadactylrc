@@ -43,24 +43,76 @@ map -b <C-0> g$
 map -b <C-n> 6k
 map -b <C-y> 6k
 map -b <C-e> 6j
-
-gr twitter -locations="twitter.com"
-map -group=twitter -javascript . $('div.new-tweets-bar').click();
-"set passkeys+=twitter.com:.
-set passkeys+=feedly.com:k
-
-gr theoldreader -locations theoldreader.com
-map -b -group theoldreader h <C-v>k
-map -b -group theoldreader k <C-v>j
-map -group theoldreader o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
-"map -group theoldreader . -js $('#unread_count').click();
-"map -group theoldreader . normal fsr<ESC>
-
-gr goproblems -locations goproblems.com
-map -group goproblems x -js $('a.bigbutton').click();
-gr mal -locations myanimelist.net
-map -group mal x -js $('#fancybox-close').click();
+map -m hints <C-n> normal! 6k
+map -m hints <C-y> normal! 6k
+map -m hints <C-e> normal! 6j
 
 set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
 set defsearch=g
 set guioptions=bCrsT
+
+" lojbo
+map -m base ʃ c
+map -m base Ʃ C
+map -m insert -b ʃ ʃ
+map -m insert -b Ʃ Ʃ
+map -m base <C-ʃ> <C-c>
+map -m base <C-S-ʃ> <C-S-c>
+map -m base <A-ʃ> <A-c>
+map -m base <A-S-ʃ> <A-S-c>
+map -m base <C-A-ʃ> <C-A-c>
+map -m base <C-A-S-ʃ> <C-A-S-c>
+
+map -m base ɛ e
+map -m base Ɛ E
+map -m insert -b ɛ ɛ
+map -m insert -b Ɛ Ɛ
+map -m base <C-ɛ> <C-e>
+map -m base <C-S-ɛ> <C-S-e>
+map -m base <A-ɛ> <A-e>
+map -m base <A-S-ɛ> <A-S-e>
+map -m base <C-A-ɛ> <C-A-e>
+map -m base <C-A-S-ɛ> <C-A-S-e>
+
+map -m base ʒ j
+map -m base Ʒ J
+map -m insert -b ʒ ʒ
+map -m insert -b Ʒ Ʒ
+map -m base <C-ʒ> <C-j>
+map -m base <C-S-ʒ> <C-S-j>
+map -m base <A-ʒ> <A-j>
+map -m base <A-S-ʒ> <A-S-j>
+map -m base <C-A-ʒ> <C-A-j>
+map -m base <C-A-S-ʒ> <C-A-S-j>
+
+map -m base ə y
+map -m base Ə Y
+map -m insert -b ə ə
+map -m insert -b Ə Ə
+map -m base <C-ə> <C-y>
+map -m base <C-S-ə> <C-S-y>
+map -m base <A-ə> <A-y>
+map -m base <A-S-ə> <A-S-y>
+map -m base <C-A-ə> <C-A-y>
+map -m base <C-A-S-ə> <C-A-S-y>
+
+javascript <<EOT
+    userContext.vlasisku = function (arg) {
+        commands.execute("echo '" + arg + "'");
+    };
+EOT
+command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
+
+gr twitter -locations="twitter.com"
+map -javascript . $('div.new-tweets-bar').click();
+set passkeys+=feedly.com:k
+
+gr theoldreader -locations theoldreader.com
+map -b h <C-v>k
+map -b k <C-v>j
+map o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
+
+gr goproblems -locations goproblems.com
+map x -js $('a.bigbutton').click();
+gr mal -locations myanimelist.net
+map x -js $('#fancybox-close').click();

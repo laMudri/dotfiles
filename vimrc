@@ -37,7 +37,7 @@ Bundle 'mhinz/vim-startify'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
-Bundle 'vim-scripts/swap-parameters'
+Bundle 'mutewinter/swap-parameters'
 Bundle 'townk/vim-autoclose'
 Bundle 'https://gist.github.com/3762227.git'
 Bundle 'idris-hackers/idris-vim'
@@ -188,3 +188,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set whichwrap+=<,>,h,l,[,]
+
+" lojbo
+set langmap+=ʃɛʒə;cejy
