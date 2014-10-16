@@ -2,7 +2,7 @@
 
 loadplugins '\.(js|penta)$'
 group user
-set guioptions=bCrsT
+set guioptions=bCrs
 
 " vim: set ft=pentadactyl:
 
@@ -40,6 +40,9 @@ map -b <C-8> 8gt
 map -b <C-9> 9gt
 map -b <C-0> g$
 
+map -b <C-w> <C-^>
+map -b gl <C-^>
+
 map -b <C-n> 6k
 map -b <C-y> 6k
 map -b <C-e> 6j
@@ -49,7 +52,6 @@ map -m hints <C-e> normal! 6j
 
 set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
 set defsearch=g
-set guioptions=bCrsT
 
 " lojbo
 map -m base ʃ c
@@ -103,9 +105,18 @@ javascript <<EOT
 EOT
 command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
 
+map <c-s-t> -ex set guioptions!=T
+
+highlight Hint font: 10px "Droid Sans Mono", monospace !important; margin: -.2ex; padding: 0 0 0 1px; outline: 1px solid rgba(0, 0, 0, .5); background: rgba(255, 248, 231, .8); color: black
+
+" sutsis
+map gj <c-2>x
+map gʒ <c-2>x
+
+set passkeys+=feedly.com:k
+
 gr twitter -locations="twitter.com"
 map -javascript . $('div.new-tweets-bar').click();
-set passkeys+=feedly.com:k
 
 gr theoldreader -locations theoldreader.com
 map -b h <C-v>k
@@ -114,5 +125,15 @@ map o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'
 
 gr goproblems -locations goproblems.com
 map x -js $('a.bigbutton').click();
+map < -js $('li.back').click();
+map <c-,> -js $('li.first').click();
 gr mal -locations myanimelist.net
 map x -js $('#fancybox-close').click();
+gr au -locations animeultima.tv
+map x O<c-t>0<c-x>l<c-x><esc><cr>
+gr sutsis -locations sutsis.nomei.la
+map x -js $('#typehere').val('').focus();
+map -m insert -b ʃ c
+map -m insert -b ɛ e
+map -m insert -b ʒ j
+map -m insert -b ə y

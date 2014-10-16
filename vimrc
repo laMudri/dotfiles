@@ -22,31 +22,33 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-surround'
-Bundle 'ardagnir/eventloop.vim'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'ardagnir/pterosaur'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'dag/vim-fish'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'mhinz/vim-startify'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'mutewinter/swap-parameters'
-Bundle 'townk/vim-autoclose'
-Bundle 'https://gist.github.com/3762227.git'
-Bundle 'idris-hackers/idris-vim'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'dag/vim2hs'
-Bundle 'godlygeek/tabular'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-surround'
+Plugin 'ardagnir/eventloop.vim'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'ardagnir/pterosaur'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'dag/vim-fish'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'mhinz/vim-startify'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'mutewinter/swap-parameters'
+Plugin 'townk/vim-autoclose'
+Plugin 'https://gist.github.com/3762227.git'
+Plugin 'idris-hackers/idris-vim'
+Plugin 'jgdavey/tslime.vim'
+Plugin 'dag/vim2hs'
+Plugin 'godlygeek/tabular'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'laMudri/nextlast'
+Plugin 'dogrover/vim-pentadactyl'
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -105,7 +107,10 @@ set encoding=utf-8
 imap <C-F> <C-O>diw
 
 " Swap h, j, k & l around
-set langmap=hk,jh,kj
+set langmap=hjk;khj
+" lojbo + above
+set langmap+=ʃɛʒə;cehy
+
 " Another Colemak mod
 noremap <C-n> <C-y>
 
@@ -188,6 +193,3 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set whichwrap+=<,>,h,l,[,]
-
-" lojbo
-set langmap+=ʃɛʒə;cejy
