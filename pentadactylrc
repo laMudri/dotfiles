@@ -1,0 +1,139 @@
+"1.1
+
+loadplugins '\.(js|penta)$'
+group user
+set guioptions=bCrs
+
+" vim: set ft=pentadactyl:
+
+" Swap : and ;
+map -b , :
+map -b : ,
+
+"set langmap=hk,jh,kj
+map -b j h
+map -b h k
+map -b k j
+map -b J H
+map -b H K
+map -b K J
+
+" Trailing space intentional!
+map -b e :tab 
+
+set incfind
+" set hintkeys=esntiroaufhd
+set hintkeys=aesntiro
+map -b w f\
+map -b W F\
+
+" Replacement for gt and <C-n>
+map -b gt <C-n>
+map -b <C-1> 1gt
+map -b <C-2> 2gt
+map -b <C-3> 3gt
+map -b <C-4> 4gt
+map -b <C-5> 5gt
+map -b <C-6> 6gt
+map -b <C-7> 7gt
+map -b <C-8> 8gt
+map -b <C-9> 9gt
+map -b <C-0> g$
+
+map -b <C-w> <C-^>
+map -b gl <C-^>
+
+map -b <C-n> 6k
+map -b <C-y> 6k
+map -b <C-e> 6j
+map -m hints <C-n> normal! 6k
+map -m hints <C-y> normal! 6k
+map -m hints <C-e> normal! 6j
+
+set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
+set defsearch=g
+
+" lojbo
+map -m base ʃ c
+map -m base Ʃ C
+map -m insert -b ʃ ʃ
+map -m insert -b Ʃ Ʃ
+map -m base <C-ʃ> <C-c>
+map -m base <C-S-ʃ> <C-S-c>
+map -m base <A-ʃ> <A-c>
+map -m base <A-S-ʃ> <A-S-c>
+map -m base <C-A-ʃ> <C-A-c>
+map -m base <C-A-S-ʃ> <C-A-S-c>
+
+map -m base ɛ e
+map -m base Ɛ E
+map -m insert -b ɛ ɛ
+map -m insert -b Ɛ Ɛ
+map -m base <C-ɛ> <C-e>
+map -m base <C-S-ɛ> <C-S-e>
+map -m base <A-ɛ> <A-e>
+map -m base <A-S-ɛ> <A-S-e>
+map -m base <C-A-ɛ> <C-A-e>
+map -m base <C-A-S-ɛ> <C-A-S-e>
+
+map -m base ʒ j
+map -m base Ʒ J
+map -m insert -b ʒ ʒ
+map -m insert -b Ʒ Ʒ
+map -m base <C-ʒ> <C-j>
+map -m base <C-S-ʒ> <C-S-j>
+map -m base <A-ʒ> <A-j>
+map -m base <A-S-ʒ> <A-S-j>
+map -m base <C-A-ʒ> <C-A-j>
+map -m base <C-A-S-ʒ> <C-A-S-j>
+
+map -m base ə y
+map -m base Ə Y
+map -m insert -b ə ə
+map -m insert -b Ə Ə
+map -m base <C-ə> <C-y>
+map -m base <C-S-ə> <C-S-y>
+map -m base <A-ə> <A-y>
+map -m base <A-S-ə> <A-S-y>
+map -m base <C-A-ə> <C-A-y>
+map -m base <C-A-S-ə> <C-A-S-y>
+
+javascript <<EOT
+    userContext.vlasisku = function (arg) {
+        commands.execute("echo '" + arg + "'");
+    };
+EOT
+command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
+
+map <c-s-t> -ex set guioptions!=T
+
+highlight Hint font: 10px "Droid Sans Mono", monospace !important; margin: -.2ex; padding: 0 0 0 1px; outline: 1px solid rgba(0, 0, 0, .5); background: rgba(255, 248, 231, .8); color: black
+
+" sutsis
+map gj <c-2>x
+map gʒ <c-2>x
+
+set passkeys+=feedly.com:k
+
+gr twitter -locations="twitter.com"
+map -javascript . $('div.new-tweets-bar').click();
+
+gr theoldreader -locations theoldreader.com
+map -b h <C-v>k
+map -b k <C-v>j
+map o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
+
+gr goproblems -locations goproblems.com
+map x -js $('a.bigbutton').click();
+map < -js $('li.back').click();
+map <c-,> -js $('li.first').click();
+gr mal -locations myanimelist.net
+map x -js $('#fancybox-close').click();
+gr au -locations animeultima.tv
+map x O<c-t>0<c-x>l<c-x><esc><cr>
+gr sutsis -locations sutsis.nomei.la
+map x -js $('#typehere').val('').focus();
+map -m insert -b ʃ c
+map -m insert -b ɛ e
+map -m insert -b ʒ j
+map -m insert -b ə y
