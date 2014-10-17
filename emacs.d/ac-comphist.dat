@@ -1,0 +1,42 @@
+((("SetBackgroundColour" .
+   [0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("txtPassword" .
+   [0 0 0 1 1 0 0 0 0 0 0])
+  ("self" .
+   [2 0 0 0])
+  ("load-path" .
+   [0 0 0 0 0 0 0 0 1])
+  ("add-to-list" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("define-key" .
+   [0 0 0 0 0 0 0 0 0 2])
+  ("evil" .
+   [0 0 0 1])
+  ("evil-normal-state" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("evil-normal-state-map" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("evil-commands" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("evil-ex" .
+   [1 0 0 0 0 0 0])
+  ("setq" .
+   [1 0 0 0])
+  ("make-backup-files" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("backup" .
+   [0 0 0 0 0 1])
+  ("backup-directory-alist" .
+   [1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("AUCTeX" .
+   [0 0 1 0 0 0])
+  ("evil-normalize" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("preview-at-point" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("linum-mode" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("sp-pair" .
+   [0 0 0 0 0 0 1])
+  (":wrap" .
+   [1 0 0 0 0])))

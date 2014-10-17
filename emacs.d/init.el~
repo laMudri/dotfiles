@@ -1,0 +1,74 @@
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-f 't)
+(setq scroll-s 1)
+
+(add-to-list 'load-path "~/.emacs.d/lojban")
+(autoload 'lojban-parse-region "lojban" nil t)
+(autoload 'lojban-mode "lojban-mode" nil t)
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+(add-to-list 'load-path "~/.emacs.d/j-mode/")
+(autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
+(add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
+
+;(custom-set-face
+; '(j-verb-face ((t (:foreground "cornflower blue"))))
+; '(j-adverb-face ((t (:foreground "goldenrod"))))
+; '(j-conjunction-face ((t (:foreground "olive drab"))))
+; '(j-other-face ((t (:foreground "Black")))))
+
+(require 'evil-leader)
+(global-evil-leader-mode)
+
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+;(require 'lalopmak-evil)
+(define-key evil-motion-state-map "," 'evil-ex)
+(define-key evil-motion-state-map ":" 'evil-repeat-find-char-reverse)
+
+(define-key evil-motion-state-map (kbd "C-n") 'evil-scroll-line-up)
+(define-key evil-normal-state-map (kbd "C-n") 'evil-scroll-line-up)
+
+(define-key evil-window-map "j" 'evil-window-left)
+(define-key evil-window-map "J" 'evil-window-move-far-left)
+(define-key evil-window-map "k" 'evil-window-down)
+(define-key evil-window-map "K" 'evil-window-move-very-bottom)
+(define-key evil-window-map "h" 'evil-window-up)
+(define-key evil-window-map "H" 'evil-window-move-very-top)
+
+(define-key evil-motion-state-map "j" 'evil-backward-char)
+(define-key evil-motion-state-map "J" 'evil-window-top)
+(define-key evil-motion-state-map "k" 'evil-next-line)
+(define-key evil-motion-state-map "h" 'evil-previous-line)
+
+(define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
+(define-key evil-motion-state-map "|" 'evil-execute-in-emacs-state)
+
+(require 'package)
+(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+
+;(set-face-attribute 'default nil :height 100)
+(setq initial-frame-alist '(
+   (font . "Monospace-10")
+ ))
+ (setq default-frame-alist '(
+   (font . "Monospace-10")
+ ))
