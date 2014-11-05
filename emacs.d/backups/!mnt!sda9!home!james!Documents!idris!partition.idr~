@@ -1,0 +1,5 @@
+module partition
+
+partition : (p : a -> Bool) -> Vect n a ->
+            (m ** (Vect m (x : a,So (not (p x))),
+                   Vect (n - m) (y : a,So (p y))))
