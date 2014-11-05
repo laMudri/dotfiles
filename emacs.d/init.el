@@ -1,5 +1,4 @@
 (add-to-list 'load-path "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
@@ -69,11 +68,6 @@
 
 (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
 (define-key evil-motion-state-map "|" 'evil-execute-in-emacs-state)
-
-(require 'expand-region)
-(define-key evil-normal-state-map (kbd "+") 'er/expand-region)
-(define-key evil-visual-state-map (kbd "x") 'er/expand-region)
-(define-key evil-visual-state-map (kbd "X") 'er/contract-region)
 
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)

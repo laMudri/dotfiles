@@ -1,1 +1,0 @@
-makeV : (n ** So (n >= the Nat 4)) -> Vect (n - 1) (Vect n Int)
