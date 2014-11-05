@@ -1,3 +1,0 @@
-module inductive
-data Inductive a = Nil
-    | ConsP ((p : a -> Bool),(x : a),(xs : Inductive a) ** So (all p xs))

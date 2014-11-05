@@ -4,21 +4,21 @@
 
 
 ;;;### (autoloads (ace-jump-mode ace-jump-line-mode ace-jump-word-mode
-;;;;;;  ace-jump-char-mode ace-jump-mode-pop-mark) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode"
-;;;;;;  "ace-jump-mode/ace-jump-mode.el" "2ac13d0fa7db7d7b77db39a91a7756d2")
+;;;;;;  ace-jump-char-mode ace-jump-mode-pop-mark) "ace-jump-mode/ace-jump-mode"
+;;;;;;  "ace-jump-mode/ace-jump-mode.el" (21525 25637 93619 629000))
 ;;; Generated autoloads from ace-jump-mode/ace-jump-mode.el
 
-(autoload 'ace-jump-mode-pop-mark "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode" "\
+(autoload 'ace-jump-mode-pop-mark "ace-jump-mode/ace-jump-mode" "\
 Pop up a postion from `ace-jump-mode-mark-ring', and jump back to that position
 
 \(fn)" t nil)
 
-(autoload 'ace-jump-char-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode" "\
+(autoload 'ace-jump-char-mode "ace-jump-mode/ace-jump-mode" "\
 AceJump char mode
 
 \(fn QUERY-CHAR)" t nil)
 
-(autoload 'ace-jump-word-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode" "\
+(autoload 'ace-jump-word-mode "ace-jump-mode/ace-jump-mode" "\
 AceJump word mode.
 You can set `ace-jump-word-mode-use-query-char' to nil to prevent
 asking for a head char, that will mark all the word in current
@@ -26,13 +26,13 @@ buffer.
 
 \(fn HEAD-CHAR)" t nil)
 
-(autoload 'ace-jump-line-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode" "\
+(autoload 'ace-jump-line-mode "ace-jump-mode/ace-jump-mode" "\
 AceJump line mode.
 Marked each no empty line and move there
 
 \(fn)" t nil)
 
-(autoload 'ace-jump-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/ace-jump-mode/ace-jump-mode" "\
+(autoload 'ace-jump-mode "ace-jump-mode/ace-jump-mode" "\
 AceJump mode is a minor mode for you to quick jump to a
 position in the curret view.
    There is three submode now:
@@ -56,11 +56,11 @@ You can constrol whether use the case sensitive via
 
 ;;;***
 
-;;;### (autoloads (turn-on-bib-cite bib-cite-minor-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/bib-cite"
-;;;;;;  "auctex/bib-cite.el" "fc46c46f400a42af007fd42ce73395be")
+;;;### (autoloads (turn-on-bib-cite bib-cite-minor-mode) "auctex/bib-cite"
+;;;;;;  "auctex/bib-cite.el" (21550 46297 15953 173000))
 ;;; Generated autoloads from auctex/bib-cite.el
 
-(autoload 'bib-cite-minor-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/bib-cite" "\
+(autoload 'bib-cite-minor-mode "auctex/bib-cite" "\
 Toggle bib-cite mode.
 When bib-cite mode is enabled, citations, labels and refs are highlighted
 when the mouse is over them.  Clicking on these highlights with [mouse-2]
@@ -68,20 +68,20 @@ runs bib-find, and [mouse-3] runs bib-display.
 
 \(fn ARG)" t nil)
 
-(autoload 'turn-on-bib-cite "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/bib-cite" "\
+(autoload 'turn-on-bib-cite "auctex/bib-cite" "\
 Unconditionally turn on Bib Cite mode.
 
 \(fn)" nil nil)
 
 ;;;***
 
-;;;### (autoloads (context-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context"
-;;;;;;  "auctex/context.el" "aaede47229785ee362c712c6887cc44f")
+;;;### (autoloads (context-mode) "auctex/context" "auctex/context.el"
+;;;;;;  (21550 46297 15953 173000))
 ;;; Generated autoloads from auctex/context.el
 
 (defalias 'ConTeXt-mode 'context-mode)
 
-(autoload 'context-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context" "\
+(autoload 'context-mode "auctex/context" "\
 Major mode in AUCTeX for editing ConTeXt files.
 
 Special commands:
@@ -95,11 +95,11 @@ of ConTeXt-mode-hook.
 
 ;;;***
 
-;;;### (autoloads (context-en-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context-en"
-;;;;;;  "auctex/context-en.el" "5ac2595246062777c61ed4104a93cf61")
+;;;### (autoloads (context-en-mode) "auctex/context-en" "auctex/context-en.el"
+;;;;;;  (21550 46297 15953 173000))
 ;;; Generated autoloads from auctex/context-en.el
 
-(autoload 'context-en-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context-en" "\
+(autoload 'context-en-mode "auctex/context-en" "\
 Major mode for editing files for ConTeXt using its english interface.
 
 Special commands:
@@ -113,11 +113,11 @@ of context-mode-hook.
 
 ;;;***
 
-;;;### (autoloads (context-nl-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context-nl"
-;;;;;;  "auctex/context-nl.el" "f5ed983cd477814f04e4a63affd4f323")
+;;;### (autoloads (context-nl-mode) "auctex/context-nl" "auctex/context-nl.el"
+;;;;;;  (21550 46297 15953 173000))
 ;;; Generated autoloads from auctex/context-nl.el
 
-(autoload 'context-nl-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/context-nl" "\
+(autoload 'context-nl-mode "auctex/context-nl" "\
 Major mode for editing files for ConTeXt using its dutch interface.
 
 Special commands:
@@ -131,11 +131,11 @@ of context-mode-hook.
 
 ;;;***
 
-;;;### (autoloads (font-latex-setup) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/font-latex"
-;;;;;;  "auctex/font-latex.el" "2f06608b82005569dd347d3534c206e3")
+;;;### (autoloads (font-latex-setup) "auctex/font-latex" "auctex/font-latex.el"
+;;;;;;  (21550 46297 22619 838000))
 ;;; Generated autoloads from auctex/font-latex.el
 
-(autoload 'font-latex-setup "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/font-latex" "\
+(autoload 'font-latex-setup "auctex/font-latex" "\
 Setup this buffer for LaTeX font-lock.  Usually called from a hook.
 
 \(fn)" nil nil)
@@ -143,11 +143,10 @@ Setup this buffer for LaTeX font-lock.  Usually called from a hook.
 ;;;***
 
 ;;;### (autoloads (docTeX-mode TeX-latex-mode BibTeX-auto-store)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/latex"
-;;;;;;  "auctex/latex.el" "20e658abb9ce0845f0c019a8324015ce")
+;;;;;;  "auctex/latex" "auctex/latex.el" (21550 46297 42619 837000))
 ;;; Generated autoloads from auctex/latex.el
 
-(autoload 'BibTeX-auto-store "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/latex" "\
+(autoload 'BibTeX-auto-store "auctex/latex" "\
 This function should be called from `bibtex-mode-hook'.
 It will setup BibTeX to store keys in an auto file.
 
@@ -155,7 +154,7 @@ It will setup BibTeX to store keys in an auto file.
 
 (add-to-list 'auto-mode-alist '("\\.drv\\'" . latex-mode))
 
-(autoload 'TeX-latex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/latex" "\
+(autoload 'TeX-latex-mode "auctex/latex" "\
 Major mode in AUCTeX for editing LaTeX files.
 See info under AUCTeX for full documentation.
 
@@ -170,7 +169,7 @@ of `LaTeX-mode-hook'.
 
 (add-to-list 'auto-mode-alist '("\\.dtx\\'" . doctex-mode))
 
-(autoload 'docTeX-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/latex" "\
+(autoload 'docTeX-mode "auctex/latex" "\
 Major mode in AUCTeX for editing .dtx files derived from `LaTeX-mode'.
 Runs `LaTeX-mode', sets a few variables and
 runs the hooks in `docTeX-mode-hook'.
@@ -181,11 +180,11 @@ runs the hooks in `docTeX-mode-hook'.
 
 ;;;***
 
-;;;### (autoloads (multi-prompt-key-value multi-prompt) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/multi-prompt"
-;;;;;;  "auctex/multi-prompt.el" "ec1c94ddf907b2d0fe04131a14dd9397")
+;;;### (autoloads (multi-prompt-key-value multi-prompt) "auctex/multi-prompt"
+;;;;;;  "auctex/multi-prompt.el" (21550 46297 42619 837000))
 ;;; Generated autoloads from auctex/multi-prompt.el
 
-(autoload 'multi-prompt "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/multi-prompt" "\
+(autoload 'multi-prompt "auctex/multi-prompt" "\
 Completing prompt for a list of strings.  
 The first argument SEPARATOR should be the string (of length 1) to
 separate the elements in the list.  The second argument UNIQUE should
@@ -194,7 +193,7 @@ are the arguments to `completing-read'.  See that.
 
 \(fn SEPARATOR UNIQUE PROMPT TABLE &optional MP-PREDICATE REQUIRE-MATCH INITIAL HISTORY)" nil nil)
 
-(autoload 'multi-prompt-key-value "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/multi-prompt" "\
+(autoload 'multi-prompt-key-value "auctex/multi-prompt" "\
 Read multiple strings, with completion and key=value support.
 PROMPT is a string to prompt with, usually ending with a colon
 and a space.  TABLE is an alist.  The car of each element should
@@ -211,11 +210,11 @@ The return value is the string as entered in the minibuffer.
 
 ;;;***
 
-;;;### (autoloads (ams-tex-mode TeX-plain-tex-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/plain-tex"
-;;;;;;  "auctex/plain-tex.el" "f779fa6e1110cb9255a3a5adacf8911c")
+;;;### (autoloads (ams-tex-mode TeX-plain-tex-mode) "auctex/plain-tex"
+;;;;;;  "auctex/plain-tex.el" (21550 46297 45953 171000))
 ;;; Generated autoloads from auctex/plain-tex.el
 
-(autoload 'TeX-plain-tex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/plain-tex" "\
+(autoload 'TeX-plain-tex-mode "auctex/plain-tex" "\
 Major mode in AUCTeX for editing plain TeX files.
 See info under AUCTeX for documentation.
 
@@ -228,7 +227,7 @@ of plain-TeX-mode-hook.
 
 \(fn)" t nil)
 
-(autoload 'ams-tex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/plain-tex" "\
+(autoload 'ams-tex-mode "auctex/plain-tex" "\
 Major mode in AUCTeX for editing AmS-TeX files.
 See info under AUCTeX for documentation.
 
@@ -244,11 +243,11 @@ of `AmS-TeX-mode-hook'.
 ;;;***
 
 ;;;### (autoloads (preview-report-bug LaTeX-preview-setup preview-install-styles)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/preview/preview"
-;;;;;;  "auctex/preview/preview.el" "6bfb4efa5a4104080943dc3009908537")
+;;;;;;  "auctex/preview/preview" "auctex/preview/preview.el" (21550
+;;;;;;  46297 52619 837000))
 ;;; Generated autoloads from auctex/preview/preview.el
 
-(autoload 'preview-install-styles "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/preview/preview" "\
+(autoload 'preview-install-styles "auctex/preview/preview" "\
 Installs the TeX style files into a permanent location.
 This must be in the TeX search path.  If FORCE-OVERWRITE is greater
 than 1, files will get overwritten without query, if it is less
@@ -261,7 +260,7 @@ files are no longer needed in the search path.
 
 \(fn DIR &optional FORCE-OVERWRITE FORCE-SAVE)" t nil)
 
-(autoload 'LaTeX-preview-setup "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/preview/preview" "\
+(autoload 'LaTeX-preview-setup "auctex/preview/preview" "\
 Hook function for embedding the preview package into AUCTeX.
 This is called by `LaTeX-mode-hook' and changes AUCTeX variables
 to add the preview functionality.
@@ -269,7 +268,7 @@ to add the preview functionality.
 \(fn)" nil nil)
  (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
 
-(autoload 'preview-report-bug "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/preview/preview" "\
+(autoload 'preview-report-bug "auctex/preview/preview" "\
 Report a bug in the preview-latex package.
 
 \(fn)" t nil)
@@ -277,13 +276,13 @@ Report a bug in the preview-latex package.
 ;;;***
 
 ;;;### (autoloads (TeX-submit-bug-report TeX-auto-generate-global
-;;;;;;  TeX-auto-generate TeX-tex-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex"
-;;;;;;  "auctex/tex.el" "40ecef6a8f7f087f7c16d8af1e3efd95")
+;;;;;;  TeX-auto-generate TeX-tex-mode) "auctex/tex" "auctex/tex.el"
+;;;;;;  (21550 46297 69286 503000))
 ;;; Generated autoloads from auctex/tex.el
 
 (defalias 'TeX-assoc-string (symbol-function (if (featurep 'xemacs) 'assoc 'assoc-string)))
 
-(autoload 'TeX-tex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex" "\
+(autoload 'TeX-tex-mode "auctex/tex" "\
 Major mode in AUCTeX for editing TeX or LaTeX files.
 Tries to guess whether this file is for plain TeX or LaTeX.
 
@@ -297,18 +296,18 @@ The algorithm is as follows:
 
 \(fn)" t nil)
 
-(autoload 'TeX-auto-generate "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex" "\
+(autoload 'TeX-auto-generate "auctex/tex" "\
 Generate style file for TEX and store it in AUTO.
 If TEX is a directory, generate style files for all files in the directory.
 
 \(fn TEX AUTO)" t nil)
 
-(autoload 'TeX-auto-generate-global "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex" "\
+(autoload 'TeX-auto-generate-global "auctex/tex" "\
 Create global auto directory for global TeX macro definitions.
 
 \(fn)" t nil)
 
-(autoload 'TeX-submit-bug-report "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex" "\
+(autoload 'TeX-submit-bug-report "auctex/tex" "\
 Submit a bug report on AUCTeX via mail.
 
 Don't hesitate to report any problems or inaccurate documentation.
@@ -321,24 +320,24 @@ information about your AUCTeX version and AUCTeX configuration.
 
 ;;;***
 
-;;;### (autoloads (LaTeX-install-toolbar TeX-install-toolbar) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-bar"
-;;;;;;  "auctex/tex-bar.el" "d15072908452a8022622ddba3f6537d2")
+;;;### (autoloads (LaTeX-install-toolbar TeX-install-toolbar) "auctex/tex-bar"
+;;;;;;  "auctex/tex-bar.el" (21550 46297 62619 836000))
 ;;; Generated autoloads from auctex/tex-bar.el
 
-(autoload 'TeX-install-toolbar "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-bar" "\
+(autoload 'TeX-install-toolbar "auctex/tex-bar" "\
 Install toolbar buttons for TeX mode.
 
 \(fn)" t nil)
 
-(autoload 'LaTeX-install-toolbar "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-bar" "\
+(autoload 'LaTeX-install-toolbar "auctex/tex-bar" "\
 Install toolbar buttons for LaTeX mode.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads nil "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-fold"
-;;;;;;  "auctex/tex-fold.el" "48c6d153797c587ee9fadcda90acb39c")
+;;;### (autoloads nil "auctex/tex-fold" "auctex/tex-fold.el" (21550
+;;;;;;  46297 65953 170000))
 ;;; Generated autoloads from auctex/tex-fold.el
  (autoload 'TeX-fold-mode "tex-fold" "Minor mode for hiding and revealing macros and environments." t)
 
@@ -346,24 +345,24 @@ Install toolbar buttons for LaTeX mode.
 
 ;;;***
 
-;;;### (autoloads (tex-font-setup) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-font"
-;;;;;;  "auctex/tex-font.el" "6cb30f3aa1f7aba735901cdeb6615049")
+;;;### (autoloads (tex-font-setup) "auctex/tex-font" "auctex/tex-font.el"
+;;;;;;  (21550 46297 65953 170000))
 ;;; Generated autoloads from auctex/tex-font.el
 
-(autoload 'tex-font-setup "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-font" "\
+(autoload 'tex-font-setup "auctex/tex-font" "\
 Setup font lock support for TeX.
 
 \(fn)" nil nil)
 
 ;;;***
 
-;;;### (autoloads (TeX-texinfo-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-info"
-;;;;;;  "auctex/tex-info.el" "8a7097073dbb4710053094f8d9479b7e")
+;;;### (autoloads (TeX-texinfo-mode) "auctex/tex-info" "auctex/tex-info.el"
+;;;;;;  (21550 46297 65953 170000))
 ;;; Generated autoloads from auctex/tex-info.el
 
 (defalias 'Texinfo-mode 'texinfo-mode)
 
-(autoload 'TeX-texinfo-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-info" "\
+(autoload 'TeX-texinfo-mode "auctex/tex-info" "\
 Major mode in AUCTeX for editing Texinfo files.
 
 Special commands:
@@ -376,17 +375,17 @@ value of `Texinfo-mode-hook'.
 
 ;;;***
 
-;;;### (autoloads (japanese-latex-mode japanese-plain-tex-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-jp"
-;;;;;;  "auctex/tex-jp.el" "66e49ee3fef708a1ebff45997b73ec2b")
+;;;### (autoloads (japanese-latex-mode japanese-plain-tex-mode) "auctex/tex-jp"
+;;;;;;  "auctex/tex-jp.el" (21550 46297 65953 170000))
 ;;; Generated autoloads from auctex/tex-jp.el
 
-(autoload 'japanese-plain-tex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-jp" "\
+(autoload 'japanese-plain-tex-mode "auctex/tex-jp" "\
 Major mode in AUCTeX for editing Japanese plain TeX files.
 Set `japanese-TeX-mode' to t, and enter `TeX-plain-tex-mode'.
 
 \(fn)" t nil)
 
-(autoload 'japanese-latex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/tex-jp" "\
+(autoload 'japanese-latex-mode "auctex/tex-jp" "\
 Major mode in AUCTeX for editing Japanese LaTeX files.
 Set `japanese-TeX-mode' to t, and enter `TeX-latex-mode'.
 
@@ -394,11 +393,11 @@ Set `japanese-TeX-mode' to t, and enter `TeX-latex-mode'.
 
 ;;;***
 
-;;;### (autoloads (texmathp-match-switch texmathp) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/texmathp"
-;;;;;;  "auctex/texmathp.el" "39e6000daf5c9c5ac7bb7fe6da506713")
+;;;### (autoloads (texmathp-match-switch texmathp) "auctex/texmathp"
+;;;;;;  "auctex/texmathp.el" (21550 46297 69286 503000))
 ;;; Generated autoloads from auctex/texmathp.el
 
-(autoload 'texmathp "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/texmathp" "\
+(autoload 'texmathp "auctex/texmathp" "\
 Determine if point is inside (La)TeX math mode.
 Returns t or nil.  Additional info is placed into `texmathp-why'.
 The functions assumes that you have (almost) syntactically correct (La)TeX in
@@ -407,7 +406,7 @@ See the variable `texmathp-tex-commands' about which commands are checked.
 
 \(fn)" t nil)
 
-(autoload 'texmathp-match-switch "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/texmathp" "\
+(autoload 'texmathp-match-switch "auctex/texmathp" "\
 Search backward for any of the math switches.
 Limit searched to BOUND.
 
@@ -415,8 +414,8 @@ Limit searched to BOUND.
 
 ;;;***
 
-;;;### (autoloads nil "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/auctex/toolbar-x"
-;;;;;;  "auctex/toolbar-x.el" "b53a339031113a1cc21bde9000be3863")
+;;;### (autoloads nil "auctex/toolbar-x" "auctex/toolbar-x.el" (21550
+;;;;;;  46297 69286 503000))
 ;;; Generated autoloads from auctex/toolbar-x.el
  (autoload 'toolbarx-install-toolbar "toolbar-x")
 
@@ -424,53 +423,53 @@ Limit searched to BOUND.
 
 ;;;### (autoloads (el-get-checksum el-get-make-recipes el-get-cd
 ;;;;;;  el-get-self-update el-get-update-packages-of-type el-get-update-all
-;;;;;;  el-get-version) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get"
-;;;;;;  "el-get/el-get.el" "af6fb026ece3eee11c474bec3c00c2b8")
+;;;;;;  el-get-version) "el-get/el-get" "el-get/el-get.el" (21525
+;;;;;;  23924 900379 848000))
 ;;; Generated autoloads from el-get/el-get.el
 
-(autoload 'el-get-version "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-version "el-get/el-get" "\
 Message the current el-get version
 
 \(fn)" t nil)
 
-(autoload 'el-get-update-all "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-update-all "el-get/el-get" "\
 Performs update of all installed packages.
 
 \(fn &optional NO-PROMPT)" t nil)
 
-(autoload 'el-get-update-packages-of-type "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-update-packages-of-type "el-get/el-get" "\
 Update all installed packages of type TYPE.
 
 \(fn TYPE)" t nil)
 
-(autoload 'el-get-self-update "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-self-update "el-get/el-get" "\
 Update el-get itself.  The standard recipe takes care of reloading the code.
 
 \(fn)" t nil)
 
-(autoload 'el-get-cd "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-cd "el-get/el-get" "\
 Open dired in the package directory.
 
 \(fn PACKAGE)" t nil)
 
-(autoload 'el-get-make-recipes "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-make-recipes "el-get/el-get" "\
 Loop over `el-get-sources' and write a recipe file for each
 entry which is not a symbol and is not already a known recipe.
 
 \(fn &optional DIR)" t nil)
 
-(autoload 'el-get-checksum "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get" "\
+(autoload 'el-get-checksum "el-get/el-get" "\
 Compute the checksum of the given package, and put it in the kill-ring
 
 \(fn PACKAGE &optional PACKAGE-STATUS-ALIST)" t nil)
 
 ;;;***
 
-;;;### (autoloads (el-get-list-packages) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get-list-packages"
-;;;;;;  "el-get/el-get-list-packages.el" "963cec2f84795bf50d332403e97c20ca")
+;;;### (autoloads (el-get-list-packages) "el-get/el-get-list-packages"
+;;;;;;  "el-get/el-get-list-packages.el" (21525 23924 900379 848000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
-(autoload 'el-get-list-packages "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/el-get/el-get-list-packages" "\
+(autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
 Display a list of packages.
 
 \(fn)" t nil)
@@ -478,21 +477,21 @@ Display a list of packages.
 ;;;***
 
 ;;;### (autoloads (evil-leader/set-key-for-mode evil-leader/set-key
-;;;;;;  evil-leader-mode global-evil-leader-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-leader/evil-leader"
-;;;;;;  "evil-leader/evil-leader.el" "26b0ea6b79d0842cf07c293e8fa81244")
+;;;;;;  evil-leader-mode global-evil-leader-mode) "evil-leader/evil-leader"
+;;;;;;  "evil-leader/evil-leader.el" (21525 28638 216788 985000))
 ;;; Generated autoloads from evil-leader/evil-leader.el
 
-(autoload 'global-evil-leader-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-leader/evil-leader" "\
+(autoload 'global-evil-leader-mode "evil-leader/evil-leader" "\
 Global minor mode for <leader> support.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'evil-leader-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-leader/evil-leader" "\
+(autoload 'evil-leader-mode "evil-leader/evil-leader" "\
 Minor mode to enable <leader> support.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'evil-leader/set-key "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-leader/evil-leader" "\
+(autoload 'evil-leader/set-key "evil-leader/evil-leader" "\
 Bind `key' to command `def' in `evil-leader/default-map'.
 
 Key has to be readable by `read-kbd-macro' and `def' a command.
@@ -500,7 +499,7 @@ Accepts further `key' `def' pairs.
 
 \(fn KEY DEF &rest BINDINGS)" t nil)
 
-(autoload 'evil-leader/set-key-for-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-leader/evil-leader" "\
+(autoload 'evil-leader/set-key-for-mode "evil-leader/evil-leader" "\
 Create keybindings for major-mode `mode' with `key' bound to command `def'.
 
 See `evil-leader/set-key'.
@@ -510,11 +509,11 @@ See `evil-leader/set-key'.
 ;;;***
 
 ;;;### (autoloads (evil-numbers/dec-at-pt evil-numbers/inc-at-pt)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-numbers/evil-numbers"
-;;;;;;  "evil-numbers/evil-numbers.el" "110ab7e2ddcd99ba46d391b2386b4a56")
+;;;;;;  "evil-numbers/evil-numbers" "evil-numbers/evil-numbers.el"
+;;;;;;  (21525 25962 376935 190000))
 ;;; Generated autoloads from evil-numbers/evil-numbers.el
 
-(autoload 'evil-numbers/inc-at-pt "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-numbers/evil-numbers" "\
+(autoload 'evil-numbers/inc-at-pt "evil-numbers/evil-numbers" "\
 Increment the number at point or after point before end-of-line by `amount'.
 When region is selected, increment all numbers in the region by `amount'
 
@@ -524,7 +523,7 @@ applying the regional features of `evil-numbers/inc-at-point'.
 
 \(fn AMOUNT &optional NO-REGION)" t nil)
 
-(autoload 'evil-numbers/dec-at-pt "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil-numbers/evil-numbers" "\
+(autoload 'evil-numbers/dec-at-pt "evil-numbers/evil-numbers" "\
 Decrement the number at point or after point before end-of-line by `amount'.
 
 If a region is active, decrement all the numbers at a point by `amount'.
@@ -535,18 +534,18 @@ This function uses `evil-numbers/inc-at-pt'
 
 ;;;***
 
-;;;### (autoloads nil "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/evil/evil-core"
-;;;;;;  "evil/evil-core.el" "fe3660d5844839ce87c778fb252c8a80")
+;;;### (autoloads nil "evil/evil-core" "evil/evil-core.el" (21380
+;;;;;;  63591 50977 653000))
 ;;; Generated autoloads from evil/evil-core.el
  (autoload 'evil-mode "evil" "Toggle evil in all buffers" t)
 
 ;;;***
 
-;;;### (autoloads (goto-last-change-reverse goto-last-change) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/goto-chg/goto-chg"
-;;;;;;  "goto-chg/goto-chg.el" "ac249102dc519da040951dd8ed80f8cf")
+;;;### (autoloads (goto-last-change-reverse goto-last-change) "goto-chg/goto-chg"
+;;;;;;  "goto-chg/goto-chg.el" (21525 24061 497039 53000))
 ;;; Generated autoloads from goto-chg/goto-chg.el
 
-(autoload 'goto-last-change "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/goto-chg/goto-chg" "\
+(autoload 'goto-last-change "goto-chg/goto-chg" "\
 Go to the point where the last edit was made in the current buffer.
 Repeat the command to go to the second last edit, etc.
 
@@ -573,7 +572,7 @@ discarded. See variable `undo-limit'.
 
 \(fn ARG)" t nil)
 
-(autoload 'goto-last-change-reverse "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/goto-chg/goto-chg" "\
+(autoload 'goto-last-change-reverse "goto-chg/goto-chg" "\
 Go back to more recent changes after \\[goto-last-change] have been used.
 See `goto-last-change' for use of prefix argument.
 
@@ -581,11 +580,11 @@ See `goto-last-change' for use of prefix argument.
 
 ;;;***
 
-;;;### (autoloads (haskell-latex-mode haskell-latex-maybe) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-latex/haskell-latex"
-;;;;;;  "haskell-latex/haskell-latex.el" "476cb580684f17dd104ed29cee02792e")
+;;;### (autoloads (haskell-latex-mode haskell-latex-maybe) "haskell-latex/haskell-latex"
+;;;;;;  "haskell-latex/haskell-latex.el" (21550 46906 262586 551000))
 ;;; Generated autoloads from haskell-latex/haskell-latex.el
 
-(autoload 'haskell-latex-maybe "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-latex/haskell-latex" "\
+(autoload 'haskell-latex-maybe "haskell-latex/haskell-latex" "\
 Invoke `haskell-latex-mode' unless the buffer appears to use Bird tracks.
 The criterion for Bird tracks is two consecutive lines with `>'
 in column 0.
@@ -595,49 +594,50 @@ Suitable for adding to `haskell-mode-hook'.
 
 (custom-add-option 'haskell-mode-hook 'haskell-latex-maybe)
 
-(autoload 'haskell-latex-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-latex/haskell-latex" "\
+(autoload 'haskell-latex-mode "haskell-latex/haskell-latex" "\
 Mode for editing `literate Haskell' with LaTeX conventions.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (ghc-core-mode ghc-core-create-core) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/ghc-core"
-;;;;;;  "haskell-mode/ghc-core.el" "65e8394e43c68ff9ec00042cafe4dce1")
+;;;### (autoloads (ghc-core-mode ghc-core-create-core) "haskell-mode/ghc-core"
+;;;;;;  "haskell-mode/ghc-core.el" (21525 35647 316568 931000))
 ;;; Generated autoloads from haskell-mode/ghc-core.el
 
-(autoload 'ghc-core-create-core "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/ghc-core" "\
+(autoload 'ghc-core-create-core "haskell-mode/ghc-core" "\
 Compile and load the current buffer as tidy core.
 
 \(fn)" t nil)
 
 (add-to-list 'auto-mode-alist '("\\.hcr\\'" . ghc-core-mode))
 
-(autoload 'ghc-core-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/ghc-core" "\
+(autoload 'ghc-core-mode "haskell-mode/ghc-core" "\
 Major mode for GHC Core files.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-align-imports) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-align-imports"
-;;;;;;  "haskell-mode/haskell-align-imports.el" "6cfe8b1b30ad0e488e8e97438dab4d05")
+;;;### (autoloads (haskell-align-imports) "haskell-mode/haskell-align-imports"
+;;;;;;  "haskell-mode/haskell-align-imports.el" (21525 35647 316568
+;;;;;;  931000))
 ;;; Generated autoloads from haskell-mode/haskell-align-imports.el
 
-(autoload 'haskell-align-imports "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-align-imports" "\
+(autoload 'haskell-align-imports "haskell-mode/haskell-align-imports" "\
 Align all the imports in the buffer.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-c-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-c"
-;;;;;;  "haskell-mode/haskell-c.el" "182428eb7aa9aa917e3be4bb53c5c366")
+;;;### (autoloads (haskell-c-mode) "haskell-mode/haskell-c" "haskell-mode/haskell-c.el"
+;;;;;;  (21525 35647 316568 931000))
 ;;; Generated autoloads from haskell-mode/haskell-c.el
 
 (add-to-list 'auto-mode-alist '("\\.hsc\\'" . haskell-c-mode))
 
-(autoload 'haskell-c-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-c" "\
+(autoload 'haskell-c-mode "haskell-mode/haskell-c" "\
 Major mode for Haskell FFI files.
 
 \(fn)" t nil)
@@ -645,24 +645,24 @@ Major mode for Haskell FFI files.
 ;;;***
 
 ;;;### (autoloads (haskell-cabal-visit-file haskell-cabal-get-dir
-;;;;;;  haskell-cabal-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-cabal"
-;;;;;;  "haskell-mode/haskell-cabal.el" "058eaa2958b47957912a8e13fd89ace4")
+;;;;;;  haskell-cabal-mode) "haskell-mode/haskell-cabal" "haskell-mode/haskell-cabal.el"
+;;;;;;  (21525 35647 316568 931000))
 ;;; Generated autoloads from haskell-mode/haskell-cabal.el
 
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
 
-(autoload 'haskell-cabal-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-cabal" "\
+(autoload 'haskell-cabal-mode "haskell-mode/haskell-cabal" "\
 Major mode for Cabal package description files.
 
 \(fn)" t nil)
 
-(autoload 'haskell-cabal-get-dir "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-cabal" "\
+(autoload 'haskell-cabal-get-dir "haskell-mode/haskell-cabal" "\
 Get the Cabal dir for a new project. Various ways of figuring this out,
    and indeed just prompting the user. Do them all.
 
 \(fn)" nil nil)
 
-(autoload 'haskell-cabal-visit-file "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-cabal" "\
+(autoload 'haskell-cabal-visit-file "haskell-mode/haskell-cabal" "\
 Locate and visit package description file for file visited by current buffer.
 This uses `haskell-cabal-find-file' to locate the closest
 \".cabal\" file and open it.  This command assumes a common Cabal
@@ -675,11 +675,11 @@ OTHER-WINDOW use `find-file-other-window'.
 
 ;;;***
 
-;;;### (autoloads (haskell-compile) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-compile"
-;;;;;;  "haskell-mode/haskell-compile.el" "93ff87832c3a02ad19e6d2f9bf874a23")
+;;;### (autoloads (haskell-compile) "haskell-mode/haskell-compile"
+;;;;;;  "haskell-mode/haskell-compile.el" (21525 35647 316568 931000))
 ;;; Generated autoloads from haskell-mode/haskell-compile.el
 
-(autoload 'haskell-compile "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-compile" "\
+(autoload 'haskell-compile "haskell-mode/haskell-compile" "\
 Compile the Haskell program including the current buffer.
 Tries to locate the next cabal description in current or parent
 folders via `haskell-cabal-find-dir' and if found, invoke
@@ -705,23 +705,23 @@ node `(haskell-mode)compilation' for more details.
 ;;;***
 
 ;;;### (autoloads (haskell-decl-scan-mode turn-on-haskell-decl-scan
-;;;;;;  haskell-ds-create-imenu-index) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-decl-scan"
-;;;;;;  "haskell-mode/haskell-decl-scan.el" "448f2b5fd2a8794cb79bd8576fee93ea")
+;;;;;;  haskell-ds-create-imenu-index) "haskell-mode/haskell-decl-scan"
+;;;;;;  "haskell-mode/haskell-decl-scan.el" (21525 35647 319902 263000))
 ;;; Generated autoloads from haskell-mode/haskell-decl-scan.el
 
-(autoload 'haskell-ds-create-imenu-index "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-decl-scan" "\
+(autoload 'haskell-ds-create-imenu-index "haskell-mode/haskell-decl-scan" "\
 Function for finding `imenu' declarations in Haskell mode.
 Finds all declarations (classes, variables, imports, instances and
 datatypes) in a Haskell file for the `imenu' package.
 
 \(fn)" nil nil)
 
-(autoload 'turn-on-haskell-decl-scan "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-decl-scan" "\
+(autoload 'turn-on-haskell-decl-scan "haskell-mode/haskell-decl-scan" "\
 Unconditionally activate `haskell-decl-scan-mode'.
 
 \(fn)" t nil)
 
-(autoload 'haskell-decl-scan-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-decl-scan" "\
+(autoload 'haskell-decl-scan-mode "haskell-mode/haskell-decl-scan" "\
 Toggle Haskell declaration scanning minor mode on or off.
 With a prefix argument ARG, enable minor mode if ARG is
 positive, and disable it otherwise.  If called from Lisp, enable
@@ -762,11 +762,11 @@ Invokes `haskell-decl-scan-mode-hook' on activation.
 ;;;***
 
 ;;;### (autoloads (haskell-doc-show-type haskell-doc-current-info
-;;;;;;  haskell-doc-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-doc"
-;;;;;;  "haskell-mode/haskell-doc.el" "373becaca7b0cc3d30c0a1bacaf54fc0")
+;;;;;;  haskell-doc-mode) "haskell-mode/haskell-doc" "haskell-mode/haskell-doc.el"
+;;;;;;  (21525 35647 319902 263000))
 ;;; Generated autoloads from haskell-mode/haskell-doc.el
 
-(autoload 'haskell-doc-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-doc" "\
+(autoload 'haskell-doc-mode "haskell-mode/haskell-doc" "\
 Enter `haskell-doc-mode' for showing fct types in the echo area.
 See variable docstring.
 
@@ -776,13 +776,13 @@ See variable docstring.
 
 (defalias 'turn-on-haskell-doc 'haskell-doc-mode)
 
-(autoload 'haskell-doc-current-info "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-doc" "\
+(autoload 'haskell-doc-current-info "haskell-mode/haskell-doc" "\
 Return the info about symbol at point.
 Meant for `eldoc-documentation-function'.
 
 \(fn)" nil nil)
 
-(autoload 'haskell-doc-show-type "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-doc" "\
+(autoload 'haskell-doc-show-type "haskell-mode/haskell-doc" "\
 Show the type of the function near point.
 For the function under point, show the type in the echo area.
 This information is extracted from the `haskell-doc-prelude-types' alist
@@ -793,27 +793,27 @@ current buffer.
 
 ;;;***
 
-;;;### (autoloads (haskell-font-lock-choose-keywords) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-font-lock"
-;;;;;;  "haskell-mode/haskell-font-lock.el" "87349c880ec108dd5050fc228cfaa1dd")
+;;;### (autoloads (haskell-font-lock-choose-keywords) "haskell-mode/haskell-font-lock"
+;;;;;;  "haskell-mode/haskell-font-lock.el" (21525 35647 319902 263000))
 ;;; Generated autoloads from haskell-mode/haskell-font-lock.el
 
-(autoload 'haskell-font-lock-choose-keywords "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-font-lock" "\
+(autoload 'haskell-font-lock-choose-keywords "haskell-mode/haskell-font-lock" "\
 
 
 \(fn)" nil nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-indent-mode turn-on-haskell-indent) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indent"
-;;;;;;  "haskell-mode/haskell-indent.el" "db9be01b9c4c888d4be08a301acdf59d")
+;;;### (autoloads (haskell-indent-mode turn-on-haskell-indent) "haskell-mode/haskell-indent"
+;;;;;;  "haskell-mode/haskell-indent.el" (21525 35647 323235 596000))
 ;;; Generated autoloads from haskell-mode/haskell-indent.el
 
-(autoload 'turn-on-haskell-indent "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indent" "\
+(autoload 'turn-on-haskell-indent "haskell-mode/haskell-indent" "\
 Turn on ``intelligent'' Haskell indentation mode.
 
 \(fn)" nil nil)
 
-(autoload 'haskell-indent-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indent" "\
+(autoload 'haskell-indent-mode "haskell-mode/haskell-indent" "\
 ``Intelligent'' Haskell indentation mode.
 This deals with the layout rule of Haskell.
 \\[haskell-indent-cycle] starts the cycle which proposes new
@@ -842,11 +842,11 @@ Invokes `haskell-indent-hook' if not nil.
 ;;;***
 
 ;;;### (autoloads (turn-on-haskell-indentation haskell-indentation-mode)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indentation"
-;;;;;;  "haskell-mode/haskell-indentation.el" "4829b685946fbb2df71a07603bf3a7ae")
+;;;;;;  "haskell-mode/haskell-indentation" "haskell-mode/haskell-indentation.el"
+;;;;;;  (21525 35647 323235 596000))
 ;;; Generated autoloads from haskell-mode/haskell-indentation.el
 
-(autoload 'haskell-indentation-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indentation" "\
+(autoload 'haskell-indentation-mode "haskell-mode/haskell-indentation" "\
 Haskell indentation mode that deals with the layout rule.
 It rebinds RET, DEL and BACKSPACE, so that indentations can be
 set and deleted as if they were real tabs.  It supports
@@ -854,7 +854,7 @@ autofill-mode.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-haskell-indentation "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-indentation" "\
+(autoload 'turn-on-haskell-indentation "haskell-mode/haskell-indentation" "\
 Turn on the haskell-indentation minor mode.
 
 \(fn)" t nil)
@@ -863,11 +863,11 @@ Turn on the haskell-indentation minor mode.
 
 ;;;### (autoloads (haskell-interactive-mode-reset-error haskell-interactive-mode-echo
 ;;;;;;  haskell-interactive-switch haskell-interactive-bring haskell-interactive-mode)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode"
-;;;;;;  "haskell-mode/haskell-interactive-mode.el" "7879c9dd192c0ebad35c1d3e59de90b7")
+;;;;;;  "haskell-mode/haskell-interactive-mode" "haskell-mode/haskell-interactive-mode.el"
+;;;;;;  (21525 35647 323235 596000))
 ;;; Generated autoloads from haskell-mode/haskell-interactive-mode.el
 
-(autoload 'haskell-interactive-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode" "\
+(autoload 'haskell-interactive-mode "haskell-mode/haskell-interactive-mode" "\
 Interactive mode for Haskell.
 
 See Info node `(haskell-mode)haskell-interactive-mode' for more
@@ -878,33 +878,33 @@ Key bindings:
 
 \(fn)" t nil)
 
-(autoload 'haskell-interactive-bring "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode" "\
+(autoload 'haskell-interactive-bring "haskell-mode/haskell-interactive-mode" "\
 Bring up the interactive mode for this session.
 
 \(fn)" t nil)
 
-(autoload 'haskell-interactive-switch "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode" "\
+(autoload 'haskell-interactive-switch "haskell-mode/haskell-interactive-mode" "\
 Switch to the interactive mode for this session.
 
 \(fn)" t nil)
 
-(autoload 'haskell-interactive-mode-echo "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode" "\
+(autoload 'haskell-interactive-mode-echo "haskell-mode/haskell-interactive-mode" "\
 Echo a read only piece of text before the prompt.
 
 \(fn SESSION MESSAGE &optional MODE)" nil nil)
 
-(autoload 'haskell-interactive-mode-reset-error "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-interactive-mode" "\
+(autoload 'haskell-interactive-mode-reset-error "haskell-mode/haskell-interactive-mode" "\
 Reset the error cursor position.
 
 \(fn SESSION)" t nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-menu) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-menu"
-;;;;;;  "haskell-mode/haskell-menu.el" "0d2f4cbf4a8ff4db50707ac87223a6ce")
+;;;### (autoloads (haskell-menu) "haskell-mode/haskell-menu" "haskell-mode/haskell-menu.el"
+;;;;;;  (21525 35647 323235 596000))
 ;;; Generated autoloads from haskell-mode/haskell-menu.el
 
-(autoload 'haskell-menu "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-menu" "\
+(autoload 'haskell-menu "haskell-mode/haskell-menu" "\
 Launch the Haskell sessions menu.
 
 \(fn)" t nil)
@@ -913,11 +913,11 @@ Launch the Haskell sessions menu.
 
 ;;;### (autoloads (haskell-hayoo hoogle-lookup-from-local haskell-hoogle
 ;;;;;;  literate-haskell-mode haskell-mode haskell-customize haskell-mode-view-news
-;;;;;;  haskell-version) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode"
-;;;;;;  "haskell-mode/haskell-mode.el" "776e03ce5eaf517a4e12ad03fc1a6427")
+;;;;;;  haskell-version) "haskell-mode/haskell-mode" "haskell-mode/haskell-mode.el"
+;;;;;;  (21525 35647 323235 596000))
 ;;; Generated autoloads from haskell-mode/haskell-mode.el
 
-(autoload 'haskell-version "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-version "haskell-mode/haskell-mode" "\
 Show the `haskell-mode` version in the echo area.
 With prefix argument HERE, insert it at point.
 When FULL is non-nil, use a verbose version string.
@@ -925,12 +925,12 @@ When MESSAGE is non-nil, display a message with the version.
 
 \(fn &optional HERE)" t nil)
 
-(autoload 'haskell-mode-view-news "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-mode-view-news "haskell-mode/haskell-mode" "\
 Display information on recent changes to haskell-mode.
 
 \(fn)" t nil)
 
-(autoload 'haskell-customize "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-customize "haskell-mode/haskell-mode" "\
 Browse the haskell customize sub-tree.
 This calls 'customize-browse' with haskell as argument and makes
 sure all haskell customize definitions have been loaded.
@@ -940,7 +940,7 @@ sure all haskell customize definitions have been loaded.
 (defvar haskell-mode-map (let ((map (make-sparse-keymap))) (define-key map (kbd "C-c C-.") 'haskell-mode-format-imports) (define-key map [remap delete-indentation] 'haskell-delete-indentation) (define-key map (kbd "C-c C-l") 'haskell-mode-enable-process-minor-mode) (define-key map (kbd "C-c C-b") 'haskell-mode-enable-process-minor-mode) (define-key map (kbd "C-c C-v") 'haskell-mode-enable-process-minor-mode) (define-key map (kbd "C-c C-t") 'haskell-mode-enable-process-minor-mode) (define-key map (kbd "C-c C-i") 'haskell-mode-enable-process-minor-mode) map) "\
 Keymap used in Haskell mode.")
 
-(autoload 'haskell-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-mode "haskell-mode/haskell-mode" "\
 Major mode for editing Haskell programs.
 
 See also Info node `(haskell-mode)Getting Started' for more
@@ -959,7 +959,7 @@ see documentation for that variable for more details.
 
 \(fn)" t nil)
 
-(autoload 'literate-haskell-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'literate-haskell-mode "haskell-mode/haskell-mode" "\
 As `haskell-mode' but for literate scripts.
 
 \(fn)" t nil)
@@ -968,7 +968,7 @@ As `haskell-mode' but for literate scripts.
 (add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))
 (add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode))
 
-(autoload 'haskell-hoogle "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-hoogle "haskell-mode/haskell-mode" "\
 Do a Hoogle search for QUERY.
 When `haskell-hoogle-command' is non-nil, this command runs
 that.  Otherwise, it opens a hoogle search result in the browser.
@@ -980,12 +980,12 @@ is asked to show extra info for the items matching QUERY..
 
 (defalias 'hoogle 'haskell-hoogle)
 
-(autoload 'hoogle-lookup-from-local "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'hoogle-lookup-from-local "haskell-mode/haskell-mode" "\
 Lookup by local hoogle.
 
 \(fn)" t nil)
 
-(autoload 'haskell-hayoo "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-mode" "\
+(autoload 'haskell-hayoo "haskell-mode/haskell-mode" "\
 Do a Hayoo search for QUERY.
 
 \(fn QUERY)" t nil)
@@ -995,11 +995,11 @@ Do a Hayoo search for QUERY.
 ;;;***
 
 ;;;### (autoloads (haskell-move-nested-left haskell-move-nested-right
-;;;;;;  haskell-move-nested) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-move-nested"
-;;;;;;  "haskell-mode/haskell-move-nested.el" "3f936f93c0f6503d52b7962d28f311e5")
+;;;;;;  haskell-move-nested) "haskell-mode/haskell-move-nested" "haskell-mode/haskell-move-nested.el"
+;;;;;;  (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-move-nested.el
 
-(autoload 'haskell-move-nested "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-move-nested" "\
+(autoload 'haskell-move-nested "haskell-mode/haskell-move-nested" "\
 Shift the nested off-side-rule block adjacent to point by COLS columns to the right.
 
 In Transient Mark mode, if the mark is active, operate on the contents
@@ -1007,7 +1007,7 @@ of the region instead.
 
 \(fn COLS)" nil nil)
 
-(autoload 'haskell-move-nested-right "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-move-nested" "\
+(autoload 'haskell-move-nested-right "haskell-mode/haskell-move-nested" "\
 Increase indentation of the following off-side-rule block adjacent to point.
 
 Use a numeric prefix argument to indicate amount of indentation to apply.
@@ -1017,7 +1017,7 @@ of the region instead.
 
 \(fn COLS)" t nil)
 
-(autoload 'haskell-move-nested-left "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-move-nested" "\
+(autoload 'haskell-move-nested-left "haskell-mode/haskell-move-nested" "\
 Decrease indentation of the following off-side-rule block adjacent to point.
 
 Use a numeric prefix argument to indicate amount of indentation to apply.
@@ -1030,21 +1030,22 @@ of the region instead.
 ;;;***
 
 ;;;### (autoloads (haskell-navigate-imports-return haskell-navigate-imports-go
-;;;;;;  haskell-navigate-imports) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-navigate-imports"
-;;;;;;  "haskell-mode/haskell-navigate-imports.el" "a45ce848371144d4d78f0a94b4c999de")
+;;;;;;  haskell-navigate-imports) "haskell-mode/haskell-navigate-imports"
+;;;;;;  "haskell-mode/haskell-navigate-imports.el" (21525 35647 326568
+;;;;;;  929000))
 ;;; Generated autoloads from haskell-mode/haskell-navigate-imports.el
 
-(autoload 'haskell-navigate-imports "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-navigate-imports" "\
+(autoload 'haskell-navigate-imports "haskell-mode/haskell-navigate-imports" "\
 Cycle the Haskell import lines or return to point (with prefix arg).
 
 \(fn &optional RETURN)" t nil)
 
-(autoload 'haskell-navigate-imports-go "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-navigate-imports" "\
+(autoload 'haskell-navigate-imports-go "haskell-mode/haskell-navigate-imports" "\
 Go to the first line of a list of consequtive import lines. Cycles.
 
 \(fn)" t nil)
 
-(autoload 'haskell-navigate-imports-return "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-navigate-imports" "\
+(autoload 'haskell-navigate-imports-return "haskell-mode/haskell-navigate-imports" "\
 Return to the non-import point we were at before going to the module list.
    If we were originally at an import list, we can just cycle through easily.
 
@@ -1055,62 +1056,62 @@ Return to the non-import point we were at before going to the module list.
 ;;;### (autoloads (interactive-haskell-mode haskell-process haskell-process-start
 ;;;;;;  haskell-process-cabal haskell-process-cabal-build haskell-process-load-or-reload
 ;;;;;;  haskell-process-reload-file haskell-process-load-file haskell-process-do-info
-;;;;;;  haskell-process-do-type haskell-process-generate-tags) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process"
-;;;;;;  "haskell-mode/haskell-process.el" "f25e6cba1c0e2dd863329596283d015b")
+;;;;;;  haskell-process-do-type haskell-process-generate-tags) "haskell-mode/haskell-process"
+;;;;;;  "haskell-mode/haskell-process.el" (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-process.el
 
-(autoload 'haskell-process-generate-tags "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-generate-tags "haskell-mode/haskell-process" "\
 Regenerate the TAGS table.
 
 \(fn &optional AND-THEN-FIND-THIS-TAG)" t nil)
 
-(autoload 'haskell-process-do-type "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-do-type "haskell-mode/haskell-process" "\
 Print the type of the given expression.
 
 \(fn &optional INSERT-VALUE)" t nil)
 
-(autoload 'haskell-process-do-info "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-do-info "haskell-mode/haskell-process" "\
 Print info on the identifier at point.
 If PROMPT-VALUE is non-nil, request identifier via mini-buffer.
 
 \(fn &optional PROMPT-VALUE)" t nil)
 
-(autoload 'haskell-process-load-file "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-load-file "haskell-mode/haskell-process" "\
 Load the current buffer file.
 
 \(fn)" t nil)
 
-(autoload 'haskell-process-reload-file "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-reload-file "haskell-mode/haskell-process" "\
 Re-load the current buffer file.
 
 \(fn)" t nil)
 
-(autoload 'haskell-process-load-or-reload "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-load-or-reload "haskell-mode/haskell-process" "\
 Load or reload. Universal argument toggles which.
 
 \(fn &optional TOGGLE)" t nil)
 
-(autoload 'haskell-process-cabal-build "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-cabal-build "haskell-mode/haskell-process" "\
 Build the Cabal project.
 
 \(fn)" t nil)
 
-(autoload 'haskell-process-cabal "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-cabal "haskell-mode/haskell-process" "\
 Prompts for a Cabal command to run.
 
 \(fn P)" t nil)
 
-(autoload 'haskell-process-start "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process-start "haskell-mode/haskell-process" "\
 Start the inferior Haskell process.
 
 \(fn SESSION)" nil nil)
 
-(autoload 'haskell-process "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'haskell-process "haskell-mode/haskell-process" "\
 Get the current process from the current session.
 
 \(fn)" nil nil)
 
-(autoload 'interactive-haskell-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-process" "\
+(autoload 'interactive-haskell-mode "haskell-mode/haskell-process" "\
 Minor mode for enabling haskell-process interaction.
 
 \(fn &optional ARG)" t nil)
@@ -1119,33 +1120,33 @@ Minor mode for enabling haskell-process interaction.
 
 ;;;### (autoloads (haskell-session-process haskell-session haskell-session-maybe
 ;;;;;;  haskell-session-installed-modules haskell-session-all-modules)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session"
-;;;;;;  "haskell-mode/haskell-session.el" "4ac7b8bf7b7843b99c8815b3b57bb759")
+;;;;;;  "haskell-mode/haskell-session" "haskell-mode/haskell-session.el"
+;;;;;;  (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-session.el
 
-(autoload 'haskell-session-all-modules "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session" "\
+(autoload 'haskell-session-all-modules "haskell-mode/haskell-session" "\
 Get all modules -- installed or in the current project.
 If DONTCREATE is non-nil don't create a new session.
 
 \(fn &optional DONTCREATE)" nil nil)
 
-(autoload 'haskell-session-installed-modules "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session" "\
+(autoload 'haskell-session-installed-modules "haskell-mode/haskell-session" "\
 Get the modules installed in the current package set.
 If DONTCREATE is non-nil don't create a new session.
 
 \(fn &optional DONTCREATE)" nil nil)
 
-(autoload 'haskell-session-maybe "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session" "\
+(autoload 'haskell-session-maybe "haskell-mode/haskell-session" "\
 Maybe get the Haskell session, return nil if there isn't one.
 
 \(fn)" nil nil)
 
-(autoload 'haskell-session "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session" "\
+(autoload 'haskell-session "haskell-mode/haskell-session" "\
 Get the Haskell session, prompt if there isn't one or fail.
 
 \(fn)" nil nil)
 
-(autoload 'haskell-session-process "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-session" "\
+(autoload 'haskell-session-process "haskell-mode/haskell-session" "\
 Get the session process.
 
 \(fn S)" nil nil)
@@ -1153,23 +1154,23 @@ Get the session process.
 ;;;***
 
 ;;;### (autoloads (haskell-show-parse haskell-show-parse-and-insert
-;;;;;;  haskell-show-replace) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-show"
-;;;;;;  "haskell-mode/haskell-show.el" "60a7dac5ef8f18c9fa04505eb7dd0e62")
+;;;;;;  haskell-show-replace) "haskell-mode/haskell-show" "haskell-mode/haskell-show.el"
+;;;;;;  (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-show.el
 
-(autoload 'haskell-show-replace "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-show" "\
+(autoload 'haskell-show-replace "haskell-mode/haskell-show" "\
 Replace the given region containing a Show value with a pretty
   printed collapsible version.
 
 \(fn START END)" nil nil)
 
-(autoload 'haskell-show-parse-and-insert "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-show" "\
+(autoload 'haskell-show-parse-and-insert "haskell-mode/haskell-show" "\
 Parse a `string' containing a Show instance value and insert
   it pretty printed into the current buffer.
 
 \(fn GIVEN)" nil nil)
 
-(autoload 'haskell-show-parse "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-show" "\
+(autoload 'haskell-show-parse "haskell-mode/haskell-show" "\
 Parse the given input into a tree.
 
 \(fn GIVEN)" nil nil)
@@ -1177,11 +1178,11 @@ Parse the given input into a tree.
 ;;;***
 
 ;;;### (autoloads (turn-on-haskell-simple-indent haskell-simple-indent-mode)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-simple-indent"
-;;;;;;  "haskell-mode/haskell-simple-indent.el" "c4d60eaf3649de991c0fa34cffe11ea7")
+;;;;;;  "haskell-mode/haskell-simple-indent" "haskell-mode/haskell-simple-indent.el"
+;;;;;;  (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-simple-indent.el
 
-(autoload 'haskell-simple-indent-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-simple-indent" "\
+(autoload 'haskell-simple-indent-mode "haskell-mode/haskell-simple-indent" "\
 Simple Haskell indentation mode that uses simple heuristic.
 In this minor mode, `indent-for-tab-command' (bound to <tab> by
 default) will move the cursor to the next indent point in the
@@ -1194,18 +1195,19 @@ Runs `haskell-simple-indent-hook' on activation.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-haskell-simple-indent "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-simple-indent" "\
+(autoload 'turn-on-haskell-simple-indent "haskell-mode/haskell-simple-indent" "\
 Turn on function `haskell-simple-indent-mode'.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-sort-imports) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-sort-imports"
-;;;;;;  "haskell-mode/haskell-sort-imports.el" "5445879d1d26d696e9f88c9ffe8a3f46")
+;;;### (autoloads (haskell-sort-imports) "haskell-mode/haskell-sort-imports"
+;;;;;;  "haskell-mode/haskell-sort-imports.el" (21525 35647 326568
+;;;;;;  929000))
 ;;; Generated autoloads from haskell-mode/haskell-sort-imports.el
 
-(autoload 'haskell-sort-imports "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-sort-imports" "\
+(autoload 'haskell-sort-imports "haskell-mode/haskell-sort-imports" "\
 
 
 \(fn)" t nil)
@@ -1213,32 +1215,33 @@ Turn on function `haskell-simple-indent-mode'.
 ;;;***
 
 ;;;### (autoloads (haskell-is-prefix-of haskell-string-take haskell-trim)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-string"
-;;;;;;  "haskell-mode/haskell-string.el" "22cce3a6ed5c868db99c7b1c5d3d6bd9")
+;;;;;;  "haskell-mode/haskell-string" "haskell-mode/haskell-string.el"
+;;;;;;  (21525 35647 326568 929000))
 ;;; Generated autoloads from haskell-mode/haskell-string.el
 
-(autoload 'haskell-trim "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-string" "\
+(autoload 'haskell-trim "haskell-mode/haskell-string" "\
 
 
 \(fn STRING)" nil nil)
 
-(autoload 'haskell-string-take "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-string" "\
+(autoload 'haskell-string-take "haskell-mode/haskell-string" "\
 Take n chars from string.
 
 \(fn STRING N)" nil nil)
 
-(autoload 'haskell-is-prefix-of "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-string" "\
+(autoload 'haskell-is-prefix-of "haskell-mode/haskell-string" "\
 Is x string a prefix of y string?
 
 \(fn X Y)" nil nil)
 
 ;;;***
 
-;;;### (autoloads (turn-on-haskell-unicode-input-method) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-unicode-input-method"
-;;;;;;  "haskell-mode/haskell-unicode-input-method.el" "af8147f585b55cfcbe8ea317abce4f25")
+;;;### (autoloads (turn-on-haskell-unicode-input-method) "haskell-mode/haskell-unicode-input-method"
+;;;;;;  "haskell-mode/haskell-unicode-input-method.el" (21525 35647
+;;;;;;  329902 263000))
 ;;; Generated autoloads from haskell-mode/haskell-unicode-input-method.el
 
-(autoload 'turn-on-haskell-unicode-input-method "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-unicode-input-method" "\
+(autoload 'turn-on-haskell-unicode-input-method "haskell-mode/haskell-unicode-input-method" "\
 Set input method `haskell-unicode'.
 See Info node `Unicode(haskell-mode)' for more details.
 
@@ -1246,11 +1249,11 @@ See Info node `Unicode(haskell-mode)' for more details.
 
 ;;;***
 
-;;;### (autoloads (haskell-yas-complete) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-yas"
-;;;;;;  "haskell-mode/haskell-yas.el" "a3ae8a82bda09532d42e1c23db375716")
+;;;### (autoloads (haskell-yas-complete) "haskell-mode/haskell-yas"
+;;;;;;  "haskell-mode/haskell-yas.el" (21525 35647 329902 263000))
 ;;; Generated autoloads from haskell-mode/haskell-yas.el
 
-(autoload 'haskell-yas-complete "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/haskell-yas" "\
+(autoload 'haskell-yas-complete "haskell-mode/haskell-yas" "\
 
 
 \(fn &rest ARGS)" nil nil)
@@ -1260,34 +1263,34 @@ See Info node `Unicode(haskell-mode)' for more details.
 ;;;### (autoloads (inf-haskell-mode inferior-haskell-find-haddock
 ;;;;;;  inferior-haskell-find-definition inferior-haskell-info inferior-haskell-kind
 ;;;;;;  inferior-haskell-type inferior-haskell-send-decl inferior-haskell-load-and-run
-;;;;;;  inferior-haskell-load-file switch-to-haskell) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell"
-;;;;;;  "haskell-mode/inf-haskell.el" "96b3ad6a7381c9ded99046c570a8b834")
+;;;;;;  inferior-haskell-load-file switch-to-haskell) "haskell-mode/inf-haskell"
+;;;;;;  "haskell-mode/inf-haskell.el" (21525 35647 329902 263000))
 ;;; Generated autoloads from haskell-mode/inf-haskell.el
 
 (defalias 'run-haskell 'switch-to-haskell)
 
-(autoload 'switch-to-haskell "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'switch-to-haskell "haskell-mode/inf-haskell" "\
 Show the inferior-haskell buffer.  Start the process if needed.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'inferior-haskell-load-file "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-load-file "haskell-mode/inf-haskell" "\
 Pass the current buffer's file to the inferior haskell process.
 If prefix arg \\[universal-argument] is given, just reload the previous file.
 
 \(fn &optional RELOAD)" t nil)
 
-(autoload 'inferior-haskell-load-and-run "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-load-and-run "haskell-mode/inf-haskell" "\
 Pass the current buffer's file to haskell and then run a COMMAND.
 
 \(fn COMMAND)" t nil)
 
-(autoload 'inferior-haskell-send-decl "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-send-decl "haskell-mode/inf-haskell" "\
 Send current declaration to inferior-haskell process.
 
 \(fn)" t nil)
 
-(autoload 'inferior-haskell-type "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-type "haskell-mode/inf-haskell" "\
 Query the haskell process for the type of the given expression.
 If optional argument `insert-value' is non-nil, insert the type above point
 in the buffer.  This can be done interactively with the \\[universal-argument] prefix.
@@ -1295,22 +1298,22 @@ The returned info is cached for reuse by `haskell-doc-mode'.
 
 \(fn EXPR &optional INSERT-VALUE)" t nil)
 
-(autoload 'inferior-haskell-kind "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-kind "haskell-mode/inf-haskell" "\
 Query the haskell process for the kind of the given expression.
 
 \(fn TYPE)" t nil)
 
-(autoload 'inferior-haskell-info "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-info "haskell-mode/inf-haskell" "\
 Query the haskell process for the info of the given expression.
 
 \(fn SYM)" t nil)
 
-(autoload 'inferior-haskell-find-definition "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-find-definition "haskell-mode/inf-haskell" "\
 Attempt to locate and jump to the definition of the given expression.
 
 \(fn SYM)" t nil)
 
-(autoload 'inferior-haskell-find-haddock "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inferior-haskell-find-haddock "haskell-mode/inf-haskell" "\
 Find and open the Haddock documentation of SYM.
 Make sure to load the file into GHCi or Hugs first by using C-c C-l.
 Only works for functions in a package installed with ghc-pkg, or
@@ -1327,18 +1330,18 @@ we load it.
 
 \(fn SYM)" t nil)
 
-(autoload 'inf-haskell-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/haskell-mode/inf-haskell" "\
+(autoload 'inf-haskell-mode "haskell-mode/inf-haskell" "\
 Minor mode for enabling inf-haskell process interaction.
 
 \(fn &optional ARG)" t nil)
 
 ;;;***
 
-;;;### (autoloads (idris-ipkg-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-ipkg-mode"
-;;;;;;  "idris-mode/idris-ipkg-mode.el" "309158080d76524de0d1076d46221d2a")
+;;;### (autoloads (idris-ipkg-mode) "idris-mode/idris-ipkg-mode"
+;;;;;;  "idris-mode/idris-ipkg-mode.el" (21525 28351 796804 633000))
 ;;; Generated autoloads from idris-mode/idris-ipkg-mode.el
 
-(autoload 'idris-ipkg-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-ipkg-mode" "\
+(autoload 'idris-ipkg-mode "idris-mode/idris-ipkg-mode" "\
 Major mode for Idris package files
      \\{idris-ipkg-mode-map}
 Invokes `idris-ipkg-mode-hook'.
@@ -1347,11 +1350,11 @@ Invokes `idris-ipkg-mode-hook'.
 
 ;;;***
 
-;;;### (autoloads (idris-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-mode"
-;;;;;;  "idris-mode/idris-mode.el" "ff0b3b732cc14fd74d612c1a0cdb87cc")
+;;;### (autoloads (idris-mode) "idris-mode/idris-mode" "idris-mode/idris-mode.el"
+;;;;;;  (21525 28351 796804 633000))
 ;;; Generated autoloads from idris-mode/idris-mode.el
 
-(autoload 'idris-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-mode" "\
+(autoload 'idris-mode "idris-mode/idris-mode" "\
 Major mode for Idris
      \\{idris-mode-map}
 Invokes `idris-mode-hook'.
@@ -1367,11 +1370,11 @@ Invokes `idris-mode-hook'.
 ;;;***
 
 ;;;### (autoloads (turn-on-idris-simple-indent idris-simple-indent-mode)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-simple-indent"
-;;;;;;  "idris-mode/idris-simple-indent.el" "9e8f6f2d93a85cbb9bcbe0514939bf25")
+;;;;;;  "idris-mode/idris-simple-indent" "idris-mode/idris-simple-indent.el"
+;;;;;;  (21525 28351 796804 633000))
 ;;; Generated autoloads from idris-mode/idris-simple-indent.el
 
-(autoload 'idris-simple-indent-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-simple-indent" "\
+(autoload 'idris-simple-indent-mode "idris-mode/idris-simple-indent" "\
 Simple Idris indentation mode that uses simple heuristic.
 In this minor mode, `indent-for-tab-command' (bound to <tab> by
 default) will move the cursor to the next indent point in the
@@ -1384,18 +1387,18 @@ Runs `idris-simple-indent-hook' on activation.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-idris-simple-indent "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/idris-mode/idris-simple-indent" "\
+(autoload 'turn-on-idris-simple-indent "idris-mode/idris-simple-indent" "\
 Turn on function `idris-simple-indent-mode'.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (j-console) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-console"
-;;;;;;  "j-mode/j-console.el" "9fb213b9e997dc89681ab5aa412e677d")
+;;;### (autoloads (j-console) "j-mode/j-console" "j-mode/j-console.el"
+;;;;;;  (21525 35591 733238 634000))
 ;;; Generated autoloads from j-mode/j-console.el
 
-(autoload 'j-console "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-console" "\
+(autoload 'j-console "j-mode/j-console" "\
 Ensures a running j-console-cmd session and switches focus to
 the containing buffer
 
@@ -1404,27 +1407,26 @@ the containing buffer
 ;;;***
 
 ;;;### (autoloads (j-help-lookup-symbol-at-point j-help-lookup-symbol)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-help"
-;;;;;;  "j-mode/j-help.el" "5011d9076f384d9fe3ecfe98655d8419")
+;;;;;;  "j-mode/j-help" "j-mode/j-help.el" (21525 35591 736571 967000))
 ;;; Generated autoloads from j-mode/j-help.el
 
-(autoload 'j-help-lookup-symbol "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-help" "\
+(autoload 'j-help-lookup-symbol "j-mode/j-help" "\
 Lookup symbol in dictionary
 
 \(fn SYMBOL)" t nil)
 
-(autoload 'j-help-lookup-symbol-at-point "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-help" "\
+(autoload 'j-help-lookup-symbol-at-point "j-mode/j-help" "\
 Determine the symbol nearest to POINT and look it up in the dictionary
 
 \(fn POINT)" t nil)
 
 ;;;***
 
-;;;### (autoloads (j-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-mode"
-;;;;;;  "j-mode/j-mode.el" "3757a074de0eb1e6008130d254f83785")
+;;;### (autoloads (j-mode) "j-mode/j-mode" "j-mode/j-mode.el" (21525
+;;;;;;  35591 736571 967000))
 ;;; Generated autoloads from j-mode/j-mode.el
 
-(autoload 'j-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/j-mode/j-mode" "\
+(autoload 'j-mode "j-mode/j-mode" "\
 Major mode for editing J
 
 \(fn)" t nil)
@@ -1438,11 +1440,11 @@ Major mode for editing J
 ;;;;;;  turn-on-smartparens-mode smartparens-global-mode turn-on-smartparens-strict-mode
 ;;;;;;  smartparens-global-strict-mode smartparens-strict-mode smartparens-mode
 ;;;;;;  sp-use-smartparens-bindings sp-use-paredit-bindings sp-cheat-sheet)
-;;;;;;  "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens"
-;;;;;;  "smartparens/smartparens.el" "bcf7a3205f85105c55fd62a47ecc6332")
+;;;;;;  "smartparens/smartparens" "smartparens/smartparens.el" (21565
+;;;;;;  33170 993786 239000))
 ;;; Generated autoloads from smartparens/smartparens.el
 
-(autoload 'sp-cheat-sheet "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'sp-cheat-sheet "smartparens/smartparens" "\
 Generate a cheat sheet of all the smartparens interactive functions.
 
 Without a prefix argument, print only the short documentation and examples.
@@ -1463,20 +1465,20 @@ better orientation.
 (defvar sp-keymap (make-sparse-keymap) "\
 Keymap used for `smartparens-mode'.")
 
-(autoload 'sp-use-paredit-bindings "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'sp-use-paredit-bindings "smartparens/smartparens" "\
 Initiate `sp-keymap' with paredit-compatible bindings for
 corresponding functions provided by smartparens.  See variable
 `sp-paredit-bindings'.
 
 \(fn)" t nil)
 
-(autoload 'sp-use-smartparens-bindings "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'sp-use-smartparens-bindings "smartparens/smartparens" "\
 Initiate `sp-keymap' with smartparens bindings for navigation functions.
 See variable `sp-smartparens-bindings'.
 
 \(fn)" t nil)
 
-(autoload 'smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'smartparens-mode "smartparens/smartparens" "\
 Toggle smartparens mode.
 
 You can enable pre-set bindings by customizing
@@ -1487,7 +1489,7 @@ You can enable pre-set bindings by customizing
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'smartparens-strict-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'smartparens-strict-mode "smartparens/smartparens" "\
 Toggle the strict smartparens mode.
 
 When strict mode is active, `delete-char', `kill-word' and their
@@ -1510,9 +1512,9 @@ Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `smartparens-global-strict-mode'.")
 
-(custom-autoload 'smartparens-global-strict-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" nil)
+(custom-autoload 'smartparens-global-strict-mode "smartparens/smartparens" nil)
 
-(autoload 'smartparens-global-strict-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'smartparens-global-strict-mode "smartparens/smartparens" "\
 Toggle Smartparens-Strict mode in all buffers.
 With prefix ARG, enable Smartparens-Global-Strict mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
@@ -1524,7 +1526,7 @@ See `smartparens-strict-mode' for more information on Smartparens-Strict mode.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-smartparens-strict-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'turn-on-smartparens-strict-mode "smartparens/smartparens" "\
 Turn on `smartparens-strict-mode'.
 
 \(fn)" t nil)
@@ -1536,9 +1538,9 @@ Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `smartparens-global-mode'.")
 
-(custom-autoload 'smartparens-global-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" nil)
+(custom-autoload 'smartparens-global-mode "smartparens/smartparens" nil)
 
-(autoload 'smartparens-global-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'smartparens-global-mode "smartparens/smartparens" "\
 Toggle Smartparens mode in all buffers.
 With prefix ARG, enable Smartparens-Global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
@@ -1550,17 +1552,17 @@ See `smartparens-mode' for more information on Smartparens mode.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'turn-on-smartparens-mode "smartparens/smartparens" "\
 Turn on `smartparens-mode'.
 
 \(fn)" t nil)
 
-(autoload 'turn-off-smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'turn-off-smartparens-mode "smartparens/smartparens" "\
 Turn off `smartparens-mode'.
 
 \(fn)" t nil)
 
-(autoload 'show-smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'show-smartparens-mode "smartparens/smartparens" "\
 Toggle visualization of matching pairs.  When enabled, any
 matching pair is highlighted after `sp-show-pair-delay' seconds
 of Emacs idle time if the point is immediately in front or after
@@ -1576,9 +1578,9 @@ Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `show-smartparens-global-mode'.")
 
-(custom-autoload 'show-smartparens-global-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" nil)
+(custom-autoload 'show-smartparens-global-mode "smartparens/smartparens" nil)
 
-(autoload 'show-smartparens-global-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'show-smartparens-global-mode "smartparens/smartparens" "\
 Toggle Show-Smartparens mode in all buffers.
 With prefix ARG, enable Show-Smartparens-Global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
@@ -1590,23 +1592,23 @@ See `show-smartparens-mode' for more information on Show-Smartparens mode.
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'turn-on-show-smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'turn-on-show-smartparens-mode "smartparens/smartparens" "\
 Turn on `show-smartparens-mode'.
 
 \(fn)" t nil)
 
-(autoload 'turn-off-show-smartparens-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/smartparens/smartparens" "\
+(autoload 'turn-off-show-smartparens-mode "smartparens/smartparens" "\
 Turn off `show-smartparens-mode'.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/undo-tree/undo-tree"
-;;;;;;  "undo-tree/undo-tree.el" "924e72a4702cc3f220c5acb42a52dd37")
+;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "undo-tree/undo-tree"
+;;;;;;  "undo-tree/undo-tree.el" (21380 63590 384310 949000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
 
-(autoload 'undo-tree-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/undo-tree/undo-tree" "\
+(autoload 'undo-tree-mode "undo-tree/undo-tree" "\
 Toggle undo-tree mode.
 With no argument, this command toggles the mode.
 A positive prefix argument turns the mode on.
@@ -1633,9 +1635,9 @@ Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-undo-tree-mode'.")
 
-(custom-autoload 'global-undo-tree-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/undo-tree/undo-tree" nil)
+(custom-autoload 'global-undo-tree-mode "undo-tree/undo-tree" nil)
 
-(autoload 'global-undo-tree-mode "../../../../mnt/sda9/home/james/dotfiles/emacs.d/el-get/undo-tree/undo-tree" "\
+(autoload 'global-undo-tree-mode "undo-tree/undo-tree" "\
 Toggle Undo-Tree mode in all buffers.
 With prefix ARG, enable Global-Undo-Tree mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
@@ -1649,92 +1651,34 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 
 ;;;***
 
-;;;### (autoloads (global-evil-surround-mode turn-off-evil-surround-mode
-;;;;;;  turn-on-evil-surround-mode evil-surround-mode evil-surround-change
-;;;;;;  evil-surround-delete) "evil-surround/evil-surround" "../../../../../../../home/james/.emacs.d/el-get/evil-surround/evil-surround.el"
-;;;;;;  "496019bf0e17c04097eacbda413ff9b5")
-;;; Generated autoloads from ../../../../../../../home/james/.emacs.d/el-get/evil-surround/evil-surround.el
-
-(autoload 'evil-surround-delete "evil-surround/evil-surround" "\
-Delete the surrounding delimiters represented by CHAR.
-Alternatively, the text to delete can be represented with
-the overlays OUTER and INNER, where OUTER includes the delimiters
-and INNER excludes them. The intersection (i.e., difference)
-between these overlays is what is deleted.
-
-\(fn CHAR &optional OUTER INNER)" t nil)
-
-(autoload 'evil-surround-change "evil-surround/evil-surround" "\
-Change the surrounding delimiters represented by CHAR.
-Alternatively, the text to delete can be represented with the
-overlays OUTER and INNER, which are passed to `evil-surround-delete'.
-
-\(fn CHAR &optional OUTER INNER)" t nil)
-
-(autoload 'evil-surround-mode "evil-surround/evil-surround" "\
-Buffer-local minor mode to emulate surround.vim.
-
-\(fn &optional ARG)" t nil)
-
-(autoload 'turn-on-evil-surround-mode "evil-surround/evil-surround" "\
-Enable evil-surround-mode in the current buffer.
-
-\(fn)" nil nil)
-
-(autoload 'turn-off-evil-surround-mode "evil-surround/evil-surround" "\
-Disable evil-surround-mode in the current buffer.
-
-\(fn)" nil nil)
-
-(defvar global-evil-surround-mode nil "\
-Non-nil if Global-Evil-Surround mode is enabled.
-See the command `global-evil-surround-mode' for a description of this minor mode.
-Setting this variable directly does not take effect;
-either customize it (see the info node `Easy Customization')
-or call the function `global-evil-surround-mode'.")
-
-(custom-autoload 'global-evil-surround-mode "evil-surround/evil-surround" nil)
-
-(autoload 'global-evil-surround-mode "evil-surround/evil-surround" "\
-Toggle Evil-Surround mode in all buffers.
-With prefix ARG, enable Global-Evil-Surround mode if ARG is positive;
-otherwise, disable it.  If called from Lisp, enable the mode if
-ARG is omitted or nil.
-
-Evil-Surround mode is enabled in all buffers where
-`turn-on-evil-surround-mode' would do it.
-See `evil-surround-mode' for more information on Evil-Surround mode.
-
-\(fn &optional ARG)" t nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("../../../../../../../home/james/.emacs.d/el-get/evil-surround/evil-surround.el"
-;;;;;;  "ace-jump-mode/ace-jump-mode.el" "auctex/bib-cite.el" "auctex/context-en.el"
-;;;;;;  "auctex/context-nl.el" "auctex/context.el" "auctex/font-latex.el"
-;;;;;;  "auctex/latex.el" "auctex/multi-prompt.el" "auctex/plain-tex.el"
-;;;;;;  "auctex/preview/preview.el" "auctex/tex-bar.el" "auctex/tex-fold.el"
-;;;;;;  "auctex/tex-font.el" "auctex/tex-info.el" "auctex/tex-jp.el"
-;;;;;;  "auctex/tex.el" "auctex/texmathp.el" "auctex/toolbar-x.el"
-;;;;;;  "el-get/el-get-list-packages.el" "el-get/el-get.el" "evil-leader/evil-leader.el"
-;;;;;;  "evil-numbers/evil-numbers.el" "evil/evil-core.el" "goto-chg/goto-chg.el"
-;;;;;;  "haskell-latex/haskell-latex.el" "haskell-mode/ghc-core.el"
-;;;;;;  "haskell-mode/haskell-align-imports.el" "haskell-mode/haskell-c.el"
-;;;;;;  "haskell-mode/haskell-cabal.el" "haskell-mode/haskell-compile.el"
-;;;;;;  "haskell-mode/haskell-decl-scan.el" "haskell-mode/haskell-doc.el"
-;;;;;;  "haskell-mode/haskell-font-lock.el" "haskell-mode/haskell-indent.el"
-;;;;;;  "haskell-mode/haskell-indentation.el" "haskell-mode/haskell-interactive-mode.el"
-;;;;;;  "haskell-mode/haskell-menu.el" "haskell-mode/haskell-mode.el"
-;;;;;;  "haskell-mode/haskell-move-nested.el" "haskell-mode/haskell-navigate-imports.el"
-;;;;;;  "haskell-mode/haskell-process.el" "haskell-mode/haskell-session.el"
-;;;;;;  "haskell-mode/haskell-show.el" "haskell-mode/haskell-simple-indent.el"
-;;;;;;  "haskell-mode/haskell-sort-imports.el" "haskell-mode/haskell-string.el"
-;;;;;;  "haskell-mode/haskell-unicode-input-method.el" "haskell-mode/haskell-yas.el"
-;;;;;;  "haskell-mode/inf-haskell.el" "idris-mode/idris-ipkg-mode.el"
-;;;;;;  "idris-mode/idris-mode.el" "idris-mode/idris-simple-indent.el"
-;;;;;;  "j-mode/j-console.el" "j-mode/j-help.el" "j-mode/j-mode.el"
-;;;;;;  "smartparens/smartparens.el" "undo-tree/undo-tree.el") (21569
-;;;;;;  12879 10517 232000))
+;;;### (autoloads nil nil ("auctex/auctex.el" "auctex/auto-loads.el"
+;;;;;;  "auctex/lpath.el" "auctex/preview/auto.el" "auctex/preview/preview-latex.el"
+;;;;;;  "auctex/preview/prv-emacs.el" "auctex/preview/prv-install.el"
+;;;;;;  "auctex/preview/prv-xemacs.el" "auctex/tex-buf.el" "auctex/tex-mik.el"
+;;;;;;  "auctex/tex-site.el" "auctex/tex-style.el" "auctex/tex-wizard.el"
+;;;;;;  "auto-complete-auctex/auto-complete-auctex.el" "dash/dash-functional.el"
+;;;;;;  "dash/dash.el" "el-get/el-get-autoloads.el" "el-get/el-get-build.el"
+;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
+;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
+;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
+;;;;;;  "el-get/el-get-status.el" "haskell-mode/haskell-bot.el" "haskell-mode/haskell-checkers.el"
+;;;;;;  "haskell-mode/haskell-collapse.el" "haskell-mode/haskell-compat.el"
+;;;;;;  "haskell-mode/haskell-complete-module.el" "haskell-mode/haskell-debug.el"
+;;;;;;  "haskell-mode/haskell-mode-autoloads.el" "haskell-mode/haskell-package.el"
+;;;;;;  "haskell-mode/haskell-presentation-mode.el" "haskell-mode/haskell-str.el"
+;;;;;;  "haskell-mode/haskell-utils.el" "haskell-mode/w3m-haddock.el"
+;;;;;;  "idris-mode/idris-commands.el" "idris-mode/idris-common-utils.el"
+;;;;;;  "idris-mode/idris-compat.el" "idris-mode/idris-core.el" "idris-mode/idris-events.el"
+;;;;;;  "idris-mode/idris-info.el" "idris-mode/idris-keys.el" "idris-mode/idris-log.el"
+;;;;;;  "idris-mode/idris-metavariable-list.el" "idris-mode/idris-prover.el"
+;;;;;;  "idris-mode/idris-repl.el" "idris-mode/idris-settings.el"
+;;;;;;  "idris-mode/idris-syntax.el" "idris-mode/idris-tests.el"
+;;;;;;  "idris-mode/idris-warnings-tree.el" "idris-mode/idris-warnings.el"
+;;;;;;  "idris-mode/inferior-idris.el" "j-mode/j-font-lock.el" "linum-relative/linum-relative.el"
+;;;;;;  "multi-mode/multi-mode.el" "smartparens/smartparens-config.el"
+;;;;;;  "smartparens/smartparens-html.el" "smartparens/smartparens-latex.el"
+;;;;;;  "smartparens/smartparens-lua.el" "smartparens/smartparens-pkg.el"
+;;;;;;  "smartparens/smartparens-ruby.el") (21565 33172 533165 548000))
 
 ;;;***
 

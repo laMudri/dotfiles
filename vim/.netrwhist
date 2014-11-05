@@ -1,4 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =1
 let g:netrw_dirhist_1='/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}'
-let g:netrw_dirhist_2='/mnt/sda9/home/james/.xmobar'

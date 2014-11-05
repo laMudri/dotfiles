@@ -1,7 +1,0 @@
-module lazyVect
-data lazyVect : Maybe Nat -> Type -> Type where
-    Nil : lazyVect (Just 0) a
-    (::) : a -> lazyVect mn a -> lazyVect (pure succ <$> mn) a
-
-iterate : (a -> a) -> a -> lazyVect Nothing a
-iterate f x = x :: iterate f (f x)
