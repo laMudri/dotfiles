@@ -49,6 +49,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'laMudri/nextlast'
 Plugin 'dogrover/vim-pentadactyl'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-abolish'
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -168,10 +170,10 @@ set relativenumber
 "endfunction
 "nnoremap <space> :<C-U>exec
 "            \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
-"nnoremap <s-space>h :<C-U>exec
+"nnoremap <c-space>h :<C-U>exec
 "            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 nnoremap <space> i <esc>r
-nnoremap <s-space> a <esc>r
+nnoremap <c-space> a <esc>r
 
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 5
@@ -193,3 +195,11 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set whichwrap+=<,>,h,l,[,]
+
+set hlsearch
+nnoremap <CR> :noh<CR>
+nnoremap <C-8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
+" surround.vim
+xmap s   <Plug>VSurround
+xmap gs  <Plug>VgSurround
