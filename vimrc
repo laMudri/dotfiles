@@ -19,11 +19,8 @@ let maplocalleader='\'
 set nocompatible
 filetype off
 
-<<<<<<< HEAD
 set rtp+=~/.vim/Vundle.vim
-=======
 set rtp+=~/.vim/bundle/vundle
->>>>>>> cfe00da17d48901e6345aea7c09c194d9ba3e582
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
@@ -53,11 +50,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'laMudri/nextlast'
 Plugin 'dogrover/vim-pentadactyl'
-<<<<<<< HEAD
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
-=======
->>>>>>> cfe00da17d48901e6345aea7c09c194d9ba3e582
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -177,17 +171,14 @@ set relativenumber
 "endfunction
 "nnoremap <space> :<C-U>exec
 "            \ "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
-<<<<<<< HEAD
 "nnoremap <c-space>h :<C-U>exec
 "            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 nnoremap <space> i <esc>r
 nnoremap <c-space> a <esc>r
-=======
 "nnoremap <s-space>h :<C-U>exec
 "            \ "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
 nnoremap <space> i <esc>r
 nnoremap <s-space> a <esc>r
->>>>>>> cfe00da17d48901e6345aea7c09c194d9ba3e582
 
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 5
@@ -209,7 +200,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set whichwrap+=<,>,h,l,[,]
-<<<<<<< HEAD
 
 set hlsearch
 nnoremap <CR> :noh<CR>
@@ -218,5 +208,3 @@ nnoremap <C-8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " surround.vim
 xmap s   <Plug>VSurround
 xmap gs  <Plug>VgSurround
-=======
->>>>>>> cfe00da17d48901e6345aea7c09c194d9ba3e582

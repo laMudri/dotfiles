@@ -1,0 +1,12 @@
+module inductive
+{-data Inductive : a -> (a -> Type) -> Type where
+     Nil : {p : a -> Type} -> Inductive a p
+     ConsP : (x : a) -> {p : a -> Type} -> p x -> Inductive a q -> Inductive a p-}
+
+data All : (a -> Type) -> List a -> Type where
+    NilAll : {p : a -> Type} -> All p []
+    ConsAll : {p : a -> Type} -> p x -> All p xs -> All p (x :: xs)
+
+data Any : (a -> Type) -> List a -> Type where
+     NilAny : {p : a -> Type} -> Any p []
+     ConsAny : {p : a -> Type} -> Either (p x,the (List _) (x :: xs)) (Any p xs) -> Any p (x :: xs)
