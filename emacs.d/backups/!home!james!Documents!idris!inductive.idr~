@@ -1,0 +1,6 @@
+module inductive
+{-data Inductive a = Nil
+    | ConsP (p : a -> Bool) (x : a) (xs : Inductive a) (So (all p xs))-}
+data Inductive : (x : a) -> (p : a -> Bool) -> So (p x) -> Type where
+     Nil : Inductive a (const True) Oh
+     ConsP : a -> (p : a -> Bool) -> (xs : List a) -> So (all p xs) -> Inductive a
