@@ -19,7 +19,7 @@ let maplocalleader='\'
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/vundle
+set rtp+=~/.vim/Vundle.vim
 call vundle#rc()
 
 Plugin 'gmarik/vundle'

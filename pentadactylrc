@@ -1,10 +1,15 @@
+" vim: set ft=pentadactyl:
+
 "1.1
 
 loadplugins '\.(js|penta)$'
 group user
 set guioptions=bCrs
 
-" vim: set ft=pentadactyl:
+:javascript <<EOF
+var shellEscapeRE = /["\$\\]/g;
+var shellEscape = function (s) { return s.replace(shellEscapeRE, '\\$&'); };
+EOF
 
 " Swap : and ;
 map -b , :
@@ -112,6 +117,9 @@ highlight Hint font: 10px "Droid Sans Mono", monospace !important; margin: -.2ex
 " sutsis
 map gj <c-2>x
 map gʒ <c-2>x
+
+command J -nargs=1 -literal=0 -js
+    \ commands.execute('!jline "' + shellEscape(args[0]) + '"');
 
 set passkeys+=feedly.com:k
 
