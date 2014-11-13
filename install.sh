@@ -1,4 +1,5 @@
 #!/bin/bash
-sudo chmod +x makesymlinks.sh
 ./makesymlinks.sh
-vim -c "VundleInstall"
+vim +BundleInstall +qall
+cd vim/bundle/YouCompleteMe/
+./install.sh
