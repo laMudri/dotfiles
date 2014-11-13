@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ((("pri" .
    [0 0 1])
   ("printf" .
@@ -38,3 +39,33 @@
    [0 0 0 0 0 0 0 0 1])
   ("yas-global-mode" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])))
+=======
+((("evil-terminal-cursor-changer" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("display-graphic-p" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("unless" .
+   [1 0 0 0 0 0])
+  ("evil-exchange-cancel" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("evil-exchange-install" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-exchange" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("global-evil-surround-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-surround" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("kbd" .
+   [2 0 0])
+  ("evil-escape-key-sequence" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("setq" .
+   [2 0 0 0])
+  ("evil-escape" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("require" .
+   [0 0 0 5 0 0 0])
+  ("linum-relative" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0])))
+>>>>>>> 4fddeef7e2634ff5a86f5833021636849789cf16
