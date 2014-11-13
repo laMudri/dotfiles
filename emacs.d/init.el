@@ -116,3 +116,11 @@
 
 (autoload 'lojban-parse-region "lojban" nil t)
 (autoload 'lojban-mode "lojban-mode" nil t)
+
+;(setq mail-user-agent 'sendmail-user-agent)
+;(setenv "MAILHOST" "pop3server")
+;(setq rmail-primary-inbox-list '("po:jdw74@cam.ac.uk")
+;      rmail-pop-password-required t)
+
+(require 'yasnippet)
+(yas-global-mode 1)
