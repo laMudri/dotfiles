@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:emacs.d/ac-comphist.dat~
 <<<<<<< HEAD
 ((("pri" .
    [0 0 1])
@@ -41,6 +42,13 @@
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])))
 =======
 ((("evil-terminal-cursor-changer" .
+=======
+((("yas-global-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("yasnippet" .
+   [0 0 0 0 0 0 0 0 1])
+  ("evil-terminal-cursor-changer" .
+>>>>>>> Stashed changes:emacs.d/ac-comphist.dat
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
   ("display-graphic-p" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
@@ -65,7 +73,21 @@
   ("evil-escape" .
    [0 0 0 0 0 0 0 0 0 0 1])
   ("require" .
+<<<<<<< Updated upstream:emacs.d/ac-comphist.dat~
    [0 0 0 5 0 0 0])
   ("linum-relative" .
    [0 0 0 0 1 0 0 0 0 0 0 0 0 0])))
 >>>>>>> 4fddeef7e2634ff5a86f5833021636849789cf16
+=======
+   [0 0 0 6 0 0 0])
+  ("linum-relative" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("p" .
+   [1])
+  ("main" .
+   [0 0 0 1])
+  ("printf" .
+   [0 0 1 0 0 0])
+  ("pri" .
+   [0 0 1])))
+>>>>>>> Stashed changes:emacs.d/ac-comphist.dat
