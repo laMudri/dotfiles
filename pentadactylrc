@@ -7,7 +7,7 @@ group user
 set guioptions=bCrs
 
 :javascript <<EOF
-var shellEscapeRE = /['\\]/g;
+var shellEscapeRE = /[\'\\]/g;
 var shellEscape = function (s) { return s.replace(shellEscapeRE, '\\$&'); };
 EOF
 " vim: set ft=pentadactyl:
