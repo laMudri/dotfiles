@@ -63,6 +63,31 @@
 (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
 (define-key evil-motion-state-map "|" 'evil-execute-in-emacs-state)
 
+(evil-define-operator myevil-yank-line (beg end type register yank-handler)
+  "Save the rest of the line into the kill-ring."
+  :motion nil
+  :keep-visual t
+  (interactive "<R><x>")
+  ;; act linewise in Visual state
+  (let* ((beg (or beg (point)))
+         (end (or end beg)))
+    (when (evil-visual-state-p)
+      (unless (memq type '(line block))
+        (let ((range (evil-expand beg end 'line)))
+          (setq beg (evil-range-beginning range)
+                end (evil-range-end range))))
+      (evil-exit-visual-state))
+    (cond
+     ((eq type 'block)
+      (let ((temporary-goal-column most-positive-fixnum)
+            (last-command 'next-line))
+        (evil-yank beg end 'block register yank-handler)))
+     ((eq type 'line)
+      (evil-yank beg end 'block register yank-handler))
+     (t
+      (evil-yank beg (line-end-position) type register yank-handler)))))
+(define-key evil-normal-state-map "Y" 'myevil-yank-line)
+
 (require 'evil-escape)
 (setq evil-escape-key-sequence (kbd "C-c C-c"))
 (require 'evil-surround)
@@ -71,6 +96,9 @@
 (setq evil-exchange-key (kbd "zx"))
 (setq evil-exchange-cancel-key (kbd "zx"))
 (evil-exchange-install)
+
+(require 'ace-jump-buffer)
+(define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
 
 (unless (display-graphic-p)
   (require 'evil-terminal-cursor-changer))
@@ -124,3 +152,25 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(setq-default indent-tabs-mode nil)
+
+(require 'helm-config)
+(define-key evil-normal-state-map (kbd "g h") 'helm-mini)
+(helm-mode 1)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (solarized-light)))
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

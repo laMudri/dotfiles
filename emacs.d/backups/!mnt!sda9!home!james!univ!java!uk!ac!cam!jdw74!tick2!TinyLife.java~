@@ -1,0 +1,23 @@
+package uk.ac.cam.jdw74.tick2;
+
+import uk.ac.cam.jdw74.tick1.*;
+
+class TinyLife {
+    public static void print(long world) { 
+        System.out.println("-"); 
+        for (int row = 0; row < 8; row++) { 
+            for (int col = 0; col < 8; col++) {
+                System.out.print(getCell(world, col, row) ? "#" : "_"); 
+            }
+            System.out.println(); 
+        } 
+    }
+
+    public static boolean getCell(long world, int col, int row) {
+        return get(world, row * 8 + col);
+    }
+
+    public static long setCell(long world, int col, int row, boolean value) {
+        return set(world, row * 8 + col, value);
+    }
+}

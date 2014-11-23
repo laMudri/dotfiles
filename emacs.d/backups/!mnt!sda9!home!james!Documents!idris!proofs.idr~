@@ -1,2 +1,13 @@
 module proofs
 succGreater : So (S n > n)
+succGreater = ?succGreater_rhs
+
+myMax : Ord a => a -> a -> a
+myMax x y with (choose (x <= y))
+  myMax x y | (Left Oh) = y
+  myMax x y | (Right Oh) = x
+
+myMaxReturnsArgument : Ord a => (x : a) -> (y : a) -> Either (x = myMax x y) (y = myMax x y)
+myMaxReturnsArgument x y with (choose (x <= y))
+  myMaxReturnsArgument x y | (Left Oh) = Left ?myMaxReturnsArgument_rhs_5
+  myMaxReturnsArgument x y | (Right Oh) = Left Refl
