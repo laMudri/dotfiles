@@ -1,1 +1,56 @@
-(nil)
+((("nil" .
+   [1 0 0])
+  ("indent-tabs-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("setq-default" .
+   [0 0 0 0 0 0 1 0 0 0 0 0])
+  ("solarized-light" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0])
+  ("enable-theme" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("let" .
+   [2 0 0])
+  ("range" .
+   [3 0 0 0 0])
+  ("evil-expand" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("end" .
+   [4 0 0])
+  ("line" .
+   [2 0 0 0])
+  ("setq" .
+   [1 0 0 0])
+  ("beg" .
+   [4 0 0])
+  ("evil-range-beginning" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-range-end" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-exit-visual-state" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("cond" .
+   [1 0 0 0])
+  ("eq" .
+   [2 0])
+  ("type" .
+   [3 0 0 0])
+  ("block" .
+   [2 0 0 0 1])
+  ("temporary-goal-column" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("most-positive-fixnum" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("last-command" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("next-line" .
+   [0 0 0 0 0 0 0 0 1])
+  ("evil-yank" .
+   [0 0 0 0 0 0 0 0 3])
+  ("register" .
+   [0 0 0 0 0 0 0 3])
+  ("yank-handle" .
+   [0 0 0 0 0 0 0 0 0 0 2])
+  ("line-end-position" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("yank-handler" .
+   [0 0 0 0 0 0 0 1 0 0 0 1])))

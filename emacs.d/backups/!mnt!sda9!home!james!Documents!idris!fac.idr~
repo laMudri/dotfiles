@@ -1,0 +1,6 @@
+module fac
+
+total
+fac : Nat -> Nat
+fac Z = S Z
+fac (S n) = S n * fac n
