@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+%Gummi|063|=)
+\title{\textbf{Object oriented programming -- supervision 2}}
+\author{James Wood}
+\usepackage{listings}
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\begin{document}
+
+\maketitle
+
+\section*{a}
+Dynamic polymorphism is a process by which the method run on an object is decided based on the runtime type of the object. The methods to be chosen from have the same name, where some override others due to being implemented in subclasses. It is useful because it allows the more relevant methods of subclasses to be used without the compiler needing to infer the type of each object.
+
+For example, consider the following code:
+
+\lstinputlisting[language=Java]{code/S2a.java}
+
+When calling \texttt{write()} from inside the \texttt{for} loop, the compiler can only infer that each element of \texttt{arr} is of type \texttt{A}, and can't infer which of them (if any) are of type \texttt{B}. Due to dynamic polymorphism, however, the runtime can see that the second element is actually of type \texttt{B}, so the \texttt{write} defined for class \texttt{B} is called. Output:
+
+\begin{verbatim}
+Hello from A
+Hello from B
+\end{verbatim}
+
+\section*{b}
+A class is a template for an object, and can be extended to make other classes (unless it is final). It can define what type of state and what behaviour its instances will have. An abstract class is a class that cannot be instantiated. It can define type of state and default behaviours for its subclasses. An interface also cannot have instances, but cannot define state either. An interface is implemented, rather than extended, and classes can implement any number of interfaces (as opposed to only being able to extend exactly one class).
+
+\section*{c}
+\texttt{List} is an interface defining what behaviours an ordered mutable list should have. \texttt{AbstractList} is an abstract class that gives a minimal implementation of the methods in \texttt{List}. \texttt{Vector}, \texttt{LinkedList} and \texttt{ArrayList} implement \texttt{List} and are non-abstract. \texttt{Vector} and \texttt{ArrayList} extend \texttt{AbstractList}. \texttt{Vector} is considered deprecated due to poorly-designed concurrency features, whilst \texttt{ArrayList} is still used. Both \texttt{Vector} and \texttt{ArrayList} are implemented using arrays whose length is updated when the list needs more or less capacity. \texttt{LinkedList} is implemented as a doubly-linked list.
+
+The interface \texttt{Set} describes what behaviours a collection containing strictly distinct elements (according to the elements' \texttt{equals} methods) should have. \texttt{TreeSet} and \texttt{HashSet} implement it concretely. \texttt{TreeSet} stores its elements in a \texttt{TreeMap}, ordered either by their natural ordering or a specified \texttt{Comparator} object. \texttt{HashSet} stores its elements in a \texttt{HashMap}, which offers constant-time operations (as opposed to the typically logarithmic-time operations of \texttt{TreeSet}, which uses a red-black tree).
+
+\texttt{HashMap} and \texttt{LinkedHashMap} implement \texttt{Map}, which means that they both store a table of key-value pairs.
+
+\end{document}

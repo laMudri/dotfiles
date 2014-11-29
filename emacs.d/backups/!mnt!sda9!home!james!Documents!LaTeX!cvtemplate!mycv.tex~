@@ -1,0 +1,26 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\par{\centering{\Huge James \textsc{Wood}}\bigskip\par}
+
+\section{Personal Data}
+
+\begin{tabular}{rl}
+    \textsc{Place and Date of Birth:} & Barnsley, UK | 21 September 1995 \\
+    \textsc{Address:}   & Moorland View, Hazlehead, Crow Edge, Sheffield,
+                          S36 4HJ \\
+    \textsc{Phone:}     & +44 7920 077151 \\
+    \textsc{email:}     & \href{mailto:lamudri@gmail.com}{lamudri@gmail.com}
+\end{tabular}
+
+\end{document}
