@@ -15,6 +15,7 @@
 
 (require 'linum-relative)
 (global-linum-mode)
+(column-number-mode)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
@@ -41,6 +42,7 @@
 
 (setq evil-search-module 'evil-search)
 (setq evil-magic 'very-magic)
+(setq-default evil-cross-lines t)
 
 (define-key evil-motion-state-map "," 'evil-ex)
 (define-key evil-motion-state-map ":" 'evil-repeat-find-char-reverse)
@@ -158,6 +160,12 @@
 (require 'helm-config)
 (define-key evil-normal-state-map (kbd "g h") 'helm-mini)
 (helm-mode 1)
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 24)
+
+(require 'helm-idris)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
