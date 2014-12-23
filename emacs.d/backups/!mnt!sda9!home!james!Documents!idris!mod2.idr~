@@ -1,10 +1,34 @@
 module mod2
   data Mod : Nat -> Type where
-    mkMod : {m : Nat} -> (n : Fin m) -> Mod m
+    mkMod : Fin m -> Mod m
   
-  natToFin : (j : Nat) -> {auto p : So (j < n)} -> Fin n
-  natToFin Z = ?rhs_1
-  natToFin (S k) = ?rhs_2
+  total
+  natToFin : (j : Nat) -> {auto p : j `LT` n} -> Fin n
+  natToFin {n = (S k)} Z = FZ
+  natToFin {n = (S k)} (S j) {p = (LTESucc x)} = FS (natToFin j)
+  
+  partial
+  buildProof : (j : Nat) -> (n : Nat) -> j `LT` n
+  buildProof Z (S k) = LTESucc LTEZero
+  buildProof (S k) (S j) = LTESucc (buildProof k j)
+
+  natToMod : (j : Nat) -> {default (buildProof j n) p : j `LT` n} -> Mod n
+  natToMod {p} = mkMod . natToFin {p = p}
+  
+  total notLTZero : (m : Nat) -> m `LT` Z -> Void
+  total LTSuccContra : Not (j `LT` k) -> S j `LT` S k -> Void
+  
+  decLT : (m : Nat) -> (n : Nat) -> Dec (m `LT` n)
+  decLT m Z = No $ notLTZero m
+  decLT Z (S k) = Yes (LTESucc LTEZero)
+  decLT (S j) (S k) with (decLT j k)
+    decLT (S j) (S k) | (Yes prf) = Yes (LTESucc prf)
+    decLT (S j) (S k) | (No contra) = No (LTSuccContra contra)
+  
+  coerceNatToMod : Nat -> Mod n
+  coerceNatToMod {n} k with (decLT k n)
+    coerceNatToMod k | (Yes prf) = natToMod k
+    coerceNatToMod {n} k | (No contra) = coerceNatToMod (k - n)
 
   {-natToMod : {m : Nat} -> Nat -> Mod m
   natToMod {m} k with (choose (k < m))
@@ -18,4 +42,5 @@ module mod2
                                                       {p=?plus_proof}-}
   
   
+ 
  

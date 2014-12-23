@@ -1,0 +1,18 @@
+fun drawAll f img = ();
+
+fun gradient (x,y) = (((x div 30) * 30) mod 256, 0, ((y div 30) * 30) mod 256);
+
+fun gradImage () = ();
+
+fun mandelbrot maxIter (x,y) =
+    let fun solve (a,b) c =
+        if c = maxIter then
+            1.0
+        else
+            if (a * a + b * b <= 4.0) then
+                solve (a * a - b * b + x,2.0 * a * b + y) (c+1)
+            else
+                (real c)/(real maxIter)
+    in
+        solve (x,y) 0
+    end;

@@ -1,23 +1,49 @@
 package uk.ac.cam.jdw74.tick2;
 
-import uk.ac.cam.jdw74.tick1.*;
-
 class TinyLife {
-    public static void print(long world) { 
-        System.out.println("-"); 
-        for (int row = 0; row < 8; row++) { 
+    public static void print(long world) {
+        System.out.println("-");
+        for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                System.out.print(getCell(world, col, row) ? "#" : "_"); 
+                System.out.print(getCell(world, col, row) ? "#" : "_");
             }
-            System.out.println(); 
-        } 
+            System.out.println();
+        }
     }
 
     public static boolean getCell(long world, int col, int row) {
-        return get(world, row * 8 + col);
+        return 0 <= col && 0 <= row && col < 8 && row < 8 ?
+            PackedLong.get(world, row * 8 + col) : false;
     }
 
     public static long setCell(long world, int col, int row, boolean value) {
-        return set(world, row * 8 + col, value);
+        return 0 <= col && 0 <= row && col < 8 && row < 8 ?
+            PackedLong.set(world, row * 8 + col, value) : world;
+    }
+
+    public static int countNeighbours(long world, int col, int row) {
+        return
+            (getCell(world, col - 1, row - 1) ? 1 : 0)
+          + (getCell(world, col    , row - 1) ? 1 : 0)
+          + (getCell(world, col + 1, row - 1) ? 1 : 0)
+          + (getCell(world, col - 1, row    ) ? 1 : 0)
+          + (getCell(world, col + 1, row    ) ? 1 : 0)
+          + (getCell(world, col - 1, row + 1) ? 1 : 0)
+          + (getCell(world, col    , row + 1) ? 1 : 0)
+          + (getCell(world, col + 1, row + 1) ? 1 : 0);
+    }
+
+    public static boolean computeCell(long world, int col, int row) {
+        int count = countNeighbours(world, col, row);
+        return count == 3 || (getCell(world, col, row) && count == 2);
+    }
+
+    public static long nextGeneration(long world) {
+        long nextWorld = 0;
+        for (int col = 0; col < 8; col++)
+            for (int row = 0; row < 8; row++)
+                nextWorld = setCell(nextWorld, col, row,
+                                    computeCell(world, col, row));
+        return nextWorld;
     }
 }

@@ -7,7 +7,8 @@ module proofs
     myMax x y | (Left Oh) = y
     myMax x y | (Right Oh) = x
   
-  myMaxReturnsArgument : Ord a => (x : a) -> (y : a) -> Either (x = myMax x y) (y = myMax x y)
+  myMaxReturnsArgument : Ord a => (x : a) -> (y : a) ->
+                                  Either (x = myMax x y) (y = myMax x y)
   myMaxReturnsArgument x y with (choose (x <= y))
     myMaxReturnsArgument x y | (Left Oh) = Left ?myMaxReturnsArgument_rhs_5
     myMaxReturnsArgument x y | (Right Oh) = Left Refl
@@ -21,4 +22,69 @@ module proofs
   notOrIsAndNot {a = True} = Refl
 
   notAndIsOrNotTy : ((a,b) -> Void) = (Either (a -> Void) (b -> Void))
-  notAndIsOrNotTy {a} = ?notAndIsOrNotTy_rhs
+  notAndIsOrNotTy {a} {b} = ?notAndIsOrNotTy_rhs
+  
+  total
+  safeMinus_lemma0 : {j : Nat} -> (z ** j + z = k) -> (z ** S (j + z) = S k)
+  safeMinus_lemma0 (z ** Refl) = MkSigma z Refl
+  
+  total
+  safeMinus : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> (z ** y + z = x)
+  safeMinus Z Z = (Z ** Refl)
+  safeMinus k Z = (k ** Refl)
+  safeMinus (S k) (S j) {p = LTESucc x} = safeMinus_lemma0 (safeMinus k j)
+  
+  infixl 8 -*
+  (-*) : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> Nat
+  (-*) x y = ?rhs
+  
+  divMod' : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Nat)
+  divMod' d k = f 0 k
+    where f : Nat -> Nat -> (Nat,Nat)
+          f q r with (choose (r < d))
+            f q r | (Left Oh) = (q,r)
+            f q r | (Right Oh) = f (q + 1) (r - d)
+  
+  lemma0 : (q : Nat) -> (r : Nat) -> (d : Nat) -> (d `LTE` r) ->
+           S q * d + (r -* d) = q * d + r
+  lemma0 q r d p = ?lemma0_rhs
+  
+  lemma1 : (q : Nat) -> (d : Nat) -> S q * d = q * d + d
+  lemma1 q d = plusCommutative d (q * d)
+  
+  lemma2 : (x : Nat) -> (y : Nat) -> (x `LTE` y) -> x + (y -* x) = y
+  lemma2 x y p = ?lemma2_rhs
+  
+  lemma3 : (x : Nat) -> (y : Nat) -> (z : Nat) ->
+           plus (plus x y) z = plus y (plus x z)
+  lemma3 x y z = ?lemma3_rhs
+  
+  lemma4 : (Not (S r `LTE` d)) -> d `LTE` r
+  lemma4 f = ?lemma4_rhs
+  
+  dm : {auto p : Not (d = 0)} -> (d : Nat) -> (n : Nat) ->
+       --((q,r,q * d + r = n) : (Nat,Nat,Type))
+       (x ** fst x * d + snd x = n)
+  dm {p} d n = f Z n Refl
+    where f : (q : Nat) -> (r : Nat) -> (q * d + r = n) ->
+              (x ** fst x * d + snd x = n)
+          f q r p with (S r `isLTE` d)
+            f q r p | (Yes prf) = ((q, r) ** p)
+            f q r p | (No contra) = let (r' ** rp) = safeMinus r d {p = lemma4 contra} in
+              f (S q) r' ?f_rhs
+
+---------- Proofs ----------
+proofs.lemma0_rhs = proof
+  intros
+  rewrite sym (lemma3 d (mult q d) (r -* d))
+  rewrite lemma2 d r p
+  trivial
+
+
+
+proofs.lemma3_rhs = proof
+  intros
+  rewrite sym (plusAssociative y x z)
+  rewrite sym (plusCommutative y x)
+  trivial
+

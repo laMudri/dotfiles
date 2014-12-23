@@ -52,6 +52,7 @@ Plugin 'laMudri/nextlast'
 Plugin 'dogrover/vim-pentadactyl'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
+Plugin 'superbrothers/vim-vimperator'
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.

@@ -1,66 +1,115 @@
 module array
 
-data Array : Vect n Nat -> Type -> Type where
-     mkScalar : a -> Array [] a
-     mkArray : Vect n (Array ns a) -> Array (n::ns) a
+  data Array : Vect n Nat -> Type -> Type where
+    MkScalar : a -> Array [] a
+    MkArray : Vect n (Array ns a) -> Array (n::ns) a
 
--- Array [0] Int is like ()
--- Array [] Int is like Int
--- Array [4] Int is like Vect 4 Int
--- Array [3,4] Int is like Vect 3 (Vect 4 Int)
+  -- Array [0] Int is like ()
+  -- Array [] Int is like Int
+  -- Array [4] Int is like Vect 4 Int
+  -- Array [3,4] Int is like Vect 3 (Vect 4 Int)
 
-cons : Array ns a -> Array (n::ns) a -> Array (S n::ns) a
-cons x (mkArray xs) = mkArray (x::xs)
+  total
+  cons : Array ns a -> Array (n::ns) a -> Array (S n::ns) a
+  cons x (MkArray xs) = MkArray (x::xs)
 
-head : Array (S n::ns) a -> Array ns a
-head (mkArray (x :: xs)) = x
-     
-behead : Array (S n::ns) a -> Array (n::ns) a
-behead (mkArray (x :: xs)) = mkArray xs
+  total
+  head : Array (S n::ns) a -> Array ns a
+  head (MkArray (x :: xs)) = x
+  
+  total
+  behead : Array (S n::ns) a -> Array (n::ns) a
+  behead (MkArray (x :: xs)) = MkArray xs
 
-scalarMap : (a -> b) -> Array s a -> Array s b
-scalarMap f (mkScalar x) = mkScalar (f x)
-scalarMap f (mkArray xs) = mkArray (map (scalarMap f) xs)
+  total
+  scalarMap : (a -> b) -> Array s a -> Array s b
+  scalarMap f (MkScalar x) = MkScalar (f x)
+  scalarMap f (MkArray xs) = MkArray (map (scalarMap f) xs)
 
-replicate : (s : Vect _ Nat) -> a -> Array s a
-replicate [] x = mkScalar x
-replicate (y :: xs) x = mkArray (replicate _ (replicate _ x))
+  total
+  replicate : (s : Vect _ Nat) -> a -> Array s a
+  replicate [] x = MkScalar x
+  replicate (y :: xs) x = MkArray (replicate _ (replicate _ x))
 
-iota : (n : Nat) -> Array [n] Nat
-iota Z = mkArray []
-iota (S k) = cons (mkScalar 0) (scalarMap S (iota k))
+  total
+  iota : (n : Nat) -> Array [n] Nat
+  iota Z = MkArray []
+  iota (S k) = cons (MkScalar 0) (scalarMap S (iota k))
+  
+  total
+  tyAnd : Vect n Type -> Type
+  tyAnd = Foldable.foldr Pair Unit
+  
+  total
+  natToFinProven : (m : Nat) -> (n : Nat) -> (p : m `LT` n) -> Fin n
+  natToFinProven Z (S _) _ = FZ
+  natToFinProven (S i) (S j) (LTESucc x) = FS (natToFinProven i j x)
+  
+  data ZipProof : (a -> b -> Type) -> Vect n a -> Vect n b -> Type where
+    NilProof : ZipProof f [] []
+    ConsProof : (x : a) -> (y : b) -> {auto p : f x y} ->
+                ZipProof f xs ys -> ZipProof f (x :: xs) (y :: ys)
+  
+  total
+  index : (i : Vect n Nat) -> {auto p : ZipProof LT i s} -> Array s a -> a
+  index _ (MkScalar y) = y
+  index (i :: is) {p = ConsProof i n {p = p} z} (MkArray xs) =
+    index is (index (natToFinProven i n p) xs)
+  
+  data VarVect : (n : Nat) -> (Vect n Type) -> Type where
+    VarNil : VarVect Z []
+    VarCons : t -> VarVect n ts -> VarVect (S n) (t :: ts)
+  
+  total
+  index' : (i : VarVect n (map Fin s)) -> Array s a -> a
+  index' _ (MkScalar x) = x
+  index' (VarCons x xs) (MkArray ys) = index' xs (index x ys)
+  
+  total
+  app : {s : Vect _ Nat} -> {t : Vect _ Nat} ->
+        (Array s a -> Array t b) -> Array (r ++ s) a -> Array (r ++ t) b
+  app {r = []} f x = f x
+  app {r = (_ :: _)} f (MkArray xs) = MkArray (map (app f) xs)
 
-diag : Array s (Array s a) -> Array s a
-diag (mkScalar (mkScalar x)) = mkScalar x
-diag (mkArray xs) = ?diag_rhs --diag (mkArray $ map tail xs)
+  instance Functor (Array s) where
+    map = scalarMap
+  
+  instance Applicative (Array s) where
+    pure = replicate _
 
-instance Functor (Array s) where
-         map = scalarMap
-         
-instance Applicative (Array s) where
-         pure = replicate _
+    (MkScalar f) <$> (MkScalar x) = MkScalar (f x)
+    (MkArray fs) <$> (MkArray xs) = MkArray (zipWith (<$>) fs xs)
 
-         (mkScalar f) <$> (mkScalar x) = mkScalar (f x)
-         (mkArray fs) <$> (mkArray xs) = mkArray (zipWith (<$>) fs xs)
+  total
+  zipWith : (a -> b -> c) -> Array s a -> Array s b -> Array s c
+  zipWith f x y = pure f <$> x <$> y
 
-instance Monad (Array s) where
-         m >>= f = diag (map f m)
+  total
+  vectIota : (n : Nat) -> Vect n Nat
+  vectIota Z = []
+  vectIota (S k) = Z :: map S (vectIota k)
 
-vectIota : (n : Nat) -> Vect n Nat
-vectIota Z = []
-vectIota (S k) = Z :: map S (vectIota k)
+  total
+  coordinates : (s : Vect n Nat) -> Array s (Vect n Nat)
+  coordinates [] = MkScalar []
+  coordinates (x :: xs) = MkArray (map (\y => map (y ::) (coordinates xs))
+                                       (vectIota x))
+  
+  total
+  vectIotaFin : (n : Nat) -> Vect n (Fin n)
+  vectIotaFin Z = []
+  vectIotaFin (S n) = FZ :: map FS (vectIotaFin n)
+  
+  total
+  coordsFin : {s : Vect n Nat} -> Array s (VarVect n (map Fin s))
+  coordsFin {s = []} = MkScalar VarNil
+  coordsFin {s = (x :: xs)} =
+    MkArray (map (\y => map (VarCons y) (coordsFin {s = xs}))
+                 (vectIotaFin x))
 
-coordinates : (s : Vect n Nat) -> Array s (Vect n Nat)
-coordinates [] = mkScalar []
-coordinates (x :: xs) = mkArray (map (\y => map (y ::) (coordinates xs)) (vectIota x))
+  total
+  diag : Array s (Array s a) -> Array s a
+  diag = zipWith index' coordsFin
 
-zipWith : (a -> b -> c) -> Array s a -> Array s b -> Array s c
-zipWith f x y = pure f <$> x <$> y
-
--- coordinates [2,3] =
---   [0,0] [0,1] [0,2]
---   [1,0] [1,1] [1,2]
--- coordinates [3] =
---   [0] [1] [2]
--- coordinates [] =
---   []
+  instance Monad (Array s) where
+    m >>= f = diag (map f m)
