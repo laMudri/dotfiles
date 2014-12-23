@@ -1,0 +1,24 @@
+package oop;
+
+import java.lang.String;
+import java.lang.System;
+
+class X {
+    private int value = 3;
+
+    public int getValue() {
+        return value;
+    }
+}
+
+class Y extends X {
+    public Y() {
+        value = 4;
+    }
+}
+
+public class S2g {
+    public static void main(String[] args) {
+        System.out.println(new Y().getValue());
+    }
+}

@@ -1,0 +1,52 @@
+module vects
+  import intervals
+  data indexVect : Nat -> (Nat -> Type) -> Type where
+    iNil : indexVect Z a
+    iCons : a n -> indexVect n a -> indexVect (S n) a
+  
+  mult2PlusSelf : (n : Nat) -> mult 2 n = plus n n
+  mult2PlusSelf n = ?mult2PlusSelf_rhs
+  
+  lemma0 : (k : Nat) -> plus (power 2 k) (power 2 k) = power 2 (S k)
+  lemma0 Z = Refl
+  lemma0 (S k) = ?lemma0_rhs_2
+  
+  total
+  choose : Nat -> Nat -> Nat
+  choose Z Z = 1
+  choose Z (S k) = 0
+  choose (S k) Z = 1
+  choose (S k) (S j) = choose k j + choose k (S j)
+  
+  chooseSum : Nat -> Nat
+  chooseSum n = sum (map (choose n) <=|0..n|=>)
+
+  chooseSumTwiceLast : (n : Nat) -> chooseSum (S n) = 2 * chooseSum n
+  chooseSumTwiceLast Z = Refl
+  chooseSumTwiceLast (S k) = ?chooseSumTwiceLast_rhs_2
+  
+  tr : Nat -> Nat
+  tr Z = Z
+  tr (S n) = S n + tr n
+
+  subSequences : Vect n a -> Vect (S (tr n)) (m ** Vect m a)
+  subSequences [] = [(_ ** [])]
+  subSequences {n = S n} xs = rewrite plusSuccRightSucc (S n) (tr n) in
+      (_ ** xs) :: f (tail xs) ++ subSequences (init xs)
+    where f : Vect n a -> Vect n (m ** Vect m a)
+          f {n} xs = ?f_rhs
+
+---------- Proofs ----------
+vects.lemma0_rhs_2 = proof
+  intro
+  rewrite sym (plusZeroRightNeutral (power 2 k))
+  rewrite sym (plusZeroRightNeutral (plus (power 2 k) (power 2 k)))
+  trivial
+
+
+
+vects.mult2PlusSelf_rhs = proof
+  intro
+  rewrite sym (plusCommutative n 0)
+  trivial
+

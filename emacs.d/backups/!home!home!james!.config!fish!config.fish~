@@ -1,0 +1,19 @@
+set PATH ~/bin $PATH
+set EDITOR /usr/bin/emacsclient
+set VISUAL /usr/bin/emacsclient
+#set LC_TIME en_DK.utf8
+
+bind \cx forward-char
+
+function jline
+    echo "$argv" >| jconsole | head -n-1 | tail -c+4
+end
+
+alias ymi="sudo yum install"
+alias ymu="sudo yum update"
+alias ymp="yum provides"
+alias yms="yum search"
+
+alias vim=vimx
+alias emacsd="emacs --daemon"
+alias emacsc=emacsclient

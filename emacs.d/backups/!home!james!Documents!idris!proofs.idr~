@@ -1,0 +1,36 @@
+module proofs
+  succGreater : So (S n > n)
+  succGreater = ?succGreater_rhs
+  
+  myMax : Ord a => a -> a -> a
+  myMax x y with (choose (x <= y))
+    myMax x y | (Left Oh) = y
+    myMax x y | (Right Oh) = x
+  
+  myMaxReturnsArgument : Ord a => (x : a) -> (y : a) -> Either (x = myMax x y) (y = myMax x y)
+  myMaxReturnsArgument x y with (choose (x <= y))
+    myMaxReturnsArgument x y | (Left Oh) = Left ?myMaxReturnsArgument_rhs_5
+    myMaxReturnsArgument x y | (Right Oh) = Left Refl
+
+  notAndIsOrNot : not (a && b) = not a || not b
+  notAndIsOrNot {a = False} = Refl
+  notAndIsOrNot {a = True} = Refl
+  
+  notOrIsAndNot : not (a || b) = not a && not b
+  notOrIsAndNot {a = False} = Refl
+  notOrIsAndNot {a = True} = Refl
+
+  notAndIsOrNotTy : ((a,b) -> Void) = (Either (a -> Void) (b -> Void))
+  notAndIsOrNotTy {a} {b} = ?notAndIsOrNotTy_rhs
+  
+  divMod' : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Nat)
+  divMod' d k = f 0 k
+    where f : Nat -> Nat -> (Nat,Nat)
+          f q r with (choose (r < d))
+            f q r | (Left Oh) = (q,r)
+            f q r | (Right Oh) = f (q + 1) (r - d)
+  
+  {-divModTotal : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Fin d)
+  divModTotal d k = f (0,k)
+    where f : ((q,r,p) : (Nat,Nat,q * d + r = k)) ->
+              ((q',r',p') : (Nat,Fin d,q' * d + r' = k))-}

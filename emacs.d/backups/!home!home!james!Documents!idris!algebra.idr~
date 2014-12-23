@@ -1,0 +1,18 @@
+module algebra
+  instance JoinSemilattice (Fin n) where
+    join = max
+  instance MeetSemilattice (Fin n) where
+    meet = min
+  
+  instance BoundedJoinSemilattice (Fin (S n)) where
+    bottom = FZ
+  instance BoundedMeetSemilattice (Fin (S n)) where
+    top = last
+  
+  instance Lattice (Fin n) where { }
+  instance BoundedLattice (Fin (S n)) where { }
+  
+  instance VerifiedJoinSemilattice (Fin n) where
+    joinSemilatticeJoinIsAssociative l c r = ?VerifiedJoinSemilattice_rhs_1
+    joinSemilatticeJoinIsCommutative l r = ?VerifiedJoinSemilattice_rhs_2
+    joinSemilatticeJoinIsIdempotent e = ?VerifiedJoinSemilattice_rhs_3

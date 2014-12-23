@@ -1,0 +1,54 @@
+package uk.ac.cam.jdw74.tick3;
+
+public class Pattern {
+
+    private String name;
+    private String author;
+    private int width;
+    private int height;
+    private int startCol;
+    private int startRow;
+    private String cells;
+
+    public String getName() { return name; }
+    public String setName(String x) { name = x; }
+
+    public String getAuthor() { return author; }
+    public String setAuthor(String x) { author = x; }
+
+    public int getWidth() { return width; }
+    public int setWidth(int x) { width = x; }
+
+    public int getHeight() { return height; }
+    public int setHeight(int x) { height = x; }
+
+    public int getStartCol() { return startCol; }
+    public int setStartCol(int x) { startCol = x; }
+
+    public int getStartRow() { return startRow; }
+    public int setStartRow(int x) { startRow = x; }
+
+    public String getCells() { return cells; }
+    public String setCells(String x) { cells = x; }
+
+    public Pattern(String format) throws ParseException {
+        //TODO: initialise all fields of this class using contents of "format"
+        //      to determine the correct values.
+        String[] parts = formatString.split(":");
+        if (parts.length != 7)
+            throw new ParseException("Incorrect pattern format", 0);
+
+        name = parts[0];
+        author = parts[1];
+        width = parts[2];
+        height = parts[3];
+        startCol = parts[4];
+        startRow = parts[5];
+        cells = parts[6];
+    }
+
+    public void initialise(boolean[][] world) {
+        //TODO: update the values in the 2D array representing the state of "world"
+        //      as expressed by the contents of the field "cells".
+    }
+}

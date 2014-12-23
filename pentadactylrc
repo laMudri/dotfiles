@@ -28,7 +28,6 @@ map -b K J
 map -b e :tab 
 
 set incfind
-" set hintkeys=esntiroaufhd
 set hintkeys=aesntiro
 map -b w f\
 map -b W F\
@@ -113,14 +112,19 @@ command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
 
 map <c-s-t> -ex set guioptions!=T
 
-highlight Hint font: 10px "Droid Sans Mono", monospace !important; margin: -.2ex; padding: 0 0 0 1px; outline: 1px solid rgba(0, 0, 0, .5); background: rgba(255, 248, 231, .8); color: black
+"highlight Hint
+"    \ font: 10px "Droid Sans Mono", monospace !important;
+"    \ padding: 0 0 0 1px;
+"    \ outline: 1px solid rgba(0, 0, 0, .5);
+"    \ background: rgba(255, 248, 231, .8);
+"    \ color: black;
+
+"command J -nargs=1 -literal=0 -js
+"    \ commands.execute("!jline '" + shellEscape(args[0]) + "'");
 
 " sutsis
 map gj <c-2>x
 map gʒ <c-2>x
-
-command J -nargs=1 -literal=0 -js
-    \ commands.execute("!jline '" + shellEscape(args[0]) + "'");
 
 set passkeys+=feedly.com:k
 

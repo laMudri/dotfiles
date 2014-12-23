@@ -1,0 +1,18 @@
+module variadic
+data Variadic : (n : Nat) -> (d : Type) -> (r : Type) -> Type where
+    mkConstant : r -> Variadic Z d r
+    mkFunction : (d -> Variadic n d r) -> Variadic (S n) d r
+
+using (d : Type)
+    interpVariadic : Variadic n d r -> Type
+    interpVariadic (mkConstant x) = r
+    interpVariadic (mkFunction f) = d -> interpVariadic (f d)
+
+apply : Variadic (S n) d r -> d -> Variadic n d r
+apply (mkFunction f) x = f x
+
+get : Variadic Z d r -> r
+get (mkConstant x) = x
+
+sum : Num a => Variadic n a a
+sum = ?sum_rhs

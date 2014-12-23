@@ -141,8 +141,12 @@
   '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
-(define-key evil-normal-state-map (kbd "S-SPC") 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-char-mode)
+(define-key evil-normal-state-map (kbd "S-SPC") 'evil-ace-jump-mode)
+(define-key evil-normal-state-map (kbd "SPC") 'evil-ace-jump-char-mode)
+(define-key evil-visual-state-map (kbd "S-SPC") 'evil-ace-jump-mode)
+(define-key evil-visual-state-map (kbd "SPC") 'evil-ace-jump-char-mode)
+(define-key evil-operator-state-map (kbd "S-SPC") 'evil-ace-jump-mode)
+(define-key evil-operator-state-map (kbd "SPC") 'evil-ace-jump-char-mode)
 
 (autoload 'lojban-parse-region "lojban" nil t)
 (autoload 'lojban-mode "lojban-mode" nil t)
@@ -159,7 +163,7 @@
 
 (require 'helm-config)
 (define-key evil-normal-state-map (kbd "g h") 'helm-mini)
-(helm-mode 1)
+;(helm-mode 1)
 
 (require 'recentf)
 (recentf-mode 1)
@@ -175,7 +179,8 @@
  '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
