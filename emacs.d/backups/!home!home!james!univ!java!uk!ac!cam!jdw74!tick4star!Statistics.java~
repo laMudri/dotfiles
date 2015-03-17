@@ -1,0 +1,37 @@
+package uk.ac.cam.jdw74.tick4star;
+
+public class Statistics {
+    private static int countLiveCells(Pattern p) {
+        String s = p.getCells();
+        int r = 0;
+        for (char c : s)
+            if (c == '1') r++;
+        return r;
+    }
+
+    private static double getGrowthRate(Pattern present, Pattern next) {
+        int pc = countLiveCells(present);
+        int nc = countLiveCells(next);
+        return (nc - pc) / pc
+    }
+
+    public double getMaximumGrowthRate() {
+
+    }
+
+    public double getMaximumDeathRate() {
+
+    }
+
+    public int getLoopStart() {
+
+    }
+
+    public int getLoopEnd() {
+
+    }
+
+    public int getMaximumPopulation() {
+
+    }
+}

@@ -1,0 +1,154 @@
+module Array
+  import Data.Vect
+  import Data.Fin
+  %default total
+
+  data Array : Vect n Nat -> Type -> Type where
+    MkScalar : a -> Array [] a
+    MkArray : Vect n (Array ns a) -> Array (n::ns) a
+
+  -- Array [0] Int is like ()
+  -- Array [] Int is like Int
+  -- Array [4] Int is like Vect 4 Int
+  -- Array [3,4] Int is like Vect 3 (Vect 4 Int)
+
+  scalarMap : (a -> b) -> Array s a -> Array s b
+  scalarMap f (MkScalar x) = MkScalar (f x)
+  scalarMap f (MkArray xs) = MkArray (map (scalarMap f) xs)
+
+  replicate : (s : Vect _ Nat) -> a -> Array s a
+  replicate [] x = MkScalar x
+  replicate (y :: xs) x = MkArray (replicate _ (replicate _ x))
+  
+  data VarVect : (n : Nat) -> (Vect n Type) -> Type where
+    VarNil : VarVect Z []
+    VarCons : t -> VarVect n ts -> VarVect (S n) (t :: ts)
+  
+  index : (i : VarVect n (map Fin s)) -> Array s a -> a
+  index _ (MkScalar x) = x
+  index (VarCons x xs) (MkArray ys) = index xs (index x ys)
+  
+  instance VerifiedFunctor (Vect n) where
+    functorIdentity [] = Refl
+    functorIdentity (x :: xs) with (functorIdentity xs)
+      functorIdentity (x :: xs) | ih = ?vect_functorIdentity_rhs
+    functorComposition [] g1 g2 = Refl
+    functorComposition (x :: xs) g1 g2 with (functorComposition xs g1 g2)
+      functorComposition (x :: xs) g1 g2 | ih = ?vect_functorComposition_rhs
+  instance VerifiedApplicative (Vect n) where
+    applicativeMap [] g = Refl
+    applicativeMap (x :: xs) g with (applicativeMap xs g)
+      applicativeMap (x :: xs) g | ih = ?vect_applicativeMap_rhs
+    applicativeIdentity [] = Refl
+    applicativeIdentity (x :: xs) with (applicativeIdentity xs)
+      applicativeIdentity (x :: xs) | ih = ?vect_applicativeIdentity_rhs
+    applicativeComposition x g1 g2 = ?VerifiedApplicative_rhs_3
+    applicativeHomomorphism x g = ?VerifiedApplicative_rhs_4
+    applicativeInterchange x g = ?VerifiedApplicative_rhs_5
+
+  instance Functor (Array s) where
+    map = scalarMap
+  instance VerifiedFunctor (Array s) where
+    functorIdentity (MkScalar x) = Refl
+    functorIdentity (MkArray []) = Refl
+    functorIdentity (MkArray (x :: xs)) with (functorIdentity x,functorIdentity xs)
+      functorIdentity (MkArray (x :: xs)) | (ihx,ihxs) = ?functorIdentity_rhs
+    functorComposition (MkScalar x) g1 g2 = Refl
+    functorComposition (MkArray []) g1 g2 = Refl
+    functorComposition (MkArray (x :: xs)) g1 g2 with (functorComposition x g1 g2,functorComposition xs (map g1) (map g2))
+      functorComposition (MkArray (x :: xs)) g1 g2 | ihx = ?functorComposition_rhs
+  
+  instance Applicative (Array s) where
+    pure = replicate _
+
+    (MkScalar f) <$> (MkScalar x) = MkScalar (f x)
+    (MkArray fs) <$> (MkArray xs) = MkArray (zipWith (<$>) fs xs)
+  instance VerifiedApplicative (Array s) where
+    applicativeMap (MkScalar x) g = Refl
+    applicativeMap (MkArray xs) g = ?VerifiedApplicative_rhs_7
+    applicativeIdentity x = ?VerifiedApplicative_rhs_2
+    applicativeComposition x g1 g2 = ?VerifiedApplicative_rhs_3
+    applicativeHomomorphism x g = ?VerifiedApplicative_rhs_4
+    applicativeInterchange x g = ?VerifiedApplicative_rhs_5
+
+  zipWith : (a -> b -> c) -> Array s a -> Array s b -> Array s c
+  zipWith f x y = pure f <$> x <$> y
+  
+  vectIotaFin : (n : Nat) -> Vect n (Fin n)
+  vectIotaFin Z = []
+  vectIotaFin (S n) = FZ :: map FS (vectIotaFin n)
+  
+  coordsFin : {s : Vect n Nat} -> Array s (VarVect n (map Fin s))
+  coordsFin {s = []} = MkScalar VarNil
+  coordsFin {s = (x :: xs)} =
+    MkArray (map (\y => map (VarCons y) (coordsFin {s = xs}))
+                 (vectIotaFin x))
+
+  diag : Array s (Array s a) -> Array s a
+  diag = zipWith index coordsFin
+
+  instance Monad (Array s) where
+    m >>= f = diag (map f m)
+
+  -- Typeclass instances end
+
+  cons : Array ns a -> Array (n::ns) a -> Array (S n::ns) a
+  cons x (MkArray xs) = MkArray (x::xs)
+
+  head : Array (S n::ns) a -> Array ns a
+  head (MkArray (x :: xs)) = x
+  
+  behead : Array (S n::ns) a -> Array (n::ns) a
+  behead (MkArray (x :: xs)) = MkArray xs
+
+  iota : (n : Nat) -> Array [n] Nat
+  iota Z = MkArray []
+  iota (S k) = cons (MkScalar 0) (scalarMap S (iota k))
+  
+  data ZipProof : (a -> b -> Type) -> Vect n a -> Vect n b -> Type where
+    NilProof : ZipProof f [] []
+    ConsProof : (x : a) -> (y : b) -> {auto p : f x y} ->
+                ZipProof f xs ys -> ZipProof f (x :: xs) (y :: ys)
+  
+  natToFinProven : (m : Nat) -> (n : Nat) -> (p : m `LT` n) -> Fin n
+  natToFinProven Z (S _) _ = FZ
+  natToFinProven (S i) (S j) (LTESucc x) = FS (natToFinProven i j x)
+  
+  index' : (i : Vect n Nat) -> {auto p : ZipProof LT i s} -> Array s a -> a
+  index' _ (MkScalar y) = y
+  index' (i :: is) {p = ConsProof i n {p = p} z} (MkArray xs) =
+    index' is (index (natToFinProven i n p) xs)
+  
+  app : {s : Vect _ Nat} -> {t : Vect _ Nat} ->
+        (Array s a -> Array t b) -> Array (r ++ s) a -> Array (r ++ t) b
+  app {r = []} f x = f x
+  app {r = (_ :: _)} f (MkArray xs) = MkArray (map (app f) xs)
+
+  vectIota : (n : Nat) -> Vect n Nat
+  vectIota Z = []
+  vectIota (S k) = Z :: map S (vectIota k)
+
+  coordinates : (s : Vect n Nat) -> Array s (Vect n Nat)
+  coordinates [] = MkScalar []
+  coordinates (x :: xs) = MkArray (map (\y => map (y ::) (coordinates xs))
+                                       (vectIota x))
+  
+  vectToArray : Vect n a -> Array [n] a
+  vectToArray xs = MkArray (map MkScalar xs)
+  
+  vect2ToArray : Vect m (Vect n a) -> Array [m,n] a
+  vect2ToArray xs = MkArray (map vectToArray xs)
+
+---------- Proofs ----------
+Array.vect_functorComposition_rhs = proof
+  intros
+  rewrite ih
+  trivial
+
+
+
+Array.vect_functorIdentity_rhs = proof
+  intros
+  rewrite ih
+  trivial
+

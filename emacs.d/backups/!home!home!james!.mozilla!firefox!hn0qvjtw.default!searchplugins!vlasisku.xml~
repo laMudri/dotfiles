@@ -1,0 +1,11 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>Lojban dictionary</os:ShortName>
+<os:Description>Search the Lojban dictionary jbovlaste.</os:Description>
+<os:InputEncoding>UTF-8</os:InputEncoding>
+<os:Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB9oEEBMzEVpTPF0AAAGTSURBVDjLpZOxixNBFMZ/b7NhprGwC1gIFrscKGkkgk00h5W7qawVKwMBr7bSSizVxk1nZScIyRWCO7eHNt4fkGLAXuttMuSGsVlhPZJA9Gtm3vDmx8fM9+A/Je1iPB7fCyE8BYbN0WkI4fVisSi3ATp/NnmevwJmQKK1jjqdTuy9PxCRh0mSKGttudVBlmWHIvJFa+2m0+n34XD4C8AY0yuKYrBarRRwOJ/PzUVABCAiRwDtywCj0ejnZDI5AwghHG1yEDXrXaXUun25DVFKrUXkzi7APytq7BnnXNcY07vYUJZlzznXDSFUWwEi8gagKIpBG2KM6c1mswFAHMdvd+Ygy7KXIvIMQCm1BnDOdVu9H+q6flRV1fnGHFhryyRJvonIZe/9Fe/9eQjhcxRFJ8BN4IZS6nq/3/+0XC79xiRuU5Zlz0XkRVMe13X9oKqq1V8Odslae5qm6SXgNpAopW6lafrRWruWfeYmz/N3wJPm4b8C9zv7/Lm19jhN02tAH7gK/Ij3zE3QWj9uZkO01u9/AxO2lXXHy8F4AAAAAElFTkSuQmCC</os:Image>
+<SearchForm>http://vlasisku.lojban.org/vlasisku/</SearchForm>
+<os:Url type="text/html" method="GET" template="http://vlasisku.lojban.org/vlasisku/{searchTerms}">
+</os:Url><os:Url type="application/x-suggestions+json" method="GET" template="http://vlasisku.lojban.org/vlasisku/suggest/{searchTerms}">
+</os:Url><os:Url type="application/opensearchdescription+xml" method="GET" template="http://mycroftproject.com/updateos.php/id0/vlasisku.xml" rel="self">
+</os:Url>
+</SearchPlugin>

@@ -1,0 +1,7 @@
+module Sorting
+  naiveInsert : Ord a => a -> List a -> List a
+  naiveInsert x [] = [x]
+  naiveInsert x yys@(y :: ys) = if x < y then x :: allys else y :: naiveInsert x ys
+
+  naiveInsertionSort : Ord a => List a -> List a
+  naiveInsertionSort = foldr naiveInsert []

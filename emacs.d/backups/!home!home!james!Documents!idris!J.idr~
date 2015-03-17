@@ -1,0 +1,229 @@
+module J
+  import Array
+  import Data.Floats
+  import Data.ZZ
+  --import proofs
+  %default total
+  
+  --selfClassify : Array s a -> 
+  equal : Eq a => Array [] a -> Array [] a -> Array [] Bool
+  equal = zipWith (==)
+  
+  box : a -> VarVect 1 [a]
+  box x = VarCons x VarNil
+  unbox : VarVect 1 [a] -> a
+  unbox (VarCons x VarNil) = x
+  
+  lessThan : Ord a => Array [] a -> Array [] a -> Array [] Bool
+  lessThan = zipWith (<)
+  greaterThan : Ord a => Array [] a -> Array [] a -> Array [] Bool
+  greaterThan = zipWith (>)
+
+  floor : Array [] Float -> Array [] Float
+  floor = map floor
+  ceiling : Array [] Float -> Array [] Float
+  ceiling = map ceiling
+  
+  min : Ord a => Array [] a -> Array [] a -> Array [] a
+  min = zipWith min
+  max : Ord a => Array [] a -> Array [] a -> Array [] a
+  max = zipWith max
+  
+  pred : Enum a => Array [] a -> Array [] a
+  pred = scalarMap pred
+  succ : Enum a => Array [] a -> Array [] a
+  succ = scalarMap succ
+  
+  --data Invertible : Type -> Type -> Type where
+  --  MkInvertible : (a -> b) -> (b -> a) -> Invertible a b
+  --apply : Invertible a b -> a -> b
+  --apply (MkInvertible f _) = f
+  --unapply : Invertible a b -> b -> a
+  --unapply (MkInvertible _ g) = g
+  --data BiInvertible : Type -> Type -> Type where
+  --  MkBiInvertible : (i : Invertible a b) -> unapply i . apply i = id ->
+  --                         apply i . unapply i = id -> a <~> b
+  data Invertible : Type -> Type -> Type where
+    MkInvertible : (f : a -> b) -> (g : b -> a) ->
+                   ((x : _) -> g (f x) = x) -> Invertible a b
+  data BiInvertible : Type -> Type -> Type where
+    MkBiInvertible : (f : a -> b) -> (g : b -> a) ->
+                     ((x : _) -> f (g x) = x) ->
+                     ((y : _) -> g (f y) = y) -> BiInvertible a b
+  infix 5 <~
+  infix 5 <~>
+  (<~) : Type -> Type -> Type
+  (<~) = Invertible
+  (<~>) : Type -> Type -> Type
+  (<~>) = BiInvertible
+
+  applyI : a <~ b -> a -> b
+  applyI (MkInvertible f _ _) = f
+  unapplyI : a <~ b -> b -> a
+  unapplyI (MkInvertible _ g _) = g
+
+  applyB : a <~> b -> a -> b
+  applyB (MkBiInvertible f _ _ _) = f
+  unapplyB : a <~> b -> b -> a
+  unapplyB (MkBiInvertible _ g _ _) = g
+  
+  biInvertibleToInvertible : a <~> b -> a <~ b
+  biInvertibleToInvertible (MkBiInvertible f g _ y) = MkInvertible f g y
+  
+  composeInvertible : Invertible b c -> Invertible a b -> Invertible a c
+  composeInvertible (MkInvertible f0 g0 p0) (MkInvertible f1 g1 p1) =
+    MkInvertible f g p
+    where
+      f : a -> c
+      f = f0 . f1
+      g : c -> a
+      g = g1 . g0
+      p : (x : _) -> g (f x) = x
+      p x = ?ip_rhs
+  
+  composeBiInvertible : BiInvertible b c -> BiInvertible a b -> BiInvertible a c
+  composeBiInvertible (MkBiInvertible f0 g0 p0 q0)
+                      (MkBiInvertible f1 g1 p1 q1) =
+    MkBiInvertible f g p q
+    where
+      f : a -> c
+      f = f0 . f1
+      g : c -> a
+      g = g1 . g0
+      p : (x : _) -> f (g x) = x
+      p x = ?p_rhs
+      q : (y : _) -> g (f y) = y
+      q y = ?q_rhs
+  
+  --%elim
+  --data ZZ = Pos Nat | NegS Nat
+  --instance Neg ZZ where
+  --  negate (Pos Z) = Pos Z
+  --  negate (Pos (S k)) = NegS k
+  --  negate (NegS k) = Pos (S k)
+  
+  succZ : ZZ -> ZZ
+  succZ (Pos k) = Pos (S k)
+  succZ (NegS Z) = Pos Z
+  succZ (NegS (S k)) = NegS k
+  predZ : ZZ -> ZZ
+  predZ (Pos Z) = NegS Z
+  predZ (Pos (S k)) = Pos k
+  predZ (NegS k) = NegS (S k)
+
+  succPred : BiInvertible ZZ ZZ
+  succPred = MkBiInvertible succZ predZ prf0 prf1
+    where
+      prf0 : (z : ZZ) -> succZ (predZ z) = z
+      prf0 (Pos Z) = Refl
+      prf0 (Pos (S k)) = Refl
+      prf0 (NegS k) = Refl
+
+      prf1 : (z : ZZ) -> predZ (succZ z) = z
+      prf1 (Pos k) = Refl
+      prf1 (NegS Z) = Refl
+      prf1 (NegS (S k)) = Refl
+  
+  invertBiInvertible : a <~> b -> BiInvertible b a
+  invertBiInvertible (MkBiInvertible f g x y) =
+    MkBiInvertible g f y x
+  
+  powApply : Nat -> (a -> a) -> a -> a
+  powApply Z f = id
+  powApply (S k) f = f . powApply k f
+  
+  powApplyI : ZZ -> a <~ a -> a -> a
+  powApplyI (Pos k) (MkInvertible f g x) = powApply k f
+  powApplyI (NegS k) (MkInvertible f g x) = powApply (S k) g
+
+  powApplyB : ZZ -> a <~> a -> a -> a
+  powApplyB (Pos k) (MkBiInvertible f g x y) = powApply k f
+  powApplyB (NegS k) (MkBiInvertible f g x y) = powApply (S k) g
+  
+  powApplyIZero : (i : _) -> (x : _) -> powApplyI 0 i x = x
+  powApplyIZero (MkInvertible f g y) x = Refl
+  
+  powApplyBZero : (i : _) -> (x : _) -> powApplyB (Pos Z) i x = x
+  powApplyBZero (MkBiInvertible f g y z) x = Refl
+  
+  powApplyBInvertedLemma : (z : _) -> (i : _) -> (x : _) ->
+    powApplyB z i x = powApplyB (negate z) (invertBiInvertible i) x
+  powApplyBInvertedLemma (Pos Z) (MkBiInvertible f g y z) x = Refl
+  powApplyBInvertedLemma (Pos (S k)) (MkBiInvertible f g y z) x = Refl
+  powApplyBInvertedLemma (NegS k) (MkBiInvertible f g y z) x = Refl
+  
+  powApplyAssociative : (k : _) -> (f : _) -> (x : _) ->
+                        f (powApply k f x) = powApply k f (f x)
+  powApplyAssociative Z f x = Refl
+  powApplyAssociative (S k) f x with (powApplyAssociative k f x)
+    powApplyAssociative (S k) f x | p = ?powApplyAssociative_rhs
+  
+  powInversionLemma' : (k : Nat) -> (f : a -> a) -> (g : a -> a) ->
+                       ((y : a) -> f (g y) = y) -> (x : a) ->
+                       powApply k f (powApply k g x) = x
+  powInversionLemma' Z f g p x = Refl
+  powInversionLemma' (S k) f g p x with (powInversionLemma' k f g p x)
+    powInversionLemma' (S k) f g p x | ih = ?powInversionLemma'_rhs
+
+  powInversionLemma : (z : _) -> (i : _) -> (x : _) ->
+    powApplyB z i (powApplyB z (invertBiInvertible i) x) = x
+  powInversionLemma (Pos k) (MkBiInvertible f g y z) x =
+    powInversionLemma' k f g y x
+  powInversionLemma (NegS k) (MkBiInvertible f g y z) x =
+    powInversionLemma' (S k) g f z x
+  
+  addZ : ZZ -> ZZ -> ZZ
+  addZ z = powApplyB z succPred
+  -- Warning: good parameter order
+  subtractZ : ZZ -> ZZ -> ZZ
+  subtractZ z = powApplyB z (invertBiInvertible succPred)
+  
+  addSubtract : ZZ -> BiInvertible ZZ ZZ
+  addSubtract z = MkBiInvertible (addZ z) (subtractZ z) prf0 prf1
+    where
+      prf0 : (x : _) -> addZ z (subtractZ z x) = x
+      prf0 x = ?prf0_rhs
+      prf1 : (x : _) -> subtractZ z (addZ z x) = x
+      prf1 x = ?prf1_rhs
+  
+  tail : Array (S n :: ns) a -> Array (n :: ns) a
+  tail (MkArray (x :: xs)) = MkArray xs
+  
+  consTail : Array ns a -> Array (n :: ns) a <~ Array (S n :: ns) a
+  consTail a = MkInvertible (cons a) tail p
+    where
+      p : (x : _) -> tail (cons a x) = x
+      p (MkArray xs) = Refl
+
+---------- Proofs ----------
+J.powInversionLemma'_rhs = proof
+  intros
+  rewrite sym $ powApplyAssociative k f (g (powApply k g x))
+  rewrite sym (p (powApply k g x))
+  rewrite ih
+  trivial
+
+
+J.powApplyAssociative_rhs = proof
+  intros
+  rewrite p
+  trivial
+
+
+J.ip_rhs = proof
+  intros
+  rewrite sym (p0 (f1 x))
+  rewrite sym (p1 x)
+  trivial
+
+J.q_rhs = proof
+  intros
+  rewrite sym (q0 (f1 y))
+  rewrite sym (q1 y)
+  trivial
+
+J.p_rhs = proof
+  intros
+  rewrite sym (p1 (g0 x))
+  rewrite sym (p0 x)
+  trivial

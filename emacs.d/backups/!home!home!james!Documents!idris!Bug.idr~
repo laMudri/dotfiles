@@ -1,0 +1,11 @@
+module Bug
+%default total
+
+lteReduce : LTE m (S n) -> Not (m = S n) -> LTE m n
+lteReduce LTEZero contra = LTEZero
+lteReduce {m=Z} (LTESucc x) _ impossible
+lteReduce {m=S Z} {n=Z} (LTESucc LTEZero) contra = void (contra Refl)
+lteReduce {m=S (S m)} {n=Z} (LTESucc LTEZero) _ impossible
+lteReduce {m=S m} {n=S n} (LTESucc x) contra with (lteReduce x ?c)
+  lteReduce (LTESucc x) contra | LTEZero = LTESucc LTEZero
+  lteReduce (LTESucc x) contra | (LTESucc y) = LTESucc (LTESucc y)

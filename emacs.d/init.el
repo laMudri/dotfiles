@@ -105,17 +105,19 @@
 (unless (display-graphic-p)
   (require 'evil-terminal-cursor-changer))
 
-(setq initial-frame-alist '(
-  (font . "Monospace-9")
-))
-(setq default-frame-alist '(
-  (font . "Monospace-9")
-))
+;(setq initial-frame-alist '(
+;  (font . "Monospace-9")
+;))
+;(setq default-frame-alist '(
+;  (font . "Monospace-9")
+;))
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
 ; AUCTeX
+;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
+(add-hook 'LaTeX-mode-hook (lambda () (whitespace-mode nil)))
 
 (smartparens-global-mode)
 (require 'smartparens-config)
@@ -171,16 +173,80 @@
 
 (require 'helm-idris)
 
+(require 'bk-pentadactyl-mode)
+
+;(require 'haskell-mode)
+;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
+
+(add-to-list 'completion-ignored-extensions '".ibc")
+
+(require 'whitespace)
+(setq-default show-trailing-whitespace t)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
+(let ((font "Source Code Pro LU 9"))
+  (set-default-font font nil t)
+  (set-fontset-font t '(8500 . 8800) font))
+
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-evil-vim-color-theme)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(AmS-TeX-mode-hook (quote (whitespace-mode)))
+ '(LaTeX-mode-hook (quote (preview-mode-setup)))
  '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(inhibit-startup-screen t))
+ '(evil-digraphs-table-user
+   (quote
+    (((108 101)
+      . 8715)
+     ((101 108)
+      . 8712)
+     ((98 98)
+      . 120121)
+     ((122 122)
+      . 8484)
+     ((113 113)
+      . 8474)
+     ((61 61)
+      . 8801)
+     ((47 61)
+      . 8802)
+     ((60 61)
+      . 8804)
+     ((62 61)
+      . 8805)
+     ((38 38)
+      . 8743)
+     ((124 124)
+      . 8744)
+     ((111 111)
+      . 8728))) nil (evil-digraphs))
+ '(global-whitespace-mode t)
+ '(haskell-compile-command
+   "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
+ '(haskell-mode-hook
+   (quote
+    (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
+ '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
+ '(idris-mode-hook
+   (quote
+    (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
+ '(idris-pretty-printer-width 80)
+ '(inhibit-startup-screen t)
+ '(latex-run-command "pdflatex")
+ '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
+ '(show-trailing-whitespace t)
+ '(tool-bar-mode nil)
+ '(whitespace-global-modes (quote (not latex-mode tex-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

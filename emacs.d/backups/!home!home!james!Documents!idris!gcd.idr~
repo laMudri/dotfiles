@@ -1,0 +1,150 @@
+module gcd
+  import Data.Fin
+
+  gcd : Nat -> Nat -> Nat
+  gcd k j = if k <= j then gcdInner k j else gcdInner j k
+    where
+      gcdInner : Nat -> Nat -> Nat
+      gcdInner Z n = n
+      gcdInner m n = gcdInner n (n `mod` m)
+
+  total
+  decLTE : (m,n : Nat) -> Either (m `LTE` n) (n `LT` m)
+  decLTE Z n = Left LTEZero
+  decLTE (S k) Z = Right (LTESucc LTEZero)
+  decLTE (S k) (S j) with (decLTE k j)
+    decLTE (S k) (S j) | (Left x) = Left (LTESucc x)
+    decLTE (S k) (S j) | (Right x) = Right (LTESucc x)
+
+  total
+  modLTRight : (m,n : Nat) -> (m `modNat` n) `LT` n
+  modLTRight m n = ?modLTRight_rhs
+
+  total
+  succRightLTE : (m,n : Nat) -> m `LTE` n -> m `LTE` S n
+  succRightLTE Z n LTEZero = LTEZero
+  succRightLTE (S left) (S right) (LTESucc x) =
+    LTESucc (succRightLTE left right x)
+
+  total
+  succLeftLTE : (m,n : Nat) -> S m `LTE` n -> m `LTE` n
+  succLeftLTE m (S n) (LTESucc x) = succRightLTE m n x
+
+  gcd0Inner : (m,n : Nat) -> m `LTE` n -> Nat
+  gcd0Inner Z n x = n
+  gcd0Inner (S k) n x = gcd0Inner (n `modNat` (S k)) (S k)
+                                  (f (modLTRight n (S k)))
+    where
+      f (LTESucc x) = succRightLTE _ _ x
+
+  gcd0 : Nat -> Nat -> Nat
+  gcd0 k j with (k `decLTE` j)
+    gcd0 k j | (Left x) = gcd0Inner k j x
+    gcd0 k j | (Right x) = gcd0Inner j k (succLeftLTE j k x)
+
+  gcd1Inner : (m,n : Nat) -> m `LTE` n -> (mes ** mes = m + n) -> Nat
+  gcd1Inner Z n x mes = n
+  gcd1Inner (S k) n x mes = gcd1Inner (n `modNat` S k) (S k)
+                                      (f (modLTRight n (S k)))
+                                      ((n `modNat` S k) + S k ** Refl)
+    where
+      f (LTESucc x) = succRightLTE _ _ x
+
+  gcd1 : Nat -> Nat -> Nat
+  gcd1 k j with (k `decLTE` j)
+    gcd1 k j | (Left x) = gcd1Inner k j x (k + j ** Refl)
+    gcd1 k j | (Right x) = gcd1Inner j k (succLeftLTE j k x) (j + k ** Refl)
+
+  total
+  decLT : (m,n : Nat) -> Either (m `LT` n) (n `LTE` m)
+  decLT Z Z = Right LTEZero
+  decLT Z (S k) = Left (LTESucc LTEZero)
+  decLT (S k) Z = Right LTEZero
+  decLT (S k) (S j) with (k `decLT` j)
+    decLT (S k) (S j) | (Left x) = Left (LTESucc x)
+    decLT (S k) (S j) | (Right x) = Right (LTESucc x)
+
+  myMod : (k,j : Nat) -> (x ** x `LT` j)
+  myMod k j with (k `decLT` j)
+    myMod k j | (Left x) = (k ** x)
+    myMod k j | (Right x) = myMod (k - j) j
+
+  total
+  natToFinSafe : (k,n : Nat) -> (k `LT` n) -> Fin n
+  natToFinSafe Z Z LTEZero impossible
+  natToFinSafe Z Z (LTESucc x) impossible
+  natToFinSafe Z (S n) (LTESucc x) = FZ
+  natToFinSafe (S k) (S n) (LTESucc x) = FS (natToFinSafe k n x)
+
+  --total
+  --finModS : (k,j : Nat) -> Fin (S j)
+  --finModS k j = mod' k k j
+  --  where
+  --    total
+  --    mod' : (l,c,r : Nat) -> Fin (S r)
+  --    mod' Z c r with (c `decLT` r)
+  --      mod' Z c r | (Left x) =
+  --        natToFinSafe c _ (LTESucc (succLeftLTE _ _ x))
+  --      mod' Z c r | (Right x) = FZ
+  --    mod' (S l) c r with (c `decLT` r)
+  --      mod' (S l) c r | (Left x) =
+  --        natToFinSafe c _ (LTESucc (succLeftLTE _ _ x))
+  --      mod' (S l) c r | (Right x) = mod' l (c - S r) r
+
+  total
+  modS : Fin n -> Fin n
+  modS {n} x with (S (finToNat x) `decLT` n)
+    modS x      | (Left prf)  = natToFinSafe (S (finToNat x)) _ prf
+    modS FZ     | (Right prf) = FZ
+    modS (FS x) | (Right prf) = FZ
+
+  -- Reversed
+  total
+  finModS : (m,k : Nat) -> Fin (S m)
+  finModS m Z = FZ
+  finModS m (S k) = modS (finModS m k)
+
+  total
+  sandwich : LTE a b -> LTE b a -> a = b
+  sandwich LTEZero LTEZero = Refl
+  sandwich (LTESucc x) (LTESucc y) = cong $ sandwich x y
+
+  total
+  divModS : (d,n : Nat) ->
+            (x ** (fst x * S d + snd x = n) `Pair` (snd x `LTE` d))
+  divModS d Z = ((0,0) ** (Refl,LTEZero))
+  divModS d (S k) = s (divModS d k)
+    where
+      total
+      s : (x  ** (fst x  * S d + snd x  =   n) `Pair` (snd x  `LTE` d)) ->
+          (x' ** (fst x' * S d + snd x' = S n) `Pair` (snd x' `LTE` d))
+      s ((a,b) ** pf) with (b `decLT` d)
+        s ((a,b) ** (p,q)) | (Left x) = ((a,S b) ** (?s_rhs_1,x))
+        s ((a,b) ** (p,q)) | (Right x) = let p' = p in
+          ((S a,Z) ** (?s_rhs_2,LTEZero))
+
+  main : IO ()
+  main = let (res ** _) = divModS 5 219 in print res
+
+---------- Proofs ----------
+gcd.s_rhs_2 = proof
+  intro
+  intro
+  intro
+  intro
+  intro
+  intro
+  intro
+  intro
+  rewrite sandwich x q
+  intro
+  compute
+  rewrite sym $ plusZeroRightNeutral (plus d (mult a (S d)))
+  rewrite plusCommutative (mult a (S d)) d
+  exact cong p'
+
+gcd.s_rhs_1 = proof
+  intros
+  compute
+  rewrite plusSuccRightSucc (mult a (S d)) b
+  exact cong p

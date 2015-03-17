@@ -1,0 +1,38 @@
+module Set
+  --mutual
+  --  data Set : Type -> Type where
+  --    Empty : Set a
+  --    Join : (xs : Set a) -> (r : a) -> (ys : Set a) ->
+  --           {auto p : (xs = Empty) `Either` (greatest xs `LTE` r)} ->
+  --           {auto q : (ys = Empty) `Either` (greatest ys `LTE` r)} -> Set a
+  --  greatest : (xs: Set a) -> {auto p : Not (xs = Empty)} -> a
+  --  least : (xs: Set a) -> {auto p : Not (xs = Empty)} -> a
+  
+  abstract
+  data Set a = Empty | Join (Set a) a (Set a)
+  
+  public
+  empty : Set a
+  empty = Empty
+  
+  public
+  singleton : a -> Set a
+  singleton x = Join Empty x Empty
+  
+  public
+  insert : Ord a => a -> Set a -> Set a
+  insert x Empty = singleton x
+  insert x (Join l y r) with (compare x y)
+    insert x (Join l y r) | LT = Join (insert x l) y r
+    insert x (Join l y r) | EQ = Join l y r
+    insert x (Join l y r) | GT = Join l y (insert x r)
+  
+  public
+  data Member : a -> Set a -> Type where
+    Here : Member x (Join _ x _)
+    Left : Member x l -> Member x (Join l x _)
+    Right : Member x r -> Member x (Join _ x r)
+  
+  public
+  emptyNoMembers : (x : a) -> Not (Member x empty)
+  emptyNoMembers x p = ?emptyNoMembers_rhs
