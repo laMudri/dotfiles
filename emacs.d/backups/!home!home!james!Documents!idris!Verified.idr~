@@ -1,0 +1,50 @@
+module Verified
+  -- Vect n:
+  instance VerifiedFunctor (Vect n) where
+    functorIdentity [] = Refl
+    functorIdentity (x :: xs) with (functorIdentity xs)
+      functorIdentity (x :: xs) | ih = ?vect_functorIdentity_rhs
+    functorComposition [] g1 g2 = Refl
+    functorComposition (x :: xs) g1 g2 with (functorComposition xs g1 g2)
+      functorComposition (x :: xs) g1 g2 | ih = ?vect_functorComposition_rhs
+
+  instance VerifiedApplicative (Vect n) where
+    applicativeMap [] g = Refl
+    applicativeMap (x :: xs) g with (applicativeMap xs g)
+      applicativeMap (x :: xs) g | ih = ?vect_applicativeMap_rhs
+    applicativeIdentity [] = Refl
+    applicativeIdentity (x :: xs) with (applicativeIdentity xs)
+      applicativeIdentity (x :: xs) | ih = ?vect_applicativeIdentity_rhs
+    applicativeComposition x g1 g2 = ?VerifiedApplicative_rhs_3
+    applicativeHomomorphism x g = ?VerifiedApplicative_rhs_4
+    applicativeInterchange x g = ?VerifiedApplicative_rhs_5
+
+  -- Array s:
+  instance VerifiedFunctor (Array s) where
+    functorIdentity (MkScalar x) = Refl
+    functorIdentity (MkArray []) = Refl
+    functorIdentity (MkArray (x :: xs)) with (functorIdentity x,functorIdentity xs)
+      functorIdentity (MkArray (x :: xs)) | (ihx,ihxs) = ?functorIdentity_rhs
+    functorComposition (MkScalar x) g1 g2 = Refl
+    functorComposition (MkArray []) g1 g2 = Refl
+    functorComposition (MkArray (x :: xs)) g1 g2 with (functorComposition x g1 g2,functorComposition xs (map g1) (map g2))
+      functorComposition (MkArray (x :: xs)) g1 g2 | ihx = ?functorComposition_rhs
+
+  instance VerifiedApplicative (Array s) where
+    applicativeMap (MkScalar x) g = Refl
+    applicativeMap (MkArray xs) g = ?VerifiedApplicative_rhs_7
+    applicativeIdentity x = ?VerifiedApplicative_rhs_2
+    applicativeComposition x g1 g2 = ?VerifiedApplicative_rhs_3
+    applicativeHomomorphism x g = ?VerifiedApplicative_rhs_4
+    applicativeInterchange x g = ?VerifiedApplicative_rhs_5
+
+---------- Proofs ----------
+Array.vect_functorComposition_rhs = proof
+  intros
+  rewrite ih
+  trivial
+
+Array.vect_functorIdentity_rhs = proof
+  intros
+  rewrite ih
+  trivial

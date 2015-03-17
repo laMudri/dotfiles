@@ -1,0 +1,7 @@
+module Conc
+  data Concurrent a = MkConcurrent ((a -> Action) -> Action)
+  data Action = Atom (IO Action)
+              | Fork Action Action
+              | Stop
+              
+  instance Functor Concurrent where

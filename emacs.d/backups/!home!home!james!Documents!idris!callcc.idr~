@@ -1,0 +1,30 @@
+module callcc
+  -- Naughty! Will not prove.
+  total
+  callcc : ((a -> b) -> a) -> a
+  callcc = believe_me
+  
+  total
+  swapEither : Either a b -> Either b a
+  swapEither (Left x) = Right x
+  swapEither (Right x) = Left x
+
+  total
+  strengthenLeft : (Either a b -> c) -> a -> c
+  strengthenLeft f x = f (Left x)
+
+  total
+  weakenRight : (a -> b) -> a -> Either b c
+  weakenRight f x = Left (f x)
+
+  total
+  excludedMiddleLemma : (Either a (Not a) -> Void) -> Either a (Not a)
+  excludedMiddleLemma = swapEither . weakenRight strengthenLeft
+
+  total
+  excludedMiddle : Either a (Not a)
+  excludedMiddle = callcc excludedMiddleLemma
+  
+  total
+  notNotImpliesId : ((a -> Void) -> Void) -> a
+  notNotImpliesId x = ?notNotImpliesId_rhs

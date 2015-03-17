@@ -1,0 +1,102 @@
+module Fibonacci
+  %default total
+  fibInner : (Nat,Nat) -> Nat -> Nat
+  fibInner (a, b) Z = b
+  fibInner (a, b) (S k) = fibInner (b, a + b) k
+
+  fib' : Nat -> Nat
+  fib' Z = Z
+  fib' (S n) = fibInner (0,1) n
+  
+  data Parity : Nat -> Type where
+    Even : (n : Nat) -> Parity (n + n)
+    Odd : (n : Nat) -> Parity (S n + n)
+  
+  parityPlus2 : Parity n -> Parity (S (S n))
+  parityPlus2 (Even n) = ?even_lemma $ Even (S n)
+  parityPlus2 (Odd n) = ?odd_lemma $ Odd (S n)
+  
+  parity : (n : Nat) -> Parity n
+  parity Z = Even Z
+  parity (S Z) = Odd Z
+  parity (S (S k)) = parityPlus2 (parity k)
+  
+  fibInnerPlusStarts : (a0 : Nat) -> (b0 : Nat) -> (a1 : Nat) -> (b1 : Nat) ->
+                       (k : Nat) ->
+                       fibInner (a0,b0) k + fibInner (a1,b1) k =
+                         fibInner (a0 + a1,b0 + b1) k
+  fibInnerPlusStarts a0 b0 a1 b1 Z = Refl
+  fibInnerPlusStarts a0 b0 a1 b1 (S k) with
+      (fibInnerPlusStarts b0 (a0 + b0) b1 (a1 + b1) k)
+    fibInnerPlusStarts a0 b0 a1 b1 (S k) | ih =
+      rewrite ih in ?fibInnerPlusStarts_rhs
+  
+  fibDefinition : (n : Nat) -> fib' (S (S n)) = fib' n + fib' (S n)
+  fibDefinition Z = Refl
+  fibDefinition (S k) with (fibDefinition k)
+    fibDefinition (S k) | ih = rewrite fibInnerPlusStarts 0 1 1 1 k in Refl
+  
+  fib0 : fib Z = Z
+  fib0 = Refl
+  fib1 : fib (S Z) = S Z
+  fib1 = Refl
+  fib2 : fib (S (S Z)) = S Z
+  fib2 = Refl
+  
+  shift : Nat -> Nat -> Nat
+  shift k = f (parity k)
+    where
+      f : _ -> Nat -> Nat
+      f (Even n) = Prelude.pred
+      f (Odd n) = Prelude.succ
+  --shift k j with (parity k)
+  --  shift (plus n n) j | (Even n) = pred j
+  --  shift (S (plus n n)) j | (Odd n) = succ j
+  
+  --shift0Pred : (k : Nat) -> shift 0 (S k) = k
+  --shift0Pred k = Refl
+  --predDefinition : (k : Nat) -> Prelude.pred (S k) = k
+  --predDefinition k = Refl
+  
+  shiftToOtherSideInner : (x,y,k : Nat) -> S x = shift k (S y) -> Parity k -> shift (S k) (S x) = (S y)
+  shiftToOtherSideInner x y (plus n n) prf (Even n) = ?shiftToOtherSideInner_rhs_1
+  shiftToOtherSideInner x y (S (plus n n)) prf (Odd n) = ?shiftToOtherSideInner_rhs_2
+  --shiftToOtherSideInner x (S x) (plus n n) Refl (Even n) = ?shiftToOtherSide_rhs_3
+  --shiftToOtherSideInner (S y) y (S (plus n n)) Refl (Odd n) = ?shiftToOtherSide_rhs_1
+  
+  shiftToOtherSide : (x,y,k : Nat) -> S x = shift k (S y) -> shift (S k) (S x) = (S y)
+  shiftToOtherSide x y k prf = shiftToOtherSideInner x y k prf (parity k)
+  --with (parity k)
+    --shiftToOtherSide x (S x) (plus n n) Refl | (Even n) = ?shiftToOtherSide_rhs_3
+    --shiftToOtherSide (S y) y (S (plus n n)) Refl | (Odd n) = ?shiftToOtherSide_rhs_1
+
+  cassini : (n : Nat) -> fib' n * fib' (S (S n)) = shift n (pow (fib' (S n)) 2)
+  
+  fibSNPlusK : (n : Nat) -> (k : Nat) ->
+               fib' (S (n + k)) = fib' n * fib' k + fib' (S n) * fib' (S k)
+  fibSNPlusK Z k = rewrite plusZeroRightNeutral (fib' (S k)) in Refl
+  fibSNPlusK (S Z) k = ?fibSNPlusK_rhs_0
+  fibSNPlusK (S (S n)) k with (fibSNPlusK n k)
+    fibSNPlusK (S (S n)) k | ih = ?fibSNPlusK_rhs
+
+---------- Proofs ----------
+Fibonacci.fibInnerPlusStarts_rhs = proof
+  intros
+  rewrite plusAssociative a0 a1 (plus b0 b1)
+  rewrite plusCommutative (plus b0 b1) a1
+  rewrite plusAssociative b0 b1 a1
+  rewrite plusCommutative a1 b1
+  rewrite plusAssociative a0 b0 (plus a1 b1)
+  trivial
+
+
+Fibonacci.odd_lemma = proof
+  intros
+  rewrite sym (plusSuccRightSucc n n)
+  trivial
+
+Fibonacci.even_lemma = proof
+  intros
+  rewrite sym (plusSuccRightSucc n n)
+  trivial
+

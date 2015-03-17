@@ -1,0 +1,8 @@
+module Real
+data Cauchy : Type -> Type where {}
+
+class Ord a => Archimedian a where
+  fromNat : Nat -> a
+  arch : (x : a) -> (n ** fromNat n > x)
+class Complete a where
+  lim : Cauchy a -> a

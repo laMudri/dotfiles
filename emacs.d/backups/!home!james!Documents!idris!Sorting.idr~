@@ -1,0 +1,2 @@
+module Sorting
+  naiveInsertionSort : Ord a => Vect n a -> Vect n a

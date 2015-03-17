@@ -2,15 +2,15 @@
 
 "1.1
 
-loadplugins '\.(js|penta)$'
+set loadplugins='\.(js|penta)$'
+loadplugins
 group user
 set guioptions=bCrs
 
-:javascript <<EOF
-var shellEscapeRE = /[\'\\]/g;
-var shellEscape = function (s) { return s.replace(shellEscapeRE, '\\$&'); };
-EOF
-" vim: set ft=pentadactyl:
+javascript <<EOT
+    var shellEscapeRE = /[\'\\]/g;
+    var shellEscape = function (s) { return s.replace(shellEscapeRE, '\\$&'); };
+EOT
 
 " Swap : and ;
 map -b , :
@@ -24,8 +24,9 @@ map -b J H
 map -b H K
 map -b K J
 
-" Trailing space intentional!
-map -b e :tab 
+map -b e :tab<space>
+map <c-q> <Nop>
+map -m input <c-k> <pass>
 
 set incfind
 set hintkeys=aesntiro
@@ -57,6 +58,24 @@ map -m hints <C-e> normal! 6j
 
 set editor='gvim -f -b -c "set noeol" -c "set linebreak" +<line> +"sil! call cursor(0, <column>)" <file>'
 set defsearch=g
+
+javascript <<EOT
+    userContext.vlasisku = function (arg) {
+        commands.execute("echo '" + arg + "'");
+    };
+EOT
+command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
+
+map <c-s-t> -ex set guioptions!=T
+
+command J -nargs=1 -literal=0 -js
+    \ commands.execute("!jline '" + shellEscape(args[0]) + "'");
+
+" sutsis
+map gj <c-2>x
+map gʒ <c-2>x
+
+colorscheme gruvbox-dark-mudri
 
 " lojbo
 map -m base ʃ c
@@ -103,29 +122,6 @@ map -m base <A-S-ə> <A-S-y>
 map -m base <C-A-ə> <C-A-y>
 map -m base <C-A-S-ə> <C-A-S-y>
 
-javascript <<EOT
-    userContext.vlasisku = function (arg) {
-        commands.execute("echo '" + arg + "'");
-    };
-EOT
-command vlasisku -nargs=1 -literal=0 -js userContext.vlasisku(args[0]);
-
-map <c-s-t> -ex set guioptions!=T
-
-"highlight Hint
-"    \ font: 10px "Droid Sans Mono", monospace !important;
-"    \ padding: 0 0 0 1px;
-"    \ outline: 1px solid rgba(0, 0, 0, .5);
-"    \ background: rgba(255, 248, 231, .8);
-"    \ color: black;
-
-"command J -nargs=1 -literal=0 -js
-"    \ commands.execute("!jline '" + shellEscape(args[0]) + "'");
-
-" sutsis
-map gj <c-2>x
-map gʒ <c-2>x
-
 set passkeys+=feedly.com:k
 
 gr twitter -locations="twitter.com"
@@ -142,7 +138,7 @@ map < -js $('li.back').click();
 map <c-,> -js $('li.first').click();
 gr mal -locations myanimelist.net
 map x -js $('#fancybox-close').click();
-gr au -locations animeultima.tv
+gr au -locations animeultima.io
 map x O<c-t>0<c-x>l<c-x><esc><cr>
 gr sutsis -locations sutsis.nomei.la
 map x -js $('#typehere').val('').focus();

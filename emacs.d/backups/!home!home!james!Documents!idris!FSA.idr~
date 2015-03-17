@@ -1,0 +1,10 @@
+module FSA
+%default total
+data Finite : Nat -> Type -> Type where
+  MkFinite : (a : Type) -> (toFin,fromFin : _) ->
+             ((x :     a) -> x = fromFin (toFin x)) ->
+             ((y : Fin n) -> y = toFin (fromFin y)) ->
+             Finite n a
+data FSA : Type -> Type -> Type where
+  MkFSA : Finite m a -> Finite n s -> (start : s) -> (delta : s -> a -> s) ->
+          (finish : s -> Type) -> FSA a s

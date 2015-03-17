@@ -1,0 +1,6 @@
+cp ../tick3/Pattern* ./
+ls
+rm *.class
+ls
+(find-file Pattern.java)
+(find-file "Pattern.java")

@@ -1,0 +1,84 @@
+module Finite
+import Data.Fin
+%default total
+
+data Finite : Nat -> Type -> Type where
+  MkFinite : {a : Type} -> (toFin,fromFin : _) ->
+             ((x :     a) -> x = fromFin (toFin x)) ->
+             ((y : Fin n) -> y = toFin (fromFin y)) ->
+             Finite n a
+
+BoolFinite : Finite 2 Bool
+BoolFinite = MkFinite toFin fromFin prf0 prf1
+  where
+    toFin : Bool -> Fin 2
+    toFin False = FZ
+    toFin True = FS FZ
+
+    fromFin : Fin 2 -> Bool
+    fromFin FZ = False
+    fromFin (FS FZ) = True
+    fromFin (FS (FS x)) = absurd x
+
+    prf0 : (x : Bool) -> x = fromFin (toFin x)
+    prf0 False = Refl
+    prf0 True = Refl
+
+    prf1 : (y : Fin 2) -> y = toFin (fromFin y)
+    prf1 FZ = Refl
+    prf1 (FS FZ) = Refl
+    prf1 (FS (FS x)) = absurd x
+
+FinFinite : Finite n (Fin n)
+FinFinite = MkFinite id id (\x => Refl) (\y => Refl)
+
+finToLeft : Fin m -> Fin (m + n)
+finToLeft FZ = FZ
+finToLeft (FS x) = FS (finToLeft x)
+finToRight : Fin n -> Fin (m + n)
+finToRight {m=Z} x = x
+finToRight {m=S k} x = FS (finToRight x)
+
+data FinGTENat : Fin n -> Nat -> Type where
+  GTEZero : FinGTENat f Z
+  GTESucc : FinGTENat f k -> FinGTENat (FS f) (S k)
+
+FZLTS : FinGTENat FZ (S k) -> Void
+FZLTS GTEZero impossible
+LTSucc : Not (FinGTENat f k) -> Not (FinGTENat (FS f) (S k))
+LTSucc x GTEZero impossible
+
+decGTE : (f : Fin n) -> (k : Nat) -> Dec (FinGTENat f k)
+decGTE f Z = Yes GTEZero
+decGTE FZ (S k) = No FZLTS
+decGTE (FS x) (S k) with (decGTE x k)
+  decGTE (FS x) (S k) | (Yes prf) = Yes (GTESucc prf)
+  decGTE (FS x) (S k) | (No contra) = No (LTSucc contra)
+
+constrainFinLeft : (f : Fin (m + n)) -> Not (FinGTENat f m) -> Fin m
+constrainFinLeft {m} {n = Z} f x = rewrite sym $ plusZeroRightNeutral m in f
+constrainFinLeft {m = Z} {n = (S k)} f x = void (x GTEZero)
+constrainFinLeft {m = (S j)} {n = (S k)} f x = ?constrainFinLeft_rhs_2
+constrainFinRight : (f : Fin (m + n)) -> FinGTENat f m -> Fin n
+constrainFinRight f GTEZero = f
+constrainFinRight (FS x) (GTESucc y) = constrainFinRight x y
+
+finPartition : Fin (m + n) -> Either (Fin m) (Fin n)
+finPartition {m} x with (decGTE x m)
+  finPartition x | (Yes prf) = Right (constrainFinRight x prf)
+  finPartition x | (No contra) = Left (constrainFinLeft x contra)
+
+EitherFinite : Finite m a -> Finite n b -> Finite (m + n) (Either a b)
+EitherFinite {m} {n} (MkFinite toFin fromFin f g) (MkFinite toFin' fromFin' f' g') =
+  MkFinite toFin'' fromFin'' f'' g''
+  where
+    toFin'' : Either a b -> Fin (m + n)
+    toFin'' (Left x) = finToLeft (toFin x)
+    toFin'' (Right x) = finToRight (toFin' x)
+
+    fromFin'' : Fin (m + n) -> Either a b
+    fromFin'' x = ?fromFin''_rhs
+
+    f'' : _
+
+    g'' : _

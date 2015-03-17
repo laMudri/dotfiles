@@ -1,0 +1,179 @@
+module proofs
+  import Data.ZZ
+  import Data.So
+  import Data.Vect
+  %access public
+
+  succGreater : So (S n > n)
+  succGreater = ?succGreater_rhs
+
+  myMax : Ord a => a -> a -> a
+  myMax x y with (choose (x <= y))
+    myMax x y | (Left _) = y
+    myMax x y | (Right _) = x
+
+  myMaxReturnsArgument : Ord a => (x : a) -> (y : a) ->
+                                  Either (x = myMax x y) (y = myMax x y)
+  myMaxReturnsArgument x y with (choose (x <= y))
+    myMaxReturnsArgument x y | (Left _) = Left ?myMaxReturnsArgument_rhs_5
+    myMaxReturnsArgument x y | (Right _) = Left Refl
+
+  notAndIsOrNot : not (a && b) = not a || not b
+  notAndIsOrNot {a = False} = Refl
+  notAndIsOrNot {a = True} = Refl
+
+  notOrIsAndNot : not (a || b) = not a && not b
+  notOrIsAndNot {a = False} = Refl
+  notOrIsAndNot {a = True} = Refl
+
+  notAndIsOrNotTy : ((a,b) -> Void) = (Either (a -> Void) (b -> Void))
+  notAndIsOrNotTy {a} {b} = ?notAndIsOrNotTy_rhs
+
+  total
+  safeMinus_lemma0 : {j : Nat} -> (z ** j + z = k) -> (z ** S (j + z) = S k)
+  safeMinus_lemma0 (z ** Refl) = MkSigma z Refl
+
+  total
+  safeMinus : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> (z ** y + z = x)
+  safeMinus Z Z = (Z ** Refl)
+  safeMinus k Z = (k ** Refl)
+  safeMinus (S k) (S j) {p = LTESucc x} = safeMinus_lemma0 (safeMinus k j)
+
+  infixl 8 -*
+  (-*) : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> Nat
+  (-*) x y = ?rhs
+
+  mutual
+    instance Enum ZZ where
+      pred (Pos (S k)) = Pos k
+      pred (Pos Z) = NegS Z
+      pred (NegS k) = NegS (S k)
+      succ (Pos k) = Pos (S k)
+      succ (NegS Z) = Pos Z
+      succ (NegS (S k)) = NegS k
+
+      toNat (Pos k) = k
+      toNat (NegS k) = Z
+      fromNat = Pos
+
+      enumFrom x = x :: enumFrom (succ x)
+      enumFromThen x next = x :: enumFromThen next (next + next - x)
+      enumFromTo x end with (x `isLTEz` end)
+        enumFromTo x end | (Yes prf) = x :: enumFromTo (succ x) end
+        enumFromTo x end | (No contra) = []
+      enumFromThenTo x next end with (x `decEq` next)
+        enumFromThenTo x next end | (Yes prf) = []
+        enumFromThenTo x next end | (No contra) with (x <= next `decEq` x <= end)
+          enumFromThenTo x next end | (No contra) | (Yes prf) =
+            x :: enumFromThenTo next (next + next - x) end
+          enumFromThenTo x next end | (No contra) | (No contra1) = []
+
+    data LTEz : ZZ -> ZZ -> Type where
+      NegLTEzPos : (j : Nat) -> (k : Nat) -> LTEz (NegS j) (Pos k)
+      LTEPos : LTE j k -> LTEz (Pos j) (Pos k)
+      LTENeg : LTE j k -> LTEz (NegS k) (NegS j)
+
+    total
+    isLTEz : (m : ZZ) -> (n : ZZ) -> Dec (LTEz m n)
+    isLTEz (Pos j) (Pos k) with (j `isLTE` k)
+      isLTEz (Pos j) (Pos k) | (Yes prf) = Yes (LTEPos prf)
+      isLTEz (Pos j) (Pos k) | (No contra) = No $ \x => contra ?isLTEz_rhs_3
+    isLTEz (Pos j) (NegS k) = No $ \x => ?isLTEz_rhs_5
+    isLTEz (NegS j) (Pos k) = Yes (NegLTEzPos j k)
+    isLTEz (NegS j) (NegS k) with (k `isLTE` j)
+      isLTEz (NegS j) (NegS k) | (Yes prf) = Yes (LTENeg prf)
+      isLTEz (NegS j) (NegS k) | (No contra) = No $ \x => contra ?isLTEz_rhs_5_rhs_3
+
+  divModZ : {auto p : Not (d = 0)} -> (d : ZZ) -> (n : ZZ) ->
+            (x ** fst x * d + snd x = n)
+  divModZ {p} d n = f 0 n ?divModZ0
+    where
+      f : (q : ZZ) -> (r : ZZ) -> (q * d + r = n) ->
+          (x ** fst x * d + snd x = n)
+      f q r prf with (succ r `isLTEz` d)
+        f q r prf | (Yes x) = MkSigma (q, r) prf
+        f q r prf | (No contra) = f (succ q) (r - d) ?stepProof
+
+  plusMinusAssociate : (x : ZZ) -> (y : ZZ) -> (z : ZZ) -> (x + y) - z = x + (y - z)
+  plusMinusAssociate (Pos k) (Pos j) (Pos Z) = ?plusMinusAssociate_rhs_3
+  plusMinusAssociate (Pos k) (Pos j) (Pos (S i)) =
+    let p = plusMinusAssociate (Pos k) (Pos j) (Pos i) in ?plusMinusAssociate_rhs_6
+  plusMinusAssociate (Pos k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_5
+  plusMinusAssociate (Pos k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_1
+  plusMinusAssociate (Pos k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_7
+  plusMinusAssociate (NegS k) (Pos j) (Pos i) = ?plusMinusAssociate_rhs_8
+  plusMinusAssociate (NegS k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_10
+  plusMinusAssociate (NegS k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_2
+  plusMinusAssociate (NegS k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_9
+
+  divMod' : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Nat)
+  divMod' d k = f 0 k
+    where f : Nat -> Nat -> (Nat,Nat)
+          f q r with (choose (r < d))
+            f q r | (Left _) = (q,r)
+            f q r | (Right _) = f (q + 1) (r - d)
+
+  lemma0 : (q : Nat) -> (r : Nat) -> (d : Nat) -> (d `LTE` r) ->
+           S q * d + (r -* d) = q * d + r
+  lemma0 q r d p = ?lemma0_rhs
+
+  lemma1 : (q : Nat) -> (d : Nat) -> S q * d = q * d + d
+  lemma1 q d = plusCommutative d (q * d)
+
+  lemma2 : (x : Nat) -> (y : Nat) -> (x `LTE` y) -> x + (y -* x) = y
+  lemma2 x y p = ?lemma2_rhs
+
+  lemma3 : (x : Nat) -> (y : Nat) -> (z : Nat) ->
+           plus (plus x y) z = plus y (plus x z)
+  lemma3 x y z = ?lemma3_rhs
+
+  lemma4 : (Not (S r `LTE` d)) -> d `LTE` r
+  lemma4 f = ?lemma4_rhs
+
+  dm : {auto p : Not (d = 0)} -> (d : Nat) -> (n : Nat) ->
+       --((q,r,q * d + r = n) : (Nat,Nat,Type))
+       (x ** fst x * d + snd x = n)
+  dm {p} d n = f Z n Refl
+    where f : (q : Nat) -> (r : Nat) -> (q * d + r = n) ->
+              (x ** fst x * d + snd x = n)
+          f q r p with (S r `isLTE` d)
+            f q r p | (Yes prf) = ((q, r) ** p)
+            f q r p | (No contra) =
+              let (r' ** rp) = safeMinus r d {p = lemma4 contra} in
+                f (S q) r' ?f_rhs
+
+  total
+  tyAnd : Vect n Type -> Type
+  tyAnd = Foldable.foldr Pair Unit
+
+  myPlusZeroRightNeutralZ : (x : ZZ) -> x + 0 = x
+  myPlusZeroRightNeutralZ (Pos k) = cong (plusZeroRightNeutral k)
+  myPlusZeroRightNeutralZ (NegS k) = Refl
+
+---------- Proofs ----------
+proofs.plusMinusAssociate_rhs_5 = proof
+  intros
+  rewrite plusAssociative k j (S i)
+  trivial
+
+
+proofs.plusMinusAssociate_rhs_3 = proof
+  intros
+  rewrite sym (plusZeroRightNeutral j)
+  rewrite sym (plusZeroRightNeutral (plus k j))
+  trivial
+
+
+proofs.lemma0_rhs = proof
+  intros
+  rewrite sym (lemma3 d (mult q d) (r -* d))
+  rewrite lemma2 d r p
+  trivial
+
+
+
+proofs.lemma3_rhs = proof
+  intros
+  rewrite sym (plusAssociative y x z)
+  rewrite sym (plusCommutative y x)
+  trivial

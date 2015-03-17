@@ -1,0 +1,27 @@
+module Cantor
+  --%default total
+  %hide Language.Reflection.I
+
+  data Bit = O | I
+  instance Eq Bit where
+    O == O = True
+    I == I = True
+    _ == _ = False
+  Cantor : Type
+  Cantor = Stream Bit
+
+  mutual
+    find : (Cantor -> Bool) -> Cantor
+    find p =
+      if forSome (\a => p (O :: a))
+        then O :: find (\a => p (O :: a))
+        else I :: find (\a => p (I :: a))
+
+    forSome : (Cantor -> Bool) -> Bool
+    forSome p = p (find p)
+
+    forEvery : (Cantor -> Bool) -> Bool
+    forEvery p = not (forSome (not . p))
+
+  equal : (Cantor -> Nat) -> (Cantor -> Nat) -> Bool
+  equal f g = forEvery (\a => f a == g a)
