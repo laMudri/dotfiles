@@ -32,7 +32,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-source antigen/antigen.zsh
+source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle cabal
@@ -40,17 +40,21 @@ antigen bundle catimg
 antigen bundle colored-man
 antigen bundle colorize
 antigen bundle common-aliases
+antigen bundle copyfile
 antigen bundle git
 antigen bundle history-substring-search
 antigen bundle sudo
 antigen bundle vi-mode
 antigen bundle vundle
 antigen bundle yum
-antigen bundle tarruda/zsh-autosuggestions
+# Not working:
+#antigen bundle tarruda/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh_reload
 
 antigen theme agnoster
+
+antigen apply
 
 # User configuration
 
@@ -90,13 +94,12 @@ alias oldvim="vim"
 alias vim="vimx"
 
 # Setup zsh-autosuggestions
-#source /home/home/james/.zsh-autosuggestions/autosuggestions.zsh
+source /home/home/james/.zsh-autosuggestions/autosuggestions.zsh
 
 # Enable autosuggestions automatically
 zle-line-init() {
     zle autosuggest-start
 }
-
 zle -N zle-line-init
 
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
