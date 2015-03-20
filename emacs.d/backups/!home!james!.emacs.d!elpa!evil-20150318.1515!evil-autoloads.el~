@@ -1,4 +1,4 @@
-;;; evil-numbers-autoloads.el --- automatically extracted autoloads
+;;; evil-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
@@ -8,4 +8,4 @@
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
 ;; End:
-;;; evil-numbers-autoloads.el ends here
+;;; evil-autoloads.el ends here

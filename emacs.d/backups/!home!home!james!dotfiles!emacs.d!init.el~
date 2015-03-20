@@ -96,8 +96,19 @@
 (global-evil-surround-mode 1)
 (require 'evil-exchange)
 (setq evil-exchange-key (kbd "zx"))
-(setq evil-exchange-cancel-key (kbd "zx"))
+(setq evil-exchange-cancel-key (kbd "zX"))
 (evil-exchange-install)
+(require 'evil-indent-textobject)
+
+(require 'evil-args)
+(define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+(define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+(define-key evil-normal-state-map (kbd "gj") 'evil-forward-arg)
+(define-key evil-motion-state-map (kbd "gj") 'evil-forward-arg)
+(define-key evil-normal-state-map (kbd "gl") 'evil-backward-arg)
+(define-key evil-motion-state-map (kbd "gl") 'evil-backward-arg)
+(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
+(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
 
 (require 'ace-jump-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
@@ -105,17 +116,19 @@
 (unless (display-graphic-p)
   (require 'evil-terminal-cursor-changer))
 
-(setq initial-frame-alist '(
-  (font . "Monospace-9")
-))
-(setq default-frame-alist '(
-  (font . "Monospace-9")
-))
+;(setq initial-frame-alist '(
+;  (font . "Monospace-9")
+;))
+;(setq default-frame-alist '(
+;  (font . "Monospace-9")
+;))
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
 ; AUCTeX
+;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
+(add-hook 'LaTeX-mode-hook (lambda () (whitespace-mode nil)))
 
 (smartparens-global-mode)
 (require 'smartparens-config)
@@ -176,20 +189,36 @@
 ;(require 'haskell-mode)
 ;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
 
-(setq completion-ignored-extensions )
+(add-to-list 'completion-ignored-extensions '".ibc")
+
+(require 'whitespace)
+(setq-default show-trailing-whitespace t)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
+(let ((font "Source Code Pro LU 9"))
+  (set-default-font font nil t)
+  (set-fontset-font t '(8500 . 8800) font))
+
+(require 'powerline)
+(require 'powerline-evil)
+(powerline-evil-vim-color-theme)
+
+(require 'zlc)
+(zlc-mode t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(completion-ignored-extensions
-   (quote
-    (".hi" ".cm/" ".o" "~" ".bin" ".lbin" ".so" ".a" ".ln" ".blg" ".bbl" ".elc" ".lof" ".glo" ".idx" ".lot" ".svn/" ".hg/" ".git/" ".bzr/" "CVS/" "_darcs/" "_MTN/" ".fmt" ".tfm" ".class" ".fas" ".lib" ".mem" ".x86f" ".sparcf" ".dfsl" ".pfsl" ".d64fsl" ".p64fsl" ".lx64fsl" ".lx32fsl" ".dx64fsl" ".dx32fsl" ".fx64fsl" ".fx32fsl" ".sx64fsl" ".sx32fsl" ".wx64fsl" ".wx32fsl" ".fasl" ".ufsl" ".fsl" ".dxl" ".lo" ".la" ".gmo" ".mo" ".toc" ".aux" ".cp" ".fn" ".ky" ".pg" ".tp" ".vr" ".cps" ".fns" ".kys" ".pgs" ".tps" ".vrs" ".pyc" ".pyo" ".ibc")))
+ '(AmS-TeX-mode-hook (quote (whitespace-mode)))
+ '(LaTeX-mode-hook (quote (preview-mode-setup)) t)
  '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(evil-args-delimiters (quote ("," ";" " ")))
  '(evil-digraphs-table-user
    (quote
     (((108 101)
@@ -216,13 +245,23 @@
       . 8744)
      ((111 111)
       . 8728))) nil (evil-digraphs))
+ '(global-whitespace-mode t)
  '(haskell-compile-command
    "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
  '(haskell-mode-hook
    (quote
     (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
  '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
- '(inhibit-startup-screen t))
+ '(idris-mode-hook
+   (quote
+    (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
+ '(idris-pretty-printer-width 80)
+ '(inhibit-startup-screen t)
+ '(latex-run-command "pdflatex")
+ '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
+ '(show-trailing-whitespace t)
+ '(tool-bar-mode nil)
+ '(whitespace-global-modes (quote (not latex-mode tex-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -193,6 +193,9 @@
 (require 'powerline-evil)
 (powerline-evil-vim-color-theme)
 
+(require 'zlc)
+(zlc-mode t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -245,6 +248,7 @@
  '(latex-run-command "pdflatex")
  '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
  '(show-trailing-whitespace t)
+ '(tool-bar-mode nil)
  '(whitespace-global-modes (quote (not latex-mode tex-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
