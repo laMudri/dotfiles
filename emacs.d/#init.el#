@@ -212,6 +212,8 @@
 (require 'zlc)
 (zlc-mode t)
 
+(set-face-attribute 'default t :font "Source Code Pro for Powerline-9")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
