@@ -76,12 +76,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-"if has("autocmd")
-"  filetype plugin indent on
-"endif
-
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
@@ -184,7 +178,7 @@ nnoremap <s-space> a <esc>r
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 5
 
-let g:haddock_browser = "/usr/bin/google-chrome"
+let g:haddock_browser = "/usr/bin/firefox"
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -203,7 +197,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set whichwrap+=<,>,h,l,[,]
 
 set hlsearch
-nnoremap <CR> :noh<CR>
+nnoremap <silent> <CR> :noh<CR>
 nnoremap <C-8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " surround.vim

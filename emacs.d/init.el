@@ -201,9 +201,10 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-(let ((font "Source Code Pro LU 9"))
-  (set-default-font font nil t)
-  (set-fontset-font t '(8500 . 8800) font))
+(let ((myFont "Source Code Pro for Powerline 8"))
+  (set-default-font myFont nil t)
+  (set-fontset-font t '(8500 . 8800) myFont)
+  (setq default-frame-alist '((font . myFont))))
 
 (require 'powerline)
 (require 'powerline-evil)
@@ -273,3 +274,34 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+;;; Maps C-c C-<key> to \<key in evil-normal-state
+(eval-after-load 'agda2
+  '(progn
+     (evil-define-key 'normal agda2-mode-map
+       "\\p" 'agda2-auto
+       "\\k" 'agda2-previous-goal
+       "\\m" 'agda2-next-goal
+       "\\c" 'agda2-make-case
+       "\\d" 'agda2-infer-type-maybe-toplevel
+       "\\e" 'agda2-show-context
+       "\\r" 'agda2-load
+       "\\n" 'agda2-compute-normalised-maybe-toplevel
+       "\\o" 'agda2-module-contents-maybe-toplevel
+       "\\f" 'agda2-refine
+       "\\s" 'agda2-solveAll
+       "\\t" 'agda2-goal-type
+       "\\ " 'agda2-give
+       "\\," 'agda2-goal-and-context
+       "\\." 'agda2-goal-and-context-and-inferred
+       "\\=" 'agda2-show-constraints
+       "\\?" 'agda2-show-goals
+       "\\xc" 'agda2-compile
+       "\\xd" 'agda2-remove-annotations
+       "\\xh" 'agda2-display-implicit-arguments
+       "\\xl" 'agda2-load
+       "\\xq" 'agda2-quit
+       "\\xr" 'agda2-restart)))

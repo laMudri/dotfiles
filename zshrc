@@ -14,7 +14,7 @@ CASE_SENSITIVE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -35,22 +35,25 @@ HIST_STAMPS="yyyy-mm-dd"
 source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 
-antigen bundle cabal
-antigen bundle catimg
-antigen bundle colored-man
-antigen bundle colorize
-antigen bundle common-aliases
-antigen bundle copyfile
-antigen bundle git
-antigen bundle history-substring-search
-antigen bundle sudo
-antigen bundle vi-mode
-antigen bundle vundle
-antigen bundle yum
-# Not working:
-#antigen bundle tarruda/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh_reload
+antigen bundles <<EOBUNDLES
+    cabal
+    catimg
+    colored-man
+    colorize
+    common-aliases
+    copyfile
+    git
+    history-substring-search
+    sudo
+    vi-mode
+    vundle
+
+    laMudri/zsh-yum-aliases
+    # Not working:
+    #tarruda/zsh-autosuggestions
+    zsh-users/zsh-syntax-highlighting
+    zsh_reload
+EOBUNDLES
 
 antigen theme agnoster
 
@@ -92,6 +95,7 @@ export KEYTIMEOUT=1
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias oldvim="vim"
 alias vim="vimx"
+alias hoogle="nocorrect hoogle"
 
 # Setup zsh-autosuggestions
 source /home/home/james/.zsh-autosuggestions/autosuggestions.zsh
@@ -135,3 +139,5 @@ zle-line-init() {
 }
 zle -N zle-keymap-select
 zle -N zle-line-init
+
+eval `dircolors ~/Documents/misc/dircolors-solarized/dircolors.ansi-universal`
