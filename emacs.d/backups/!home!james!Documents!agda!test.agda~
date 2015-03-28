@@ -1,0 +1,25 @@
+module test where
+
+data ℕ : Set where
+  Z : ℕ
+  S : ℕ -> ℕ
+
+add : ℕ → ℕ → ℕ
+add Z y = y
+add (S x) y = S (add x y)
+
+_+_ : ℕ → ℕ → ℕ
+x + y = add x y
+
+data _≡_ {A} (q : A) : A → Set where
+  Refl : q ≡ q
+
+cong : ∀{A B x y} → (f : A → B) → x ≡ y → f x ≡ f y
+cong f Refl = Refl
+
+plusSuccRightSucc : (m : ℕ) → (n : ℕ) → (S m + n) ≡ (m + S n)
+plusSuccRightSucc Z n = Refl
+plusSuccRightSucc (S m) n = cong S (plusSuccRightSucc m n)
+
+plusZeroRightNeutral : (n : ℕ) → (n + Z) ≡ n
+plusZeroRightNeutral n = {!n!}

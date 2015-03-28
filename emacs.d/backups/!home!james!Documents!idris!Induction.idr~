@@ -1,0 +1,123 @@
+module Induction
+%default total
+%hide Prelude.pow
+induct : (P : Nat -> Type) -> P Z -> ((n : Nat) -> (ih : P n) -> P (S n)) ->
+         (n : Nat) -> P n
+induct P x f Z = x
+induct P x f (S n) with (induct P x f n)
+  induct P x f (S n) | ih = f n ih
+
+-- Using the combinator
+plusSuccRightSucc' : (x : Nat) -> (y : Nat) -> x + S y = S (x + y)
+plusSuccRightSucc' x y =
+  induct (\k => k + S y = S (k + y)) Refl (\n,ih => ?step) x
+
+-- Using explicit induction (relies on plusCommutative)
+--plusSuccRightSucc'' : (x : Nat) -> (y : Nat) -> x + S y = S (x + y)
+--plusSuccRightSucc'' x Z = ?base'
+--plusSuccRightSucc'' x (S k) with (plusSuccRightSucc'' x k)
+--  plusSuccRightSucc'' x (S k) | ih = ?step'
+
+plusSuccRightSucc'' : (x : Nat) -> (y : Nat) -> S (x + y) = x + S y
+plusSuccRightSucc'' x =
+  induct (\y => S (x + y) = x + S y) ?base' (\n,ih => ?step')
+
+-- Using just plusCommutative. Circular reasoning, really.
+plusSuccRightSucc''' : (x : Nat) -> (y : Nat) -> x + S y = S (x + y)
+plusSuccRightSucc''' x y = ?plusSuccRightSucc'''_rhs
+
+powApply : Nat -> (a -> a) -> a -> a
+powApply Z f x = x
+powApply (S k) f x = powApply k f (f x)
+
+pow : Nat -> Nat -> Nat
+pow = flip power
+
+doubleLemma : (n : Nat) -> n + n = 2 * n
+doubleLemma n = ?doubleLemma_rhs
+
+powApplyLeftSide : (n : Nat) -> (f : _) -> (x : _) ->
+                    powApply (S n) f x = f (powApply n f x)
+powApplyLeftSide Z f x = Refl
+powApplyLeftSide (S k) f x = powApplyLeftSide k f (f x)
+
+powersOf2Minus1 : (n : Nat) -> pow n 2 = S (powApply n (S . (2 *)) Z)
+powersOf2Minus1 n =
+  induct (\n => pow n 2 = S (powApply n (S . (2 *)) Z)) Refl ?po2_step n
+
+data Parity : Nat -> Type where
+  Even : (n : Nat) -> Parity (n + n)
+  Odd : (n : Nat) -> Parity (S (n + n))
+
+parity : (n : Nat) -> Parity n
+parity Z = Even Z
+parity (S Z) = Odd Z
+parity (S (S k)) with (parity k)
+  parity _ | (Even n) = rewrite plusSuccRightSucc n n in Even (S n)
+  parity _ | (Odd n) = rewrite plusSuccRightSucc n n in Odd (S n)
+
+parity' : (n : Nat) -> Parity n
+parity' Z = Even Z
+parity' (S k) with (parity' k)
+  parity' _ | (Even n) = Odd n
+  parity' _ | (Odd n) = rewrite plusSuccRightSucc n n in Even (S n)
+
+paritiesMatch : (n : Nat) -> parity n = parity' n
+paritiesMatch Z = Refl
+paritiesMatch (S Z) = Refl
+paritiesMatch (S (S k)) with (paritiesMatch k,paritiesMatch (S k))
+  paritiesMatch (S (S k)) | (ih0,ih1) = rewrite ih0 in rewrite sym ih1 in ?paritiesMatch_rhs
+
+plusSuccSelfEven : (n : Nat) -> (m ** 2 * m = n * S n)
+plusSuccSelfEven Z = (0 ** Refl)
+plusSuccSelfEven (S k) with (plusSuccSelfEven k)
+  plusSuccSelfEven (S k) | (x ** pf) = ?plusSuccSelfEven_rhs_1
+
+triangleNumbersClosedForm : (n : Nat) -> 2 * sum [0..n] = n * S n
+
+-- Thanks to Agda:
+ind : (P : Nat -> Type) -> P Z -> ((k : _) -> P k -> P (S k)) -> (n : _) -> P n
+
+---------- Proofs ----------
+Induction.po2_step = proof
+  compute
+  intros
+  rewrite sym $ powApplyLeftSide n1 (S . (2 *)) 0
+  rewrite sym ih
+  rewrite sym $ plusZeroRightNeutral (powApply n1 (S . (2 *)) 0)
+  rewrite sym $ plusSuccRightSucc (powApply n1 (S . (2 *)) 0) (powApply n1 (S . (2 *)) 0)
+  rewrite sym $ plusZeroRightNeutral (S (powApply n1 (S . (2 *)) 0))
+  compute
+  rewrite plusCommutative 0 (S (powApply n1 (S . \k => plus k (plus k 0)) 0))
+  trivial
+
+
+Induction.doubleLemma_rhs = proof
+  intro
+  rewrite sym (plusZeroRightNeutral n)
+  trivial
+
+Induction.plusSuccRightSucc'''_rhs = proof
+  intros
+  rewrite plusCommutative (S y) x
+  rewrite plusCommutative x y
+  trivial
+
+--Induction.step' = proof
+--  intros
+--  rewrite sym ih
+--  rewrite plusCommutative (S (S k)) x
+--  rewrite plusCommutative x k
+--  trivial
+--
+--Induction.base' = proof
+--  intros
+--  rewrite plusCommutative 1 x
+--  rewrite plusCommutative 0 x
+--  trivial
+
+Induction.step = proof
+  intros
+  compute
+  rewrite ih
+  trivial
