@@ -201,14 +201,19 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-(let ((myFont "Source Code Pro for Powerline 8"))
+(let ((myFont (concat "-adobe-Source Code Pro"
+                      "-normal-normal-normal-*-11-*-*-*-m-0-iso10646-1")))
   (set-default-font myFont nil t)
   (set-fontset-font t '(8500 . 8800) myFont)
   (setq default-frame-alist '((font . myFont))))
+(set-fontset-font t '(#xE000 . #xE1FF)
+                  '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
-(require 'powerline)
-(require 'powerline-evil)
-(powerline-evil-vim-color-theme)
+;(require 'powerline)
+;(require 'powerline-evil)
+;(powerline-evil-vim-color-theme)
+
+;(sml/setup)
 
 (require 'zlc)
 (zlc-mode t)
@@ -223,7 +228,7 @@
  '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(evil-args-delimiters (quote ("," ";" " ")))
  '(evil-digraphs-table-user
    (quote
@@ -258,10 +263,13 @@
    (quote
     (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
  '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
+ '(idris-interpreter-flags (quote ("-p" "contrib")))
+ '(idris-metavariable-list-show-expanded nil)
  '(idris-mode-hook
    (quote
     (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
  '(idris-pretty-printer-width 80)
+ '(idris-warnings-printing (quote (warnings-tree)))
  '(inhibit-startup-screen t)
  '(latex-run-command "pdflatex")
  '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
@@ -305,3 +313,6 @@
        "\\xl" 'agda2-load
        "\\xq" 'agda2-quit
        "\\xr" 'agda2-restart)))
+
+(load-file "~/Downloads/cubicaltt/cubicaltt.el")
+(add-to-list 'auto-mode-alist '("\\.ctt\\'" . ctt-mode))

@@ -1,0 +1,5 @@
+module Append
+%default total
+
+takeAppendGivesFirst : (xs : Vect m a) -> (ys : Vect n a) ->
+                       take m (xs ++ ys) = xs

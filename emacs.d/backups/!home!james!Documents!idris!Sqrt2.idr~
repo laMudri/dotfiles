@@ -1,0 +1,7 @@
+module Sqrt2
+import Data.ZZ
+%default total
+
+data Rat = (%) Nat ZZ
+
+sqrt2Irrational : (x : Rat) -> x * x = 2 -> Void

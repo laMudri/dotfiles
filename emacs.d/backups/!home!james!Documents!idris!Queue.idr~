@@ -1,0 +1,16 @@
+module Queue
+%default total
+
+data LazyVectInner : Nat -> Type -> Type where
+  Nil : LazyVectInner Z a
+  (::) : (x : a) -> (xs : Lazy (LazyVectInner n a)) -> LazyVectInner (S n) a
+
+LazyVect : Nat -> Type -> Type
+LazyVect n a = Lazy (LazyVectInner n a)
+%name LazyVect xs,ys,zs
+
+data Queue : Type -> Type where
+  MkQueue : (front : LazyVect (m + n) a) -> (back : LazyVect n a) -> Queue a
+%name Queue p,q,r
+
+length : Queue a -> Nat
