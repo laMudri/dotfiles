@@ -6,8 +6,8 @@
 "
 " Reset the styles                                                  {{{1
 " ----------------------------------------------------------------------
-" This ensures they don't bleed over from other themes
-hi clear
+" This ensures they don't bleed over from other themes (has performance issues)
+"hi clear
 
 " Gruvbox color mappings                                            {{{1
 " ----------------------------------------------------------------------
