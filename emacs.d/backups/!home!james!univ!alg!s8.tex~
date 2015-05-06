@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+%Gummi|063|=)
+\title{\textbf{Algorithms I -- supervision 8}}
+\author{James Wood}
+\usepackage{listings}
+\usepackage{bold-extra}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\lstset{
+  basicstyle=\small,
+  basewidth=0.5em,
+  frame=single,
+  breaklines=true,
+  %postbreak=\raisebox{0ex}[0ex][0ex]{
+  %  \ensuremath{\color{red}\hookrightarrow\space}
+  %}
+  language=python,
+  literate=
+    {<=}{{\(\leq\)}}1
+    {>=}{{\(\geq\)}}1
+    {&&}{{\(\wedge\)}}1
+    {||}{{\(\vee\)}}1
+    {->}{{\(\rightarrow\)}}1
+}
+
+\tikzset{
+  treenode/.style = {align=center, inner sep=0pt, text centered,
+    font=\sffamily},
+  bnode/.style = {treenode, circle, white, draw=black,
+    fill=black, text width=1.5em},
+  rnode/.style = {treenode, circle, red, draw=red,
+    text width=1.5em, very thick},
+  leaf/.style = {treenode, rectangle, draw=black,
+    minimum width=0.5em, minimum height=0.5em}
+}
+
+\begin{document}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+\maketitle
+
+\section{Graphs}
+\begin{enumerate}
+\item
+  Start at a given vertex, assigning it a weight of 0, and add all edges leaving it to a priority queue ordered by the weight of the edge plus the weight of the vertex at their start (ascending). Remove edges from the queue until the taken edge ends at a vertex without an assigned weight. Give this vertex the weight stored as the key of the priority queue item and repeat the process until all vertices have been assigned a weight.
+
+  Dijkstra's algorithm is a greedy algorithm, so chooses the route that minimises weight, under the assumption that worse paths cannot be made better by adding more edges. This assumption does not hold in a general graph with negative-weight edges.
+\item
+  A dummy vertex \(q\) is added to the graph, with edges going from it to each other vertex, each edge having weight 0. Then, the Bellman-Ford algorithm is run, starting at \(q\). From this, we obtain a function \(\delta:\mathrm{Vertex}\to\mathrm{Weight}\) describing how far the given vertex is away from \(q\). We then produce a new graph based on the original graph (with weight function \(w\)) with weight function \(w':\mathrm{Vertex}\times\mathrm{Vertex}\to\mathrm{Weight}\), where \(w'\,(u,v)=w\,(u,v)+\delta\,u-\delta\,v\). Since \(\delta\,v\leq\delta\,u+w\,(u,v)\), all edges in the new graph have positive weight. Hence, we can run Dijkstra's algorithm (which is quicker than Bellman-Ford) on each vertex.
+\end{enumerate}
+
+\end{document}

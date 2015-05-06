@@ -1,0 +1,12 @@
+module Units2
+import Data.Vect
+import Data.ZZ
+%default total
+
+Dimension : Type
+Dimension = Vect 7 ZZ
+
+data Quantity : Dimension -> Type -> Type
+  MkQuantity : (u : Dimension) -> (a : Type) -> Quantity u a
+
+(+) : Num a => Quantity u a -> Quantity u a -> Quantity u a

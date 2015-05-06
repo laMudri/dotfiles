@@ -1,0 +1,82 @@
+module BridgeGo
+  import Data.SortedSet
+  import intervals
+
+  %name Fin s
+  data Player = MkPlayer Bool
+  %name Player p,q
+  Point : Nat -> Type
+  Point s = (Fin s,Fin s)
+  %name Point m,n
+  data Board : Nat -> Type where
+    MkBoard : Fin s -> (Point s -> Maybe Player) -> Board s
+  %name Board b,b'
+  data Edge = LeftE | TopE | RightE | BottomE
+  %name Edge e,e'
+  data Chain : Nat -> Type where
+    MkChain : Maybe Player -> SortedSet (Point s) -> SortedSet Edge -> Chain s
+  %name Chain c,c'
+  Chains : Nat -> Type
+  Chains = SortedSet . Chain
+  %name Chains cs,cs'
+  ErrorMessage : Type
+  ErrorMessage = String
+  data GameState : Nat -> Type where
+    MkGameState : Player -> Board s -> Chains s -> GameState s
+  %name GameState g,g'
+  data Result : Nat -> Type where
+    Win : Player -> Board s -> Result s
+    NoResult : GameState s -> Result s
+    Illegal : ErrorMessage -> Result s
+  %name Result r,r'
+  
+  chainColour : Chain s -> Maybe Player
+  chainColour (MkChain x _ _) = x
+  
+  stoneAt' : Chains s -> Point s -> Maybe (Maybe Player)
+  stoneAt' cs m =
+    map chainColour $ List.find (\(MkChain p ms es) => contains m ms)
+                                (SortedSet.toList cs)
+  StoneAt : Chains s -> Point s -> Type
+  StoneAt cs m = So (isJust (stoneAt' cs m))
+  
+  next : (m : Point (S s)) -> {auto prf : Not (m = (last,last))} -> Point (S s)
+  next (x,y) {prf} with (x `decEq` last)
+    next (Fin.last,y) {prf} | (Yes Refl) with (y `decEq` last)
+      next (Fin.last,Fin.last) {prf} | (Yes Refl) | (Yes Refl) = void (prf Refl)
+      next (Fin.last,y) {prf} | (Yes Refl) | (No contra) = (FZ,succ y)
+    next (x,y) {prf} | (No contra) = (succ x,y)
+  
+  data ChainsCoverRestOfBoard : Chains s -> Point s -> Type where
+    EndOfBoard : StoneAt cs (last,last) -> ChainsCoverRestOfBoard cs (last,last)
+    RestOfBoard : StoneAt cs m -> {auto prf : Not (m = (last,last))} ->
+                  ChainsCoverRestOfBoard cs (next m {prf = prf}) ->
+                  ChainsCoverRestOfBoard cs m
+  
+  data ChainsCoverBoard : Chains s -> Type where
+    MkChainsCoverBoard : ChainsCoverRestOfBoard cs (FZ,FZ) ->
+                         ChainsCoverBoard cs
+  --ChainsCoverBoard : Chains s -> Type
+  --ChainsCoverBoard {s} cs =
+  --  Foldable.foldr Pair Unit $ [So (isJust (stoneAt' cs (x,y))) | x <- range
+  --                                                              , y <- range]
+  %name ChainsCoverBoard prf
+  
+  data PointLTE : Point s -> Point s -> Type where
+    LTEStart : PointLTE (FZ,FZ) m
+    LTENext : PointLTE m n -> PointLTE (next m) (next n)
+  
+  stoneAt : (cs : Chains s) -> ChainsCoverBoard cs -> Point s -> Maybe Player
+  stoneAt cs prf m with (stoneAt' cs m)
+    stoneAt cs (MkChainsCoverBoard x) m | Nothing = void (contra x)
+      where
+        contra : PointLTE m' m -> ChainsCoverRestOfBoard cs m' -> Void
+        contra (EndOfBoard y) = ?contra_rhs_1
+        contra (RestOfBoard y z) = ?contra_rhs_2
+    stoneAt cs prf m | (Just x) = x
+  
+  playAt : GameState n -> Point n -> Result s
+  playAt (MkGameState p (MkBoard s f) cs) m with (f m)
+    playAt (MkGameState p (MkBoard s f) cs) m | Nothing = ?playAt_rhs_2_rhs_1
+    playAt (MkGameState p (MkBoard s f) cs) m | (Just x) =
+      Illegal "stone already there"

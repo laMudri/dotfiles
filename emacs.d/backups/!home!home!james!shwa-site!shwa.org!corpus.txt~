@@ -1,0 +1,556 @@
+<html>
+
+<head>
+   <title>The Shwa Alphabet for English</title>
+   <meta name="keywords" content="shwa alphabet english">
+   <link rel="stylesheet" type="text/CSS" href="styles.css"/>
+
+<style><!--
+   .under         {position: relative; display: block; cursor: pointer;}
+   .over          {position: absolute; visibility: hidden;}
+   .over:hover img   {visibility: visible;}
+--></style>
+
+</head>
+
+<body><center>
+
+<a href="index.htm"><img src="il/logo.gif" style="width: 96px;" /></a><a href="contents.htm"  class="pagetitle">
+   Shwa for English
+</a>
+
+<p>The Home page discussed some of the problems with our current spelling :
+
+<ul>
+
+   <li />The Roman alphabet doesn't have enough sounds for English, especially vowels.
+
+   <li />Many sounds are written multiple ways, and many spellings spell multiple sounds.
+
+   <li />That makes it harder for English speakers to learn how to read and write, about three years harder than it could be.
+
+   <li />Many letters are used differently from other languages, making it harder to learn them and harder for
+      their speakers to learn English.
+
+   <li />Yet since we need 52 letters (upper- and lower-case) plus punctuation, it's hard to fit a good English keyboard on a small phone.
+
+   <li />There's no good way to write intonation, which is a big part of English.
+
+   <li />And there's no rhyme or reason to our system : it's just a hodge-podge of historical quick fixes.
+
+</ul>
+
+<p>The Shwa script solves all of those problems.  Here's how :
+
+<a name="shapes"><h3>Letter Shapes</h3></a>
+
+<p>The shapes of the letters indicate their pronunciation :
+
+<ul>
+
+   <li />Vowels are small, and consonants are twice as tall.
+
+   <li />Rounded vowels are round, and unrounded (<i>spread</i>) vowels are unround.  Closed vowels are closed, and open vowels are open.
+
+   <li />Voiced consonants like <b>b d g dj v dh z zh</b> have the top on the left of the stem, while unvoiced
+      consonants like <b>p t k ch f th s sh</b> have the top on the right.
+
+   <li />Consonants with sharp tops are sharp sounds - plosives like <b>p t k b d g</b> or affricates like <b>ch dj</b> - while consonants with smooth tops are smooth sounds - fricatives like <b>f th v dh</b> or sibilants like <b>s sh z zh</b>.
+
+   <li />Consonants pronounced in the front of the mouth - like <b>p b f v m</b> - have bottoms that point to the left, while consonants formed in the back of the mouth - like <b>k g ng</b> - have bottoms that point to the right.
+
+   <li />Sibilants like <b>s z sh zh</b> and affricates like <b>ch dj</b> all have round bottoms.
+
+</ul>
+
+<p>You'll notice many more regularities as you learn Shwa.  Of course, you don't have to figure all this out as you read Shwa!  You'll just learn the letters, as you did with the Roman alphabet when you learned to read English.  And Shwa doesn't have capital letters, so there are fewer letters even though they represent more sounds.
+
+<p>But the fact that the letter shapes form a system is a big advantage, both for learning English and in case you spot an unfamiliar letter in a foreign language.  Since Shwa is a <i>universal</i> script, it has letters for all the sounds we <u>don't</u> have in English, too!  But you don't need to learn all those letters - just the ones for the languages you want to read and write.
+
+<h3>Consonants</h3>
+
+<p>Here are the English consonants, along with examples of their use.  Note that the top row features aspirated versions of the consonants in the next row - we'll discuss them below.
+
+<p align="center"><table class="whiteboard" style="width: 75%;">
+   <colgroup span="8" style="width: 12%;">
+   <tr>
+      <th><img src="al/px.gif" /></th><td><b>p</b>ea</td>
+      <th><img src="al/tx.gif" /></th><td><b>t</b>ea</td>
+      <th><img src="al/kx.gif" /></th><td><b>k</b>ey</td>
+      <th><img src="al/chx.gif" /></th><td><b>ch</b>ew</td>
+   </tr>
+   <tr>
+      <th><img src="al/p.gif" /></th><td>s<b>p</b>it u<b>p</b></td>
+      <th><img src="al/t.gif" /></th><td>s<b>t</b>ar<b>t</b></td>
+      <th><img src="al/k.gif" /></th><td>s<b>k</b>un<b>k</b></td>
+      <th><img src="al/ch.gif" /></th><td>i<b>tch</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/b.gif" /></th><td><b>b</b>a<b>b</b>e</td>
+      <th><img src="al/d.gif" /></th><td><b>d</b>u<b>d</b>e</td>
+      <th><img src="al/g.gif" /></th><td><b>g</b>a<b>g</b></td>
+      <th><img src="al/dj.gif" /></th><td><b>j</b>u<b>dg</b>e</td>
+   </tr>
+   <tr>
+      <th><img src="al/f.gif" /></th><td><b>f</b>lu<b>ff</b></td>
+      <th><img src="al/th.gif" /></th><td><b>th</b>irtie<b>th</b></td>
+      <th><img src="al/s.gif" /></th><td><b>s</b>au<b>c</b>e</td>
+      <th><img src="al/sh.gif" /></th><td><b>sh</b>eepi<b>sh</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/v.gif" /></th><td><b>v</b>al<b>v</b>e</td>
+      <th><img src="al/dh.gif" /></th><td><b>th</b>ey</td>
+      <th><img src="al/z.gif" /></th><td><b>z</b>oo<b>s</b></td>
+      <th><img src="al/zh.gif" /></th><td>A<b>si</b>a</td>
+   </tr>
+   <tr>
+      <th><img src="al/m.gif" /></th><td><b>m</b>o<b>m</b></td>
+      <th><img src="al/n.gif" /></th><td><b>n</b>u<b>n</b></td>
+      <th><img src="al/ng.gif" /></th><td>ba<b>n</b>ki<b>ng</b></td>
+      <th></th><td></td>
+   </tr>
+   <tr>
+      <th></th><td></td>
+      <th><img src="al/l.gif" /></th><td><b>l</b>ow</td>
+      <th><img src="al/ll.gif" /></th><td>a<b>ll</b>&sup1;</td>
+      <th><img src="al/h.gif" /></th><td><b>h</b>igh</td>
+   </tr>
+   <tr>
+      <th><img src="al/y.gif" /></th><td><b>y</b>ou</td>
+      <th><img src="al/w.gif" /></th><td><b>w</b>e</td>
+      <th><img src="al/wr.gif" /></th><td><b>r</b>a<b>r</b>e</td>
+      <th></th><td></td>
+   </tr>
+</table>
+
+<p>The last three letters are <i>semivowels</i> - they're vowels being used as consonants.
+
+<p>&sup1;You may never have thought about it before, but we English speakers pronounce <b>l</b> very differently at the end of words or syllables, as in the difference between <i>oily</i> and <i>oil</i>.  In Shwa, we use a different letter for this "dark" final <b>ll</b>.
+
+<h3>Vowels</h3>
+
+<p>Here are the English short vowels :
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <colgroup span="6" style="width: 16%;">
+   <tr>
+      <th><img src="al/i_hi.gif" /></th><td><b>i</b>tchy</td>
+      <th><img src="al/er_hi.gif" /></th><td><b>ear</b>ly</td>
+      <th><img src="al/u_hi.gif" /></th><td>c<b>oo</b>kie</td>
+   </tr>
+   <tr>
+      <th><img src="al/e_hi.gif" /></th><td><b>e</b>lbow</td>
+      <th><img src="al/eh_hi.gif" /></th><td><b>u</b>gly</td>
+      <th><img src="al/o_hi.gif" /></th><td><b>o</b>ffice</td>
+   </tr>
+   <tr>
+      <th><img src="al/ae_hi.gif" /></th><td><b>a</b>pple</td>
+      <th><img src="al/a_hi.gif" /></th><td><b>al</b>mond</td>
+      <th><img src="al/ah_hi.gif" /></th><td><b>o</b>tter&sup2;</td>
+   </tr>
+</table>
+
+<p>&sup2;The <i>otter</i> vowel doesn't occur in Mainland English (the English of Canada and the USA).  Where Island dialects (British, Irish, Australian, New Zealand, Caribbean) use it in words like <i>cot</i>, Mainlanders use the <i>almond</i> vowel, and where Islanders use it in words like <i>caught</i>, Mainlanders use the <i>office</i> vowel. Here's how the two dialects write low vowels in Shwa:
+
+<a name="lowvowels"></a>
+
+<p align="center"><table class="cells whiteboard">
+   <tr><th>Island</th><th>Lexical Set</th><th>Mainland</th></tr>
+   <tr><th><img src="al/ae_hi.gif" /></th><th>trap, bad, cab, ham, arrow</th><th rowspan="2"><img src="al/ae_hi.gif" /></th></tr>
+   <tr><th rowspan="2"><img src="al/a_hi.gif" /><th>bath, staff, clasp, dance</th></th> </tr>
+   <tr><th>palm, calm, bra, father</th><th rowspan="2"><img src="al/a_hi.gif" /></th></tr>
+   <tr><th rowspan="2"><img src="al/ah_hi.gif" /><th>lot, stop, rob, swan</th></th> </tr>
+   <tr><th>cloth, cough, long, laurel, origin</th><th rowspan="2"><img src="al/o_hi.gif" /></th></tr>
+   <tr><th><img src="al/o_hi.gif" /></th><th>thought, taut, hawk, broad</th></tr>
+</table>
+
+<p>In English, the rhythm of a word - which syllables are stressed and which aren't - is very important.  In Shwa,
+stressed vowels are written <b>high</b> - in the top half of the line - and unstressed vowels are written <b>low</b> - in the bottom half of the line.
+
+<p>English also has <b>reduced vowels</b> that are only used in <u>un</u>stressed syllables, including many "little words" that aren't usually stressed.  You've already met two of these reduced vowels: the <i>ugly</i> sound in words like <i>a, the, of, <u>a</u>bout, <u>a</u>bove, <u>a</u>go</i> and <i>bott<u>o</u>m</i>; and the <i>early</i> sound in words like <i>her, both<u>er</u> </i> and <i>butt<u>er</u></i>.  The third is a close spread back vowel in words like <i>is, it, its, if, his, in, mess<u>a</u>ge, bottl<u>e</u></i> and <i>butt<u>o</u>n</i> - we'll call it the <i>ih</i> sound.  You can hear the contrast in <i>Rosa's grocer's roses</i>.
+
+<p align="center"><table class="whiteboard" style="width: 33%;">
+   <colgroup span="4" style="width: 25%;">
+   <tr>
+      <th>eh</th>
+      <td style="text-align: right">bott<b>o</b>m</td><th><img src="al/eh_hi.gif" /></th><td>Ros<b>a</b>'s</td>
+   </tr><tr>
+      <th>er</th>
+      <td style="text-align: right">both<b>er</b></td><th><img src="al/er_hi.gif" /></th><td>groc<b>er</b>'s</td>
+   </tr><tr>
+      <th>ih</th>
+      <td style="text-align: right">bottl<b>e</b></td><th><img src="al/ih_hi.gif" /></th><td>ros<b>e</b>s</td>
+   </tr>
+</table>
+
+<p>Usually, the high vowels <b>i</b> and <b>u</b> reduce to the <b>ih</b> sound, and the others reduce to the <b>eh</b> sound unless followed by an <b>r</b>.  But when deciding which Shwa letter to use for a reduced vowel, don't pay too much attention to how it's written - just listen to it.  And not every unstressed vowel is reduced, either (when an unstressed vowel is <u>not</u> reduced, it's called <i>secondary stress</i>).
+
+<p>Here are the English <i>diphthongs</i>, short vowels with an <i>off-glide</i>:
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <colgroup span="6" style="width: 16%;">
+   <tr>
+      <th><img src="al/i_hi.gif" /><img src="al/y.gif" /></th><td><b>ea</b>gle</td>
+      <th></th><td></td>
+      <th><img src="al/i_hi.gif" /><img src="al/wr.gif" /></th><td><b>ear</b>ring</td>
+   </tr>
+   <tr>
+      <th><img src="al/e_hi.gif" /><img src="al/y.gif" /></th><td><b>a</b>corn</td>
+      <th></th><td></td>
+      <th><img src="al/e_hi.gif" /><img src="al/wr.gif" /></th><td><b>ar</b>row</td>
+   </tr>
+   <tr>
+      <th><img src="al/a_hi.gif" /><img src="al/y.gif" /></th><td><b>eye</b>ball</td>
+      <th><img src="al/a_hi.gif" /><img src="al/w.gif" /></th><td><b>ow</b>l</td>
+      <th><img src="al/a_hi.gif" /><img src="al/wr.gif" /></th><td><b>ar</b>my</td>
+   </tr>
+   <tr>
+      <th><img src="al/o_hi.gif" /><img src="al/y.gif" /></th><td><b>oy</b>ster</td>
+      <th><img src="al/o_hi.gif" /><img src="al/w.gif" /></th><td><b>o</b>cean</td>
+      <th><img src="al/o_hi.gif" /><img src="al/wr.gif" /></th><td><b>or</b>der&sup3;</td>
+   </tr>
+   <tr>
+      <th></th><td></td>
+      <th><img src="al/u_hi.gif" /><img src="al/w.gif" /></th><td>l<b>oo</b>ny</td>
+      <th><img src="al/u_hi.gif" /><img src="al/wr.gif" /></th><td>t<b>our</b>ist</td>
+   </tr>
+</table>
+
+<p>&sup3; Some Mainlanders pronounce <i>north</i> and <i>forth</i> differently; for them, the vowel in <i>north</i> is written with the <i>otter</i> short vowel.
+
+<h3>The Yawn</h3>
+
+<p>Words that end in the <b>a</b> sound, like <i>pa ma bra</i>, are written with a Yawn offglide, since short
+vowels can't end stressed syllables in English.
+
+<p align="center"><table class="whiteboard" style="width: 25%;">
+   <tr>
+      <th><img src="al/px.gif" /><img src="al/a_hi.gif" /><img src="al/wh.gif" /></th><td>p<b>a</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/wh.gif" /></th><td>Yawn (<b>wh</b>)</td>
+   </tr>
+</table>
+
+<p>Because of this, the name <i>Shwa</i> is spelled with a Yawn in English, although it's not usually spelled that way in other languages, and the standard file extension for Shwa text .&#xE1ED;&#xE10B;&#xE0C8; doesn't end in a Yawn.
+
+<p>Words that end in a stressed <b>aw</b> sound, like <i>paw law saw</i>, are also written with a Yawn offglide, but not when there's a final consonant, as in <i>pause</i>.
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <tr>
+      <th><img src="al/px.gif" /><img src="al/o_hi.gif" /><img src="al/wh.gif" /></th><td>paw</td>
+      <th><img src="al/px.gif" /><img src="al/o_hi.gif" /><img src="al/z.gif" /></th><td>pause</td>
+   </tr>
+</table>
+
+<p>Likewise, words that end in a stressed <b>er</b> sound, like <i>purr fur stir</i>, are written with a rhotic offglide, but not when there's a final consonant, as in <i>purse</i>.
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <tr>
+      <th><img src="al/px.gif" /><img src="al/er_hi.gif" /><img src="al/wr.gif" /></th><td>purr</td>
+      <th><img src="al/px.gif" /><img src="al/er_hi.gif" /><img src="al/s.gif" /></th><td>purse</td>
+   </tr>
+</table>
+
+<p>In Island dialects (and in Boston), the rhotic off-glide is pronounced as an opening offglide, and it's written with the Yawn in Shwa :
+
+<p align="center"><table class="whiteboard" style="width: 25%;">
+   <tr>
+      <th><img src="al/i_hi.gif" /><img src="al/wh.gif" /></th><td>b<b>eer</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/e_hi.gif" /><img src="al/wh.gif" /></th><td>b<b>ear</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/a_hi.gif" /><img src="al/wh.gif" /></th><td>b<b>ar</b></td>
+   </tr>
+   <tr>
+      <th><img src="al/o_hi.gif" /><img src="al/wh.gif" /></th><td>b<b>or</b>e</td>
+   </tr>
+   <tr>
+      <th><img src="al/u_hi.gif" /><img src="al/wh.gif" /></th><td>b<b>oor</b></td>
+   </tr>
+</table>
+
+<h3>Long Mark</h3>
+
+<p>When the off-glide matches the vowel (or close enough), we call it a <i>long vowel</i>, and we abbreviate it by
+writing just the stem, which is called the <b>Long mark</b>.
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <tr>
+      <th><img src="al/i_hi.gif" /><img src="al/xl_hi.gif" /></th><td><b>ea</b>gle</td>
+      <th><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /></th><td>l<b>oo</b>ny</td>
+   </tr><tr>
+      <th><img src="al/e_hi.gif" /><img src="al/xl_hi.gif" /></th><td><b>a</b>corn</td>
+      <th><img src="al/o_hi.gif" /><img src="al/xl_hi.gif" /></th><td><b>o</b>cean</td>
+   </tr><tr>
+      <th><img src="al/a_hi.gif" /><img src="al/xl_hi.gif" /></th><td>p<b>a</b></td>
+      <th><img src="al/er_hi.gif" /><img src="al/xl_hi.gif" /></th><td>p<b>urr</b></td>
+   </tr>
+</table>
+
+<h3>Other Diphthongs</h3>
+
+<p>English has one other diphthong: the <b>yu</b> vowel in <i>unit, beauty, few</i> and <i>mute</i>.  For example, the vowel in <i>fuel</i> is the same as the vowel in <i>fool</i>, except there's a semivowel <b>y</b> in front of it. When a semivowel occurs in <u>front</u> of the vowel, we call it an <i>on-glide</i>.
+
+<p align="center"><table class="whiteboard" style="width: 25%;">
+   <tr>
+      <th><img src="al/f.gif" /><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /><img src="al/ll.gif" /></th><td>fool</td>
+   </tr>
+   <tr>
+      <th><img src="al/f.gif" /><img src="al/y.gif" /><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /><img src="al/ll.gif" /></th><td>fuel</td>
+   </tr>
+   <tr>
+      <th><img src="al/y.gif" /><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /><img src="al/ll.gif" /></th><td>Yule</td>
+   </tr>
+</table>
+
+<p>When this diphthong follows <b>t d s z</b>, the <b>y</b> combines with them to form <b>ch j sh zh</b>.  It's as if the word <i>mature</i> were spelled <i>machure</i>, <i>module</i> were spelled <i>modjule</i>, <i>sure</i> were spelled <i>shure</i>, and <i>Asia</i> were spelled <i>Azha</i>.
+
+<p>English also has <i>triphthongs</i>, which are written with two off-glides. For some people, they contrast
+with two-syllable words.
+
+<p align="center"><table class="whiteboard" style="width: 50%;">
+   <tr>
+      <th><img src="al/h.gif" /><img src="al/a_hi.gif" /><img src="al/y.gif" /><img src="al/wr.gif" /></th><td>hire</td>
+      <th><img src="al/f.gif" /><img src="al/l.gif" /><img src="al/a_hi.gif" /><img src="al/w.gif" /><img src="al/wr.gif" /></th><td>flour</td>
+   </tr>
+   <tr>
+      <th><img src="al/h.gif" /><img src="al/a_hi.gif" /><img src="al/y.gif" /><img src="al/er.gif" /></th><td>higher</td>
+      <th><img src="al/f.gif" /><img src="al/l.gif" /><img src="al/a_hi.gif" /><img src="al/w.gif" /><img src="al/er.gif" /></th><td>flower</td>
+   </tr>
+</table>
+
+<a name="aspiration"><h3>Aspirated Consonants</h3></a>
+
+<p>As mentioned elsewhere, Shwa spells English at a more phonetic level than we now do, so you have to be a little more aware of how we actually pronounce our language.  Fortunately, there are only a couple of tricky parts to learn.  You already encountered reduced vowels; the other has to do with <b>aspirated</b> consonants.
+
+<p>The little hooks on the noses of the letters <b>p t k ch</b> in the first row above indicate that these sounds are aspirated in English : they're pronounced with a little puff of air at the end.  But we only aspirate those sounds at the beginning of words or the beginning of stressed syllables, <u>not</u> at the end of a syllable or after an <b>s</b>. In those latter cases (and at the beginning of a non-initial unstressed syllable, as in <i>sleepy</i>), we use the letters without the hook.
+
+<p align="center"><table class="whiteboard" style="width: 75%;">
+   <tr>
+      <th><img src="al/px.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>pan</td>
+      <th><img src="al/s.gif" /><img src="al/p.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>span</td>
+      <th><img src="al/s.gif" /><img src="al/ae_hi.gif" /><img src="al/p.gif" /></th><td>sap</td>
+   </tr>
+   <tr>
+      <th><img src="al/tx.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>tan</td>
+      <th><img src="al/s.gif" /><img src="al/t.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>Stan</td>
+      <th><img src="al/s.gif" /><img src="al/ae_hi.gif" /><img src="al/t.gif" /></th><td>sat</td>
+   </tr>
+   <tr>
+      <th><img src="al/kx.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>can</td>
+      <th><img src="al/s.gif" /><img src="al/k.gif" /><img src="al/ae_hi.gif" /><img src="al/n.gif" /></th><td>scan</td>
+      <th><img src="al/s.gif" /><img src="al/ae_hi.gif" /><img src="al/k.gif" /></th><td>sack</td>
+   </tr>
+</table>
+
+<p>Many English dialects also alter medial and final <b>t d</b>, substituting a glottal stop, an alveolar tap, or
+   an unreleased stop.  But we consider these allophones to be non-standard, and thus not usually transcribed.  However, we recognize that in standard Mainland dialects, <i>water</i> is pronounced with a <b>d</b>, and <i>petal</i> sounds like <i>pedal</i>.
+
+<a name="convert"><h3>Conversion Chart</h3></a>
+
+<p>Here's how to write the "English" (actually Roman) letters in Shwa :
+
+<p><table><tr><th>
+
+   <table class="cells whiteboard center">
+      <tr><th>English<br />(Roman)</th><th>as in</th><th>Shwa</th></tr>
+      <tr><th rowspan="9"><a name="a">A</a></th><td><b>a</b>pple</td>                       <td><img src="al/ae_hi.gif" /></td></tr>
+      <tr>                                      <td><b>a</b>lmond</td>                      <td><img src="al/a_hi.gif" /></td></tr>
+      <tr>                                      <td><b>a</b>ll</td>                         <td><img src="al/o_hi.gif" /></td></tr>
+      <tr>                                      <td><b>a</b>bout</td>                       <td><img src="al/eh_hi.gif" /></td></tr>
+      <tr>                                      <td><b>a</b>corn</td>                       <td><img src="al/e_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>p<b>a</b></td>                          <td><img src="al/a_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>p<b>aw</b></td>                         <td><img src="al/a_hi.gif" /><img src="al/wh.gif" /></td></tr>
+      <tr>                                      <td><b>ar</b>row</td>                       <td><img src="al/e_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr>                                      <td><b>ar</b>my</td>                        <td><img src="al/a_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="b">B</a></th><td><b>b</b>a<b>b</b>e</td>                 <td><img src="al/b.gif" /></td></tr>
+      <tr><th rowspan="3"><a name="c">C</a></th><td><b>c</b>ap</td>                         <td><img src="al/kx.gif" /></td></tr>
+      <tr>                                      <td><b>ch</b>in</td>                        <td><img src="al/chx.gif" /></td></tr>
+      <tr>                                      <td><b>in<b>ch</b></td>                     <td><img src="al/ch.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="d">D</a></th><td><b>d</b>u<b>d</b>e</td>                 <td><img src="al/d.gif" /></td></tr>
+      <tr><th rowspan="4"><a name="e">E</a></th><td><b>e</b>lbow</td>                       <td><img src="al/e_hi.gif" /></td></tr>
+      <tr>                                      <td><b>ear</b>ly</td>                       <td><img src="al/er_hi.gif" /></td></tr>
+      <tr>                                      <td><b>ea</b>gle</td>                       <td><img src="al/i_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td><b>eye</b>ball</td>                     <td><img src="al/a_hi.gif" /><img src="al/y.gif" /></td></tr>
+   </table>
+
+</th><th>
+
+   <table class="cells whiteboard center">
+      <tr><th>English<br />(Roman)</th><th>as in</th><th>Shwa</th></tr>
+      <tr><th rowspan="2"><a         >E</a></th><td><b>ear</b>ring</td>                     <td><img src="al/i_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr>                                      <td><b>er</b>rand</td>                      <td><img src="al/e_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="f">F</a></th><td><b>f</b>lu<b>ff</b></td>                <td><img src="al/f.gif" /></td></tr>
+      <tr><th rowspan="3"><a name="g">G</a></th><td><b>g</b>a<b>g</b></td>                  <td><img src="al/g.gif" /></td></tr>
+      <tr>                                      <td><b>Ge</b>or<b>ge</b></td>               <td><img src="al/dj.gif" /></td></tr>
+      <tr>                                      <td>bei<b>g</b>e</td>                       <td><img src="al/zh.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="h">H</a></th><td><b>h</b>igh</td>                        <td><img src="al/h.gif" /></td></tr>
+      <tr><th rowspan="4"><a name="i">I</a></th><td><b>i</b>tchy</td>                       <td><img src="al/i_hi.gif" /></td></tr>
+      <tr>                                      <td>mach<b>i</b>ne</td>                     <td><img src="al/i_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td><b>i</b>ce</td>                         <td><img src="al/a_hi.gif" /><img src="al/y.gif" /></td></tr>
+      <tr>                                      <td><b>ire</b></td>                         <td><img src="al/a_hi.gif" /><img src="al/y.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="j">J</a></th><td><b>j</b>u<b>dg</b>e</td>                <td><img src="al/dj.gif" /></td></tr>
+      <tr><th rowspan="2"><a name="k">K</a></th><td><b>k</b>iss</td>                        <td><img src="al/kx.gif" /></td></tr>
+      <tr>                                      <td>si<b>ck</b></td>                        <td><img src="al/k.gif" /></td></tr>
+      <tr><th rowspan="2"><a name="l">L</a></th><td><b>l</b>ow</td>                         <td><img src="al/l.gif" /></td></tr>
+      <tr>                                      <td>a<b>ll</b></td>                         <td><img src="al/ll.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="m">M</a></th><td><b>m</b>o<b>m</b></td>                  <td><img src="al/m.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="n">N</a></th><td><b>n</b>u<b>n</b></td>                  <td><img src="al/n.gif" /></td></tr>
+   </table>
+
+</th><th>
+
+   <table class="cells whiteboard center">
+      <tr><th>English<br />(Roman)</th><th>as in</th><th>Shwa</th></tr>
+      <tr><th rowspan="2"><a name="n">N</a></th><td>si<b>ng</b>i<b>ng</b></td>              <td><img src="al/ng.gif" /></td></tr>
+      <tr>                                      <td>si<b>nk</b>ing</td>                     <td><img src="al/ng.gif" /><img src="al/kx.gif" /></td></tr>
+      <tr><th rowspan="9"><a name="o">O</a></th><td>l<b>oo</b>k</td>                        <td><img src="al/u_hi.gif" /></td></tr>
+      <tr>                                      <td>l<b>o</b>ng</td>                        <td><img src="al/o_hi.gif" /></td></tr>
+      <tr>                                      <td>l<b>o</b>t</td>                         <td><img src="al/a_hi.gif" /></td></tr>
+      <tr>                                      <td>l<b>o</b>se</td>                        <td><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>l<b>o</b>ne</td>                        <td><img src="al/o_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>l<b>ou</b>d</td>                        <td><img src="al/a_hi.gif" /><img src="al/w.gif" /></td></tr>
+      <tr>                                      <td>t<b>our</b></td>                        <td><img src="al/u_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr>                                      <td>l<b>or</b>d</td>                        <td><img src="al/o_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr>                                      <td>h<b>our</b></td>                        <td><img src="al/a_hi.gif" /><img src="al/w.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="2"><a name="p">P</a></th><td><b>p</b>ill</td>                        <td><img src="al/px.gif" /></td></tr>
+      <tr>                                      <td>li<b>p</b></td>                         <td><img src="al/p.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="q">Q</a></th><td><b>qu</b>een</td>                       <td><img src="al/kx.gif" /><img src="al/w.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="r">R</a></th><td><b>r</b>oa<b>r</b></td>                 <td><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="3"><a name="s">S</a></th><td><b>s</b>au<b>c</b>e</td>                <td><img src="al/s.gif" /></td></tr>
+      <tr>                                      <td><b>sh</b>oe</td>                        <td><img src="al/sh.gif" /></td></tr>
+      <tr>                                      <td>a<b>s</b></td>                          <td><img src="al/z.gif" /></td></tr>
+   </table>
+
+</th><th>
+
+   <table class="cells whiteboard center">
+      <tr><th>English<br />(Roman)</th><th>as in</th><th>Shwa</th></tr>
+      <tr><th rowspan="1"><a name="r">S</a></th><td>A<b>si</b>a</td>                        <td><img src="al/zh.gif" /></td></tr>
+      <tr><th rowspan="4"><a name="t">T</a></th><td><b>t</b>ale</td>                        <td><img src="al/tx.gif" /></td></tr>
+      <tr>                                      <td>la<b>t</b>e</td>                        <td><img src="al/t.gif" /></td></tr>
+      <tr>                                      <td><b>th</b>ought</td>                     <td><img src="al/th.gif" /></td></tr>
+      <tr>                                      <td><b>th</b>ough</td>                      <td><img src="al/dh.gif" /></td></tr>
+      <tr><th rowspan="5"><a name="u">U</a></th><td>r<b>u</b>t</td>                         <td><img src="al/eh_hi.gif" /></td></tr>
+      <tr>                                      <td>p<b>u</b>t</td>                         <td><img src="al/u_hi.gif" /></td></tr>
+      <tr>                                      <td>r<b>u</b>ne</td>                        <td><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>c<b>u</b>te</td>                        <td><img src="al/y.gif" /><img src="al/u_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>p<b>ure</b></td>                        <td><img src="al/y.gif" /><img src="al/u_hi.gif" /><img src="al/wr.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="v">V</a></th><td><b>v</b>al<b>v</b>e</td>                <td><img src="al/v.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="w">W</a></th><td><b>w</b>e</td>                          <td><img src="al/w.gif" /></td></tr>
+      <tr><th rowspan="1"><a name="x">X</a></th><td>a<b>x</b></td>                          <td><img src="al/k.gif" /><img src="al/s.gif" /></td></tr>
+      <tr><th rowspan="3"><a name="y">Y</a></th><td><b>y</b>ou</td>                         <td><img src="al/y.gif" /></td></tr>
+      <tr>                                      <td>an<b>y</b></td>                         <td><img src="al/i_hi.gif" /><img src="al/xl_hi.gif" /></td></tr>
+      <tr>                                      <td>m<b>y</b></td>                          <td><img src="al/a_hi.gif" /><img src="al/y.gif" /></td></tr>
+      <tr><th rowspan="2"><a name="z">Z</a></th><td><b>z</b>oo<b>s</b></td>                 <td><img src="al/z.gif" /></td></tr>
+      <tr>                                      <td>a<b>dz</b>e</td>                        <td><img src="al/dz.gif" /></td></tr>
+   </table>
+
+</th></tr></table>
+
+<p>For those of you who are familiar with the (excellent) <a href="http://colorvowelchart.org/" style="color: blue; text-decoration: underline;">color vowel system</a>, here is a chart of the vowel colors:
+
+<p align="center"><img src="il/colorvowels.png"  style="width: 960px;" />
+
+<p>Shwa spells English at a more phonetic level than we now do, so you might want to read aloud at first.  The
+advantages are that it's much easier to learn, that foreigners will pronounce English more correctly, and that you'll pronounce <u>their</u> languages more correctly as you read them in Shwa.
+
+<h3>Samples</h3>
+<a name="samples"></a>
+
+<p>Now that you've learned how it works, why don't you try reading some sentences?
+
+<p><table class="sample">
+   <tr>
+      <td class="taunus">&#xE1d0;&#xE0BC;&#xE070;&#xE10A;&#xE0E0;&#xE080;&#xE180;&#xE070;&#xE130;&#xE0B4;&#xE070;&#xE10D;&#xE090;&#xE1B8;&#xE070;&#xE0B4;&#xE1DC;&#xE070;&#xE132;&#xE090;&#xE080;&#xE1D3;&#xE180;&#xE070;&#xE10B;&#xE0B4;&#xE1E0;&#xE070;&#xE188;&#xE0D8;&#xE180;&#xE070;&#xE0B4;&#xE150;&#xE130;&#xE090;&#xE150;&#xE1ED;&#xE0B4;&#xE150;&#xE1DC;&#xE07E;</td>
+   </tr><tr><td class="veil">
+      The road to Hell is paved with good intentions
+   </td></tr>
+</table>
+
+<p><table class="sample">
+   <tr><td class="dushan">
+      &#xE150;&#xE0E0;&#xE080;&#xE070;&#xE188;&#xE0D8;&#xE180;&#xE070;&#xE180;&#xE088;&#xE080;&#xE070;&#xE188;&#xE0E0;&#xE080;&#xE1DC;&#xE070;&#xE0BC;&#xE150;&#xE132;&#xE0B8;&#xE150;&#xE0B4;&#xE1ED;&#xE140;&#xE072;
+   </td></tr>
+   <tr><td class="veil">
+      No good deed goes unpunished
+   </td></tr>
+</table>
+
+<p>And here's a limerick:
+
+<p><table class="sample">
+   <tr><td class="taunus">
+      &#xE1D0;&#xE094;&#xE10A;&#xE070;&#xE10B;&#xE0B8;&#xE150;&#xE1EC;&#xE070;&#xE10B;&#xE0BC;&#xE1DC;&#xE070;&#xE0BC;&#xE070;&#xE188;&#xE0D0;&#xE1B8;&#xE070;&#xE150;&#xE094;&#xE084;&#xE152;&#xE180;&#xE070;&#xE0CC;&#xE101;&#xE10A;&#xE088;&#xE080;&#xE150;&#xE07B;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE10D;&#xE0DC;&#xE084;&#xE070;&#xE1B0;&#xE088;&#xE1D3;&#xE180;&#xE070;&#xE0CC;&#xE150;&#xE070;&#xE180;&#xE08C;&#xE1EC;&#xE140;&#xE088;&#xE1B8;&#xE180;&#xE070;&#xE138;&#xE094;&#xE10A;&#xE0BC;&#xE1EC;&#xE088;&#xE080;&#xE150;&#xE076;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &nbsp;&nbsp;&nbsp;&#xE182;&#xE0BC;&#xE140;&#xE070;&#xE1ED;&#xE08C;&#xE084;&#xE070;&#xE1EC;&#xE140;&#xE0C8;&#xE10A;&#xE140;&#xE0B4;&#xE180;&#xE070;&#xE0BC;&#xE182;&#xE1DC;&#xE0E0;&#xE10A;&#xE182;&#xE0B4;&#xE150;&#xE072;&#xE070; 
+   </td></tr><tr><td class="taunus">
+      &nbsp;&nbsp;&nbsp;&#xE0BC;&#xE070;&#xE150;&#xE0D8;&#xE080;&#xE070;&#xE10D;&#xE0CC;&#xE101;&#xE180;&#xE10A;&#xE0BC;&#xE138;&#xE0C8;&#xE10A;&#xE182;&#xE0BC;&#xE150;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE0A4;&#xE150;&#xE180;&#xE070;&#xE1EC;&#xE088;&#xE150;&#xE1EC;&#xE070;&#xE1D0;&#xE094;&#xE150;&#xE070;&#xE10D;&#xE0A4;&#xE1DC;&#xE070;&#xE150;&#xE090;&#xE1D3;&#xE0D4;&#xE070;&#xE182;&#xE0B4;&#xE150;&#xE1DC;&#xE088;&#xE080;&#xE150;&#xE07B;
+   </td></tr>
+</table>
+
+<p>And a couple of famous quotes.
+
+<p><table class="sample">
+   <tr><td class="taunus">
+      &#xE150;&#xE0C8;&#xE10B;&#xE070;&#xE0B4;&#xE1DC;&#xE070;&#xE1D0;&#xE0BC;&#xE070;&#xE130;&#xE0C8;&#xE101;&#xE152;&#xE072;&#xE070;&#xE1E3;&#xE0D4;&#xE070;&#xE0E0;&#xE1B8;&#xE070;&#xE188;&#xE0D8;&#xE180;&#xE070;&#xE152;&#xE090;&#xE150;&#xE072;&#xE070;&#xE130;&#xE0B4;&#xE070;&#xE138;&#xE0B8;&#xE152;&#xE070;&#xE130;&#xE0B4;&#xE070;&#xE1D0;&#xE0BC;&#xE070;&#xE090;&#xE080;&#xE180;&#xE072;&#xE070;&#xE0BC;&#xE1D3;&#xE070;&#xE1D0;&#xE094;&#xE10A;&#xE070;&#xE138;&#xE0B8;&#xE150;&#xE140;&#xE10A;&#xE08C;&#xE084;&#xE073;&#xE070;
+   </td></tr>
+</table>
+
+<p><table class="sample">
+   <tr><td class="taunus">
+      &#xE1E3;&#xE0E0;&#xE10A;&#xE070;&#xE1EC;&#xE148;&#xE0E0;&#xE10A;&#xE070;&#xE0A4;&#xE150;&#xE180;&#xE070;&#xE1EC;&#xE090;&#xE1D3;&#xE0B4;&#xE150;&#xE070;&#xE101;&#xE088;&#xE10A;&#xE1DC;&#xE070;&#xE0BC;&#xE188;&#xE0E0;&#xE080;&#xE078;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE0C8;&#xE10B;&#xE10A;&#xE070;&#xE1E3;&#xE0C8;&#xE1D0;&#xE0D4;&#xE1DC;&#xE070;&#xE182;&#xE10A;&#xE0E4;&#xE140;&#xE070;      &#xE1E3;&#xE0E0;&#xE10A;&#xE1E0;&#xE070;&#xE0CC;&#xE150;&#xE070;&#xE1D0;&#xE088;&#xE1EC;&#xE070;&#xE138;&#xE0C8;&#xE150;&#xE140;&#xE0B4;&#xE150;&#xE094;&#xE150;&#xE140;&#xE07D;&#xE070;&#xE0BC;&#xE070;&#xE150;&#xE0D8;&#xE10B;&#xE070;&#xE150;&#xE090;&#xE080;&#xE1ED;&#xE0B4;&#xE150;&#xE07B;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE138;&#xE0BC;&#xE150;&#xE1EC;&#xE088;&#xE080;&#xE1D3;&#xE180;&#xE070;&#xE0B4;&#xE150;&#xE070;&#xE1B0;&#xE088;&#xE182;&#xE0D4;&#xE140;&#xE08C;&#xE084;&#xE078;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE0A4;&#xE150;&#xE180;&#xE070;&#xE180;&#xE090;&#xE180;&#xE0B4;&#xE148;&#xE094;&#xE084;&#xE140;&#xE0B4;&#xE180;&#xE070;&#xE130;&#xE0B4;&#xE070;&#xE1D0;&#xE0BC;&#xE070;&#xE132;&#xE10A;&#xE0CC;&#xE142;&#xE0BC;&#xE1DC;&#xE088;&#xE1ED;&#xE0B4;&#xE150;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE1D0;&#xE0A4;&#xE140;&#xE070;&#xE0E0;&#xE1B8;&#xE07C;&#xE070;&#xE152;&#xE090;&#xE150;&#xE07D;&#xE070;&#xE0CC;&#xE10A;&#xE070;&#xE138;&#xE10A;&#xE08C;&#xE101;&#xE090;&#xE080;&#xE140;&#xE0B4;&#xE180;&#xE070;&#xE088;&#xE080;&#xE148;&#xE10B;&#xE0B4;&#xE1B8;&#xE072;
+   </td></tr>
+</table>
+
+<p>Finally, a complete poem:
+
+<p><table class="sample">
+   <tr><td class="taunus">
+      &#xE10D;&#xE08C;&#xE084;&#xE070;&#xE130;&#xE090;&#xE1B8;&#xE1DC;&#xE073;&#xE070;&#xE10D;&#xE0D4;&#xE078;&#xE070;&#xE1D0;&#xE0A4;&#xE140;&#xE070;&#xE1D0;&#xE08C;&#xE084;&#xE070;&#xE0D0;&#xE1E0;&#xE070;&#xE0B4;&#xE1DC;&#xE070;&#xE1E3;&#xE1B0;&#xE0A0;&#xE140;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE10D;&#xE08C;&#xE084;&#xE070;&#xE150;&#xE0E0;&#xE080;&#xE1DC;&#xE070;&#xE1D0;&#xE0BC;&#xE070;&#xE1E3;&#xE0A0;&#xE148;&#xE140;&#xE1EC;&#xE073;&#xE070;&#xE0A4;&#xE150;&#xE180;&#xE070;&#xE1D0;&#xE0A0;&#xE140;&#xE070;&#xE0B4;&#xE1DC;&#xE070;&#xE1D0;&#xE0A0;&#xE140;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE0B4;&#xE150;&#xE070;&#xE0E4;&#xE1B8;&#xE140;&#xE0D4;&#xE138;&#xE090;&#xE080;&#xE1ED;&#xE0B4;&#xE150;&#xE1DC;&#xE070;&#xE1E3;&#xE088;&#xE10A;&#xE1EC;&#xE070;&#xE0A4;&#xE150;&#xE180;&#xE070;&#xE1B0;&#xE0E0;&#xE158;&#xE077;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE1ED;&#xE08C;&#xE084;&#xE070;&#xE130;&#xE10A;&#xE0C8;&#xE101;&#xE1DC;&#xE070;&#xE10D;&#xE0D4;&#xE070;&#xE182;&#xE090;&#xE1EC;&#xE140;&#xE073;&#xE070;&#xE130;&#xE0BC;&#xE070;&#xE132;&#xE10A;&#xE0D8;&#xE080;&#xE1D3;&#xE070;&#xE10D;&#xE0B4;&#xE152;&#xE070;&#xE10A;&#xE0E0;&#xE158;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE182;&#xE0BC;&#xE140;&#xE070;&#xE10D;&#xE088;&#xE080;&#xE070;&#xE10D;&#xE0A4;&#xE1DC;&#xE070;&#xE1B0;&#xE0D0;&#xE150;&#xE180;&#xE070;&#xE130;&#xE0BC;&#xE070;&#xE0C8;&#xE10A;&#xE188;&#xE101;&#xE0DC;&#xE084;&#xE070;&#xE10B;&#xE090;&#xE1B8;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE10D;&#xE08C;&#xE084;&#xE070;&#xE138;&#xE0E0;&#xE1B8;&#xE1DC;&#xE070;&#xE10D;&#xE0D4;&#xE070;&#xE0C8;&#xE10A;&#xE188;&#xE101;&#xE0DC;&#xE084;&#xE152;&#xE0B4;&#xE150;&#xE140;&#xE1EC;&#xE070;&#xE0BC;&#xE150;&#xE1EC;&#xE0C8;&#xE10B;&#xE150;&#xE180;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE0A4;&#xE150;&#xE180;&#xE070;&#xE0E0;&#xE1E3;&#xE140;&#xE0B4;&#xE150;&#xE070;&#xE0A0;&#xE1EC;&#xE148;&#xE1EC;&#xE070;&#xE10D;&#xE0D4;&#xE070;&#xE150;&#xE0C8;&#xE140;&#xE070;&#xE130;&#xE0BC;&#xE070;&#xE101;&#xE090;&#xE1B8;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE1ED;&#xE08C;&#xE084;&#xE070;&#xE138;&#xE0A0;&#xE150;&#xE0B4;&#xE140;&#xE070;&#xE10B;&#xE08C;&#xE150;&#xE07D;&#xE070;&#xE10D;&#xE08C;&#xE084;&#xE070;&#xE1EC;&#xE140;&#xE0A0;&#xE150;&#xE180;&#xE1DC;&#xE070;&#xE10D;&#xE0B4;&#xE1DC;&#xE070;&#xE188;&#xE10A;&#xE0C8;&#xE10B;&#xE150;&#xE180;&#xE072;&#xE070;
+   </td></tr><tr><td class="taunus">
+      &#xE1D0;&#xE0BC;&#xE070;&#xE132;&#xE1B0;&#xE0A0;&#xE150;&#xE0B4;&#xE140;&#xE070;&#xE188;&#xE0E0;&#xE080;&#xE1DC;&#xE070;&#xE0C8;&#xE150;&#xE070;&#xE182;&#xE088;&#xE101;&#xE08C;&#xE158;&#xE070;&#xE10A;&#xE0C8;&#xE10B;&#xE150;&#xE180;&#xE072;
+   </tr>
+</table>
+
+<hr />
+<p><table>
+   <tr>
+      <td align="left" width="30%"><a href="index.htm">&copy; 2002-2015 Shwa</a></td>
+      <td align="center" width="40%"><a href="mailto:shwa@shwa.org">shwa@shwa.org</a></td>
+      <td align="right" width="30%"><a href="contents.htm">11apr15</a></td>
+   </td></tr>
+</table>
+
+</center></body>
+
+</html>

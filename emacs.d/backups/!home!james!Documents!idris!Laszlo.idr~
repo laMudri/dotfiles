@@ -1,0 +1,4 @@
+module Laszlo
+
+Value : (Num a) => a
+Value = Integer

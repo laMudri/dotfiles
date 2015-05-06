@@ -1,0 +1,33 @@
+module callcc
+  %default total
+  -- Naughty! Will not prove.
+  callcc : ((a -> b) -> a) -> a
+  callcc = believe_me
+
+  swapEither : Either a b -> Either b a
+  swapEither (Left x) = Right x
+  swapEither (Right x) = Left x
+
+  strengthenLeft : (Either a b -> c) -> a -> c
+  strengthenLeft f x = f (Left x)
+
+  weakenRight : (a -> b) -> a -> Either b c
+  weakenRight f x = Left (f x)
+
+  excludedMiddleLemma : (Either a (Not a) -> Void) -> Either a (Not a)
+  excludedMiddleLemma = swapEither . weakenRight strengthenLeft
+
+  excludedMiddle : Either a (Not a)
+  excludedMiddle = callcc excludedMiddleLemma
+
+  notNotImpliesIdLemma : Either (Not (Not a)) (Not (Not (Not a)))
+  notNotImpliesIdLemma {a} = excludedMiddle {a=Not (Not a)}
+
+  notNotImpliesIdLemma0 : Either (Not a) (Not (Not a))
+  notNotImpliesIdLemma0 {a} = excludedMiddle {a=Not a}
+
+  tripleNegationElimination : Not (Not (Not a)) -> Not a
+  tripleNegationElimination {a} x = let y = excludedMiddle {a=Not a} in ?tripleNegationElimination_rhs
+
+  notNotImpliesId : ((a -> Void) -> Void) -> a
+  notNotImpliesId {a} x = let f = notNotImpliesIdLemma0 {a=a} in ?notNotImpliesId_rhs

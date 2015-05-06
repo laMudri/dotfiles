@@ -1,0 +1,11 @@
+module Scratch
+import Data.So
+import Data.Fin
+%default total
+-- Nothing saved here
+
+record Foo : Type -> Type where
+  MkFoo : (bar : Nat) -> Foo a
+
+fooFin : Foo (Fin n)
+fooFin {n} = MkFoo n

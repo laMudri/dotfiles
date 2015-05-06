@@ -141,3 +141,8 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 
 eval `dircolors ~/Documents/misc/dircolors-solarized/dircolors.ansi-universal`
+
+PERL_MB_OPT="--install_base \"/home/james/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/james/perl5"; export PERL_MM_OPT;
+
+unalias rm
