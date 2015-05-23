@@ -21,9 +21,9 @@ filetype off
 
 set rtp+=~/.vim/Vundle.vim
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'ardagnir/eventloop.vim'
 Plugin 'eagletmt/ghcmod-vim'
@@ -43,7 +43,7 @@ Plugin 'townk/vim-autoclose'
 Plugin 'https://gist.github.com/3762227.git'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'jgdavey/tslime.vim'
-Plugin 'dag/vim2hs'
+"Plugin 'dag/vim2hs'
 Plugin 'godlygeek/tabular'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -54,7 +54,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
 Plugin 'superbrothers/vim-vimperator'
 
-"call vundle#end()
+call vundle#end()
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
@@ -205,3 +205,5 @@ nnoremap <C-8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " surround.vim
 xmap s   <Plug>VSurround
 xmap gs  <Plug>VgSurround
+
+let g:ycm_semantic_triggers = {'haskell': ['.']}

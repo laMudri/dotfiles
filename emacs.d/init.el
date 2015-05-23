@@ -129,6 +129,9 @@
 
 (unless (display-graphic-p)
   (require 'evil-terminal-cursor-changer))
+(setq evil-visual-state-cursor 'box)
+(setq evil-insert-state-cursor 'bar)
+(setq evil-emacs-state-cursor 'hbar)
 
 ;(setq initial-frame-alist '(
 ;  (font . "Monospace-9")
@@ -191,7 +194,10 @@
 
 (require 'bk-pentadactyl-mode)
 
-;(require 'haskell-mode)
+(require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 ;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
 
 (add-to-list 'completion-ignored-extensions '".ibc")
@@ -259,9 +265,9 @@
  '(global-whitespace-mode t)
  '(haskell-compile-command
    "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
- '(haskell-mode-hook
-   (quote
-    (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
+ ;'(haskell-mode-hook
+ ;  (quote
+ ;   (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
  '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
  '(idris-interpreter-flags (quote ("-p" "contrib")))
  '(idris-metavariable-list-show-expanded nil)
