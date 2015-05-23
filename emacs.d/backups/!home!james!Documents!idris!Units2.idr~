@@ -6,7 +6,15 @@ import Data.ZZ
 Dimension : Type
 Dimension = Vect 7 ZZ
 
-data Quantity : Dimension -> Type -> Type
-  MkQuantity : (u : Dimension) -> (a : Type) -> Quantity u a
+instance Semigroup Dimension where
+  (<+>) = zipWith (+)
+--instance VerifiedSemigroup Dimension where {}
+
+data Quantity : Dimension -> Type -> Type where
+  MkQuantity : (u : Dimension) -> a -> Quantity u a
 
 (+) : Num a => Quantity u a -> Quantity u a -> Quantity u a
+(+) (MkQuantity u x) (MkQuantity u y) = MkQuantity u (x + y)
+
+(*) : Num a => Quantity u a -> Quantity v a -> Quantity (u <+> v) a
+(*) (MkQuantity u x) (MkQuantity v y) = MkQuantity (u <+> v) (x * y)

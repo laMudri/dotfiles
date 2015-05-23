@@ -110,10 +110,16 @@ zle -N zle-line-init
 # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 
+zmodload zsh/terminfo
+
 # vi bindings
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^r' redo
 bindkey '^h' backward-delete-char
+bindkey "${terminfo[kcuu1]}" history-substring-search-up
+bindkey '^[[A' history-substring-search-up
+bindkey "${terminfo[kcud1]}" history-substring-search-down
+bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'h' history-substring-search-up
 bindkey -M vicmd 'k' history-substring-search-down
 bindkey -M vicmd 'j' vi-backward-char
@@ -123,6 +129,8 @@ bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 bindkey "${terminfo[kich1]}" overwrite-mode
 bindkey "${terminfo[kdch1]}" delete-char
+
+setopt hist_ignore_dups
 
 # vi mode indicator
 precmd() {

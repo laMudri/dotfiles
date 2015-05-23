@@ -1,0 +1,26 @@
+module PowApply
+import Data.Vect
+import Data.HVect
+%default total
+
+powApply : Nat -> (a -> a) -> a -> a
+powApply Z f x = x
+powApply (S k) f x = f (powApply k f x)
+
+powApplyFoldr : Nat -> (a -> a) -> a -> a
+powApplyFoldr k f = with List foldr (.) id (replicate k f)
+
+--lemma0 : (g,f,xs,x : _) -> List.foldrImpl g id f xs x = f (List.foldrImpl g id id xs x)
+
+powApplyFoldrCorrect : (k,f,x : _) -> powApplyFoldr k f x = powApply k f x
+powApplyFoldrCorrect Z f x = Refl
+powApplyFoldrCorrect (S k) f x = let ih = powApplyFoldrCorrect k f x in ?powApplyFoldrCorrect_rhs_2
+
+fTypes : Vect (S n) Type -> Vect n Type
+fTypes (x :: []) = []
+fTypes (x :: (y :: xs)) = (y -> x) :: fTypes (y :: xs)
+
+powApplyH : {ts : Vect (S n) Type} -> (fs : HVect (fTypes ts)) ->
+            last ts -> head ts
+powApplyH {ts = [_]} [] x = x
+powApplyH {ts = (t :: s :: ts)} (f :: fs) x = f ?rhs --(powApplyH fs x)
