@@ -1,0 +1,5 @@
+module CRT
+
+%default total
+import Data.Fin
+

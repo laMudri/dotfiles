@@ -61,7 +61,7 @@ antigen apply
 
 # User configuration
 
-export PATH="/home/james/bin:/home/james/bin:/home/james/.cabal/bin:/home/james/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+#export PATH="/home/james/bin:/home/james/bin:/home/james/.cabal/bin:/home/james/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export EDITOR=emacsclient
@@ -93,12 +93,12 @@ export KEYTIMEOUT=1
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias oldvim="vim"
-alias vim="vimx"
+#alias oldvim="vim"
+#alias vim="vimx"
 alias hoogle="nocorrect hoogle"
 
 # Setup zsh-autosuggestions
-source /home/home/james/.zsh-autosuggestions/autosuggestions.zsh
+source /home/james/.zsh-autosuggestions/autosuggestions.zsh
 
 # Enable autosuggestions automatically
 zle-line-init() {

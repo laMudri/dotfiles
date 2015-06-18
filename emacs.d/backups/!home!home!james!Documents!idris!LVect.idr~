@@ -1,0 +1,15 @@
+module LVect
+
+%default total
+
+data LVect : Maybe Nat -> Type -> Type where
+  Nil : LVect (Just Z) a
+  (::) : a -> LVect n a -> LVect (map S n) a
+  Repeat : LVect (Just m) a -> (LVect (Just m) a -> LVect n a) ->
+           LVect Nothing a
+%name LVect xs,ys,zs
+
+append : LVect m a -> LVect n a -> LVect [| m + n |] a
+append [] ys = ?append_rhs_4
+append (x :: xs) ys = ?append_rhs_2
+append (Repeat xs f) ys = ?append_rhs_3

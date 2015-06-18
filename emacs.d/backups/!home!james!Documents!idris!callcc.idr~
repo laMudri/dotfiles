@@ -33,4 +33,6 @@ tripleNegationElimination : Not (Not (Not a)) -> Not a
 tripleNegationElimination f x = f (doubleNegationIntroduction x)
 
 notNotImpliesId : ((a -> Void) -> Void) -> a
-notNotImpliesId {a} x = let f = notNotImpliesIdLemma0 {a=a} in ?notNotImpliesId_rhs
+notNotImpliesId {a} x with (notNotImpliesIdLemma0 {a=Not a})
+  notNotImpliesId {a = a} x | (Left y) = ?notNotImpliesId_rhs_1
+  notNotImpliesId {a = a} x | (Right y) = void (y x)
