@@ -96,14 +96,42 @@
 (global-evil-surround-mode 1)
 (require 'evil-exchange)
 (setq evil-exchange-key (kbd "zx"))
-(setq evil-exchange-cancel-key (kbd "zx"))
+(setq evil-exchange-cancel-key (kbd "zX"))
 (evil-exchange-install)
+(require 'evil-indent-textobject)
+(global-evil-visualstar-mode)
+(global-evil-tabs-mode t)
+
+(require 'evil-args)
+(define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+(define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+(define-key evil-normal-state-map (kbd "gj") 'evil-forward-arg)
+(define-key evil-motion-state-map (kbd "gj") 'evil-forward-arg)
+(define-key evil-normal-state-map (kbd "gl") 'evil-backward-arg)
+(define-key evil-motion-state-map (kbd "gl") 'evil-backward-arg)
+(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
+(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
+
+(require 'smartparens)
+(smartparens-global-mode)
+(require 'smartparens-config)
+;(sp-pair "(" ")" :wrap "C-s )")
+;(sp-pair "[" "]" :wrap "C-s ]")
+;(sp-pair "{" "}" :wrap "C-s }")
+;(sp-pair "<" ">" :wrap "C-s >")
+;(sp-pair "\"" "\"" :wrap "C-s \"")
+;(sp-pair "'" "'" :wrap "C-s '")
+(require 'evil-smartparens)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
 (require 'ace-jump-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
 
 (unless (display-graphic-p)
   (require 'evil-terminal-cursor-changer))
+(setq evil-visual-state-cursor 'box)
+(setq evil-insert-state-cursor 'bar)
+(setq evil-emacs-state-cursor 'hbar)
 
 ;(setq initial-frame-alist '(
 ;  (font . "Monospace-9")
@@ -118,15 +146,6 @@
 ;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
 (add-hook 'LaTeX-mode-hook (lambda () (whitespace-mode nil)))
-
-(smartparens-global-mode)
-(require 'smartparens-config)
-;(sp-pair "(" ")" :wrap "C-s )")
-;(sp-pair "[" "]" :wrap "C-s ]")
-;(sp-pair "{" "}" :wrap "C-s }")
-;(sp-pair "<" ">" :wrap "C-s >")
-;(sp-pair "\"" "\"" :wrap "C-s \"")
-;(sp-pair "'" "'" :wrap "C-s '")
 
 (autoload
   'ace-jump-mode
@@ -175,7 +194,10 @@
 
 (require 'bk-pentadactyl-mode)
 
-;(require 'haskell-mode)
+(require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 ;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
 
 (add-to-list 'completion-ignored-extensions '".ibc")
@@ -185,13 +207,19 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-(let ((font "Source Code Pro LU 9"))
-  (set-default-font font nil t)
-  (set-fontset-font t '(8500 . 8800) font))
+(let ((myFont (concat "-adobe-Source Code Pro"
+                      "-normal-normal-normal-*-11-*-*-*-m-0-iso10646-1")))
+  (set-default-font myFont nil t)
+  (set-fontset-font t '(8500 . 8800) myFont)
+  (setq default-frame-alist '((font . myFont))))
+(set-fontset-font t '(#xE000 . #xE1FF)
+                  '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
-(require 'powerline)
-(require 'powerline-evil)
-(powerline-evil-vim-color-theme)
+;(require 'powerline)
+;(require 'powerline-evil)
+;(powerline-evil-vim-color-theme)
+
+;(sml/setup)
 
 (require 'zlc)
 (zlc-mode t)
@@ -202,11 +230,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(AmS-TeX-mode-hook (quote (whitespace-mode)))
- '(LaTeX-mode-hook (quote (preview-mode-setup)))
+ '(LaTeX-mode-hook (quote (preview-mode-setup)) t)
  '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(evil-args-delimiters (quote ("," ";" " ")))
  '(evil-digraphs-table-user
    (quote
     (((108 101)
@@ -236,14 +265,17 @@
  '(global-whitespace-mode t)
  '(haskell-compile-command
    "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
- '(haskell-mode-hook
-   (quote
-    (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
+ ;'(haskell-mode-hook
+ ;  (quote
+ ;   (turn-on-haskell-decl-scan turn-on-haskell-doc turn-on-haskell-indentation)))
  '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
+ '(idris-interpreter-flags (quote ("-p" "contrib")))
+ '(idris-metavariable-list-show-expanded nil)
  '(idris-mode-hook
    (quote
     (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
  '(idris-pretty-printer-width 80)
+ '(idris-warnings-printing (quote (warnings-tree)))
  '(inhibit-startup-screen t)
  '(latex-run-command "pdflatex")
  '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
@@ -256,3 +288,37 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+;;; Maps C-c C-<key> to \<key in evil-normal-state
+(eval-after-load 'agda2
+  '(progn
+     (evil-define-key 'normal agda2-mode-map
+       "\\p" 'agda2-auto
+       "\\k" 'agda2-previous-goal
+       "\\m" 'agda2-next-goal
+       "\\c" 'agda2-make-case
+       "\\d" 'agda2-infer-type-maybe-toplevel
+       "\\e" 'agda2-show-context
+       "\\r" 'agda2-load
+       "\\n" 'agda2-compute-normalised-maybe-toplevel
+       "\\o" 'agda2-module-contents-maybe-toplevel
+       "\\f" 'agda2-refine
+       "\\s" 'agda2-solveAll
+       "\\t" 'agda2-goal-type
+       "\\ " 'agda2-give
+       "\\," 'agda2-goal-and-context
+       "\\." 'agda2-goal-and-context-and-inferred
+       "\\=" 'agda2-show-constraints
+       "\\?" 'agda2-show-goals
+       "\\xc" 'agda2-compile
+       "\\xd" 'agda2-remove-annotations
+       "\\xh" 'agda2-display-implicit-arguments
+       "\\xl" 'agda2-load
+       "\\xq" 'agda2-quit
+       "\\xr" 'agda2-restart)))
+
+(load-file "~/Downloads/cubicaltt/cubicaltt.el")
+(add-to-list 'auto-mode-alist '("\\.ctt\\'" . ctt-mode))

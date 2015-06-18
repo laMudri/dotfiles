@@ -5,7 +5,7 @@
 " It is recommended to make changes after sourcing debian.vim since it alters
 " the value of the 'compatible' option.
 
-set shell=/bin/bash
+"set shell=/bin/bash
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
@@ -207,3 +207,6 @@ xmap s   <Plug>VSurround
 xmap gs  <Plug>VgSurround
 
 let g:ycm_semantic_triggers = {'haskell': ['.']}
+
+" Fixes YCM/vim-autoclose issue
+let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
