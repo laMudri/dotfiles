@@ -15,6 +15,12 @@ runtime! debian.vim
 let mapleader='\'
 let maplocalleader='\'
 
+" Fix backspace
+set backspace=eol,indent,start
+
+" Show line/column numbers
+set ruler
+
 " Vundle
 set nocompatible
 filetype off
@@ -47,12 +53,13 @@ Plugin 'jgdavey/tslime.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'laMudri/nextlast'
 Plugin 'dogrover/vim-pentadactyl'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
 Plugin 'superbrothers/vim-vimperator'
+Plugin 'Shougo/neocomplete'
 
 call vundle#end()
 

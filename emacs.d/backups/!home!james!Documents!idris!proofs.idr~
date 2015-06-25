@@ -1,165 +1,250 @@
 module proofs
-  import Data.ZZ
-  import Data.So
-  import Data.Vect
-  %access public
-  %default total
+import Data.ZZ
+import Data.So
+import Data.Vect
+import Control.Isomorphism
+import Syntax.PreorderReasoning
+%access public
+%default total
 
-  succGreater : So (S n > n)
-  succGreater = ?succGreater_rhs
+myMax : Ord a => a -> a -> a
+myMax x y with (choose (x <= y))
+  myMax x y | (Left _) = y
+  myMax x y | (Right _) = x
 
-  myMax : Ord a => a -> a -> a
-  myMax x y with (choose (x <= y))
-    myMax x y | (Left _) = y
-    myMax x y | (Right _) = x
+myMaxReturnsArgument : Ord a => (x : a) -> (y : a) ->
+                                Either (x = myMax x y) (y = myMax x y)
+myMaxReturnsArgument x y with (choose (x <= y))
+  myMaxReturnsArgument x y | (Left _) = Right Refl
+  myMaxReturnsArgument x y | (Right _) = Left Refl
 
-  myMaxReturnsArgument : Ord a => (x : a) -> (y : a) ->
-                                  Either (x = myMax x y) (y = myMax x y)
-  myMaxReturnsArgument x y with (choose (x <= y))
-    myMaxReturnsArgument x y | (Left _) = Left ?myMaxReturnsArgument_rhs_5
-    myMaxReturnsArgument x y | (Right _) = Left Refl
+notAndIsOrNot : not (a && b) = not a || not b
+notAndIsOrNot {a = False} = Refl
+notAndIsOrNot {a = True} = Refl
 
-  notAndIsOrNot : not (a && b) = not a || not b
-  notAndIsOrNot {a = False} = Refl
-  notAndIsOrNot {a = True} = Refl
+notOrIsAndNot : not (a || b) = not a && not b
+notOrIsAndNot {a = False} = Refl
+notOrIsAndNot {a = True} = Refl
 
-  notOrIsAndNot : not (a || b) = not a && not b
-  notOrIsAndNot {a = False} = Refl
-  notOrIsAndNot {a = True} = Refl
+infixr 2 <=>
+data (<=>) : Type -> Type -> Type where
+  MkBiimplication : (a -> b) -> (b -> a) -> a <=> b
 
-  notAndIsOrNotTy : ((a,b) -> Void) = (Either (a -> Void) (b -> Void))
-  notAndIsOrNotTy {a} {b} = ?notAndIsOrNotTy_rhs
+notOrIsAndNotTy : Pair (Not a) (Not b) <=> Not (Either a b)
+notOrIsAndNotTy {a} {b} = MkBiimplication to from
+  where
+    to : Pair (a -> Void) (b -> Void) -> Either a b -> Void
+    to (f, g) (Left x) = f x
+    to (f, g) (Right x) = g x
 
-  total
-  safeMinus_lemma0 : {j : Nat} -> (z ** j + z = k) -> (z ** S (j + z) = S k)
-  safeMinus_lemma0 (z ** Refl) = MkSigma z Refl
+    from : (Either a b -> Void) -> Pair (a -> Void) (b -> Void)
+    from f = (f . Left,f . Right)
 
-  total
-  safeMinus : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> (z ** y + z = x)
-  safeMinus Z Z = (Z ** Refl)
-  safeMinus k Z = (k ** Refl)
-  safeMinus (S k) (S j) {p = LTESucc x} = safeMinus_lemma0 (safeMinus k j)
+safeMinus_lemma0 : {j : Nat} -> (z ** j + z = k) -> (z ** S (j + z) = S k)
+safeMinus_lemma0 (z ** Refl) = MkSigma z Refl
 
-  infixl 8 -*
-  (-*) : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> Nat
-  (-*) x y = ?rhs
+safeMinus : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> (z ** y + z = x)
+safeMinus Z Z = (Z ** Refl)
+safeMinus k Z = (k ** Refl)
+safeMinus (S k) (S j) {p = LTESucc x} = safeMinus_lemma0 (safeMinus k j)
 
-  mutual
-    instance Enum ZZ where
-      pred (Pos (S k)) = Pos k
-      pred (Pos Z) = NegS Z
-      pred (NegS k) = NegS (S k)
-      succ (Pos k) = Pos (S k)
-      succ (NegS Z) = Pos Z
-      succ (NegS (S k)) = NegS k
+infixl 8 -*
+(-*) : (x : Nat) -> (y : Nat) -> {auto p : y `LTE` x} -> Nat
+(-*) k Z = k
+(-*) Z (S k) {p = LTEZero} impossible
+(-*) (S k) (S j) {p = LTESucc p} = k -* j
 
-      toNat (Pos k) = k
-      toNat (NegS k) = Z
-      fromNat = Pos
+mutual
+  --instance Enum ZZ where
+  pred : ZZ -> ZZ
+  pred (Pos (S k)) = Pos k
+  pred (Pos Z) = NegS Z
+  pred (NegS k) = NegS (S k)
+  succ : ZZ -> ZZ
+  succ (Pos k) = Pos (S k)
+  succ (NegS Z) = Pos Z
+  succ (NegS (S k)) = NegS k
 
-      enumFrom x = x :: enumFrom (succ x)
-      enumFromThen x next = x :: enumFromThen next (next + next - x)
-      partial
-      enumFromTo x end with (x `isLTEz` end)
-        enumFromTo x end | (Yes prf) = x :: enumFromTo (succ x) end
-        enumFromTo x end | (No contra) = []
-      partial
-      enumFromThenTo x next end with (x `decEq` next)
-        enumFromThenTo x next end | (Yes prf) = []
-        enumFromThenTo x next end | (No contra) with (x <= next `decEq` x <= end)
-          enumFromThenTo x next end | (No contra) | (Yes prf) =
-            x :: enumFromThenTo next (next + next - x) end
-          enumFromThenTo x next end | (No contra) | (No contra1) = []
+  toNat : ZZ -> Nat
+  toNat (Pos k) = k
+  toNat (NegS k) = Z
+  fromNat : Nat -> ZZ
+  fromNat = Pos
 
-    data LTEz : ZZ -> ZZ -> Type where
-      NegLTEzPos : (j : Nat) -> (k : Nat) -> LTEz (NegS j) (Pos k)
-      LTEPos : LTE j k -> LTEz (Pos j) (Pos k)
-      LTENeg : LTE j k -> LTEz (NegS k) (NegS j)
+    --partial
+    --enumFrom : ZZ -> List ZZ
+    --enumFrom x = x :: enumFrom (succ x)
+    --partial
+    --enumFromThen : ZZ -> ZZ -> List ZZ
+    --enumFromThen x next = x :: enumFromThen next (next + next - x)
+    --enumFromTo x end with (x `isLTEz` end)
+    --  enumFromTo x end | (Yes prf) = x :: enumFromTo (succ x) end
+    --  enumFromTo x end | (No contra) = []
+    --enumFromThenTo x next end with (x `decEq` next)
+    --  enumFromThenTo x next end | (Yes prf) = []
+    --  enumFromThenTo x next end | (No contra) with (x <= next `decEq` x <= end)
+    --    enumFromThenTo x next end | (No contra) | (Yes prf) =
+    --      x :: enumFromThenTo next (next + next - x) end
+    --    enumFromThenTo x next end | (No contra) | (No contra1) = []
 
-    total
-    isLTEz : (m : ZZ) -> (n : ZZ) -> Dec (LTEz m n)
-    isLTEz (Pos j) (Pos k) with (j `isLTE` k)
-      isLTEz (Pos j) (Pos k) | (Yes prf) = Yes (LTEPos prf)
-      isLTEz (Pos j) (Pos k) | (No contra) = No $ \x => contra ?isLTEz_rhs_3
-    isLTEz (Pos j) (NegS k) = No $ \x => ?isLTEz_rhs_5
-    isLTEz (NegS j) (Pos k) = Yes (NegLTEzPos j k)
-    isLTEz (NegS j) (NegS k) with (k `isLTE` j)
-      isLTEz (NegS j) (NegS k) | (Yes prf) = Yes (LTENeg prf)
-      isLTEz (NegS j) (NegS k) | (No contra) = No $ \x => contra ?isLTEz_rhs_5_rhs_3
+  data LTEz : ZZ -> ZZ -> Type where
+    NegLTEzPos : (j : Nat) -> (k : Nat) -> LTEz (NegS j) (Pos k)
+    LTEPos : LTE j k -> LTEz (Pos j) (Pos k)
+    LTENeg : LTE j k -> LTEz (NegS k) (NegS j)
 
-  partial
-  divModZ : {auto p : Not (d = 0)} -> (d : ZZ) -> (n : ZZ) ->
-            (x ** fst x * d + snd x = n)
-  divModZ {p} d n = f 0 n ?divModZ0
-    where
-      partial
-      f : (q : ZZ) -> (r : ZZ) -> (q * d + r = n) ->
+  lteGivesLtez : LTE j k -> LTEz (fromNat j) (fromNat k)
+  lteGivesLtez x = LTEPos x
+
+  ltezGivesLte : LTEz (fromNat j) (fromNat k) -> LTE j k
+  ltezGivesLte (LTEPos x) = x
+
+  ltezGivesLteNeg : LTEz (NegS j) (NegS k) -> LTE k j
+  ltezGivesLteNeg (LTENeg x) = x
+
+  posNotLTEzNeg : LTEz (Pos j) (NegS k) -> Void
+  posNotLTEzNeg (NegLTEzPos j k) impossible
+
+  isLTEz : (m : ZZ) -> (n : ZZ) -> Dec (LTEz m n)
+  isLTEz (Pos j) (Pos k) with (j `isLTE` k)
+    isLTEz (Pos j) (Pos k) | (Yes prf) = Yes (LTEPos prf)
+    isLTEz (Pos j) (Pos k) | (No contra) = No $ contra . ltezGivesLte
+  isLTEz (Pos j) (NegS k) = No posNotLTEzNeg
+  isLTEz (NegS j) (Pos k) = Yes (NegLTEzPos j k)
+  isLTEz (NegS j) (NegS k) with (k `isLTE` j)
+    isLTEz (NegS j) (NegS k) | (Yes prf) = Yes (LTENeg prf)
+    isLTEz (NegS j) (NegS k) | (No contra) = No $ contra . ltezGivesLteNeg
+
+multZeroLeftZeroZ : (n : ZZ) -> 0 * n = 0
+multZeroLeftZeroZ (Pos k) = Refl
+multZeroLeftZeroZ (NegS k) = Refl
+
+minusPlusCancelNatZ : (m,n : Nat) -> minusNatZ (m + n) m = fromNat n
+minusPlusCancelNatZ Z n = Refl
+minusPlusCancelNatZ (S k) n = minusPlusCancelNatZ k n
+
+plusNegMinusNatZTransferS : (m,n : Nat) ->
+  NegS (S m) + minusNatZ n m = NegS m + minusNatZ n (S m)
+plusNegMinusNatZTransferS Z Z = Refl
+plusNegMinusNatZTransferS Z (S k) = Refl
+plusNegMinusNatZTransferS (S k) n = ?plusNegMinusNatZTransferS_rhs_2
+
+plusMinusCancelNatZNeg : (m,n : Nat) -> NegS m + minusNatZ m n = NegS n
+plusMinusCancelNatZNeg Z Z = Refl
+plusMinusCancelNatZNeg Z (S k) = Refl
+plusMinusCancelNatZNeg (S k) Z = plusMinusCancelNatZNeg k Z
+plusMinusCancelNatZNeg (S k) (S j) = ?plusMinusCancelNatZNeg_rhs_3
+
+plusMinusCancel : (m,n : ZZ) -> m + (n - m) = n
+plusMinusCancel (Pos k) n = ?plusMinusCancel_rhs_3
+  where
+    f : (x,y: _) -> Pos x + (y - Pos x) = y
+    f Z y =
+      (0 + (y + 0)) ={ plusZeroLeftNeutralZ (y + 0) }=
+      (y + 0)       ={ plusZeroRightNeutralZ y }=
+      y             QED
+    f (S j) (Pos i) = ?f_rhs_1
+    f (S j) (NegS i) = ?f_rhs_3
+plusMinusCancel (NegS k) (Pos j) =
+  (minusNatZ (j + S k) (S k))
+    ={ cong {f = (\x => minusNatZ x (S k))} $ plusCommutative j (S k) }=
+  (minusNatZ (S k + j) (S k))
+    ={ minusPlusCancelNatZ (S k) j }=
+  (fromNat j) QED
+plusMinusCancel (NegS k) (NegS j) = ?plusMinusCancel_rhs_4
+
+plusAssociativeZ : (l,m,n : ZZ) -> l + (m + n) = l + m + n
+plusAssociativeZ l m n = ?plusAssociativeZ_rhs
+
+multLeftSuccPlusZ : (m,n : ZZ) -> succ m * n = n + m * n
+multLeftSuccPlusZ m n = ?multLeftSuccPlusZ_rhs
+
+partial
+divModZ : (d : ZZ) -> {auto p : Not (d = 0)} -> (n : ZZ) ->
           (x ** fst x * d + snd x = n)
-      f q r prf with (succ r `isLTEz` d)
-        f q r prf | (Yes x) = MkSigma (q, r) prf
-        f q r prf | (No contra) = f (succ q) (r - d) ?stepProof
+divModZ d {p} n = f 0 n (
+  (0 * d + n) ={ cong {f = (+ n)} $ multZeroLeftZeroZ d }=
+  (0 + n)     ={ plusZeroLeftNeutralZ n }=
+  n           QED)
+  where
+    partial
+    f : (q : ZZ) -> (r : ZZ) -> (q * d + r = n) ->
+        (x ** fst x * d + snd x = n)
+    f q r prf with (succ r `isLTEz` d)
+      f q r prf | (Yes x) = MkSigma (q, r) prf
+      f q r prf | (No contra) = f (succ q) (r - d) (
+        (succ q * d + (r - d))
+          ={ cong {f = (+ (r - d))} $ multLeftSuccPlusZ q d }=
+        (d + q * d + (r - d))
+          ={ cong {f = (+ (r - d))} $ plusCommutativeZ d (q * d) }=
+        (q * d + d + (r - d))
+          ={ sym $ plusAssociativeZ (q * d) d (r - d) }=
+        (q * d + (d + (r - d)))
+          ={ cong $ plusMinusCancel d r }=
+        (q * d + r)
+          ={ prf }=
+        n QED)
 
-  partial
-  plusMinusAssociate : (x : ZZ) -> (y : ZZ) -> (z : ZZ) -> (x + y) - z = x + (y - z)
-  plusMinusAssociate (Pos k) (Pos j) (Pos Z) = ?plusMinusAssociate_rhs_3
-  plusMinusAssociate (Pos k) (Pos j) (Pos (S i)) =
-    let p = plusMinusAssociate (Pos k) (Pos j) (Pos i) in ?plusMinusAssociate_rhs_6
-  plusMinusAssociate (Pos k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_5
-  plusMinusAssociate (Pos k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_1
-  plusMinusAssociate (Pos k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_7
-  plusMinusAssociate (NegS k) (Pos j) (Pos i) = ?plusMinusAssociate_rhs_8
-  plusMinusAssociate (NegS k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_10
-  plusMinusAssociate (NegS k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_2
-  plusMinusAssociate (NegS k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_9
+partial
+plusMinusAssociate : (x : ZZ) -> (y : ZZ) -> (z : ZZ) -> (x + y) - z = x + (y - z)
+plusMinusAssociate (Pos k) (Pos j) (Pos Z) = ?plusMinusAssociate_rhs_3
+plusMinusAssociate (Pos k) (Pos j) (Pos (S i)) =
+  let p = plusMinusAssociate (Pos k) (Pos j) (Pos i) in ?plusMinusAssociate_rhs_6
+plusMinusAssociate (Pos k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_5
+plusMinusAssociate (Pos k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_1
+plusMinusAssociate (Pos k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_7
+plusMinusAssociate (NegS k) (Pos j) (Pos i) = ?plusMinusAssociate_rhs_8
+plusMinusAssociate (NegS k) (Pos j) (NegS i) = ?plusMinusAssociate_rhs_10
+plusMinusAssociate (NegS k) (NegS j) (Pos i) = ?plusMinusAssociate_rhs_2
+plusMinusAssociate (NegS k) (NegS j) (NegS i) = ?plusMinusAssociate_rhs_9
 
-  partial
-  divMod' : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Nat)
-  divMod' d k = f 0 k
-    where
-      partial
-      f : Nat -> Nat -> (Nat,Nat)
-      f q r with (choose (r < d))
-        f q r | (Left _) = (q,r)
-        f q r | (Right _) = f (q + 1) (r - d)
+partial
+divMod' : {auto p : 0 `LT` d} -> (d : Nat) -> Nat -> (Nat,Nat)
+divMod' d k = f 0 k
+  where
+    partial
+    f : Nat -> Nat -> (Nat,Nat)
+    f q r with (choose (r < d))
+      f q r | (Left _) = (q,r)
+      f q r | (Right _) = f (q + 1) (r - d)
 
-  lemma0 : (q : Nat) -> (r : Nat) -> (d : Nat) -> (d `LTE` r) ->
-           S q * d + (r -* d) = q * d + r
-  lemma0 q r d p = ?lemma0_rhs
+lemma0 : (q : Nat) -> (r : Nat) -> (d : Nat) -> (d `LTE` r) ->
+         S q * d + (r -* d) = q * d + r
+lemma0 q r d p = ?lemma0_rhs
 
-  lemma1 : (q : Nat) -> (d : Nat) -> S q * d = q * d + d
-  lemma1 q d = plusCommutative d (q * d)
+lemma1 : (q : Nat) -> (d : Nat) -> S q * d = q * d + d
+lemma1 q d = plusCommutative d (q * d)
 
-  lemma2 : (x : Nat) -> (y : Nat) -> (x `LTE` y) -> x + (y -* x) = y
-  lemma2 x y p = ?lemma2_rhs
+lemma2 : (x : Nat) -> (y : Nat) -> (x `LTE` y) -> x + (y -* x) = y
+lemma2 x y p = ?lemma2_rhs
 
-  lemma3 : (x : Nat) -> (y : Nat) -> (z : Nat) ->
-           plus (plus x y) z = plus y (plus x z)
-  lemma3 x y z = ?lemma3_rhs
+lemma3 : (x : Nat) -> (y : Nat) -> (z : Nat) ->
+         plus (plus x y) z = plus y (plus x z)
+lemma3 x y z = ?lemma3_rhs
 
-  lemma4 : (Not (S r `LTE` d)) -> d `LTE` r
-  lemma4 f = ?lemma4_rhs
+lemma4 : (Not (S r `LTE` d)) -> d `LTE` r
+lemma4 f = ?lemma4_rhs
 
-  partial
-  dm : {auto p : Not (d = 0)} -> (d : Nat) -> (n : Nat) ->
-       (x ** fst x * d + snd x = n)
-  dm {p} d n = f Z n Refl
-    where
-      partial
-      f : (q : Nat) -> (r : Nat) -> (q * d + r = n) ->
-          (x ** fst x * d + snd x = n)
-      f q r p with (S r `isLTE` d)
-        f q r p | (Yes prf) = ((q, r) ** p)
-        f q r p | (No contra) =
-          let (r' ** rp) = safeMinus r d {p = lemma4 contra} in
-            f (S q) r' ?f_rhs
+partial
+dm : {auto p : Not (d = 0)} -> (d : Nat) -> (n : Nat) ->
+     (x ** fst x * d + snd x = n)
+dm {p} d n = f Z n Refl
+  where
+    partial
+    f : (q : Nat) -> (r : Nat) -> (q * d + r = n) ->
+        (x ** fst x * d + snd x = n)
+    f q r p with (S r `isLTE` d)
+      f q r p | (Yes prf) = ((q, r) ** p)
+      f q r p | (No contra) =
+        let (r' ** rp) = safeMinus r d {p = lemma4 contra} in
+          f (S q) r' ?f_rhs
 
-  total
-  tyAnd : Vect n Type -> Type
-  tyAnd = Foldable.foldr Pair Unit
+total
+tyAnd : Vect n Type -> Type
+tyAnd = Foldable.foldr Pair Unit
 
-  myPlusZeroRightNeutralZ : (x : ZZ) -> x + 0 = x
-  myPlusZeroRightNeutralZ (Pos k) = cong (plusZeroRightNeutral k)
-  myPlusZeroRightNeutralZ (NegS k) = Refl
+myPlusZeroRightNeutralZ : (x : ZZ) -> x + 0 = x
+myPlusZeroRightNeutralZ (Pos k) = cong (plusZeroRightNeutral k)
+myPlusZeroRightNeutralZ (NegS k) = Refl
 
 ---------- Proofs ----------
 proofs.plusMinusAssociate_rhs_5 = proof
