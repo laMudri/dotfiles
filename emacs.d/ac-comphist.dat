@@ -1,692 +1,124 @@
-((("filter" .
-   [0 0 0 0 0 1])
-  ("maximum" .
-   [0 0 0 0 1 0 0])
-  ("maxOccurs" .
-   [0 0 0 0 1 0 0 0 0])
-  ("module" .
-   [0 0 0 0 1 0])
-  ("className" .
-   [0 0 0 0 0 0 1 0 0])
-  ("evil-emacs-state-cursor" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("evil-insert" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("batteryCfg" .
-   [0 0 0 0 0 0 0 0 0 1])
-  ("battery" .
-   [0 0 0 0 1 0 2])
-  ("smie" .
-   [0 0 1 0])
-  (":init" .
-   [1 0 0 0 0])
-  ("smart-mode-line" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("sml/setup" .
-   [0 0 0 0 0 1 1 0 0])
-  ("World" .
-   [0 0 0 0 1])
-  ("life" .
-   [1 0 0 0])
-  ("acr31" .
-   [0 0 0 1 0])
-  ("cam" .
+((("OO-lemma" .
+   [2 0 0 0 0 0 0 0])
+  ("Bin" .
    [1 0 0])
-  ("ac" .
-   [1 0])
-  ("uk" .
-   [1 0])
-  ("Exception" .
-   [0 0 1 0 0 0 0 0 0])
-  ("values" .
-   [1 0 0 0 0 0])
-  ("throw" .
-   [4 0 0 0 0])
-  ("catch" .
-   [5 0 0 0 0])
-  ("try" .
-   [4 0 0])
-  ("private" .
-   [11 0 0 0 0 0 0])
-  ("_message" .
-   [1 0 0 0 0 0 0 0])
-  ("message" .
-   [1 0 0 0 0 0 2])
-  ("PatternFormatException" .
-   [1 0 0 2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 10])
-  ("while" .
-   [1 0 0 0 0])
-  ("NumberFormatException" .
-   [0 0 1 0 1 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("t" .
-   [1])
-  ("tryc" .
-   [0 0 0 2])
-  ("args" .
-   [4 0 0 0])
-  ("completion" .
-   [0 0 0 0 0 0 0 0 0 1])
-  ("add-to-list" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("completion-ignored-extensions" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1])
-  ("Player" .
-   [1 0 0 0 0 0])
-  ("undefined" .
-   [1 0 0 0 0 0 0 1 0])
-  ("points" .
-   [1 0 0 0 0 0])
-  ("error" .
-   [3 0 0 0 0])
-  ("S.member" .
-   [1 0 0 0 0 0 0 0])
-  ("falseSpaces" .
-   [1 0 0 0 0 0 0 2 0 0 0])
-  ("player" .
-   [5 0 0 0 0 0])
-  ("Board" .
-   [4 0 0 0 0])
-  ("interspace" .
-   [2 0 0 0 0 0 1 0 1 0])
-  ("S.delete" .
-   [1 0 0 0 0 0 0 0])
-  ("ps" .
-   [3 0])
-  ("<>" .
-   [2 0])
-  ("ss'" .
-   [1 0 0])
-  ("drawSpace" .
-   [0 0 0 0 0 0 0 0 2])
-  ("Control.Monad.State" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("putStrLn" .
-   [0 0 0 3 0 1 0 0])
-  ("Set" .
-   [7 0 0])
-  ("drawSpaces" .
-   [0 0 0 0 4 0 0 0 0 0])
-  ("print" .
-   [5 0 0 0 0])
-  ("do" .
-   [3 0])
-  ("Writer" .
-   [1 0 0 0 0 0])
-  ("ss" .
-   [1 0])
-  ("go" .
-   [3 0])
-  ("Maybe" .
-   [3 0 0 0 0])
-  ("isFinished" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("not" .
-   [2 0 0])
-  ("evil-digraphs" .
-   [1 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("False" .
-   [3 0 1 0 1])
-  ("elemO" .
-   [5 0 0 0 4])
-  ("RightS" .
-   [3 0 1 4 2 1])
-  ("state" .
-   [0 0 0 0 2])
-  ("elem" .
-   [4 0 0 1])
-  ("external" .
-   [0 0 0 1 1 1 0 2])
-  ("found'" .
-   [1 0 0 0 0 0])
-  ("mconcat" .
-   [1 0 0 0 1 0 0])
-  ("found" .
-   [17 0 2 2 5])
-  ("LeftS" .
-   [12 0 0 5 5])
-  ("cache" .
-   [2 0 0 0 0])
-  ("0..pred" .
-   [2 0 0 1 0 0 0])
-  ("Nothing" .
-   [9 0 0 2 0 0 0])
-  ("<|>" .
-   [3 0 0])
-  ("BottomS" .
-   [5 0 0 0 9 0 0])
-  ("TopS" .
-   [9 0 0 3])
-  ("Show" .
+  ("zipWith" .
+   [0 0 0 3 0 0 0])
+  ("smap" .
+   [3 0 0 0])
+  ("tail" .
+   [7 0 0 1])
+  ("head" .
+   [8 0 0 0])
+  ("Stream" .
+   [0 0 0 1 0 3])
+  ("fibs" .
    [1 0 0 0])
-  ("deriving" .
-   [1 0 0 1 0 0 0 0])
-  ("chainFromPoint" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("Chain" .
-   [2 0 0 0 1])
-  ("liberties" .
-   [0 0 0 0 0 0 0 1 0])
-  ("playAt" .
-   [2 0 0 0 0 0])
-  ("playFrom" .
-   [1 0 0 0 0 0 0 0])
-  ("mempty" .
-   [6 0 1 7 4 0])
-  ("mnull" .
-   [2 0 0 0 0])
-  ("Monoid" .
-   [0 0 0 1 2 1])
-  ("combine" .
-   [6 0 0 0 0 0 0])
-  ("Just" .
-   [16 0 0 0])
-  ("const" .
-   [1 0 0 0 0])
-  ("Int" .
-   [6 0 0])
-  ("OrderedList" .
-   [0 0 1 2 1 3 0 0 0 0 41])
-  ("Ord" .
-   [7 0 0])
-  ("newtype" .
-   [0 0 1 0 0 0 0])
-  ("x:xs" .
-   [2 0 0 0])
-  ("y:ys" .
-   [4 0 1 0])
-  ("mappend" .
-   [3 0 0 1 0 0 1])
-  ("insert" .
+  ("PropEq" .
    [0 0 0 0 0 1])
-  ("succ" .
-   [10 0 0 0])
-  ("pred" .
-   [14 0 0 0])
-  ("Bottom" .
-   [3 0 0 0 0 2])
-  ("Top" .
-   [4 0 0])
-  ("Right" .
-   [4 0 0 0 1])
-  ("Left" .
-   [4 0 0 1])
-  ("then" .
-   [25 0 0 0])
-  ("where" .
-   [19 0 0 0 0])
-  ("Position" .
-   [0 0 0 20 0 1 0 0])
-  ("reachings" .
-   [1 0 0 0 0 0 0 0 0])
-  ("Reaching" .
-   [1 0 0 7 0 0 0 2])
-  ("Side" .
-   [10 0 0 1])
-  ("data" .
-   [4 0 0 0])
-  ("Bool" .
-   [15 0 0 3])
-  ("io" .
-   [1 0])
-  ("IOException" .
-   [0 0 2 0 0 0 0 0 0 0 0])
-  ("throws" .
-   [1 0 0 0 0 1])
-  ("tick3star" .
-   [1 0 0 0 0 0 0 0 0])
-  ("char" .
-   [10 0 1 0])
-  ("toCharArray" .
-   [0 0 0 1 0 0 0 0 0 0 0])
-  ("cells" .
-   [3 0 2 0 0])
-  ("rows" .
-   [5 0 0 0])
-  ("split" .
-   [0 0 1 0 0])
-  ("pattern" .
-   [0 0 0 0 1 0 0])
-  ("length" .
-   [3 0 4 5 0 4])
-  ("p" .
-   [2])
-  ("height" .
-   [2 0 1 0 0 1])
-  ("parseInt" .
-   [0 0 0 0 0 1 0 0])
-  ("Integer" .
-   [0 0 0 0 1 0 0])
-  ("width" .
-   [2 0 1 0 0])
-  ("S" .
-   [2])
-  ("parts" .
-   [4 0 0 0 3])
-  ("formatString" .
-   [0 0 0 0 1 0 0 0 0 0 0 0])
-  ("tick2star" .
-   [1 0 0 0 0 0 0 0 0])
-  ("s" .
-   [1])
-  ("printf" .
+  ("+-comm" .
    [0 0 1 0 0 0])
-  ("arr" .
+  ("Nat" .
    [1 0 0])
-  ("println" .
-   [0 0 0 0 0 0 7])
-  ("out" .
-   [3 0 2])
-  ("System" .
-   [1 0 1 3 0 1])
-  ("String" .
-   [16 0 0 1 0 0])
-  ("Collections" .
-   [0 0 1 0 0 0 0 0 0 0 0])
-  ("util" .
-   [0 0 2 0])
-  ("java" .
-   [7 0 0 2])
-  ("size" .
-   [35 0 4 2])
-  ("sortedScores" .
-   [0 0 0 1 0 0 0 0 0 0 0 5])
-  ("value" .
-   [0 0 0 0 1])
-  ("mStudents" .
-   [0 0 0 0 0 0 0 0 1])
-  ("ArrayList" .
-   [1 0 0 1 2 1 0 0 0])
-  ("acc" .
-   [4 0 0])
-  ("median" .
-   [0 0 0 0 0 1])
-  ("Double" .
-   [0 0 0 4 0 0])
-  ("topStudents" .
-   [0 0 0 1 0 0 0 0 0 0 0])
-  ("alphabeticList" .
+  ("abc" .
+   [1 0 0])
+  ("*-left-distr-+" .
    [0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("pr" .
-   [2 3])
-  ("pri" .
-   [0 0 4])
-  ("add" .
-   [7 0 0])
-  ("map" .
-   [4 0 0])
-  ("TreeMap" .
-   [0 0 1 0 2 0 0])
-  ("Student" .
-   [0 0 0 0 0 0 1])
-  ("new" .
-   [13 0 0])
-  ("Students" .
-   [0 0 0 0 0 0 0 1])
-  ("main" .
-   [0 0 0 1])
-  ("cls" .
-   [1 0 0])
-  ("code" .
-   [1 0 0 0])
-  ("evil-cross-lines" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("auctex" .
-   [1 0 0 0 0 1])
-  ("AUCTeX" .
-   [0 0 0 1 0 0])
-  ("autoload" .
-   [0 0 1 0 0 0 0 0])
-  ("require" .
-   [1 0 0 3 0 0 2])
-  ("nil" .
-   [1 0 0])
-  ("indent-tabs-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("setq-default" .
-   [0 0 0 0 0 0 3 0 0 0 0 0])
-  ("solarized-light" .
-   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0])
-  ("enable-theme" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("let" .
-   [2 0 0])
-  ("range" .
-   [3 0 0 0 0])
-  ("evil-expand" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("end" .
-   [4 0 0])
-  ("line" .
-   [2 0 0 0])
-  ("setq" .
-   [2 0 0 1])
-  ("beg" .
-   [4 0 0])
-  ("evil-range-beginning" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("evil-range-end" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("evil-exit-visual-state" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("cond" .
-   [1 0 0 0])
-  ("eq" .
-   [2 0])
-  ("type" .
-   [5 0 0 0])
-  ("block" .
-   [2 0 0 0 1])
-  ("temporary-goal-column" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("most-positive-fixnum" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("last-command" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("next-line" .
-   [0 0 0 0 0 0 0 0 1])
-  ("evil-yank" .
-   [0 0 0 0 0 0 0 0 3])
-  ("register" .
-   [0 0 0 0 0 0 0 3])
-  ("yank-handle" .
-   [0 0 0 0 0 0 0 0 0 0 2])
-  ("line-end-position" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("yank-handler" .
-   [0 0 0 0 0 0 0 1 0 0 0 1])
-  ("static" .
-   [1 0 0 0 0 2])
-  ("int" .
-   [32 0 0])
-  ("long" .
-   [5 0 0 0])
-  ("world" .
-   [3 0 4 2 0])
-  ("col" .
+  ("*-assoc" .
+   [0 0 0 1 2 0 0])
+  ("+-assoc" .
+   [0 0 1 1 1 0 0])
+  ("Org" .
    [12 0 0])
-  ("row" .
-   [10 0 1])
-  ("return" .
-   [15 0 0 3 1 9])
-  ("get" .
-   [10 0 0])
-  ("public" .
-   [6 0 0 0 0 3])
-  ("boolean" .
-   [0 0 0 1 3 0 1])
-  ("countNeighbours" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("if" .
-   [16 0])
-  ("count" .
-   [1 0 0 0 1])
-  ("else" .
-   [31 0 0 0])
-  ("getCell" .
-   [0 0 0 0 1 0 1])
-  ("for" .
-   [7 0 0])
-  ("setCell" .
-   [0 0 0 0 1 0 1])
-  ("nextWorld" .
-   [0 0 0 0 0 0 0 0 2])
-  ("computeCell" .
-   [0 0 0 1 0 0 0 0 0 0 0])
-  ("column-number-mode" .
+  ("parityNotNotUnique" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("contra" .
+   [2 0 0 0 1 0])
+  ("oddProofsDifferent" .
    [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("package" .
-   [2 0 0 0 0 0 0])
-  ("import" .
-   [12 0 0 1 2 3])
-  ("oop" .
-   [1 0 0])
-  ("oop2" .
+  ("evenProofsDifferent" .
+   [0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("prf'" .
+   [3 0 0 0])
+  ("prf" .
+   [7 0 0])
+  ("succInjective" .
+   [0 0 1 1 4 0 0 0 0 0 0 0 0])
+  ("refl" .
    [1 0 0 0])
-  ("turn" .
-   [8 0 0 1])
-  ("step" .
-   [9 0 0 0])
-  ("follow" .
-   [2 0 0 0 3 0])
-  ("atEdge" .
-   [3 0 0 5 0 0])
+  ("zeroNotOdd" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("Unit" .
+   [1 0 0 0])
+  ("Data" .
+   [2 0 1 0])
+  ("notEvenAndOdd" .
+   [0 0 0 1 1 0 0 0 0 0 0 0 1])
+  ("isEven" .
+   [0 0 2 0 0 0])
+  ("False" .
+   [2 0 0 0 0])
   ("True" .
    [2 0 0 0])
-  ("sufficient" .
-   [0 0 0 0 1 1 0 0 0 0])
-  ("visited" .
-   [2 0 0 0 1 0 0])
-  ("unturn" .
-   [0 0 0 0 0 1])
-  ("cons" .
-   [5 0 0 1])
-  ("case" .
-   [8 0 0 0])
-  ("compare" .
-   [3 0 0 0 0 0 0])
-  ("start" .
-   [1 0 0 0 0])
-  ("Data.Maybe" .
-   [0 0 0 0 1 0 0 0 0 0])
-  ("Space" .
-   [26 0 0 1 0])
-  ("instance" .
-   [2 0 0 0 0 0 0 0])
-  ("pointSpace" .
-   [0 0 0 1 0 0 3 0 0 1])
-  ("outside" .
-   [0 0 0 1 0 0 0])
-  ("edgeTests" .
-   [0 0 0 1 1 0 0 0 0])
-  ("otherwise" .
-   [0 0 0 0 0 3 0 0 0])
-  ("externalSpace" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 2])
-  ("next" .
+  ("where" .
+   [2 0 0 1 0])
+  ("Bool" .
    [4 0 0 0])
-  ("right" .
-   [1 0 0 0 0])
-  ("ss''" .
-   [2 0 0 0])
-  ("LANGUAGE" .
-   [0 0 0 0 0 0 1 0])
-  ("S.∈" .
-   [4 0 0])
-  ("find" .
-   [4 0 0 0])
-  ("S.elems" .
-   [1 0 0 0 0 0 3])
-  ("isLast" .
-   [1 0 0 1 0 0])
-  ("S.insert" .
-   [2 0 0 0 0 0 0 0])
-  ("psp" .
-   [5 0 0])
-  ("spaceLeft" .
-   [1 0 0 0 0 0 0 1 0])
-  ("spaceTop" .
-   [1 0 0 0 0 0 0 0])
-  ("whitespace" .
-   [0 0 1 0 0 0 0 0 0 0])
-  ("show-trailing-whitespace" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("super" .
-   [0 0 1 1 0])
-  ("prev" .
+  ("data" .
    [1 0 0 0])
-  ("getHeight" .
-   [0 0 0 0 4 0 0 0 0])
-  ("getWidth" .
-   [0 0 0 0 3 0 0 1])
-  ("@Override" .
-   [0 0 3 0 0 2 0 0 0])
-  ("protected" .
-   [0 0 0 0 2 0 0 0 2])
-  ("false" .
-   [0 0 0 1 0])
-  ("worldsEqual" .
-   [0 0 0 0 1 0 0 0 0 0 0])
-  ("Dimension" .
-   [0 0 0 1 0 0 0 0 0])
-  ("awt" .
-   [4 0 0])
-  ("Graphics" .
-   [0 0 1 0 0 0 0 0])
-  ("current" .
-   [0 0 1 0 0 0 0])
-  ("drawLine" .
-   [0 0 0 0 0 1 0 0])
-  ("zoom" .
-   [3 0 0 0])
-  ("GuiLife" .
-   [0 0 1 0 0 0 0])
-  ("GamePanel" .
-   [0 0 2 0 0 0 0 0 2])
-  ("gamePanel" .
-   [1 0 0 0 0 0 0 0 0])
-  ("result" .
-   [0 0 0 3 0 0])
-  ("i" .
-   [1])
-  ("javax" .
-   [2 0 0 0 0])
-  ("swing" .
-   [1 0 1 0 0])
-  ("events" .
-   [1 0 0 0 0 0])
-  ("event" .
-   [1 0 0 0 1])
-  ("ActionListener" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("ActionEvent" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("JOptionPane" .
-   [0 0 1 0 0 0 0 0 0 0 0])
-  ("setSourceNone" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("setSourceFile" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("setSourceLibrary" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("setSourceFourStar" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("true" .
-   [1 0 0 0])
-  ("JList" .
-   [1 0 0 0 0])
-  ("List" .
-   [1 0 0 1])
-  ("Pattern" .
-   [1 0 0 0 0 0 0])
-  ("patternList" .
-   [0 0 0 0 0 0 0 0 1 0 1])
-  ("null" .
-   [0 0 0 1])
-  ("abstract" .
-   [0 0 0 0 0 0 1 1])
-  ("onPatternChange" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 1])
-  ("void" .
-   [4 0 1 0])
-  ("resetWorld" .
-   [0 0 0 0 1 0 0 0 0 0])
-  ("ListSelectionListener" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("ListSelectionEvent" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("STORAGE_HASH" .
-   [1 0 0 0 0 0 0 0 0 0 0 0])
-  ("MaxHeap" .
-   [1 0 1 1 0 0 0])
-  ("contents" .
-   [6 0 0 1 4 0 0 32])
-  ("heapName" .
-   [0 0 0 0 2 0 0 0])
-  ("name" .
-   [2 0 0 0])
-  ("str" .
-   [4 0 0])
-  ("tmp" .
+  ("IsEven" .
+   [0 0 2 2 0 0])
+  ("Set" .
    [6 0 0])
-  ("upIndex" .
-   [0 0 3 0 0 0 0])
-  ("leftIndex" .
-   [0 0 0 4 0 0 0 0 0])
-  ("rightIndex" .
-   [0 0 1 1 0 0 0 0 0 0])
-  ("siftDown" .
-   [0 0 3 1 0 1 0 0])
-  ("swap" .
-   [5 0 3 0])
-  ("set" .
-   [2 0 0])
-  ("siftUp" .
-   [0 0 0 0 0 2])
-  ("con" .
-   [0 0 1])
-  ("idris" .
-   [0 0 0 1 0])
-  ("powerline" .
-   [0 0 0 0 0 0 0 0 1])
-  ("powerline-vim-theme" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("powerline-evil" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("powerline-evil-vim-theme" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("powerline-evil-vim-color-theme" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("set-face-attribute" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("default" .
-   [0 0 0 0 0 0 2])
-  (":font" .
-   [1 0 0 0 0])
-  ("Code" .
-   [1 0 0 0])
-  ("Pro" .
-   [1 0 0])
-  ("plusSuccRightSucc" .
-   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("parityUnique" .
+   [0 0 0 0 0 0 0 3 0 0 0 1])
+  ("parity" .
+   [8 0 0 0 0 1])
+  ("plusAssociative" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 1])
+  ("multDistrLeft" .
+   [0 0 0 3 1 0 0 0 0 0 0 0 0])
+  ("infixl" .
+   [1 0 0 0 0 0])
+  ("sym" .
+   [8 0 0])
+  ("psuccsucc" .
+   [2 0 0 0 0 0 1 0 2])
+  ("Even" .
+   [12 0 2 0])
+  ("Odd" .
+   [6 0 0])
+  ("psucc" .
+   [5 0 0 0 0])
+  ("addEvenOdd" .
+   [0 0 0 0 0 0 0 0 1 0])
+  ("Parity" .
+   [4 0 2 12 2 6])
+  ("plusCommutative" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
   ("cong" .
-   [2 0 0 0])
-  ("Refl" .
-   [1 0 0 0])
-  ("plusZeroRightNeutral" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("Taffybar" .
-   [0 0 0 0 0 0 0 1])
-  ("english" .
-   [0 0 0 1 0 0 0])
-  ("swedish" .
-   [0 0 0 1 0 0 0])
-  ("dog" .
-   [1 0 0])
-  ("danish" .
-   [0 0 0 1 0 0])
-  ("tea" .
-   [1 0 0])
-  ("hasColour" .
-   [0 0 0 0 1 0 0 0 0])
-  ("green" .
-   [0 0 1 0 0])
-  ("hasBeverage" .
-   [0 0 0 0 1 0 0 0 0 0 0])
-  ("coffee" .
+   [9 0 0 1])
+  ("plusSuccRightSucc" .
+   [0 0 0 0 0 6 0 0 0 0 0 0 0 0 0 0 7])
+  ("rewrite" .
+   [10 0 0 5 2 2 0])
+  ("addEvenEvenLemma" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1])
+  ("Binary" .
+   [0 0 1 2 0 0])
+  ("Relation" .
+   [0 0 0 3 0 0 0 0])
+  ("import" .
+   [4 0 2 3 0 0])
+  ("open" .
+   [7 0 2 0])
+  ("let" .
+   [3 0 0])
+  ("add2Parity" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("parityUniqueEvenStep" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("≅-to-≡" .
    [0 0 0 0 0 1])
-  ("pallMall" .
-   [0 0 0 0 1 0 0 0])
-  ("hasPet" .
-   [0 0 0 0 1 0])
-  ("bird" .
-   [0 0 1 0])
-  ("add-hook" .
-   [0 0 0 0 0 0 0 1])
-  ("haskell-mode-hook" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("turn-on-haskell-indent" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("turn-on-haskell-doc-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("turn-on-haskell-decl-scan" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])))
+  ("load" .
+   [1 0 0 0])))

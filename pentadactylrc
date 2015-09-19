@@ -16,13 +16,11 @@ EOT
 map -b , :
 map -b : ,
 
-"set langmap=hk,jh,kj
+"set langmap=hj,jh
 map -b j h
-map -b h k
-map -b k j
+map -b h j
 map -b J H
-map -b H K
-map -b K J
+map -b H J
 
 map -b e :tab<space>
 map <c-q> <Nop>
@@ -36,15 +34,25 @@ map -b W F\
 " Replacement for gt and <C-n>
 map -b gt <C-n>
 map -b <C-1> 1gt
+map -b <C-!> 1gt
 map -b <C-2> 2gt
+map -b <C-@> 2gt
 map -b <C-3> 3gt
+map -b <C-£> 3gt
 map -b <C-4> 4gt
+map -b <C-$> 4gt
 map -b <C-5> 5gt
+map -b <C-%> 5gt
 map -b <C-6> 6gt
+map -b <C-^> 6gt
 map -b <C-7> 7gt
+map -b <C-&> 7gt
 map -b <C-8> 8gt
+map -b <C-*> 8gt
 map -b <C-9> 9gt
+map -b <C-(> 9gt
 map -b <C-0> g$
+map -b <C-)> g$
 
 map -b <C-w> <C-^>
 map -b gl <C-^>
@@ -128,8 +136,8 @@ gr twitter -locations="twitter.com"
 map -javascript . $('div.new-tweets-bar').click();
 
 gr theoldreader -locations theoldreader.com
-map -b h <C-v>k
-map -b k <C-v>j
+map -b k <C-v>k
+map -b h <C-v>j
 map o -js let h = $('.list-post:not([style="display: none;"])>h3>a').attr('href'); if (h) { let t = gBrowser.addTab(h); gBrowser.selectedTab = t; }
 
 gr goproblems -locations goproblems.com
@@ -146,3 +154,12 @@ map -m insert -b ʃ c
 map -m insert -b ɛ e
 map -m insert -b ʒ j
 map -m insert -b ə y
+
+js <<EOT
+hints.addMode("p", "Paste into text field", function (elem) {
+    if (elem.tagName.toLowerCase() == "input")
+      elem.value += editor.getRegister();
+    else
+      elem.innerHTML += editor.getRegister();
+  }, null, "input[type=text],textarea");
+EOT
