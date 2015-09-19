@@ -36,23 +36,23 @@ source ~/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
-    cabal
-    catimg
-    colored-man
-    colorize
-    common-aliases
-    copyfile
-    git
-    history-substring-search
-    sudo
-    vi-mode
-    vundle
+  cabal
+  catimg
+  #colored-man
+  colorize
+  common-aliases
+  copyfile
+  git
+  history-substring-search
+  sudo
+  vi-mode
+  vundle
 
-    laMudri/zsh-yum-aliases
-    # Not working:
-    #tarruda/zsh-autosuggestions
-    zsh-users/zsh-syntax-highlighting
-    zsh_reload
+  laMudri/zsh-yum-aliases
+  # Not working:
+  #tarruda/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+  zsh_reload
 EOBUNDLES
 
 antigen theme agnoster
@@ -64,8 +64,8 @@ antigen apply
 #export PATH="/home/james/bin:/home/james/bin:/home/james/.cabal/bin:/home/james/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export EDITOR=emacsclient
-export VISUAL=emacsclient
+export EDITOR=nvim
+export VISUAL=nvim
 
 export KEYTIMEOUT=1
 
@@ -93,8 +93,8 @@ export KEYTIMEOUT=1
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias oldvim="vim"
-#alias vim="vimx"
+
+alias sudo='sudo '
 alias hoogle="nocorrect hoogle"
 
 # Setup zsh-autosuggestions
@@ -148,9 +148,49 @@ zle-line-init() {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;'
+
 eval `dircolors ~/Documents/misc/dircolors-solarized/dircolors.ansi-universal`
 
-PERL_MB_OPT="--install_base \"/home/james/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/james/perl5"; export PERL_MM_OPT;
+export PERL_MB_OPT="--install_base \"/home/james/perl5\""
+export PERL_MM_OPT="INSTALL_BASE=/home/james/perl5"
 
 unalias rm
+
+# OPAM configuration
+. /home/james/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Stop `nix-env` using `less`
+export NIX_PAGER=cat
+
+alias nixpaste="curl -F 'text=<-' http://nixpaste.noip.me"
+
+# Use the local package list
+alias mynix-env="nix-env -f /home/james/nixpkgs"
+alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
+
+fancy-ctrl-z () {
+  emulate -LR zsh
+  if [[ $#BUFFER -eq 0 ]]; then
+# Normal ctrl+z
+    bg
+    zle redisplay
+  else
+# Save current command
+    zle push-input
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+alias note-dequeue="tail -n+2 ~/notes.txt > ~/.notes.txt && mv -f ~/.notes.txt ~/notes.txt"
+
+alias t='terminator >&/dev/null &!'
+
+if [ -e /run/current-system/sw/share/terminfo/x/xterm-256color ]; then
+  export TERM=xterm-256color
+else
+  export TERM=xterm-color
+fi
+
+mkcd () { mkdir $* && cd ${@[-1]} }

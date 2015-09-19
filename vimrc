@@ -25,14 +25,14 @@ set ruler
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/Vundle.vim
-set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
+set rtp+=~/.nvim/Vundle.vim
+set rtp+=~/.nvim/bundle/vundle
+call vundle#begin('~/.nvim/bundle/vundle/')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'ardagnir/eventloop.vim'
-Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'eagletmt/ghcmod-vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'eagletmt/neco-ghc'
 Plugin 'ardagnir/pterosaur'
@@ -60,24 +60,15 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
 Plugin 'superbrothers/vim-vimperator'
 Plugin 'Shougo/neocomplete'
+Plugin 'osyo-manga/vim-over'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
+filetype plugin indent on
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-if has("syntax")
-  syntax on
-endif
-
-if has("filetype")
-    filetype plugin indent on
-else
-    set smartindent
-endif
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -90,11 +81,11 @@ endif
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
+set smartcase		" Do smart case matching
 set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
+set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+"set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -103,8 +94,8 @@ endif
 
 set autoindent
 set smartindent
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=-2  " use shiftwidth
+set shiftwidth=2
 set expandtab
 
 set linebreak
@@ -113,19 +104,16 @@ set encoding=utf-8
 
 imap <C-F> <C-O>diw
 
+set langnoremap
 " Swap h, j, k & l around
-set langmap=hjk;khj
-" lojbo + above
+set langmap+=hj;jh
+" Swap : with ,
+set langmap+=\\,:;:\\,
+" lojbo
 set langmap+=ʃɛʒə;cehy
 
 " Another Colemak mod
 noremap <C-n> <C-y>
-
-" Swap : and ;
-nnoremap , :
-nnoremap : ,
-vnoremap , :
-vnoremap : ,
 
 " Omni completion
 set omnifunc=syntaxcomplete#Complete
@@ -151,6 +139,9 @@ cnoremap s/ s/\v
 cnoremap g/ g/\v
 cnoremap g!/ g!/\v
 " Very nomagic
+cnoremap s@ s@\V
+cnoremap g@ g@\V
+cnoremap g!@ g!@\V
 nnoremap / /\V
 nnoremap ? ?\V
 
@@ -168,6 +159,7 @@ set showmode
 set wildmenu
 
 set relativenumber
+set numberwidth=3
 
 " Insert single character
 "function! RepeatChar(char, count)
@@ -187,16 +179,19 @@ nnoremap <s-space> a <esc>r
 let g:haskell_indent_if = 3
 let g:haskell_indent_case = 5
 
-let g:haddock_browser = "/usr/bin/firefox"
+let g:haddock_browser = "firefox"
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 if has("autocmd")
-    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
 endif
+
+highlight Tab ctermbg=darkgreen guibg=darkgreen
+match Tab /\t/
 
 hi clear Conceal
 
@@ -217,3 +212,11 @@ let g:ycm_semantic_triggers = {'haskell': ['.']}
 
 " Fixes YCM/vim-autoclose issue
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
+
+" Highlighting for CakeML files
+au BufNewFile,BufRead *.cml set filetype=sml
+
+" neovim-specific
+if has('nvim')
+  "let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif

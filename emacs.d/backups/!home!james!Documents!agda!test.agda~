@@ -1,25 +1,190 @@
 module test where
 
+open import Data.Empty
+open import Data.Product
+open import Data.Unit
+open import Relation.Binary.Core
+open import Relation.Binary.HeterogeneousEquality using (_≅_; ≅-to-≡)
+open import Relation.Binary.PropositionalEquality
+open import Coinduction
+open import Level
+
 data ℕ : Set where
   Z : ℕ
   S : ℕ -> ℕ
 
-add : ℕ → ℕ → ℕ
-add Z y = y
-add (S x) y = S (add x y)
+infixl 6 _+_
+infixl 7 _*_
 
 _+_ : ℕ → ℕ → ℕ
-x + y = add x y
+Z + y = y
+S x + y = S (x + y)
 
-data _≡_ {A} (q : A) : A → Set where
-  Refl : q ≡ q
-
-cong : ∀{A B x y} → (f : A → B) → x ≡ y → f x ≡ f y
-cong f Refl = Refl
-
-plusSuccRightSucc : (m : ℕ) → (n : ℕ) → (S m + n) ≡ (m + S n)
-plusSuccRightSucc Z n = Refl
+plusSuccRightSucc : (m : ℕ) → (n : ℕ) → S m + n ≡ m + S n
+plusSuccRightSucc Z n = refl
 plusSuccRightSucc (S m) n = cong S (plusSuccRightSucc m n)
 
-plusZeroRightNeutral : (n : ℕ) → (n + Z) ≡ n
-plusZeroRightNeutral n = {!n!}
+plusZeroRightNeutral : (n : ℕ) → n ≡ n + Z
+plusZeroRightNeutral Z = refl
+plusZeroRightNeutral (S n) = cong S (plusZeroRightNeutral n)
+
+plusCommutative : (m n : ℕ) → m + n ≡ n + m
+plusCommutative Z n = plusZeroRightNeutral n
+plusCommutative (S m) n = trans (cong S (plusCommutative m n))
+                                (plusSuccRightSucc n m)
+
+plusAssociative : (i j k : ℕ) → (i + j) + k ≡ i + (j + k)
+plusAssociative Z j k = refl
+plusAssociative (S i) j k rewrite plusAssociative i j k = refl
+
+_*_ : ℕ → ℕ → ℕ
+Z * y = Z
+S x * y = y + x * y
+
+multDistrLeft : (i j k : ℕ) → (i + j) * k ≡ i * k + j * k
+multDistrLeft Z j k = refl
+multDistrLeft (S i) j k rewrite plusAssociative k (i * k) (j * k) =
+  cong (λ x → k + x) (multDistrLeft i j k)
+
+_∘_ : ∀{n₁ n₂ n₃} {A : Set n₁} {B : Set n₂} {C : Set n₃} →
+      (B → C) → (A → B) → A → C
+(f ∘ g) x = f (g x)
+
+_$_ : ∀{l₁ l₂} {A : Set l₁} {B : Set l₂} → (A → B) → A → B
+f $ x = f x
+
+ind : (P : ℕ → Set) → P Z → ((n : ℕ) → P n → P (S n)) → (n : ℕ) → P n
+ind P base step Z = base
+ind P base step (S n) = ind (P ∘ S) (step Z base) (λ k → step (S k)) n
+
+-- Streams
+
+data Stream (A : Set) : Set where
+  _∷_ : A → ∞ (Stream A) → Stream A
+
+head : ∀{A} → Stream A → A
+head (x ∷ _) = x
+tail : ∀{A} → Stream A → Stream A
+tail (_ ∷ xs) = ♭ xs
+
+smap : ∀{A B} → (A → B) → Stream A → Stream B
+smap f (x ∷ xs) = f x ∷ ♯ smap f (♭ xs)
+
+zipWith : ∀{A B C} → (A → B → C) → Stream A → Stream B → Stream C
+zipWith f (x ∷ xs) (y ∷ ys) = f x y ∷ ♯ zipWith f (♭ xs) (♭ ys)
+
+fibs : Stream ℕ
+fibs = f Z (S Z)
+  where
+    f : ℕ → ℕ → Stream ℕ
+    f a b = a ∷ ♯ f b (a + b)
+
+index : ∀{A} → ℕ → Stream A → A
+index Z (x ∷ _) = x
+index (S n) (_ ∷ xs) = index n (♭ xs)
+
+fib : ℕ → ℕ
+fib n = index n fibs
+
+-- Vectors
+
+data Vect (A : Set) : ℕ → Set where
+  Nil : Vect A Z
+  _∷_ : ∀{n} → A → Vect A n → Vect A (S n)
+
+append : ∀{A m n} → Vect A m → Vect A n → Vect A (m + n)
+append {A} {Z} xs ys = ys
+append {A} {S m} (x ∷ xs) ys = x ∷ append xs ys
+
+-- Booleans
+
+data Bool : Set where
+  False True : Bool
+
+not : Bool → Bool
+not False = True
+not True = False
+
+-- Parity
+
+data Parity : ℕ → Set where
+  Even : (k : ℕ) → Parity (k + k)
+  Odd : (k : ℕ) → Parity (S k + k)
+
+parity : (n : ℕ) → Parity n
+parity Z = Even Z
+parity (S Z) = Odd Z
+parity (S (S n)) with (parity n)
+parity (S (S .(k + k))) | Even k rewrite plusSuccRightSucc k k = Even (S k)
+parity (S (S .(S (k + k)))) | Odd k rewrite cong S (plusSuccRightSucc k k) =
+  Odd (S k)
+
+psucc : {n : ℕ} → Parity n → Parity (S n)
+psucc (Even k) = Odd k
+psucc (Odd k) rewrite plusSuccRightSucc k k = Even (S k)
+
+psuccsucc : {n : ℕ} → Parity n → Parity (S (S n))
+psuccsucc (Even k) rewrite cong S (plusSuccRightSucc k k) = Even (S k)
+psuccsucc (Odd k) rewrite cong S (cong S (plusSuccRightSucc k k))= Odd (S k)
+
+_+p_ : ∀{m n} → Parity m → Parity n → Parity (m + n)
+Even Z +p q = q
+Even (S k) +p q rewrite sym (plusSuccRightSucc k k) = psuccsucc (Even k +p q)
+Odd Z +p q = psucc q
+Odd (S k) +p q rewrite sym (plusSuccRightSucc k k) = psuccsucc (Odd k +p q)
+
+_*p_ : ∀{m n} → Parity m → Parity n → Parity (m * n)
+_*p_ .{m = _} {n} (Even k) q rewrite multDistrLeft k k n = Even (k * n)
+_*p_ .{m = _} {n} (Odd k) q
+  rewrite multDistrLeft (S k) k n
+        | plusAssociative n (k * n) (k * n) = parity n +p Even (k * n)
+
+Not : Set → Set
+Not a = a → ⊥
+
+succInjective : ∀{m n} → S m ≡ S n → m ≡ n
+succInjective refl = refl
+
+notEvenAndOdd : ∀{j k} → j + j ≡ S k + k → ⊥
+notEvenAndOdd {Z} ()
+notEvenAndOdd {S j} {k} prf rewrite sym (plusSuccRightSucc j j) =
+  notEvenAndOdd {k} {j} (sym (succInjective prf))
+
+evenProofsDifferent : ∀{j k} → j + j ≡ k + k → (j ≡ k → ⊥) → ⊥
+evenProofsDifferent {Z} {Z} prf contra = contra refl
+evenProofsDifferent {Z} {S k} ()
+evenProofsDifferent {S j} {Z} ()
+evenProofsDifferent {S j} {S k} prf contra
+  rewrite sym (plusSuccRightSucc j j)
+        | sym (plusSuccRightSucc k k) =
+  let prf' = succInjective (succInjective prf) in
+  evenProofsDifferent {j} {k} prf' (λ z → contra (cong S z))
+
+oddProofsDifferent : ∀{j k} → S j + j ≡ S k + k → (j ≡ k → ⊥) → ⊥
+oddProofsDifferent prf contra = evenProofsDifferent (succInjective prf) contra
+
+parityUniqueEvenStep :
+  ∀{k} → parity (k + k) ≡ Even k → parity (S (S (k + k))) ≅ Even (S k)
+parityUniqueEvenStep p = {!!}
+
+parityUnique : ∀{n} → (p : Parity n) → parity n ≡ p
+parityUnique (Even Z) = refl
+parityUnique (Even (S k)) = let ih = parityUnique (Even k) in
+  {!!}
+parityUnique (Odd Z) = refl
+parityUnique (Odd (S k)) = {!!}
+
+-- Decidable things
+data Dec (P : Set) : Set where
+  Yes : P → Dec P
+  No : (P → ⊥) → Dec P
+
+infix 4 _≡ℕ?_
+
+_≡ℕ?_ : (m n : ℕ) → Dec (m ≡ n)
+Z ≡ℕ? Z = Yes refl
+Z ≡ℕ? (S n) = No (λ ())
+S m ≡ℕ? Z = No (λ ())
+S m ≡ℕ? S n with m ≡ℕ? n
+S m ≡ℕ? S .m | Yes refl = Yes refl
+S m ≡ℕ? S n | No f = No (f ∘ succInjective)
