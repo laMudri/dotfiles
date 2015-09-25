@@ -96,6 +96,7 @@ export KEYTIMEOUT=1
 
 alias sudo='sudo '
 alias hoogle="nocorrect hoogle"
+alias hoqc="echo -n | hoq"
 
 # Setup zsh-autosuggestions
 source /home/james/.zsh-autosuggestions/autosuggestions.zsh

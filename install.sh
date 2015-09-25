@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 ./makesymlinks.sh
 git submodule update --init --recursive
 vim +BundleInstall +qall
