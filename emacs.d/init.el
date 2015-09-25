@@ -52,15 +52,15 @@
 
 (define-key evil-window-map "j" 'evil-window-left)
 (define-key evil-window-map "J" 'evil-window-move-far-left)
-(define-key evil-window-map "k" 'evil-window-down)
-(define-key evil-window-map "K" 'evil-window-move-very-bottom)
-(define-key evil-window-map "h" 'evil-window-up)
-(define-key evil-window-map "H" 'evil-window-move-very-top)
+(define-key evil-window-map "h" 'evil-window-down)
+(define-key evil-window-map "H" 'evil-window-move-very-bottom)
+(define-key evil-window-map "k" 'evil-window-up)
+(define-key evil-window-map "K" 'evil-window-move-very-top)
 
 (define-key evil-motion-state-map "j" 'evil-backward-char)
 (define-key evil-motion-state-map "J" 'evil-window-top)
-(define-key evil-motion-state-map "k" 'evil-next-line)
-(define-key evil-motion-state-map "h" 'evil-previous-line)
+(define-key evil-motion-state-map "h" 'evil-next-line)
+(define-key evil-motion-state-map "k" 'evil-previous-line)
 
 (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
 (define-key evil-motion-state-map "|" 'evil-execute-in-emacs-state)
@@ -382,7 +382,7 @@
   '(progn
      (load "agda2-mode-improvements")
      (evil-define-key 'normal agda2-mode-map
-       "\\p" 'agda2-auto
+       "\\v" 'agda2-auto
        "\\u" 'agda2-previous-goal
        "\\y" 'agda2-next-goal
        "\\c" 'agda2-make-case
@@ -392,11 +392,11 @@
        "\\n" 'agda2-compute-normalised-maybe-toplevel
        "\\o" 'agda2-module-contents-maybe-toplevel
        "\\f" 'agda2-refine
-       "\\s" 'agda2-solveAll
+       "\\p" 'agda2-solveAll
        "\\t" 'agda2-goal-type
        "\\ " 'agda2-give
-       "\\;" 'agda2-goal-and-context
-       "\\." 'agda2-goal-and-context-and-inferred
+       "\\." 'agda2-goal-and-context
+       "\\;" 'agda2-goal-and-context-and-inferred
        "\\=" 'agda2-show-constraints
        "\\g" 'agda2-show-goals
        "\\xc" 'agda2-compile

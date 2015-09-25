@@ -126,7 +126,7 @@ xkb_symbols "jbwide" {
 
 partial alphanumeric_keys modifier_keys
 xkb_symbols "lv5" {
-    include "extend";
+    include "extend"
 
     key <AD07> { symbols[Group1]=[ NoSymbol , NoSymbol , NoSymbol , NoSymbol ,
                    Page_Up              , Page_Up               , // PgUp
