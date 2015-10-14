@@ -163,3 +163,5 @@ hints.addMode("p", "Paste into text field", function (elem) {
       elem.innerHTML += editor.getRegister();
   }, null, "input[type=text],textarea");
 EOT
+
+set yankshort=bugzilla.mozilla.org
