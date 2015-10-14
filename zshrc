@@ -48,10 +48,13 @@ antigen bundles <<EOBUNDLES
   vi-mode
   vundle
 
-  laMudri/zsh-yum-aliases
+  hchbaw/auto-fu.zsh --branch=pu
+  #laMudri/zsh-yum-aliases
+  spwhitt/nix-zsh-completions
   # Not working:
   #tarruda/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
+
   zsh_reload
 EOBUNDLES
 
@@ -99,17 +102,11 @@ alias hoogle="nocorrect hoogle"
 alias hoqc="echo -n | hoq"
 
 # Setup zsh-autosuggestions
-source /home/james/.zsh-autosuggestions/autosuggestions.zsh
-
-# Enable autosuggestions automatically
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
+#source /home/james/.zsh-autosuggestions/autosuggestions.zsh
 
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
 # zsh-autosuggestions is designed to be unobtrusive)
-bindkey '^T' autosuggest-toggle
+#bindkey '^T' autosuggest-toggle
 
 zmodload zsh/terminfo
 
@@ -131,20 +128,22 @@ bindkey "${terminfo[kend]}" end-of-line
 bindkey "${terminfo[kich1]}" overwrite-mode
 bindkey "${terminfo[kdch1]}" delete-char
 
-setopt hist_ignore_dups
+setopt histignorealldups histreduceblanks histignorespace listpacked
 
 # vi mode indicator
 precmd() {
-    RPROMPT=""
+  RPROMPT=""
 }
 zle-keymap-select() {
-    RPROMPT=""
-    [[ $KEYMAP = vicmd ]] && RPROMPT="(CMD)"
-    () { return $__prompt_status }
-    zle reset-prompt
+  RPROMPT=""
+  [[ $KEYMAP = vicmd ]] && RPROMPT="(CMD)"
+  () { return $__prompt_status }
+  zle reset-prompt
 }
 zle-line-init() {
-    typeset -g __prompt_status="$?"
+  # Enable autosuggestions automatically
+  #zle autosuggest-start
+  typeset -g __prompt_status="$?"
 }
 zle -N zle-keymap-select
 zle -N zle-line-init
@@ -169,15 +168,16 @@ alias nixpaste="curl -F 'text=<-' http://nixpaste.noip.me"
 # Use the local package list
 alias mynix-env="nix-env -f /home/james/nixpkgs"
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
+alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
 
 fancy-ctrl-z () {
   emulate -LR zsh
   if [[ $#BUFFER -eq 0 ]]; then
-# Normal ctrl+z
+    # Normal ctrl+z
     bg
     zle redisplay
   else
-# Save current command
+    # Save current command
     zle push-input
   fi
 }
@@ -195,3 +195,7 @@ else
 fi
 
 mkcd () { mkdir $* && cd ${@[-1]} }
+
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.*' insert-sections true
+zstyle ':completion:*:man:*' menu yes select
