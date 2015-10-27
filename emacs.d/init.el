@@ -32,8 +32,6 @@
 ; '(j-conjunction-face ((t (:foreground "olive drab"))))
 ; '(j-other-face ((t (:foreground "Black")))))
 
-(require 'evil-indent-textobject)
-
 (require 'evil-leader)
 (global-evil-leader-mode)
 
@@ -114,17 +112,19 @@
 (define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
 (define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
 
-(require 'smartparens)
-(smartparens-global-mode)
-(require 'smartparens-config)
+;(require 'smartparens)
+;(smartparens-global-mode)
+;(require 'smartparens-config)
 ;(sp-pair "(" ")" :wrap "C-s )")
 ;(sp-pair "[" "]" :wrap "C-s ]")
 ;(sp-pair "{" "}" :wrap "C-s }")
 ;(sp-pair "<" ">" :wrap "C-s >")
 ;(sp-pair "\"" "\"" :wrap "C-s \"")
 ;(sp-pair "'" "'" :wrap "C-s '")
-(require 'evil-smartparens)
-(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+;(require 'evil-smartparens)
+;(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
+(electric-pair-mode 1)
 
 (require 'ace-jump-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
@@ -147,7 +147,18 @@
 ; AUCTeX
 ;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
-(add-hook 'LaTeX-mode-hook (lambda () (whitespace-mode nil)))
+(add-hook 'LaTeX-mode-hook
+          (lambda () (progn (whitespace-mode nil)
+                            (visual-line-mode 1)
+                            (setq TeX-PDF-mode t)
+                            (cond
+                             ((executable-find "aspell")
+                              (setq ispell-program-name "aspell")
+                              (setq ispell-extra-args
+                                    '("--sug-mode=ultra" "--lang=en_GB")))
+                             ((executable-find "hunspell")
+                              (setq ispell-program-name "hunspell")
+                              (setq ispell-extra-args '("-d en_GB")))))))
 
 (autoload
   'ace-jump-mode
@@ -184,9 +195,11 @@
 
 (setq-default indent-tabs-mode nil)
 
+(require 'helm)
 (require 'helm-config)
-(define-key evil-normal-state-map (kbd "g h") 'helm-mini)
-;(helm-mode 1)
+(define-key evil-normal-state-map (kbd "g o") 'helm-mini)
+(helm-mode 1)
+(setq helm-mode-handle-completion-in-region nil)
 
 (require 'recentf)
 (recentf-mode 1)
@@ -211,11 +224,10 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-(let ((myFont (concat "-adobe-Source Code Pro"
-                      "-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")))
-  (set-default-font myFont nil t)
-  (set-fontset-font t '(8500 . 8800) myFont)
-  (setq default-frame-alist '((font . myFont))))
+;(let ((myFont "-adobe-Source Code Pro-12"))
+  (set-default-font "Source Code Pro-9" nil t)
+  (set-fontset-font t '(8500 . 8800) "Source Code Pro-9")
+  (setq default-frame-alist '((font . "Source Code Pro-9"))) ;)
 (set-fontset-font t '(#xE000 . #xE1FF)
                   '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
@@ -420,6 +432,19 @@
 
 (load-file "~/Downloads/cubicaltt/cubicaltt.el")
 (add-to-list 'auto-mode-alist '("\\.ctt\\'" . ctt-mode))
+
+(defun evil-toggle-input-method ()
+  "when toggle on input method, switch to evil-insert-state if possible. when toggle off input method, switch to evil-normal-state if current state is evil-insert-state"
+  (interactive)
+  (if (not current-input-method)
+      (if (not (string= evil-state "insert"))
+          (evil-insert-state))
+    (if (string= evil-state "insert")
+        (evil-normal-state)
+        ))
+  (toggle-input-method))
+
+(global-set-key (kbd "C-\\") 'evil-toggle-input-method)
 
 ; Terminal background colour fix for solarized
 (defun on-after-init ()

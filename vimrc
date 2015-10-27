@@ -213,8 +213,9 @@ let g:ycm_semantic_triggers = {'haskell': ['.']}
 " Fixes YCM/vim-autoclose issue
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
-" Highlighting for CakeML files
+" Highlighting
 au BufNewFile,BufRead *.cml set filetype=sml
+au BufNewFile,BufRead *.pro set filetype=prolog
 
 " neovim-specific
 if has('nvim')
