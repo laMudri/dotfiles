@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
+
+synpad-load
+
+feh --bg-scale ~/Pictures/Yojouhan-Shinwa-Taikei-318342.jpg
+
+xset -dpms &
+xset s noblank &
+xset s off &
+xset s 0 &
+
+xsetroot -cursor_name left_ptr
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+pgrep taffybar
+if [[ $? -eq 1 ]]; then
+    taffybar &
+fi
+
+pgrep firefox
+if [[ $? -eq 1 ]]; then
+    firefox &
+fi
+pgrep thunderbird
+if [[ $? -eq 1 ]]; then
+    thunderbird &
+fi
+pgrep hexchat
+if [[ $? -eq 1 ]]; then
+    hexchat &
+fi
+#pgrep pidgin
+#if [[ $? -eq 1 ]]; then
+#    pidgin &
+#fi
+
+xkbset -a  # Disable slow keys & sticky keys
