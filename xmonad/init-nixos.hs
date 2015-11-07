@@ -45,12 +45,3 @@ main = do
 
         , "xsetroot -cursor_name left_ptr"
         ]
-
-    --mapM_ (forkIO . startIfNotRunning)
-    --    [ "taffybar"
-    --    , "firefox"
-    --    , "thunderbird"
-    --    , "hexchat"
-    --    , "dunst"
-    --    ]
-    --void . forkIO $ startIfNotRunningP "dunst" ["-geom", "0x2-18+30"]

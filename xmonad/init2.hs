@@ -33,33 +33,15 @@ startIfNotRunningP cmd args = do
 main :: IO ()
 main = do
     mapM_ (uncurry export)
-        [ ("GTK_IM_MODULE", "ibus")
-        , ("XMODIFIERS", "@im=ibus")
-        , ("QT_IM_MODULE", "ibus")
-
-        , ("_JAVA_AWT_WM_NONREPARENTING", "1")
+        [ ("_JAVA_AWT_WM_NONREPARENTING", "1")
         ]
 
     mapM_ shellE
-        [ "ibus-daemon -drx"
-        , "synpad-load"
-
-        , "feh --bg-scale ~/Pictures/Yojouhan-Shinwa-Taikei-318342.jpg"
+        [ "feh --bg-scale ~/.background"
 
         , "xset -dpms"
         , "xset s noblank"
         , "xset s 0"
 
         , "xsetroot -cursor_name left_ptr"
-
-        , "xkbset -a" -- Disable slow keys & sticky keys
         ]
-
-    mapM_ (forkIO . startIfNotRunning)
-        [ "taffybar"
-        , "firefox"
-        , "thunderbird"
-        , "hexchat"
-        , "dunst"
-        ]
-    --void . forkIO $ startIfNotRunningP "dunst" ["-geom", "0x2-18+30"]

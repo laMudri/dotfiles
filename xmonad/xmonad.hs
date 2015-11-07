@@ -321,14 +321,14 @@ myLogHook = return ()
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "~/.xmonad/init-nixos.hs"
+  spawn "~/.xmonad/init2.hs"
   mapM_ spawnOnce
-    [ "firefox"
+    [ "taffybar"
+    , "dunst"
+    , "firefox"
     , "thunderbird"
     , "terminator -c WeeChat -x weechat"
     , "keepassx"
-    , "taffybar"
-    , "dunst"
     ]
 
 ------------------------------------------------------------------------
