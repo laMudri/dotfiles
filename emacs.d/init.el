@@ -109,8 +109,8 @@
 (define-key evil-motion-state-map (kbd "gj") 'evil-forward-arg)
 (define-key evil-normal-state-map (kbd "gl") 'evil-backward-arg)
 (define-key evil-motion-state-map (kbd "gl") 'evil-backward-arg)
-(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
-(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
+;(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
+;(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
 
 ;(require 'smartparens)
 ;(smartparens-global-mode)
@@ -149,7 +149,7 @@
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
 (add-hook 'LaTeX-mode-hook
           (lambda () (progn (whitespace-mode nil)
-                            (visual-line-mode 1)
+                            (global-visual-line-mode t)
                             (setq TeX-PDF-mode t)
                             (cond
                              ((executable-find "aspell")
@@ -287,7 +287,13 @@
      ((124 124)
       . 8744)
      ((111 111)
-      . 8728))) nil (evil-digraphs))
+      . 8728)
+     ((124 45)
+      . 8866)
+     ((117 43)
+      . 8846)
+     ((60 124)
+      . 9669))) nil (evil-digraphs))
  '(fci-rule-color "#eee8d5")
  '(global-whitespace-mode t)
  '(haskell-compile-command

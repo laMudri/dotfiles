@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}'
 let g:netrw_dirhist_2='/sharedhome/home/james/Downloads/opam-doc'
 let g:netrw_dirhist_3='/home/james/nixpkgs/pkgs/tools/inputmethods/ibus-table-others'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/james/nixpkgs/pkgs/tools/inputmethods/ibus-anthy'
 let g:netrw_dirhist_6='/nix/store/10yw2gc83hr7nvcf1c17xazwi4a761i6-ibus-table-1.9.6/libexec'
 let g:netrw_dirhist_7='/nix/store/hjazdmzi6k619c1sl38srs2lgmj11pri-ibus-table-1.9.6/share/ibus-table/tables'
 let g:netrw_dirhist_8='/nix/store/ks6ird8qx6dgbjpawgpfdx7a5rml9fyw-ibus-table-1.9.6/share/ibus-table/icons'
+let g:netrw_dirhist_9='/sharedhome/home/james/dotfiles/xmonad'
