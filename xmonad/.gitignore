@@ -1,0 +1,8 @@
+*.png
+*.dyn_hi
+*.dyn_o
+*.errors
+*.hi
+*.o
+xmonad-x86_64-linux
+taffybar/taffybar
