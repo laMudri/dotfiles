@@ -174,7 +174,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   -- mod-shift-[1..9], Move client to workspace N
   bindNumbers [xK_1 .. xK_9]
   ++
-  bindNumbers [xK_exclam, xK_at, xK_sterling, xK_dollar, xK_percent,
+  bindNumbers [xK_exclam, xK_at, xK_numbersign, xK_dollar, xK_percent,
                xK_asciicircum, xK_ampersand, xK_asterisk, xK_less]
   ++
 

@@ -32,8 +32,6 @@
 ; '(j-conjunction-face ((t (:foreground "olive drab"))))
 ; '(j-other-face ((t (:foreground "Black")))))
 
-(require 'evil-indent-textobject)
-
 (require 'evil-leader)
 (global-evil-leader-mode)
 
@@ -52,15 +50,15 @@
 
 (define-key evil-window-map "j" 'evil-window-left)
 (define-key evil-window-map "J" 'evil-window-move-far-left)
-(define-key evil-window-map "k" 'evil-window-down)
-(define-key evil-window-map "K" 'evil-window-move-very-bottom)
-(define-key evil-window-map "h" 'evil-window-up)
-(define-key evil-window-map "H" 'evil-window-move-very-top)
+(define-key evil-window-map "h" 'evil-window-down)
+(define-key evil-window-map "H" 'evil-window-move-very-bottom)
+(define-key evil-window-map "k" 'evil-window-up)
+(define-key evil-window-map "K" 'evil-window-move-very-top)
 
 (define-key evil-motion-state-map "j" 'evil-backward-char)
 (define-key evil-motion-state-map "J" 'evil-window-top)
-(define-key evil-motion-state-map "k" 'evil-next-line)
-(define-key evil-motion-state-map "h" 'evil-previous-line)
+(define-key evil-motion-state-map "h" 'evil-next-line)
+(define-key evil-motion-state-map "k" 'evil-previous-line)
 
 (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
 (define-key evil-motion-state-map "|" 'evil-execute-in-emacs-state)
@@ -114,17 +112,19 @@
 (define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
 (define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
 
-(require 'smartparens)
-(smartparens-global-mode)
-(require 'smartparens-config)
+;(require 'smartparens)
+;(smartparens-global-mode)
+;(require 'smartparens-config)
 ;(sp-pair "(" ")" :wrap "C-s )")
 ;(sp-pair "[" "]" :wrap "C-s ]")
 ;(sp-pair "{" "}" :wrap "C-s }")
 ;(sp-pair "<" ">" :wrap "C-s >")
 ;(sp-pair "\"" "\"" :wrap "C-s \"")
 ;(sp-pair "'" "'" :wrap "C-s '")
-(require 'evil-smartparens)
-(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+;(require 'evil-smartparens)
+;(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
+(electric-pair-mode 1)
 
 (require 'ace-jump-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
@@ -147,7 +147,18 @@
 ; AUCTeX
 ;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
-(add-hook 'LaTeX-mode-hook (lambda () (whitespace-mode nil)))
+(add-hook 'LaTeX-mode-hook
+          (lambda () (progn (whitespace-mode nil)
+                            (visual-line-mode 1)
+                            (setq TeX-PDF-mode t)
+                            (cond
+                             ((executable-find "aspell")
+                              (setq ispell-program-name "aspell")
+                              (setq ispell-extra-args
+                                    '("--sug-mode=ultra" "--lang=en_GB")))
+                             ((executable-find "hunspell")
+                              (setq ispell-program-name "hunspell")
+                              (setq ispell-extra-args '("-d en_GB")))))))
 
 (autoload
   'ace-jump-mode
@@ -184,9 +195,11 @@
 
 (setq-default indent-tabs-mode nil)
 
+(require 'helm)
 (require 'helm-config)
-(define-key evil-normal-state-map (kbd "g h") 'helm-mini)
-;(helm-mode 1)
+(define-key evil-normal-state-map (kbd "g o") 'helm-mini)
+(helm-mode 1)
+(setq helm-mode-handle-completion-in-region nil)
 
 (require 'recentf)
 (recentf-mode 1)
@@ -211,11 +224,10 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-(let ((myFont (concat "-adobe-Source Code Pro"
-                      "-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")))
-  (set-default-font myFont nil t)
-  (set-fontset-font t '(8500 . 8800) myFont)
-  (setq default-frame-alist '((font . myFont))))
+;(let ((myFont "-adobe-Source Code Pro-12"))
+  (set-default-font "Source Code Pro-9" nil t)
+  (set-fontset-font t '(8500 . 8800) "Source Code Pro-9")
+  (setq default-frame-alist '((font . "Source Code Pro-9"))) ;)
 (set-fontset-font t '(#xE000 . #xE1FF)
                   '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
@@ -245,7 +257,7 @@
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (wheatgrass)))
+ '(custom-enabled-themes (quote (solarized-dark)))
  '(custom-safe-themes
    (quote
     ("f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "013e87003e1e965d8ad78ee5b8927e743f940c7679959149bbee9a15bd286689" "3632cf223c62cb7da121be0ed641a2243f7ec0130178722554e613c9ab3131de" "66132890ee1f884b4f8e901f0c61c5ed078809626a547dbefbb201f900d03fd8" "b6f42c69cf96795c75b1e79e5cd8ca62f9f9a0cb07bf11d1e0b49f97785358f1" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
@@ -275,7 +287,11 @@
      ((124 124)
       . 8744)
      ((111 111)
-      . 8728))) nil (evil-digraphs))
+      . 8728)
+     ((124 45)
+      . 8866)
+     ((117 43)
+      . 8846))) nil (evil-digraphs))
  '(fci-rule-color "#eee8d5")
  '(global-whitespace-mode t)
  '(haskell-compile-command
@@ -357,13 +373,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(agda2-highlight-datatype-face ((t (:foreground "steel blue"))))
- '(agda2-highlight-function-face ((t (:foreground "white smoke"))))
- '(agda2-highlight-inductive-constructor-face ((t (:foreground "dark red"))))
- '(agda2-highlight-postulate-face ((t (:foreground "blue"))))
- '(agda2-highlight-primitive-face ((t (:foreground "steel blue"))))
- '(agda2-highlight-primitive-type-face ((t (:foreground "steel blue"))))
- '(agda2-highlight-record-face ((t (:foreground "steel blue"))))
+ '(agda2-highlight-bound-variable-face ((t (:foreground "violet"))))
+ '(agda2-highlight-coinductive-constructor-face ((t (:foreground "green"))))
+ '(agda2-highlight-datatype-face ((t (:foreground "#0087ff"))))
+ '(agda2-highlight-dotted-face ((t (:foreground "violet"))))
+ '(agda2-highlight-field-face ((t (:foreground "orange red"))))
+ '(agda2-highlight-function-face ((t (:foreground "orange red"))))
+ '(agda2-highlight-inductive-constructor-face ((t (:foreground "green"))))
+ '(agda2-highlight-keyword-face ((t (:foreground "orange"))))
+ '(agda2-highlight-module-face ((t (:foreground "brightgreen"))))
+ '(agda2-highlight-number-face ((t (:foreground "brightgreen"))))
+ '(agda2-highlight-postulate-face ((t (:foreground "cyan"))))
+ '(agda2-highlight-primitive-face ((t (:foreground "#0087ff"))))
+ '(agda2-highlight-primitive-type-face ((t (:foreground "#0087ff"))))
+ '(agda2-highlight-record-face ((t (:foreground "#0087ff"))))
+ '(agda2-highlight-string-face ((t (:foreground "brightred"))))
+ '(agda2-highlight-symbol-face ((t (:foreground "brightblue"))))
  '(custom-themed ((t (:background "blue1" :foreground "white")))))
 
 (load-file (let ((coding-system-for-read 'utf-8))
@@ -371,22 +396,23 @@
 
 (eval-after-load 'agda2
   '(progn
+     (load "agda2-mode-improvements")
      (evil-define-key 'normal agda2-mode-map
-       "\\p" 'agda2-auto
+       "\\v" 'agda2-auto
        "\\u" 'agda2-previous-goal
        "\\y" 'agda2-next-goal
        "\\c" 'agda2-make-case
-       "\\d" 'agda2-infer-type-maybe-toplevel
+       "\\xt" 'agda2-infer-type-maybe-toplevel
        "\\e" 'agda2-show-context
        "\\r" 'agda2-load
        "\\n" 'agda2-compute-normalised-maybe-toplevel
        "\\o" 'agda2-module-contents-maybe-toplevel
        "\\f" 'agda2-refine
-       "\\s" 'agda2-solveAll
+       "\\p" 'agda2-solveAll
        "\\t" 'agda2-goal-type
        "\\ " 'agda2-give
-       "\\;" 'agda2-goal-and-context
-       "\\." 'agda2-goal-and-context-and-inferred
+       "\\." 'agda2-goal-and-context
+       "\\;" 'agda2-goal-and-context-and-inferred
        "\\=" 'agda2-show-constraints
        "\\g" 'agda2-show-goals
        "\\xc" 'agda2-compile
@@ -394,7 +420,15 @@
        "\\xh" 'agda2-display-implicit-arguments
        "\\xl" 'agda2-load
        "\\xq" 'agda2-quit
-       "\\xr" 'agda2-restart)
+       "\\xr" 'agda2-restart
+
+       "\\l" 'agda2-solve-with-db
+       "\\xs" 'agda2-show-current-dbs
+       "\\w" 'agda2-add-with-exp
+       "\\a" 'agda2-add-with-exp-make-case
+       "\\d" 'agda2-generate-function-stub
+       "\\z" 'agda2-fix-line
+     )
      (add-hook 'evil-insert-state-entry-hook
                (lambda () (set-input-method "Agda")))
      (add-hook 'evil-insert-state-exit-hook
@@ -402,3 +436,22 @@
 
 (load-file "~/Downloads/cubicaltt/cubicaltt.el")
 (add-to-list 'auto-mode-alist '("\\.ctt\\'" . ctt-mode))
+
+(defun evil-toggle-input-method ()
+  "when toggle on input method, switch to evil-insert-state if possible. when toggle off input method, switch to evil-normal-state if current state is evil-insert-state"
+  (interactive)
+  (if (not current-input-method)
+      (if (not (string= evil-state "insert"))
+          (evil-insert-state))
+    (if (string= evil-state "insert")
+        (evil-normal-state)
+        ))
+  (toggle-input-method))
+
+(global-set-key (kbd "C-\\") 'evil-toggle-input-method)
+
+; Terminal background colour fix for solarized
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+(add-hook 'window-setup-hook 'on-after-init)

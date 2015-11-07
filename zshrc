@@ -165,7 +165,7 @@ unalias rm
 # Stop `nix-env` using `less`
 export NIX_PAGER=cat
 
-alias nixpaste="curl -F 'text=<-' http://nixpaste.noip.me"
+alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 
 # Use the local package list
 alias mynix-env="nix-env -f /home/james/nixpkgs"
