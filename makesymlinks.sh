@@ -23,3 +23,9 @@ for file in $files; do
   echo "Creating symlink to $file in home directory"
   ln -s $dir/$file $HOME/.$file
 done
+
+xmonad --recompile
+
+mkdir -p $HOME/.config
+ln -s $HOME/dotfiles/xmonad/lib $HOME/dotfiles/xmonad/taffybar/
+ln -s $HOME/dotfiles/xmonad/taffybar $HOME/.config/
