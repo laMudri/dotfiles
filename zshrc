@@ -152,7 +152,7 @@ zle -N zle-line-init
 
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;'
 
-eval `dircolors ~/Documents/misc/dircolors-solarized/dircolors.ansi-universal`
+eval `dircolors $HOME/dotfiles/dircolors-solarized/dircolors.ansi-universal`
 
 export PERL_MB_OPT="--install_base \"/home/james/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=/home/james/perl5"
