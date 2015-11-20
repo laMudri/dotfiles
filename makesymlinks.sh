@@ -24,6 +24,7 @@ for file in $files; do
   ln -s $dir/$file $HOME/.$file
 done
 
+echo "Recompiling xmonad"
 xmonad --recompile
 
 mkdir -p $HOME/.config
