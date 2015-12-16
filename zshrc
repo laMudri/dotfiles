@@ -173,6 +173,10 @@ export NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
 #alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
 
+if [ -e ~/.nix-profile/bin/ghc ]; then
+  eval $(grep export ~/.nix-profile/bin/ghc)
+fi
+
 fancy-ctrl-z () {
   emulate -LR zsh
   if [[ $#BUFFER -eq 0 ]]; then
