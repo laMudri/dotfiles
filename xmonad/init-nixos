@@ -1,4 +1,5 @@
-#!/usr/bin/env runhaskell
+#!/usr/bin/env nix-shell
+#!nix-shell -i runghc -p haskellPackages.ghc haskellPackages.turtle
 
 {-# LANGUAGE OverloadedStrings #-}
 
@@ -37,7 +38,7 @@ main = do
         ]
 
     mapM_ shellE
-        [ "feh --bg-scale ~/Pictures/Yojouhan-Shinwa-Taikei-318342.jpg"
+        [ "feh --bg-scale ~/.background"
 
         , "xset -dpms"
         , "xset s noblank"
@@ -45,3 +46,5 @@ main = do
 
         , "xsetroot -cursor_name left_ptr"
         ]
+
+-- vim: set ft=haskell:

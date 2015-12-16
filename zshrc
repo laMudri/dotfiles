@@ -168,9 +168,10 @@ export NIX_PAGER=cat
 alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 
 # Use the local package list
-alias mynix-env="nix-env -f /home/james/nixpkgs"
+export NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
+#alias mynix-env="nix-env -f \$HOME/nixpkgs"
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
-alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
+#alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
 
 fancy-ctrl-z () {
   emulate -LR zsh
@@ -188,7 +189,12 @@ bindkey '^Z' fancy-ctrl-z
 
 alias note-dequeue="tail -n+2 ~/notes.txt > ~/.notes.txt && mv -f ~/.notes.txt ~/notes.txt"
 
-alias t='terminator >&/dev/null &!'
+function new-terminal {
+  terminator >&/dev/null &!
+}
+zle -N new-terminal
+bindkey '\e^e' new-terminal
+alias t=new-terminal
 
 if [ -e /run/current-system/sw/share/terminfo/x/xterm-256color ]; then
   export TERM=xterm-256color

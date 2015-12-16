@@ -26,8 +26,8 @@ set nocompatible
 filetype off
 
 set rtp+=~/.nvim/Vundle.vim
-set rtp+=~/.nvim/bundle/vundle
-call vundle#begin('~/.nvim/bundle/vundle/')
+set rtp+=~/.nvim/vundle
+call vundle#begin('~/.nvim/vundle/')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
@@ -58,6 +58,7 @@ Plugin 'laMudri/nextlast'
 Plugin 'dogrover/vim-pentadactyl'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
+Plugin 'LnL7/vim-nix'
 Plugin 'superbrothers/vim-vimperator'
 Plugin 'Shougo/neocomplete'
 Plugin 'osyo-manga/vim-over'
@@ -216,6 +217,8 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 " Highlighting
 au BufNewFile,BufRead *.cml set filetype=sml
 au BufNewFile,BufRead *.pro set filetype=prolog
+
+set modeline
 
 " neovim-specific
 if has('nvim')
