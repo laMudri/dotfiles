@@ -26,8 +26,8 @@ set nocompatible
 filetype off
 
 set rtp+=~/.nvim/Vundle.vim
-set rtp+=~/.nvim/bundle/vundle
-call vundle#begin('~/.nvim/bundle/vundle/')
+set rtp+=~/.nvim/vundle
+call vundle#begin('~/.nvim/vundle/')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
