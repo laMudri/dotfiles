@@ -9,6 +9,93 @@
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/elpa")
 
+; See https://github.com/cjohansen/.emacs.d/blob/master/init.el
+(defun init--install-packages ()
+  (packages-install
+   '(
+     ace-jump-buffer
+     ace-jump-mode
+     ack
+     adoc-mode
+     ascii-art-to-unicode
+     async
+     auctex
+     auctex-latexmk
+     auto-complete
+     auto-complete-auctex
+     concurrent
+     ctable
+     dash
+     deferred
+     elscreen
+     epc
+     epl
+     evil
+     evil-args
+     evil-escape
+     evil-exchange
+     evil-indent-textobject
+     evil-leader
+     evil-smartparens
+     evil-surround
+     evil-tabs
+     evil-terminal-cursor-changer
+     evil-visualstar
+     expand-region
+     fish-mode
+     flycheck
+     flycheck-ghcmod
+     flymake-easy
+     flymake-haskell-multi
+     flyspell-lazy
+     ghc
+     ghci-completion
+     gnugo
+     goto-chg
+     haskell-emacs
+     haskell-mode
+     helm
+     helm-ack
+     helm-core
+     helm-ghc
+     helm-hoogle
+     helm-idris
+     helm-j-cheatsheet
+     idris-mode
+     j-mode
+     java-snippets
+     jedi
+     jedi-core
+     key-chord
+     let-alist
+     linum-relative
+     markup-faces
+     pkg-info
+     popup
+     pretty-mode
+     prop-menu
+     python-environment
+     rich-minority
+     smart-mode-line
+     smartparens
+     sml-mode
+     soft-morning-theme
+     solarized-theme
+     subatomic-theme
+     term+
+     undo-tree
+     with-editor
+     xpm
+     yasnippet
+     zlc
+     zonokai-theme
+     )))
+(condition-case nil
+    (init--install-packages)
+  (error
+   (package-refresh-contents)
+   (init--install-packages)))
+
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
@@ -26,11 +113,11 @@
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
 (add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
 
-;(custom-set-face
-; '(j-verb-face ((t (:foreground "cornflower blue"))))
-; '(j-adverb-face ((t (:foreground "goldenrod"))))
-; '(j-conjunction-face ((t (:foreground "olive drab"))))
-; '(j-other-face ((t (:foreground "Black")))))
+                                        ;(custom-set-face
+                                        ; '(j-verb-face ((t (:foreground "cornflower blue"))))
+                                        ; '(j-adverb-face ((t (:foreground "goldenrod"))))
+                                        ; '(j-conjunction-face ((t (:foreground "olive drab"))))
+                                        ; '(j-other-face ((t (:foreground "Black")))))
 
 (require 'evil-leader)
 (global-evil-leader-mode)
@@ -109,43 +196,43 @@
 (define-key evil-motion-state-map (kbd "gj") 'evil-forward-arg)
 (define-key evil-normal-state-map (kbd "gl") 'evil-backward-arg)
 (define-key evil-motion-state-map (kbd "gl") 'evil-backward-arg)
-;(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
-;(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
+                                        ;(define-key evil-normal-state-map (kbd "gh") 'evil-jump-out-args)
+                                        ;(define-key evil-motion-state-map (kbd "gh") 'evil-jump-out-args)
 
-;(require 'smartparens)
-;(smartparens-global-mode)
-;(require 'smartparens-config)
-;(sp-pair "(" ")" :wrap "C-s )")
-;(sp-pair "[" "]" :wrap "C-s ]")
-;(sp-pair "{" "}" :wrap "C-s }")
-;(sp-pair "<" ">" :wrap "C-s >")
-;(sp-pair "\"" "\"" :wrap "C-s \"")
-;(sp-pair "'" "'" :wrap "C-s '")
-;(require 'evil-smartparens)
-;(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+                                        ;(require 'smartparens)
+                                        ;(smartparens-global-mode)
+                                        ;(require 'smartparens-config)
+                                        ;(sp-pair "(" ")" :wrap "C-s )")
+                                        ;(sp-pair "[" "]" :wrap "C-s ]")
+                                        ;(sp-pair "{" "}" :wrap "C-s }")
+                                        ;(sp-pair "<" ">" :wrap "C-s >")
+                                        ;(sp-pair "\"" "\"" :wrap "C-s \"")
+                                        ;(sp-pair "'" "'" :wrap "C-s '")
+                                        ;(require 'evil-smartparens)
+                                        ;(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
 (electric-pair-mode 1)
 
 (require 'ace-jump-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'ace-jump-buffer)
 
-;(unless (display-graphic-p)
-;  (require 'evil-terminal-cursor-changer))
-;(setq evil-visual-state-cursor 'box)
-;(setq evil-insert-state-cursor 'bar)
-;(setq evil-emacs-state-cursor 'hbar)
+                                        ;(unless (display-graphic-p)
+                                        ;  (require 'evil-terminal-cursor-changer))
+                                        ;(setq evil-visual-state-cursor 'box)
+                                        ;(setq evil-insert-state-cursor 'bar)
+                                        ;(setq evil-emacs-state-cursor 'hbar)
 
-;(setq initial-frame-alist '(
-;  (font . "Monospace-9")
-;))
-;(setq default-frame-alist '(
-;  (font . "Monospace-9")
-;))
+                                        ;(setq initial-frame-alist '(
+                                        ;  (font . "Monospace-9")
+                                        ;))
+                                        ;(setq default-frame-alist '(
+                                        ;  (font . "Monospace-9")
+                                        ;))
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
-; AUCTeX
-;(require 'auctex)
+                                        ; AUCTeX
+                                        ;(require 'auctex)
 (define-key evil-normal-state-map "gpp" 'preview-at-point)
 (add-hook 'LaTeX-mode-hook
           (lambda () (progn (whitespace-mode nil)
@@ -185,10 +272,10 @@
 (autoload 'lojban-parse-region "lojban" nil t)
 (autoload 'lojban-mode "lojban-mode" nil t)
 
-;(setq mail-user-agent 'sendmail-user-agent)
-;(setenv "MAILHOST" "pop3server")
-;(setq rmail-primary-inbox-list '("po:jdw74@cam.ac.uk")
-;      rmail-pop-password-required t)
+                                        ;(setq mail-user-agent 'sendmail-user-agent)
+                                        ;(setenv "MAILHOST" "pop3server")
+                                        ;(setq rmail-primary-inbox-list '("po:jdw74@cam.ac.uk")
+                                        ;      rmail-pop-password-required t)
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -215,7 +302,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
+                                        ;(define-key haskell-mode-map (kbd "\\ r") 'haskell-process-load-or-reload)
 
 (add-to-list 'completion-ignored-extensions '".ibc")
 
@@ -224,18 +311,18 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-;(let ((myFont "-adobe-Source Code Pro-12"))
-  (set-default-font "Source Code Pro-9" nil t)
-  (set-fontset-font t '(8500 . 8800) "Source Code Pro-9")
-  (setq default-frame-alist '((font . "Source Code Pro-9"))) ;)
+                                        ;(let ((myFont "-adobe-Source Code Pro-12"))
+(set-default-font "Source Code Pro-9" nil t)
+(set-fontset-font t '(8500 . 8800) "Source Code Pro-9")
+(setq default-frame-alist '((font . "Source Code Pro-9"))) ;)
 (set-fontset-font t '(#xE000 . #xE1FF)
                   '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
-;(require 'powerline)
-;(require 'powerline-evil)
-;(powerline-evil-vim-color-theme)
+                                        ;(require 'powerline)
+                                        ;(require 'powerline-evil)
+                                        ;(powerline-evil-vim-color-theme)
 
-;(sml/setup)
+                                        ;(sml/setup)
 
 (require 'zlc)
 (zlc-mode t)
@@ -394,7 +481,7 @@
  '(custom-themed ((t (:background "blue1" :foreground "white")))))
 
 (load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+             (shell-command-to-string "agda-mode locate")))
 
 (eval-after-load 'agda2
   '(progn
@@ -430,7 +517,7 @@
        "\\a" 'agda2-add-with-exp-make-case
        "\\d" 'agda2-generate-function-stub
        "\\z" 'agda2-fix-line
-     )
+       )
      (add-hook 'evil-insert-state-entry-hook
                (lambda () (set-input-method "Agda")))
      (add-hook 'evil-insert-state-exit-hook
@@ -447,12 +534,12 @@
           (evil-insert-state))
     (if (string= evil-state "insert")
         (evil-normal-state)
-        ))
+      ))
   (toggle-input-method))
 
 (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
 
-; Terminal background colour fix for solarized
+                                        ; Terminal background colour fix for solarized
 (defun on-after-init ()
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))))
