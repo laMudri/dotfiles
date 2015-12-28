@@ -32,9 +32,10 @@ startIfNotRunningP cmd args = do
 
 main :: IO ()
 main = do
-    mapM_ (uncurry export)
-        [ ("_JAVA_AWT_WM_NONREPARENTING", "1")
-        ]
+    --mapM_ (uncurry export)
+    --    [ ("_JAVA_AWT_WM_NONREPARENTING", "1")
+    --    , ("AWT_TOOLKIT", "MToolKit")
+    --    ]
 
     mapM_ shellE
         [ "feh --bg-scale ~/.background"
@@ -44,4 +45,6 @@ main = do
         , "xset s 0"
 
         , "xsetroot -cursor_name left_ptr"
+        , "export _JAVA_AWT_WM_NONREPARENTING=1"
+        , "export AWT_TOOLKIT=MToolKit"
         ]

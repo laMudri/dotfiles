@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i runghc -p haskellPackages.ghc haskellPackages.turtle
+#!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (h: [ h.turtle ])"
 
 {-# LANGUAGE OverloadedStrings #-}
 

@@ -44,7 +44,7 @@ import Solarized
 -- certain contrib modules.
 
 myTerminal :: String
-myTerminal = "terminator"
+myTerminal = "urxvtc"
 
 -- Width of the window border in pixels.
 
@@ -277,10 +277,10 @@ role = stringProperty "WM_WINDOW_ROLE"
 
 scratchpads :: [NamedScratchpad]
 scratchpads =
-  [ NS "terminal" "terminator --role=terminalSP"
-       (role =? "terminalSP") manageTerminalSP
-  , NS "volume" "terminator --role=volumeSP -x alsamixer"
-       (role =? "volumeSP") manageVolumeSP
+  [ NS "terminal" "urxvtc -name terminalSP"
+       (appName =? "terminalSP") manageTerminalSP
+  , NS "volume" "urxvtc -name volumeSP -e alsamixer"
+       (appName =? "volumeSP") manageVolumeSP
   ]
 
 manageTerminalSP :: ManageHook
@@ -325,9 +325,10 @@ myStartupHook = do
   mapM_ spawnOnce
     [ "taffybar"
     , "dunst"
+    , "urxvtd"
     , "firefox"
     , "thunderbird"
-    , "terminator -c WeeChat -x weechat"
+    , "urxvtc -name WeeChat -e weechat"
     , "keepassx"
     ]
 
