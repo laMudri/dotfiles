@@ -334,10 +334,10 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
-;(let ((myFont "-adobe-Source Code Pro-12"))
-(set-default-font "Source Code Pro-9" nil t)
-(set-fontset-font t '(8500 . 8800) "Source Code Pro-9")
-(setq default-frame-alist '((font . "Source Code Pro-9"))) ;)
+;(let ((myFont "-adobe-DejaVu Sans Mono-12"))
+(set-default-font "DejaVu Sans Mono-9" nil t)
+(set-fontset-font t '(8500 . 8800) "DejaVu Sans Mono-9")
+(setq default-frame-alist '((font . "DejaVu Sans Mono-9"))) ;)
 (set-fontset-font t '(#xE000 . #xE1FF)
                   '("Dushan Shwa Alphabet" . "unicode-bmp"))
 
@@ -351,157 +351,159 @@
 (zlc-mode t)
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(AmS-TeX-mode-hook (quote (whitespace-mode)))
-  '(LaTeX-mode-hook (quote (preview-mode-setup)) t)
-  '(agda2-include-dirs (quote ("." "/home/james/.nix-profile/share/agda/")))
-  '(ansi-color-faces-vector
-     [default default default italic underline success warning error])
-  '(ansi-color-names-vector
-     ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
-  '(compilation-message-face (quote default))
-  '(cua-global-mark-cursor-color "#2aa198")
-  '(cua-normal-cursor-color "#657b83")
-  '(cua-overwrite-cursor-color "#b58900")
-  '(cua-read-only-cursor-color "#859900")
-  '(custom-enabled-themes (quote (solarized-dark)))
-  '(custom-safe-themes
-     (quote
-       ("f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "013e87003e1e965d8ad78ee5b8927e743f940c7679959149bbee9a15bd286689" "3632cf223c62cb7da121be0ed641a2243f7ec0130178722554e613c9ab3131de" "66132890ee1f884b4f8e901f0c61c5ed078809626a547dbefbb201f900d03fd8" "b6f42c69cf96795c75b1e79e5cd8ca62f9f9a0cb07bf11d1e0b49f97785358f1" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
-  '(evil-args-delimiters (quote ("," ";" " ")))
-  '(evil-digraphs-table-user
-     (quote
-       (((108 101)
-         . 8715)
-        ((101 108)
-         . 8712)
-        ((98 98)
-         . 120121)
-        ((122 122)
-         . 8484)
-        ((113 113)
-         . 8474)
-        ((61 61)
-         . 8801)
-        ((47 61)
-         . 8802)
-        ((60 61)
-         . 8804)
-        ((62 61)
-         . 8805)
-        ((38 38)
-         . 8743)
-        ((124 124)
-         . 8744)
-        ((111 111)
-         . 8728)
-        ((124 45)
-         . 8866)
-        ((117 43)
-         . 8846)
-        ((60 124)
-         . 9669))) nil (evil-digraphs))
-  '(fci-rule-color "#eee8d5")
-  '(global-whitespace-mode t)
-  '(haskell-compile-command
-     "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
-  '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
-  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
-  '(highlight-symbol-colors
-     (--map
-       (solarized-color-blend it "#fdf6e3" 0.25)
-       (quote
-         ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
-  '(highlight-symbol-foreground-color "#586e75")
-  '(highlight-tail-colors
-     (quote
-       (("#eee8d5" . 0)
-        ("#B4C342" . 20)
-        ("#69CABF" . 30)
-        ("#69B7F0" . 50)
-        ("#DEB542" . 60)
-        ("#F2804F" . 70)
-        ("#F771AC" . 85)
-        ("#eee8d5" . 100))))
-  '(hl-bg-colors
-     (quote
-       ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
-  '(hl-fg-colors
-     (quote
-       ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
-  '(idris-interpreter-flags (quote ("-p" "contrib")))
-  '(idris-metavariable-list-show-expanded nil)
-  '(idris-mode-hook
-     (quote
-       (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
-  '(idris-pretty-printer-width 80)
-  '(idris-warnings-printing (quote (warnings-repl)))
-  '(inhibit-startup-screen t)
-  '(latex-run-command "pdflatex")
-  '(magit-diff-use-overlays nil)
-  '(pos-tip-background-color "#eee8d5")
-  '(pos-tip-foreground-color "#586e75")
-  '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
-  '(show-trailing-whitespace t)
-  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
-  '(term-default-bg-color "#fdf6e3")
-  '(term-default-fg-color "#657b83")
-  '(tool-bar-mode nil)
-  '(vc-annotate-background nil)
-  '(vc-annotate-color-map
-     (quote
-       ((20 . "#dc322f")
-        (40 . "#c85d17")
-        (60 . "#be730b")
-        (80 . "#b58900")
-        (100 . "#a58e00")
-        (120 . "#9d9100")
-        (140 . "#959300")
-        (160 . "#8d9600")
-        (180 . "#859900")
-        (200 . "#669b32")
-        (220 . "#579d4c")
-        (240 . "#489e65")
-        (260 . "#399f7e")
-        (280 . "#2aa198")
-        (300 . "#2898af")
-        (320 . "#2793ba")
-        (340 . "#268fc6")
-        (360 . "#268bd2"))))
-  '(vc-annotate-very-old-color nil)
-  '(weechat-color-list
-     (quote
-       (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
-  '(whitespace-global-modes (quote (not latex-mode tex-mode)))
-  '(xterm-color-names
-     ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
-  '(xterm-color-names-bright
-     ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"]))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(AmS-TeX-mode-hook (quote (whitespace-mode)))
+ '(LaTeX-mode-hook (quote (preview-mode-setup)) t)
+ '(agda2-include-dirs (quote ("." "/home/james/.nix-profile/share/agda/")))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-safe-themes
+   (quote
+    ("f04122bbc305a202967fa1838e20ff741455307c2ae80a26035fbf5d637e325f" "013e87003e1e965d8ad78ee5b8927e743f940c7679959149bbee9a15bd286689" "3632cf223c62cb7da121be0ed641a2243f7ec0130178722554e613c9ab3131de" "66132890ee1f884b4f8e901f0c61c5ed078809626a547dbefbb201f900d03fd8" "b6f42c69cf96795c75b1e79e5cd8ca62f9f9a0cb07bf11d1e0b49f97785358f1" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(evil-args-delimiters (quote ("," ";" " ")))
+ '(evil-digraphs-table-user
+   (quote
+    (((108 101)
+      . 8715)
+     ((101 108)
+      . 8712)
+     ((98 98)
+      . 120121)
+     ((122 122)
+      . 8484)
+     ((113 113)
+      . 8474)
+     ((61 61)
+      . 8801)
+     ((47 61)
+      . 8802)
+     ((60 61)
+      . 8804)
+     ((62 61)
+      . 8805)
+     ((38 38)
+      . 8743)
+     ((124 124)
+      . 8744)
+     ((111 111)
+      . 8728)
+     ((124 45)
+      . 8866)
+     ((117 43)
+      . 8846)
+     ((60 124)
+      . 9669)
+     ((102 97)
+      . 8704))) nil (evil-digraphs))
+ '(fci-rule-color "#eee8d5")
+ '(global-whitespace-mode t)
+ '(haskell-compile-command
+   "ghc -Wall -ferror-spans -fforce-recomp -fdefer-type-errors -c %s")
+ '(haskell-package-conf-file "/usr/lib64/ghc-7.6.3/package.conf")
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
+ '(highlight-tail-colors
+   (quote
+    (("#eee8d5" . 0)
+     ("#B4C342" . 20)
+     ("#69CABF" . 30)
+     ("#69B7F0" . 50)
+     ("#DEB542" . 60)
+     ("#F2804F" . 70)
+     ("#F771AC" . 85)
+     ("#eee8d5" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
+ '(idris-interpreter-flags (quote ("-p" "contrib")))
+ '(idris-metavariable-list-show-expanded nil)
+ '(idris-mode-hook
+   (quote
+    (turn-on-idris-simple-indent idris-enable-clickable-imports turn-on-eldoc-mode turn-on-pretty-mode)))
+ '(idris-pretty-printer-width 80)
+ '(idris-warnings-printing (quote (warnings-repl)))
+ '(inhibit-startup-screen t)
+ '(latex-run-command "pdflatex")
+ '(magit-diff-use-overlays nil)
+ '(pos-tip-background-color "#eee8d5")
+ '(pos-tip-foreground-color "#586e75")
+ '(preview-TeX-style-dir "/home/james/.emacs.d/elpa/auctex-11.88.2/latex" t)
+ '(show-trailing-whitespace t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
+ '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#dc322f")
+     (40 . "#c85d17")
+     (60 . "#be730b")
+     (80 . "#b58900")
+     (100 . "#a58e00")
+     (120 . "#9d9100")
+     (140 . "#959300")
+     (160 . "#8d9600")
+     (180 . "#859900")
+     (200 . "#669b32")
+     (220 . "#579d4c")
+     (240 . "#489e65")
+     (260 . "#399f7e")
+     (280 . "#2aa198")
+     (300 . "#2898af")
+     (320 . "#2793ba")
+     (340 . "#268fc6")
+     (360 . "#268bd2"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (quote
+    (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
+ '(whitespace-global-modes (quote (not latex-mode tex-mode)))
+ '(xterm-color-names
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
+ '(xterm-color-names-bright
+   ["#fdf6e3" "#cb4b16" "#93a1a1" "#839496" "#657b83" "#6c71c4" "#586e75" "#002b36"]))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(agda2-highlight-bound-variable-face ((t (:foreground "violet"))))
-  '(agda2-highlight-coinductive-constructor-face ((t (:foreground "green"))))
-  '(agda2-highlight-datatype-face ((t (:foreground "#0087ff"))))
-  '(agda2-highlight-dotted-face ((t (:foreground "violet"))))
-  '(agda2-highlight-field-face ((t (:foreground "orange red"))))
-  '(agda2-highlight-function-face ((t (:foreground "orange red"))))
-  '(agda2-highlight-inductive-constructor-face ((t (:foreground "green"))))
-  '(agda2-highlight-keyword-face ((t (:foreground "orange"))))
-  '(agda2-highlight-module-face ((t (:foreground "brightgreen"))))
-  '(agda2-highlight-number-face ((t (:foreground "brightgreen"))))
-  '(agda2-highlight-postulate-face ((t (:foreground "cyan"))))
-  '(agda2-highlight-primitive-face ((t (:foreground "#0087ff"))))
-  '(agda2-highlight-primitive-type-face ((t (:foreground "#0087ff"))))
-  '(agda2-highlight-record-face ((t (:foreground "#0087ff"))))
-  '(agda2-highlight-string-face ((t (:foreground "brightred"))))
-  '(agda2-highlight-symbol-face ((t (:foreground "brightblue"))))
-  '(custom-themed ((t (:background "blue1" :foreground "white")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(agda2-highlight-bound-variable-face ((t (:foreground "#2aa198"))))
+ '(agda2-highlight-coinductive-constructor-face ((t (:foreground "#859900"))))
+ '(agda2-highlight-datatype-face ((t (:foreground "#268bd2"))))
+ '(agda2-highlight-dotted-face ((t (:foreground "#2aa198"))))
+ '(agda2-highlight-field-face ((t (:foreground "#dc322f"))))
+ '(agda2-highlight-function-face ((t (:foreground "#cb4b16"))))
+ '(agda2-highlight-inductive-constructor-face ((t (:foreground "#859900"))))
+ '(agda2-highlight-keyword-face ((t (:foreground "#b58900"))))
+ '(agda2-highlight-module-face ((t (:foreground "#d33682"))))
+ '(agda2-highlight-number-face ((t (:foreground "#839496"))))
+ '(agda2-highlight-postulate-face ((t (:foreground "#657b83"))))
+ '(agda2-highlight-primitive-face ((t (:foreground "#657b83"))))
+ '(agda2-highlight-primitive-type-face ((t (:foreground "#268bd2"))))
+ '(agda2-highlight-record-face ((t (:foreground "#6c71c4"))))
+ '(agda2-highlight-string-face ((t (:foreground "#839496"))))
+ '(agda2-highlight-symbol-face ((t (:foreground "#839496"))))
+ '(custom-themed ((t (:background "blue1" :foreground "white")))))
 
 (load-file (let ((coding-system-for-read 'utf-8))
              (shell-command-to-string "agda-mode locate")))
