@@ -168,7 +168,7 @@ export NIX_PAGER=cat
 alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 
 # Use the local package list
-export NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
+#export NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
 #alias mynix-env="nix-env -f \$HOME/nixpkgs"
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
 #alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
@@ -194,7 +194,7 @@ bindkey '^Z' fancy-ctrl-z
 alias note-dequeue="tail -n+2 ~/notes.txt > ~/.notes.txt && mv -f ~/.notes.txt ~/notes.txt"
 
 function new-terminal {
-  terminator >&/dev/null &!
+  urxvt >&/dev/null &!
 }
 zle -N new-terminal
 bindkey '\e^e' new-terminal
