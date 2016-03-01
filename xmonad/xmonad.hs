@@ -14,6 +14,7 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Spacing
 import XMonad.Layout.WorkspaceDir
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile
@@ -136,11 +137,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((0, xF86XK_AudioLowerVolume), changeVolume "5%-" >> showVolume)
   , ((0, xF86XK_AudioRaiseVolume), changeVolume "5%+" >> showVolume)
   , ((0, xF86XK_AudioMute), changeVolume "toggle" >> showVolume)
-  --, ((0, xF86XK_AudioLowerVolume), lowerVolumeChannels ["Master"] 5 >>
-  --                                 showVolume)
-  --, ((0, xF86XK_AudioRaiseVolume), raiseVolumeChannels ["Master"] 5 >>
-  --                                 showVolume)
-  --, ((0, xF86XK_AudioMute), toggleMuteChannels ["Master"] >> showVolume)
 
   -- Screenshot
   , ((0, xK_Print), spawn "scrot -e 'mv $f ~/screenshots/'")
@@ -224,8 +220,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 -- which denotes layout choice.
 
 myLayoutHook =
-  avoidStruts . workspaceDir "/home/james" . smartBorders $
-    (tiled ||| Mirror tiled ||| fullscreenFull fullscreen)
+  smartSpacing 1 . avoidStruts . workspaceDir "/home/james" . fullscreenFull .
+    smartBorders $
+      (tiled ||| Mirror tiled ||| fullscreen)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -310,7 +307,7 @@ myFocusFollowsMouse = False
 -- See the 'DynamicLog' extension for examples.
 
 myLogHook :: X ()
-myLogHook = return ()
+myLogHook = fadeInactiveLogHook (3 / 4)
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -328,8 +325,9 @@ myStartupHook = do
     , "urxvtd"
     , "firefox"
     , "thunderbird"
-    , "urxvtc -name WeeChat -e weechat"
+    , "urxvt -name WeeChat -e weechat"
     , "keepassx"
+    , "volumeicon"
     ]
 
 ------------------------------------------------------------------------
