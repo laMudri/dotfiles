@@ -83,7 +83,8 @@ command J -nargs=1 -literal=0 -js
 map gj <c-2>x
 map gʒ <c-2>x
 
-colorscheme gruvbox-dark-mudri
+"colorscheme gruvbox-dark-mudri
+colorscheme solarized-dark
 
 " lojbo
 map -m base ʃ c
