@@ -58,14 +58,12 @@ antigen bundles <<EOBUNDLES
   zsh_reload
 EOBUNDLES
 
-antigen theme agnoster
+#antigen theme agnoster
 
 antigen apply
 
-# User configuration
-
-#export PATH="/home/james/bin:/home/james/bin:/home/james/.cabal/bin:/home/james/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
+# Unpackaged functions
+export fpath=($HOME/.zsh/functions $fpath)
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -172,6 +170,7 @@ alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 #alias mynix-env="nix-env -f \$HOME/nixpkgs"
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
 #alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
+alias ns="nix-env -qaPs"
 
 if [ -e ~/.nix-profile/bin/ghc ]; then
   eval $(grep export ~/.nix-profile/bin/ghc)
@@ -194,7 +193,7 @@ bindkey '^Z' fancy-ctrl-z
 alias note-dequeue="tail -n+2 ~/notes.txt > ~/.notes.txt && mv -f ~/.notes.txt ~/notes.txt"
 
 function new-terminal {
-  urxvt >&/dev/null &!
+  urxvtc >&/dev/null &!
 }
 zle -N new-terminal
 bindkey '\e^e' new-terminal
@@ -211,3 +210,25 @@ mkcd () { mkdir $* && cd ${@[-1]} }
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:man:*' menu yes select
+
+function whichnix {
+  ll $(which $1) | sed 's/.*-> //' | grep -o '/nix/store/[^/]*/' --colour=never
+}
+
+# Hunspell setup
+export DICPATH=$HOME/.nix-profile/share/hunspell
+
+# Hide username in agnoster
+export DEFAULT_USER=james
+
+# Concatenation to work around not being able to have single quotes in a
+# non-expanding string literal
+alias nix-zsh='nix-shell --command '"'"'ZDOTDIR=$HOME/.nix-zsh zsh'"'"
+
+GIT_PROMPT_EXECUTABLE=haskell
+source $HOME/.zsh/zsh-git-prompt/zshrc.sh
+export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(40l.
+.)%(!.⇒.→) '
+
+# Used by termite
+export BROWSER=firefox
