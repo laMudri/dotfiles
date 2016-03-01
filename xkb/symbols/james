@@ -13,8 +13,8 @@ xkb_symbols "colemak" {
 
     key <BKSL> { [    backslash,          bar,           U0190,       dead_breve ] };
     key <LSGT> { [   asciitilde,   numbersign,         minutes,          seconds ] };
-    key <AB06> { [            k,            K,  dead_abovering, leftanglebracket ] };
-    key <AB07> { [            m,            M,     dead_macron,rightanglebracket ] };
+    key <AB06> { [            k,            K,  dead_abovering,            U27E8 ] };
+    key <AB07> { [            m,            M,     dead_macron,            U27E9 ] };
     key <AB08> { [        comma,         less,    dead_cedilla,            U1614 ] };
     key <AB09> { [       period,      greater,   dead_abovedot,            U0190 ] };
 
@@ -73,10 +73,10 @@ xkb_symbols "progwide" {
     key <AB04> { [            b,            B,      dead_breve,       asciitilde ] };
     key <AB05> { [   asciitilde,     sterling,         minutes,          seconds ] };
     key <AB06> { [        slash,     question,  periodcentered,     questiondown ] };
-    key <AB07> { [            k,            K,  dead_abovering, leftanglebracket ] };
-    key <AB08> { [            m,            M,     dead_macron,rightanglebracket ] };
-    key <AB09> { [        comma,    parenleft,    dead_cedilla,            U1614 ] };
-    key <AB10> { [       period,   parenright,   dead_abovedot,            U0190 ] };
+    key <AB07> { [            k,            K,  dead_abovering,            U27E8 ] };  // ⟨
+    key <AB08> { [            m,            M,     dead_macron,            U27E9 ] };  // ⟩
+    key <AB09> { [        comma,    parenleft,    dead_cedilla,            U1614 ] };  // ᘔ
+    key <AB10> { [       period,   parenright,   dead_abovedot,            U0190 ] };  // Ɛ
 };
 
 partial alphanumeric_keys
@@ -90,7 +90,7 @@ xkb_symbols "progwide_dh" {
     key <AB04> { [            d,            D,  dead_diaeresis,       asciitilde ] };
 
     key <AC07> { [            k,            K,  dead_abovering,       asciitilde ] };
-    key <AB07> { [            h,            H,      dead_caron, leftanglebracket ] };
+    key <AB07> { [            h,            H,      dead_caron,            U27E8 ] };  // ⟨
 };
 
 

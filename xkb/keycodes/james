@@ -39,7 +39,7 @@ default xkb_keycodes "evdev" {
 	alias <AC12> = <BKSL>;
 	<RTRN> = 36;
 
-	<CAPS> = 37;  // was left ctrl
+	<ESC> = 37;  // was left ctrl
 	<AC01> = 38;
 	<AC02> = 39;
 	<AC03> = 40;
@@ -76,7 +76,7 @@ default xkb_keycodes "evdev" {
 	<COMP> = 135;
 	alias <MENU> = <COMP>;
 
-	<ESC> = 9;
+	<CAPS> = 9;  // was esc
 	<FK01> = 67;
 	<FK02> = 68;
 	<FK03> = 69;
