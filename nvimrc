@@ -25,9 +25,9 @@ set ruler
 set nocompatible
 filetype off
 
-set rtp+=~/.nvim/Vundle.vim
-set rtp+=~/.nvim/vundle
-call vundle#begin('~/.nvim/vundle/')
+set rtp+=~/.config/nvim/Vundle.vim
+set rtp+=~/.config/nvim/vundle
+call vundle#begin('~/.config/nvim/vundle/')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
@@ -63,6 +63,7 @@ Plugin 'superbrothers/vim-vimperator'
 Plugin 'Shougo/neocomplete'
 Plugin 'osyo-manga/vim-over'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -101,7 +102,7 @@ set expandtab
 
 set linebreak
 
-set encoding=utf-8
+"set encoding=utf-8
 
 imap <C-F> <C-O>diw
 
