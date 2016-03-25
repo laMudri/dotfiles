@@ -171,6 +171,7 @@ alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
 #alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
 alias ns="nix-env -qaPs"
+alias nu="nix-env -iA g.everything"
 
 if [ -e ~/.nix-profile/bin/ghc ]; then
   eval $(grep export ~/.nix-profile/bin/ghc)
@@ -218,6 +219,9 @@ function whichnix {
 # Hunspell setup
 export DICPATH=$HOME/.nix-profile/share/hunspell
 
+test /etc/ssl/certs/ca-certificates.crt && \
+  export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+
 # Hide username in agnoster
 export DEFAULT_USER=james
 
@@ -227,7 +231,7 @@ alias nix-zsh='nix-shell --command '"'"'ZDOTDIR=$HOME/.nix-zsh zsh'"'"
 
 GIT_PROMPT_EXECUTABLE=haskell
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
-export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(40l.
+export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
 .)%(!.⇒.→) '
 
 # Used by termite
