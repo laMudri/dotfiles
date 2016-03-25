@@ -318,7 +318,7 @@ myLogHook = fadeInactiveLogHook (3 / 4)
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "~/.xmonad/init2.hs"
+  spawn "~/.xmonad/init2"
   mapM_ spawnOnce
     [ "taffybar"
     , "dunst"

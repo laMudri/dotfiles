@@ -2,17 +2,19 @@
 
 {-# LANGUAGE OverloadedStrings #-}
 
-import Turtle
-
 import Control.Concurrent
 import Control.Monad
+import Filesystem.Path.CurrentOS (encodeString)
+import Turtle
 
-shellE :: Text -> IO ExitCode
+import Desktop (runDesktopFile)
+
+shellE :: MonadIO io => Text -> io ExitCode
 shellE x = shell x empty
-procE :: Text -> [Text] -> IO ExitCode
+procE :: MonadIO io => Text -> [Text] -> io ExitCode
 procE x ps = proc x ps empty
 
-startIfNotRunning :: Text -> IO ()
+startIfNotRunning :: MonadIO io => Text -> io ()
 startIfNotRunning cmd = do
     c <- procE "pgrep" [cmd]
     case c of
@@ -21,7 +23,7 @@ startIfNotRunning cmd = do
         ExitFailure n ->
             err $ "startIfNotRunning: pgrep status " <> (fromString . show) n
 
-startIfNotRunningP :: Text -> [Text] -> IO ()
+startIfNotRunningP :: MonadIO io => Text -> [Text] -> io ()
 startIfNotRunningP cmd args = do
     c <- procE "pgrep" [cmd]
     case c of
@@ -48,3 +50,9 @@ main = do
         , "export _JAVA_AWT_WM_NONREPARENTING=1"
         , "export AWT_TOOLKIT=MToolKit"
         ]
+
+    sh $ do
+      file <- find (ends ".desktop") "/run/current-system/sw/etc/xdg/autostart/"
+      liftIO $ runDesktopFile (encodeString file) "Desktop Entry"
+
+    return ()

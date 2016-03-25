@@ -89,5 +89,5 @@ mpris = mprisNew defaultMPRISConfig
 main :: IO ()
 main = defaultTaffybar defaultTaffybarConfig
          { startWidgets = [pager]
-         , endWidgets = [clock, battery, netenp, netwlp, mem, cpu, tray]
+         , endWidgets = [clock, battery, mem, cpu, tray, netenp, netwlp]
          }
