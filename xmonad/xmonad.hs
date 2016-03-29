@@ -69,7 +69,7 @@ myModMask = mod4Mask
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 
 -- Border colors for unfocused and focused windows, respectively.
 myNormalBorderColor, myFocusedBorderColor :: String
@@ -149,8 +149,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm, xK_o), appendFilePrompt xPConfig "/home/james/notes.txt")
   , ((modm, xK_d), changeDir xPConfig)
   , ((modm, xK_F1), manPrompt xPConfig)
-  , ((modm, xK_l), runOrRaisePrompt xPConfig)
-  , ((modm, xK_s), shellPrompt xPConfig)
+  , ((modm, xK_l), shellPrompt xPConfig)
   , ((modm, xK_y), windowPromptBring xPConfig
      { autoComplete = Just 500000 })  -- Don't send keys to new window
   , ((modm .|. shiftMask, xK_y), windowPromptGoto xPConfig
@@ -168,10 +167,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
-  bindNumbers [xK_1 .. xK_9]
+  bindNumbers ([xK_1 .. xK_9] ++ [xK_0])
   ++
   bindNumbers [xK_exclam, xK_at, xK_numbersign, xK_dollar, xK_percent,
-               xK_asciicircum, xK_ampersand, xK_asterisk, xK_less]
+               xK_asciicircum, xK_ampersand, xK_asterisk, xK_less, xK_greater]
   ++
 
   -- mod-{u,y,;}, Switch to physical/Xinerama screens 1, 2, or 3
