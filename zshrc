@@ -227,11 +227,16 @@ export DEFAULT_USER=james
 
 # Concatenation to work around not being able to have single quotes in a
 # non-expanding string literal
-alias nix-zsh='nix-shell --command '"'"'ZDOTDIR=$HOME/.nix-zsh zsh'"'"
+alias nix-zsh='nix-shell --command zsh'
 
 GIT_PROMPT_EXECUTABLE=haskell
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
-export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
+function nix-shell-prefix {
+  if test -n "$IN_NIX_SHELL"; then
+    echo "%F{yellow}nix-shell%f|"
+  fi
+}
+export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
 .)%(!.⇒.→) '
 
 # Used by termite
