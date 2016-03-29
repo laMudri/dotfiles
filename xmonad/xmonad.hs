@@ -134,8 +134,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm, xK_i), focusUrgent)
 
   -- Volume keys
-  , ((0, xF86XK_AudioLowerVolume), changeVolume "5%-" >> showVolume)
-  , ((0, xF86XK_AudioRaiseVolume), changeVolume "5%+" >> showVolume)
+  , ((0, xF86XK_AudioLowerVolume), changeVolume "1-" >> showVolume)
+  , ((0, xF86XK_AudioRaiseVolume), changeVolume "1+" >> showVolume)
   , ((0, xF86XK_AudioMute), changeVolume "toggle" >> showVolume)
 
   -- Screenshot
