@@ -1,9 +1,0 @@
-package code;
-
-public class User {
-    String mName;
-
-    public User(String name) {
-        mName = name;
-    }
-}

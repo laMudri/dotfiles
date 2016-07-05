@@ -1,6 +1,0 @@
-module Brackets
-  data BracketTree : Nat -> Type
-    BracketNode : BracketTree Z
-    BracketBranch : BracketTree m -> BracketTree n -> BracketTree (m + n)
-  
-  makeTrees : (n : Nat) -> List (BracketTree n)

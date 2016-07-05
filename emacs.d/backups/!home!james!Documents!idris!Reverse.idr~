@@ -1,5 +1,0 @@
-module Reverse
-%default total
-import Data.Vect
-
-reverse : Vect n a -> Vect n a

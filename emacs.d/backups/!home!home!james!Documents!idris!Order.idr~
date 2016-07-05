@@ -1,3 +1,0 @@
-module Order
-  data SType = SUnit | SPair SType SType | SEither SType SType | SFun SType SType
-  order : SType -> Nat

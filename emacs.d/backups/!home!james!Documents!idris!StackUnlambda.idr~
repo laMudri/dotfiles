@@ -1,8 +1,0 @@
-module StackUnlambda
--- ssk!! <=> s(sk)
--- ss!k! <=> ssk
--- Untyped
-
-data Token = S | K | App
-instance Show Token where
-  show x = ?show_rhs

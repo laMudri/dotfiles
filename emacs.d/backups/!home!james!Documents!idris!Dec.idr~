@@ -1,7 +1,0 @@
-module Dec
-%default total
-
-SoYes : Dec a -> Type
-
-data (~>) : Type -> Type -> Type where
-  Impl : -> a ~> b

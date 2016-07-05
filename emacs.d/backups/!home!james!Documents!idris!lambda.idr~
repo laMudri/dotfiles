@@ -1,7 +1,0 @@
-module lambda
-  data Expression =
-      Lambda String Expression
-    | Apply Expression Expression
-    | Literal String
-  
-  parse : String -> Maybe Expression

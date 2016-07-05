@@ -1,7 +1,0 @@
-module Irrefl
-
-data Irrefl : (a -> a -> Type) -> Type where
-  MkIrrefl : (f : a -> a -> Type) -> ((x : a) -> Uninhabited (f x x)) ->
-             Irrefl f
-
-ltIrrefl : Irrefl LT

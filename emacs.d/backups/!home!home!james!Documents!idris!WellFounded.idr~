@@ -1,8 +1,0 @@
-module WellFounded
-data Acc : Nat -> Type where
-  MkAcc : (n : _) -> ((m : _) -> m `LT` n -> Acc m) -> Acc n
-
-WF : Type
-WF = (n : _) -> Acc n
-
-ltWellFounded : WF

@@ -1,2 +1,0 @@
-module Digits
-  mkInteger : Nat -> Nat -> Nat -> Nat

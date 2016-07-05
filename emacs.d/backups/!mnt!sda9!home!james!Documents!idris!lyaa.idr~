@@ -1,3 +1,0 @@
-module lyaa
-  
-  eitherElim : (a -> c) -> (b -> c) -> Either a b -> c

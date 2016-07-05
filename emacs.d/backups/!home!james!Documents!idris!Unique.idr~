@@ -1,2 +1,0 @@
-module Unique
-umap : (Functor a,Functor b) => {a,b : Type*} -> (a -> b) -> f a -> f b

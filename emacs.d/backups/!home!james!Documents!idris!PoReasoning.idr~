@@ -1,5 +1,0 @@
-module PoReasoning
-import Syntax.PreorderReasoning
-%default total
-
-nPlusOne : (n : Nat) -> n + 1 = S n

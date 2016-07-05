@@ -1,7 +1,0 @@
-module Uncountable
-
---data Uncountable : Type -> Type where
---  MkUncountable : (a : Type) -> (f : a -> Nat) -> (n ** )
-
-Uncountable : Type -> Type
-Uncountable a = (f : Nat -> a) -> (x ** (n : Nat) -> f n = x -> Void)

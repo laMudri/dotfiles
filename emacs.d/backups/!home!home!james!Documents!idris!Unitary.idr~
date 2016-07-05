@@ -1,8 +1,0 @@
-module Unitary
-class Unitary a where
-  unit : a
-  unique : a -> a -> a = a
-
-instance Unitary Unit where
-  unit = ()
-  unique x y = ?rhs

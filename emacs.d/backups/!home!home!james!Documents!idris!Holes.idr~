@@ -1,4 +1,0 @@
-module Holes
-data Tree a = Leaf | Node (Tree a) (Tree a)
-data TreeZipper a = MkTreeZipper a (Tree a) (Tree a)
-                                 (List (Bool `Pair` a `Pair` Tree a))

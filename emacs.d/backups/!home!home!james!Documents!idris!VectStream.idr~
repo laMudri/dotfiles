@@ -1,7 +1,0 @@
-module Stream
-%default total
-data ToppedNat = TZ | TS ToppedNat | TInf
-instance Enum ToppedNat where
-data VectStream : ToppedNat -> Type -> Type where
-  Nil : VectStream TZ a
-  (::) : a -> VectStream n a -> VectStream (succ n) a

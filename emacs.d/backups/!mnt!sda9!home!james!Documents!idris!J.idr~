@@ -1,5 +1,0 @@
-module J
-  import Array
-  
-  --selfClassify : Array s a -> 
-  equal : Eq a => Array s a -> Array s a -> Array s Bool
