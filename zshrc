@@ -1,3 +1,5 @@
+source ~/.zprofile
+
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
@@ -64,9 +66,6 @@ antigen apply
 
 # Unpackaged functions
 export fpath=($HOME/.zsh/functions $fpath)
-
-export EDITOR=nvim
-export VISUAL=nvim
 
 export KEYTIMEOUT=1
 
@@ -152,16 +151,10 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;'
 
 eval `dircolors $HOME/dotfiles/dircolors-solarized/dircolors.ansi-universal`
 
-export PERL_MB_OPT="--install_base \"/home/james/perl5\""
-export PERL_MM_OPT="INSTALL_BASE=/home/james/perl5"
-
 unalias rm
 
 # OPAM configuration
 . /home/james/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# Stop `nix-env` using `less`
-export NIX_PAGER=cat
 
 alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 
@@ -216,12 +209,6 @@ function whichnix {
   ll $(which $1) | sed 's/.*-> //' | grep -o '/nix/store/[^/]*/' --colour=never
 }
 
-# Hunspell setup
-export DICPATH=$HOME/.nix-profile/share/hunspell
-
-test /etc/ssl/certs/ca-certificates.crt && \
-  export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-
 # Hide username in agnoster
 export DEFAULT_USER=james
 
@@ -241,3 +228,5 @@ export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b
 
 # Used by termite
 export BROWSER=firefox
+
+alias aaa='setxkbmap james progwide_dh --keycodes james'
