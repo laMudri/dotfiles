@@ -229,4 +229,4 @@ export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b
 # Used by termite
 export BROWSER=firefox
 
-alias aaa='setxkbmap james progwide_dh --keycodes james'
+alias aaa='setxkbmap james progwide_dh -keycodes james'
