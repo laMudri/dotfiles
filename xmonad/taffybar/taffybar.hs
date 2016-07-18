@@ -60,7 +60,7 @@ pagerCfg :: PagerConfig
 pagerCfg = defaultPagerConfig
   { emptyWorkspace = escape
   , activeWorkspace  = colorize "#b58900" "" . wrap "[" "]" . escape
-  , urgentWorkspace  = colorize "#6c71c4" "#073642" . escape
+  , urgentWorkspace  = colorize "#6c71c4" "#d33682" . escape
   }
 
 batteryCfg :: BarConfig

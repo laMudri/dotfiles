@@ -2,32 +2,36 @@
 
 module Main where
 import XMonad
-import XMonad.Actions.CycleRecentWS
-import XMonad.Actions.Volume
+import XMonad.Actions.CycleRecentWS (cycleRecentWS)
+--import XMonad.Actions.Volume
 import Graphics.X11.ExtraTypes.XF86
-import XMonad.Hooks.DynamicLog
+  (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute)
+import XMonad.Config.Xfce (xfceConfig)
+--import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops (ewmh)
-import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
+import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.UrgencyHook (focusUrgent)
 import XMonad.Layout.Fullscreen
-import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Spacing
-import XMonad.Layout.WorkspaceDir
-import XMonad.Prompt
-import XMonad.Prompt.AppendFile
-import XMonad.Prompt.Man
-import XMonad.Prompt.RunOrRaise
-import XMonad.Prompt.Shell
-import XMonad.Prompt.Window
-import XMonad.Prompt.XMonad
+  (fullscreenFull, fullscreenManageHook, fullscreenEventHook)
+import XMonad.Layout.NoBorders (noBorders, smartBorders)
+--import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Spacing (smartSpacing)
+import XMonad.Layout.WorkspaceDir (workspaceDir, changeDir)
+import XMonad.Prompt (XPConfig, autoComplete, def, font)
+import XMonad.Prompt.AppendFile (appendFilePrompt)
+import XMonad.Prompt.Man (manPrompt)
+--import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.Shell (shellPrompt)
+import XMonad.Prompt.Window (windowPromptBring, windowPromptGoto)
+import XMonad.Prompt.XMonad (xmonadPrompt)
 import XMonad.Util.NamedScratchpad
-import XMonad.Util.NamedWindows
-import XMonad.Util.Run
-import XMonad.Util.SpawnOnce
+  (NamedScratchpad(..), namedScratchpadAction, namedScratchpadManageHook, customFloating)
+--import XMonad.Util.NamedWindows
+--import XMonad.Util.Run
 --import XMonad.Util.WorkspaceScreenshot
+import XMonad.Util.SpawnOnce (spawnOnce)
 
 import System.Exit
 import System.Taffybar.Hooks.PagerHints (pagerHints)
@@ -150,6 +154,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   , ((modm, xK_d), changeDir xPConfig)
   , ((modm, xK_F1), manPrompt xPConfig)
   , ((modm, xK_l), shellPrompt xPConfig)
+  , ((modm .|. shiftMask, xK_l), spawn "yeganesh -x")
   , ((modm, xK_y), windowPromptBring xPConfig
      { autoComplete = Just 500000 })  -- Don't send keys to new window
   , ((modm .|. shiftMask, xK_y), windowPromptGoto xPConfig
@@ -173,8 +178,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
                xK_asciicircum, xK_ampersand, xK_asterisk, xK_less, xK_greater]
   ++
 
-  -- mod-{u,y,;}, Switch to physical/Xinerama screens 1, 2, or 3
-  -- mod-shift-{u,y,;}, Move client to screen 1, 2, or 3
+  -- mod-{w,f,p}, Switch to physical/Xinerama screens 1, 2, or 3
+  -- mod-shift-{w,f,p}, Move client to screen 1, 2, or 3
   [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
   | (key, sc) <- zip [xK_w, xK_f, xK_p] [0..]
   , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
@@ -187,7 +192,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
     xPConfig :: XPConfig
-    xPConfig = defaultXPConfig { font = "xft:Source Code Pro" }
+    xPConfig = def { font = "xft:Source Code Pro" }
     showVolume :: X ()
     --showVolume = spawn "notify-send Volume \"$(amixer get Master)\""
     showVolume = return ()
@@ -255,10 +260,10 @@ myManageHook = composeAll
   , className =? "Gimp"           --> doFloat
   , className =? "Firefox"        --> doShift "1"
   , className =? "Thunderbird"    --> doShift "2"
-  , className =? "Hexchat"        --> doShift "3"
-  , className =? "Pidgin"         --> doShift "3"
+  --, className =? "Hexchat"        --> doShift "3"
+  --, className =? "Pidgin"         --> doShift "3"
   , appName   =? "WeeChat"        --> doShift "3"
-  , className =? "Keepassx"       --> doShift "4"
+  --, className =? "Keepassx"       --> doShift "4"
   , className =? "Gnome-panel"    --> doIgnore
   , resource  =? "desktop_window" --> doIgnore
   , resource  =? "kdesktop"       --> doIgnore
@@ -319,13 +324,13 @@ myStartupHook :: X ()
 myStartupHook = do
   spawn "~/.xmonad/init2"
   mapM_ spawnOnce
-    [ "taffybar"
+    [ "firefox"
     , "dunst"
     , "urxvtd"
-    , "firefox"
+    , "taffybar"
     , "thunderbird"
     , "urxvt -name WeeChat -e weechat"
-    , "keepassx"
+    --, "keepassx"
     , "volumeicon"
     ]
 
@@ -343,7 +348,7 @@ main = do
 
 -- No need to modify this.
 
-defaults = defaultConfig
+defaults = xfceConfig
   -- simple stuff
   { terminal = myTerminal
   , focusFollowsMouse = myFocusFollowsMouse

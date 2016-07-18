@@ -6,5 +6,6 @@
 *.o
 xmonad-x86_64-linux
 init2
+init-xfce
 taffybar/taffybar
 taffybar/lib
