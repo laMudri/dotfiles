@@ -38,7 +38,7 @@ map -b <C-!> 1gt
 map -b <C-2> 2gt
 map -b <C-@> 2gt
 map -b <C-3> 3gt
-map -b <C-£> 3gt
+map -b <C-#> 3gt
 map -b <C-4> 4gt
 map -b <C-$> 4gt
 map -b <C-5> 5gt
