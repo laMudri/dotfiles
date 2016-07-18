@@ -24,9 +24,7 @@ for file in $files; do
   ln -s $dir/$file $HOME/.$file
 done
 
-echo "Recompiling xmonad"
-xmonad --recompile
-
 mkdir -p $HOME/.config
 ln -s $HOME/dotfiles/xmonad/lib $HOME/dotfiles/xmonad/taffybar/
+mv $HOME/.config/taffybar $HOME/dotfiles_old/
 ln -s $HOME/dotfiles/xmonad/taffybar $HOME/.config/
