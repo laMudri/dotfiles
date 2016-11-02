@@ -263,10 +263,12 @@ myManageHook = composeAll
   --, className =? "Hexchat"        --> doShift "3"
   --, className =? "Pidgin"         --> doShift "3"
   , appName   =? "WeeChat"        --> doShift "3"
+  , appName   =? "SRCF"           --> doShift "3"
   --, className =? "Keepassx"       --> doShift "4"
   , className =? "Gnome-panel"    --> doIgnore
   , resource  =? "desktop_window" --> doIgnore
   , resource  =? "kdesktop"       --> doIgnore
+  , className =? "Xfce4-panel"    --> doIgnore
   , isFullscreen                  --> doFullFloat
   , manageDocks
   , namedScratchpadManageHook scratchpads
@@ -322,17 +324,19 @@ myLogHook = fadeInactiveLogHook (3 / 4)
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "~/.xmonad/init2"
-  mapM_ spawnOnce
-    [ "firefox"
-    , "dunst"
-    , "urxvtd"
-    , "taffybar"
-    , "thunderbird"
-    , "urxvt -name WeeChat -e weechat"
-    --, "keepassx"
-    , "volumeicon"
-    ]
+  return ()
+  --spawn "~/.xmonad/init2"
+  --mapM_ spawnOnce
+  --  [ "firefox"
+  --  , "dunst"
+  --  , "urxvtd"
+  --  , "taffybar"
+  --  , "thunderbird"
+  --  , "urxvt -name WeeChat -e weechat"
+  --  , "urxvt -name SRCF -e autossh -M7777 jdw74@shell.srcf.net -t 'tmux attach'"
+  --  --, "keepassx"
+  --  , "volumeicon"
+  --  ]
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

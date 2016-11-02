@@ -166,3 +166,5 @@ hints.addMode("p", "Paste into text field", function (elem) {
 EOT
 
 set yankshort=bugzilla.mozilla.org
+
+js editor.defaultRegister = "+*"

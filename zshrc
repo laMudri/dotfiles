@@ -52,7 +52,7 @@ antigen bundles <<EOBUNDLES
 
   hchbaw/auto-fu.zsh --branch=pu
   #laMudri/zsh-yum-aliases
-  spwhitt/nix-zsh-completions
+  olejorgenb/nix-zsh-completions --branch=attribute-path-completion-2
   # Not working:
   #tarruda/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
@@ -159,9 +159,9 @@ unalias rm
 alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
 
 # Use the local package list
-#export NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
+#export -U NIX_PATH=nixpkgs=$HOME/nixpkgs:$NIX_PATH
 #alias mynix-env="nix-env -f \$HOME/nixpkgs"
-alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
+#alias mynixos-rebuild="sudo nixos-rebuild -I nixpkgs=/home/james/nixpkgs"
 #alias mynix-shell="nix-shell -I \$HOME/nixpkgs"
 alias ns="nix-env -qaPs"
 alias nu="nix-env -iA g.everything"
@@ -223,10 +223,14 @@ function nix-shell-prefix {
     echo "%F{yellow}nix-shell%f|"
   fi
 }
-export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
+#export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
+export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
 .)%(!.⇒.→) '
 
 # Used by termite
 export BROWSER=firefox
 
 alias aaa='setxkbmap james progwide_dh -keycodes james'
+
+alias y='xclip -selection clipboard'
+alias p='xclip -o -selection clipboard'

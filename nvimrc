@@ -64,6 +64,7 @@ Plugin 'Shougo/neocomplete'
 Plugin 'osyo-manga/vim-over'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'wting/rust.vim'
+"Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 filetype plugin indent on
