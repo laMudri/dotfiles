@@ -9,7 +9,7 @@
 dir=$HOME/dotfiles
 olddir=$HOME/dotfiles_old
 files="vimrc vim nvimrc nvim gvimrc pentadactyl pentadactylrc emacs.d zshrc \
-  xkb xmonad"
+  xkb xmonad tmux.conf"
 
 ##########
 
