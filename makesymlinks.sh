@@ -28,3 +28,5 @@ mkdir -p $HOME/.config
 ln -s $HOME/dotfiles/xmonad/lib $HOME/dotfiles/xmonad/taffybar/
 mv $HOME/.config/taffybar $HOME/dotfiles_old/
 ln -s $HOME/dotfiles/xmonad/taffybar $HOME/.config/
+
+ln -s $HOME/.nvim $HOME/.config/nvim
