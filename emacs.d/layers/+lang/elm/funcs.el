@@ -10,12 +10,19 @@
 ;;; License: GPLv3
 
 
+<<<<<<< HEAD
+;; elm-mode
+=======
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
 
 (defun spacemacs//elm-find-root ()
   (setq default-directory (elm--find-dependency-file-path)))
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
 (defun spacemacs/elm-compile-buffer-output ()
   (interactive)
   (let* ((fname (format "%s.js" (downcase (file-name-base (buffer-file-name))))))

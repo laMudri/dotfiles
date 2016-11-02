@@ -12,20 +12,28 @@
 ;; Without this comment emacs25 adds (package-initialize) here
 ;; (package-initialize)
 
+;; increase gc-cons-threshold during init
 (setq gc-cons-threshold 100000000)
 
-(defconst spacemacs-version         "0.105.21" "Spacemacs version.")
+<<<<<<< HEAD
+(defconst spacemacs-version          "0.200.1" "Spacemacs version.")
+(defconst spacemacs-emacs-min-version   "24.4" "Minimal version of Emacs.")
+=======
+(defconst spacemacs-version         "0.105.22" "Spacemacs version.")
 (defconst spacemacs-emacs-min-version   "24.3" "Minimal version of Emacs.")
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
 
 (if (not (version<= spacemacs-emacs-min-version emacs-version))
     (message (concat "Your version of Emacs (%s) is too old. "
-                     "Spacemacs requires Emacs version %d or above.")
+                     "Spacemacs requires Emacs version %s or above.")
              emacs-version spacemacs-emacs-min-version)
-  (load-file (concat user-emacs-directory "core/core-load-paths.el"))
+  (load-file (concat (file-name-directory load-file-name)
+                     "core/core-load-paths.el"))
   (require 'core-spacemacs)
   (spacemacs/init)
   (spacemacs/maybe-install-dotfile)
   (configuration-layer/sync)
+  (spacemacs-buffer/display-info-box)
   (spacemacs/setup-startup-hook)
   (require 'server)
   (unless (server-running-p) (server-start)))

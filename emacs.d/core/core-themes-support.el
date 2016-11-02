@@ -30,6 +30,67 @@
     (ample-flat  . ample-theme)
     (apropospriate-light . apropospriate-theme)
     (apropospriate-dark  . apropospriate-theme)
+<<<<<<< HEAD
+    (base16-3024                . base16-theme)
+    (base16-apathy              . base16-theme)
+    (base16-ashes               . base16-theme)
+    (base16-atelier-cave        . base16-theme)
+    (base16-atelier-dune        . base16-theme)
+    (base16-atelier-estuary     . base16-theme)
+    (base16-atelier-forest      . base16-theme)
+    (base16-atelier-heath       . base16-theme)
+    (base16-atelier-lakeside    . base16-theme)
+    (base16-atelier-plateau     . base16-theme)
+    (base16-atelier-savanna     . base16-theme)
+    (base16-atelier-seaside     . base16-theme)
+    (base16-atelier-sulphurpool . base16-theme)
+    (base16-bespin              . base16-theme)
+    (base16-brewer              . base16-theme)
+    (base16-bright              . base16-theme)
+    (base16-chalk               . base16-theme)
+    (base16-codeschool          . base16-theme)
+    (base16-darktooth           . base16-theme)
+    (base16-default-dark        . base16-theme)
+    (base16-default-light       . base16-theme)
+    (base16-eighties            . base16-theme)
+    (base16-embers              . base16-theme)
+    (base16-flat                . base16-theme)
+    (base16-github              . base16-theme)
+    (base16-google-dark         . base16-theme)
+    (base16-google-light        . base16-theme)
+    (base16-grayscale-dark      . base16-theme)
+    (base16-grayscale-light     . base16-theme)
+    (base16-green-screen        . base16-theme)
+    (base16-harmonic16-dark     . base16-theme)
+    (base16-harmonic16-light    . base16-theme)
+    (base16-hopscotch           . base16-theme)
+    (base16-ir-black            . base16-theme)
+    (base16-isotope             . base16-theme)
+    (base16-london-tube         . base16-theme)
+    (base16-macintosh           . base16-theme)
+    (base16-marrakesh           . base16-theme)
+    (base16-mocha               . base16-theme)
+    (base16-monokai             . base16-theme)
+    (base16-ocean               . base16-theme)
+    (base16-oceanicnext         . base16-theme)
+    (base16-paraiso             . base16-theme)
+    (base16-phd                 . base16-theme)
+    (base16-pico                . base16-theme)
+    (base16-pop                 . base16-theme)
+    (base16-railscasts          . base16-theme)
+    (base16-seti-ui             . base16-theme)
+    (base16-shapeshifter        . base16-theme)
+    (base16-solar-flare         . base16-theme)
+    (base16-solarized-dark      . base16-theme)
+    (base16-solarized-light     . base16-theme)
+    (base16-summerfruit-dark    . base16-theme)
+    (base16-summerfruit-light   . base16-theme)
+    (base16-tomorrow-night      . base16-theme)
+    (base16-tomorrow            . base16-theme)
+    (base16-twilight            . base16-theme)
+    (base16-unikitty-dark       . base16-theme)
+    (base16-unikitty-light      . base16-theme)
+=======
     (base16-3024-dark . base16-theme)
     (base16-3024-light . base16-theme)
     (base16-apathy-dark . base16-theme)
@@ -130,6 +191,7 @@
     (base16-yesterdaybright-light . base16-theme)
     (base16-yesterdaynight-dark . base16-theme)
     (base16-yesterdaynight-light . base16-theme)
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
     (sanityinc-solarized-dark    . color-theme-sanityinc-solarized)
     (sanityinc-solarized-light   . color-theme-sanityinc-solarized)
     (sanityinc-tomorrow-blue     . color-theme-sanityinc-tomorrow)
@@ -162,6 +224,8 @@
     (junio    . sublime-themes)
     (mccarthy . sublime-themes)
     (odersky  . sublime-themes)
+    (omtose-darker . omtose-phellack-theme)
+    (omtose-softer . omtose-phellack-theme)
     (ritchie  . sublime-themes)
     (spolsky  . sublime-themes)
     (wilson   . sublime-themes)
@@ -174,6 +238,9 @@
     )
   "alist matching a theme name with its package name, required when
 package name does not match theme name + `-theme' suffix.")
+
+(defvar spacemacs-post-theme-change-hook nil
+  "Hook run after theme has changed.")
 
 (defun spacemacs//get-theme-package (theme)
   "Returns the package theme for the given THEME name."
@@ -189,13 +256,21 @@ package name does not match theme name + `-theme' suffix.")
 (defun spacemacs/load-theme (theme)
   "Load THEME."
   ;; Required dependencies for some themes
+<<<<<<< HEAD
+  (condition-case-unless-debug err
+=======
   (condition-case err
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
       (progn
         (when (or (eq 'zonokai-blue theme)
                   (eq 'zonokai-red theme)
                   (eq 'solarized-light theme)
                   (eq 'solarized-dark theme))
+<<<<<<< HEAD
+          (configuration-layer/load-or-install-package 'dash))
+=======
           (spacemacs/load-or-install-package 'dash))
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
         ;; Unless Emacs stock themes
         (unless (or (memq theme (custom-available-themes))
                     (eq 'default theme))
@@ -203,7 +278,11 @@ package name does not match theme name + `-theme' suffix.")
            ;; themes with explicitly declared package names
            ((assq theme spacemacs-theme-name-to-package)
             (let* ((pkg (spacemacs//get-theme-package theme))
+<<<<<<< HEAD
+                   (pkg-dir (configuration-layer/load-or-install-package pkg)))
+=======
                    (pkg-dir (spacemacs/load-or-install-package pkg)))
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
               (when (or (eq 'moe-light theme)
                         (eq 'moe-dark theme))
                 (load-file (concat pkg-dir "moe-light-theme.el"))
@@ -215,7 +294,11 @@ package name does not match theme name + `-theme' suffix.")
             ;; if not we will handle the special themes as we get issues
             ;; in the tracker.
             (let ((pkg (spacemacs//get-theme-package theme)))
+<<<<<<< HEAD
+              (configuration-layer/load-or-install-package pkg))))))
+=======
               (spacemacs/load-or-install-package pkg))))))
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
     ('error
      (setq theme 'default)
      (display-warning 'spacemacs
@@ -256,22 +339,9 @@ package name does not match theme name + `-theme' suffix.")
     (spacemacs/post-theme-init theme)))
 
 (defun spacemacs/post-theme-init (theme)
-  " Some processing that needs to be done when the current theme has been
-changed to THEME."
+  "Some processing that needs to be done when the current theme
+has been changed to THEME."
   (interactive)
-  (when (fboundp 'spacemacs/set-state-faces)
-    (spacemacs/set-state-faces))
-  (when (fboundp 'spacemacs/set-flycheck-mode-line-faces)
-    (spacemacs/set-flycheck-mode-line-faces))
-  (when (fboundp 'spacemacs/set-new-version-lighter-mode-line-faces)
-    (spacemacs/set-new-version-lighter-mode-line-faces))
-  (when (fboundp 'spacemacs/defface-micro-state-faces)
-    (spacemacs/defface-micro-state-faces))
-  (when (fboundp 'spacemacs/customize-powerline-faces)
-    (spacemacs/customize-powerline-faces))
-  (when (fboundp 'powerline-reset)
-    (powerline-reset))
-  (when (fboundp 'spacemacs/adaptive-evil-highlight-persist-face)
-    (spacemacs/adaptive-evil-highlight-persist-face)))
+  (run-hooks 'spacemacs-post-theme-change-hook))
 
 (provide 'core-themes-support)

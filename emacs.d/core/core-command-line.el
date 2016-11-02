@@ -13,6 +13,12 @@
   "If non-nil force the current emacs instance to resume layouts
   at start time despite the value of `dotspacemacs-auto-resume-layouts'.")
 
+<<<<<<< HEAD
+(defvar spacemacs-insecure nil
+  "If non-nil force Spacemacs to operate without secured protocols.")
+
+=======
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
 (defun spacemacs//parse-command-line (args)
   "Handle Spacemacs specific command line arguments.
 The reason why we don't use the Emacs hooks for processing user defined
@@ -22,7 +28,7 @@ arguments is that we want to process these arguments as soon as possible."
       (let ((arg (nth i args))
             (next-arg-digit
              (when (< (1+ i) (length args))
-               (string-to-number (nth (1+ i ) args)))))
+               (string-to-number (nth (1+ i) args)))))
         (when (or (null next-arg-digit) (= 0 next-arg-digit))
           (setq next-arg-digit nil))
         (pcase arg
@@ -42,7 +48,16 @@ arguments is that we want to process these arguments as soon as possible."
                    i (1+ 1)))
            (setq spacemacs-debugp t))
           ("--insecure"
+<<<<<<< HEAD
+           (setq spacemacs-insecure t))
+          ("--no-layer"
+           (setq configuration-layer-exclude-all-layers t))
+          ("--distribution"
+           (setq configuration-layer-force-distribution (intern (nth (1+ i) args))
+                 i (1+ i)))
+=======
            (setq dotspacemacs-elpa-https nil))
+>>>>>>> 9f9faa404e3dec3e08cc73cf7b5a0439fc309800
           ("--resume-layouts"
            (setq spacemacs-force-resume-layouts t))
           (_ (push arg new-args))))
