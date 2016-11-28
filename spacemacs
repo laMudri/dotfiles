@@ -318,6 +318,8 @@ you should place your code here."
   (define-key evil-motion-state-map (kbd "C-n") 'evil-scroll-line-up)
   (define-key evil-normal-state-map (kbd "C-n") 'evil-scroll-line-up)
 
+  (setq-default evil-scroll-line-count 3)
+
   ; Allow cursor to go to top/bottom of screen
   (setq-default smooth-scroll-margin 1)
 
