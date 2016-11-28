@@ -216,7 +216,8 @@ export DEFAULT_USER=james
 # non-expanding string literal
 alias nix-zsh='nix-shell --command zsh'
 
-GIT_PROMPT_EXECUTABLE=haskell
+#GIT_PROMPT_EXECUTABLE=haskell
+GIT_PROMPT_EXECUTABLE=python
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
 function nix-shell-prefix {
   if test -n "$IN_NIX_SHELL"; then
