@@ -231,6 +231,7 @@ export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|
 export BROWSER=firefox
 
 alias aaa='setxkbmap james progwide_dh -keycodes james'
+alias qqq='xkbcomp -I$HOME/.xkb ~/.xkb/map.xkb $DISPLAY'
 
 alias y='xclip -selection clipboard'
 alias p='xclip -o -selection clipboard'
