@@ -103,7 +103,7 @@ set expandtab
 
 set linebreak
 
-"set encoding=utf-8
+set encoding=utf-8
 
 imap <C-F> <C-O>diw
 
@@ -224,7 +224,7 @@ set modeline
 
 " neovim-specific
 if has('nvim')
-  "let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
 set statusline+=%#warningmsg#
