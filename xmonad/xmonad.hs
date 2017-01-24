@@ -144,10 +144,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
   -- Screenshot
   , ((0, xK_Print), spawn "scrot -e 'mv $f ~/screenshots/'")
-  , ((modm, xK_Print), spawn "scrot -s -e 'mv $f ~/screenshots/'")
+  , ((controlMask, xK_Print), spawn "scrot -s -e 'mv $f ~/screenshots/'")
+  , ((mod4Mask, xK_Print), spawn "scrot -u -e 'mv $f ~/screenshots/'")
 
   -- Switch XKB layout
-  , ((modm, xK_grave), cycleKLayouts)
+  , ((modm, xK_equal), cycleKLayouts)
 
   -- Prompts
   , ((modm, xK_o), appendFilePrompt xPConfig "/home/james/notes.txt")
@@ -262,9 +263,9 @@ myManageHook = composeAll
   , className =? "Thunderbird"    --> doShift "2"
   --, className =? "Hexchat"        --> doShift "3"
   --, className =? "Pidgin"         --> doShift "3"
-  , appName   =? "WeeChat"        --> doShift "3"
   , appName   =? "SRCF"           --> doShift "3"
-  --, className =? "Keepassx"       --> doShift "4"
+  , appName   =? "WeeChat"        --> doShift "4"
+  --, className =? "Keepassx"       --> doShift "5"
   , className =? "Gnome-panel"    --> doIgnore
   , resource  =? "desktop_window" --> doIgnore
   , resource  =? "kdesktop"       --> doIgnore

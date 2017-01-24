@@ -9,8 +9,8 @@ import XMonad.Util.Run (runProcessWithInput,safeSpawn)
 -- Add `Left "lang"` for the default keyboard of language with code 'lang'
 -- Add `Right ("lang","variant")` for an alternative layout
 layouts :: [Either String (String,String)]
-layouts = [ Right ("james","progwide")
-          , Right ("james","jbwide")
+layouts = [ Right ("james","progwide_dh")
+          --, Right ("james","jbwide")
           , Left "us"
           ]
 -- Config ends
