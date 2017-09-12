@@ -40,6 +40,7 @@ values."
      ;Agda-mode-improvements
      auto-completion
      emacs-lisp
+     idris
      nixos
      ;; git
      ;; markdown
@@ -327,50 +328,43 @@ you should place your code here."
   (add-to-list 'spacemacs-indent-sensitive-modes 'agda2-mode)
   (add-to-list 'spacemacs-indent-sensitive-modes 'nix-mode)
 
-  ;(spacemacs|define-transient-state goal-navigation
-  ;  :title "Goal Navigation Transient State"
-  ;  :doc "\n[_y_] next [_u_] previous [_q_] quit"
-  ;  :bindings
-  ;  ("y" agda2-next-goal)
-  ;  ("u" agda2-previous-goal)
-  ;  ("q" nil :exit t))
-  ;(spacemacs/set-leader-keys-for-major-mode 'agda2-mode
-  ;  "y" 'spacemacs/goal-navigation-transient-state/agda2-next-goal
-  ;  "u" 'spacemacs/goal-navigation-transient-state/agda2-previous-goal)
-
   ; All the Agda bindings I'm used to
   (spacemacs/set-leader-keys-for-major-mode 'agda2-mode
-    "v" 'agda2-auto
-    "u" 'agda2-previous-goal
-    "y" 'agda2-next-goal
-    "c" 'agda2-make-case
-    "xt" 'agda2-infer-type-maybe-toplevel
-    "e" 'agda2-show-context
-    "r" 'agda2-load
-    "n" 'agda2-compute-normalised-maybe-toplevel
-    "o" 'agda2-module-contents-maybe-toplevel
-    "f" 'agda2-refine
-    "p" 'agda2-solveAll
-    "t" 'agda2-goal-type
-    " " 'agda2-give
-    "." 'agda2-goal-and-context
-    ";" 'agda2-goal-and-context-and-inferred
-    "=" 'agda2-show-constraints
-    "g" 'agda2-show-goals
+    "v"  'agda2-auto
+    "x;" 'agda2-comment-dwim-rest-of-buffer
     "xc" 'agda2-compile
-    "xd" 'agda2-remove-annotations
+    "n"  'agda2-compute-normalised-maybe-toplevel
     "xh" 'agda2-display-implicit-arguments
+    " "  'agda2-give
+    "."  'agda2-goal-and-context
+    ";"  'agda2-goal-and-context-and-inferred
+    "t"  'agda2-goal-type
+    "g"  'agda2-goto-definition-keyboard
+    "h"  'agda2-helper-function-type
+    "xt" 'agda2-infer-type-maybe-toplevel
+    "r"  'agda2-load
     "xl" 'agda2-load
+    "c"  'agda2-make-case
+    "o"  'agda2-module-contents-maybe-toplevel
+    "y"  'agda2-next-goal
+    "u"  'agda2-previous-goal
     "xq" 'agda2-quit
+    "f"  'agda2-refine
+    "xd" 'agda2-remove-annotations
     "xr" 'agda2-restart
-    "s" 'agda2-goto-definition-keyboard
+    "z"  'agda2-search-about-toplevel
+    "="  'agda2-show-constraints
+    "e"  'agda2-show-context
+    "?"  'agda2-show-goals
+    "p"  'agda2-solve-maybe-all
+    "s"  'agda2-why-in-scope-maybe-toplevel
 
-    "l" 'agda2-solve-with-db
-    "xs" 'agda2-show-current-dbs
-    "w" 'agda2-add-with-exp
-    "a" 'agda2-add-with-exp-make-case
-    "d" 'agda2-generate-function-stub
-    "z" 'agda2-fix-line
+    ;"l" 'agda2-solve-with-db
+    ;"xs" 'agda2-show-current-dbs
+    ;"w" 'agda2-add-with-exp
+    ;"a" 'agda2-add-with-exp-make-case
+    ;"d" 'agda2-generate-function-stub
+    ;"z" 'agda2-fix-line
     )
 
   (global-company-mode)
@@ -395,7 +389,7 @@ you should place your code here."
  '(exec-path-from-shell-arguments nil)
  '(package-selected-packages
    (quote
-    (xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline powerline shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file nix-mode neotree multi-term move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-nixos-options helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f s diminish define-word company-statistics company-nixos-options nixos-options company column-enforce-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build solarized-theme dash))))
+    (winum fuzzy idris-mode prop-menu hide-comnt xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline powerline shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file nix-mode neotree multi-term move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-nixos-options helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f s diminish define-word company-statistics company-nixos-options nixos-options company column-enforce-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build solarized-theme dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
