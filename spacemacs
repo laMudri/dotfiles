@@ -31,14 +31,12 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      agda
-     ;Agda-mode-improvements
-     auto-completion
+     (haskell :variables
+              haskell-enable-hindent-style "chris-done")
+     helm
+     ;; auto-completion
+     ;; better-defaults
      emacs-lisp
      idris
      nixos
@@ -117,11 +115,10 @@ values."
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
-   ;; Example for 5 recent files and 7 projects: '((recents . 5) (projects . 7))
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   ;; (default nil)
-   dotspacemacs-startup-lists '()
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -137,7 +134,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("DejaVu Sans Mono" ;"Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal
@@ -156,7 +153,7 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key "\\"
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
@@ -251,8 +248,18 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
@@ -260,7 +267,7 @@ values."
    dotspacemacs-folding-method 'evil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
@@ -304,6 +311,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (require 'helm-bookmark)  ; workaround for #9608
+
   (define-key evil-motion-state-map "h" 'evil-next-line)
   (define-key evil-motion-state-map "j" 'evil-backward-char)
 
@@ -368,6 +377,10 @@ you should place your code here."
     )
 
   (global-company-mode)
+
+  (setq vc-follow-symlinks t)
+
+  (turn-off-show-smartparens-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -377,15 +390,14 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(agda2-program-args
-   (quote
-    ("--include-path=." "--include-path=/home/james/.nix-profile/share/agda/")))
+ '(agda2-program-args (quote ("--include-path=.")))
  '(avy-keys
    (quote
     (97 114 115 116 103 100 103 104 107 110 101 105 111 102 117)))
  '(evil-cross-lines t)
  '(evil-magic (quote very-magic))
  '(evil-search-module (quote isearch))
+ '(evil-want-Y-yank-to-eol t)
  '(exec-path-from-shell-arguments nil)
  '(package-selected-packages
    (quote
@@ -395,21 +407,21 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(agda2-highlight-bound-variable-face ((t (:foreground "#2aa198"))))
- '(agda2-highlight-coinductive-constructor-face ((t (:foreground "#859900"))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(agda2-highlight-bound-variable-face ((t (:foreground "#6c71c4"))))
+ '(agda2-highlight-coinductive-constructor-face ((t (:foreground "#dc322f"))))
  '(agda2-highlight-datatype-face ((t (:foreground "#268bd2"))))
- '(agda2-highlight-dotted-face ((t (:foreground "#2aa198"))))
- '(agda2-highlight-field-face ((t (:foreground "#dc322f"))))
- '(agda2-highlight-function-face ((t (:foreground "#cb4b16"))))
- '(agda2-highlight-inductive-constructor-face ((t (:foreground "#859900"))))
- '(agda2-highlight-keyword-face ((t (:foreground "#b58900"))))
- '(agda2-highlight-module-face ((t (:foreground "#d33682"))))
- '(agda2-highlight-number-face ((t (:foreground "#839496"))))
- '(agda2-highlight-postulate-face ((t (:foreground "#657b83"))))
- '(agda2-highlight-primitive-face ((t (:foreground "#657b83"))))
+ '(agda2-highlight-function-face ((t (:foreground "#859900"))))
+ '(agda2-highlight-inductive-constructor-face ((t (:foreground "#dc322f"))))
+ '(agda2-highlight-keyword-face ((t (:foreground "#93a1a1" :weight bold))))
+ '(agda2-highlight-macro-face ((t (:foreground "#2aa198"))))
+ '(agda2-highlight-module-face ((t (:foreground "#268bd2"))))
+ '(agda2-highlight-number-face ((t (:foreground "#dc322f"))))
+ '(agda2-highlight-postulate-face ((t (:foreground "#859900"))))
+ '(agda2-highlight-primitive-face ((t (:foreground "#859900"))))
  '(agda2-highlight-primitive-type-face ((t (:foreground "#268bd2"))))
- '(agda2-highlight-record-face ((t (:foreground "#6c71c4"))))
- '(agda2-highlight-string-face ((t (:foreground "#839496"))))
+ '(agda2-highlight-record-face ((t (:foreground "#268bd2"))))
+ '(agda2-highlight-string-face ((t (:foreground "#dc322f"))))
  '(agda2-highlight-symbol-face ((t (:foreground "#839496"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
