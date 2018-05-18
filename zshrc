@@ -230,7 +230,7 @@ export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|
 export NIX_PROMPT=
 
 # Used by termite
-export BROWSER=firefox
+export BROWSER=qutebrowser
 export EDITOR=nvim
 
 alias aaa='setxkbmap james progwide_dh -keycodes james'

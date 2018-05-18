@@ -3,6 +3,8 @@
 module Main where
 import XMonad
 import XMonad.Actions.CycleRecentWS (cycleRecentWS)
+import XMonad.Actions.GridSelect
+import XMonad.Actions.GroupNavigation
 --import XMonad.Actions.Volume
 import Graphics.X11.ExtraTypes.XF86
   (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute)
@@ -20,13 +22,15 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
 --import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Spacing (smartSpacing)
+import XMonad.Layout.Tabbed
 import XMonad.Layout.WorkspaceDir (workspaceDir, changeDir)
-import XMonad.Prompt (XPConfig, autoComplete, def, font)
+import XMonad.Prompt
 import XMonad.Prompt.AppendFile (appendFilePrompt)
 import XMonad.Prompt.Man (manPrompt)
 --import XMonad.Prompt.RunOrRaise
 import XMonad.Prompt.Shell (shellPrompt)
-import XMonad.Prompt.Window (windowPromptBring, windowPromptGoto)
+import XMonad.Prompt.Unicode
+import XMonad.Prompt.Window
 import XMonad.Prompt.XMonad (xmonadPrompt)
 import XMonad.Util.EZConfig (additionalKeys, additionalMouseBindings)
 import XMonad.Util.NamedScratchpad
@@ -43,13 +47,16 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
 import Control.Monad
+import Data.Char (toLower)
+import Data.Function
+import Data.List (isInfixOf)
 import Data.Ratio
 
 import Keyboards
 import Solarized
 
 myTerminal :: String
-myTerminal = "urxvtc"
+myTerminal = "termite"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
@@ -65,6 +72,38 @@ myWorkspaces = ["`", "1","2","3","4","5","6","7","8","9","0","-","="]
 --  --      mplayer /usr/share/sounds/gnome/default/alerts/drip.ogg
 --  --  fi
 --  --  |]
+
+myNavigation :: TwoD a (Maybe a)
+myNavigation = makeXEventhandler $ shadowWithKeymap navKeyMap navDefaultHandler
+  where navKeyMap = M.fromList
+          [ ((0,xK_Escape), cancel)
+          , ((0,xK_Return), select)
+          , ((0,xK_slash) , substringSearch myNavigation)
+          , ((0,xK_Left)  , move (-1, 0) >> myNavigation)
+          , ((0,xK_n)     , move (-1, 0) >> myNavigation)
+          , ((0,xK_Right) , move ( 1, 0) >> myNavigation)
+          , ((0,xK_e)     , move ( 1, 0) >> myNavigation)
+          , ((0,xK_Down)  , move ( 0, 1) >> myNavigation)
+          , ((0,xK_o)     , move ( 0, 1) >> myNavigation)
+          , ((0,xK_Up)    , move ( 0,-1) >> myNavigation)
+          , ((0,xK_i)     , move ( 0,-1) >> myNavigation)
+          , ((0,xK_l)     , move (-1,-1) >> myNavigation)
+          , ((0,xK_u)     , move ( 1,-1) >> myNavigation)
+          , ((0,xK_m)     , move (-1, 1) >> myNavigation)
+          , ((0,xK_comma) , move ( 1, 1) >> myNavigation)
+          , ((0,xK_space) , setPos (0,0) >> myNavigation)
+          ]
+        -- The navigation handler ignores unknown key symbols
+        navDefaultHandler = const myNavigation
+
+myGSConfig :: HasColorizer a => GSConfig a
+myGSConfig = def { gs_navigate = myNavigation }
+
+myXPConfig :: XPConfig
+myXPConfig = def
+  { font = "xft:DejaVu Sans Mono"
+  , searchPredicate = isInfixOf `on` map toLower
+  }
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -111,6 +150,10 @@ myKeys =
   -- Cycle through recent workspaces
   , ((myModMask              , xK_Tab   ),
     cycleRecentWS [xK_Super_L] xK_Tab xK_grave)
+  -- Go to last focused window
+  , ((myModMask              , xK_u     ), nextMatch History (return True))
+  -- Start grid select
+  , ((myModMask              , xK_h     ), goToSelected myGSConfig)
 
   -- Go to the window that sent a message
   , ((myModMask              , xK_i     ), focusUrgent)
@@ -133,25 +176,29 @@ myKeys =
 
   -- Prompts
   , ((myModMask              , xK_o     ),
-    appendFilePrompt xPConfig "/home/james/notes.txt")
-  , ((myModMask              , xK_d     ), changeDir xPConfig)
-  , ((myModMask              , xK_F1    ), manPrompt xPConfig)
-  , ((myModMask              , xK_l     ), shellPrompt xPConfig)
+    appendFilePrompt myXPConfig "/home/james/notes.txt")
+  , ((myModMask              , xK_d     ), changeDir myXPConfig)
+  , ((myModMask              , xK_F1    ), manPrompt myXPConfig)
+  , ((myModMask              , xK_l     ), shellPrompt myXPConfig)
   , ((myModMask .|. shiftMask, xK_l     ), spawn "yeganesh -x")
   , ((myModMask              , xK_y     ),
-    windowPromptBring xPConfig { autoComplete = Just 500000 })
+    windowPromptBring myXPConfig { autoComplete = Just 500000 })
   , ((myModMask .|. shiftMask, xK_y     ),
-    windowPromptGoto xPConfig { autoComplete = Just 500000 })
-  , ((myModMask              , xK_c     ), xmonadPrompt xPConfig)
+    windowPromptGoto myXPConfig { autoComplete = Just 500000 })
+  , ((myModMask              , xK_c     ), xmonadPrompt myXPConfig)
+  , ((myModMask              , xK_r     ),
+    windowPrompt myXPConfig Goto wsWindows)
+  -- Need to rework this to not hard-code /usr/share/...
+  --, ((myModMask              , xK_u     ), unicodePrompt myXPConfig)
 
   -- Screenshots
   --, ((myModMask, xK_r),
   --   captureWorkspacesWhen defaultPredicate defaultHook horizontally)
 
-  , ((myModMask              , xK_u     ),
-    namedScratchpadAction scratchpads "terminal")
-  , ((myModMask              , xK_v     ),
-    namedScratchpadAction scratchpads "volume")
+  --, ((myModMask              , xK_u     ),
+  --  namedScratchpadAction scratchpads "terminal")
+  --, ((myModMask              , xK_v     ),
+  --  namedScratchpadAction scratchpads "volume")
   ]
   ++
 
@@ -175,8 +222,6 @@ myKeys =
       | (i, k) <- zip myWorkspaces keys
       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-    xPConfig :: XPConfig
-    xPConfig = def { font = "xft:Source Code Pro" }
     showVolume :: X ()
     --showVolume = spawn "notify-send Volume \"$(amixer get Master)\""
     showVolume = return ()
@@ -210,7 +255,7 @@ myMouseBindings =
 myLayoutHook' =
   smartSpacing 1 . avoidStruts . workspaceDir "/home/james" . fullscreenFull .
     smartBorders $
-      (grid ||| Mirror tiled ||| fullscreen)
+      (grid ||| Mirror tiled ||| myTabbed ||| fullscreen)
   where
     grid = Grid (17/10)
     -- default tiling algorithm partitions the screen into two panes
@@ -221,6 +266,25 @@ myLayoutHook' =
     ratio = 1/2
     -- Percent of screen to increment by when resizing panes
     delta = 1/30
+    -- Tabbed layout
+    myTabbed = tabbedLeft shrinkText (def
+     { activeColor = solarizedBase02
+     , inactiveColor = solarizedBase03
+     , urgentColor = solarizedBase3
+
+     , activeBorderColor = solarizedRed
+     , inactiveBorderColor = solarizedBase0
+     , urgentBorderColor = solarizedBase00
+
+     , activeTextColor = solarizedRed
+     , inactiveTextColor = solarizedBase0
+     , urgentTextColor = solarizedBase00
+
+     , fontName =
+       "xft:sans-serif:pixelsize=13:antialias=true:hinting=true,\
+       \ xft:Source Han Sans JP:pixelsize=13:antialias=true:hinting=true"
+     })
+    --myTabbed = simpleTabbedLeft
     -- Get rid of the unnecessary borders
     fullscreen = Full --noBorders (fullscreenFull Full)
 
@@ -245,12 +309,12 @@ myManageHook :: ManageHook
 myManageHook = composeAll
   [ className =? "MPlayer"        --> doFloat
   , className =? "Gimp"           --> doFloat
-  , className =? "Firefox"        --> doShift "1"
-  , className =? "Thunderbird"    --> doShift "2"
-  --, className =? "Hexchat"        --> doShift "3"
-  --, className =? "Pidgin"         --> doShift "3"
+  --, className =? "Firefox"        --> doShift "1"
+  --, className =? "Thunderbird"    --> doShift "2"
   , appName   =? "SRCF"           --> doShift "3"
-  , appName   =? "WeeChat"        --> doShift "3"
+  , appName   =? "irc"            --> doShift "3"
+  , appName   =? "np-bot"         --> doShift "-"
+  , appName   =? "music-player"   --> doShift "="
   --, className =? "Keepassx"       --> doShift "5"
   , className =? "Gnome-panel"    --> doIgnore
   , resource  =? "desktop_window" --> doIgnore
