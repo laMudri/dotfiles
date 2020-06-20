@@ -31,16 +31,19 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     markdown
      agda
+     coq
      (haskell :variables
               haskell-enable-hindent-style "chris-done")
      helm
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
+     fstar
      idris
      nixos
-     ;; git
+     git
      ;; markdown
      ;; org
      (shell :variables
@@ -301,6 +304,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default proof-general-path "/home/james/.nix-profile/bin/proofgeneral")
   )
 
 (defun dotspacemacs/user-config ()
@@ -339,7 +343,7 @@ you should place your code here."
 
   ; All the Agda bindings I'm used to
   (spacemacs/set-leader-keys-for-major-mode 'agda2-mode
-    "v"  'agda2-auto
+    "v"  'agda2-auto-maybe-all
     "x;" 'agda2-comment-dwim-rest-of-buffer
     "xc" 'agda2-compile
     "n"  'agda2-compute-normalised-maybe-toplevel
@@ -405,7 +409,7 @@ you should place your code here."
  '(exec-path-from-shell-arguments nil)
  '(package-selected-packages
    (quote
-    (flycheck dash-functional company-lean helm-lean lean-mode nix-sandbox pretty-sha-path winum fuzzy idris-mode prop-menu hide-comnt xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline powerline shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file nix-mode neotree multi-term move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-nixos-options helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f s diminish define-word company-statistics company-nixos-options nixos-options company column-enforce-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build solarized-theme dash))))
+    (orgit magit-gitflow magit-popup git-timemachine evil-magit magit git-commit with-editor smeargle helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode transient git-messenger git-link proof-general markdown-toc mmm-mode markdown-mode gh-md fstar-mode company-quickhelp pos-tip company-coq company-math math-symbol-lists intero hlint-refactor hindent helm-hoogle haskell-snippets company-ghci company-ghc ghc haskell-mode cmm-mode flycheck dash-functional company-lean helm-lean lean-mode nix-sandbox pretty-sha-path winum fuzzy idris-mode prop-menu hide-comnt xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline powerline shell-pop restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file nix-mode neotree multi-term move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-nixos-options helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f s diminish define-word company-statistics company-nixos-options nixos-options company column-enforce-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build solarized-theme dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -415,7 +419,9 @@ you should place your code here."
  '(agda2-highlight-bound-variable-face ((t (:foreground "#6c71c4"))))
  '(agda2-highlight-coinductive-constructor-face ((t (:foreground "#dc322f"))))
  '(agda2-highlight-datatype-face ((t (:foreground "#268bd2"))))
+ '(agda2-highlight-field-face ((t (:foreground "#d33682"))))
  '(agda2-highlight-function-face ((t (:foreground "#859900"))))
+ '(agda2-highlight-generalizable-variable-face ((t (:foreground "#6c71c4"))))
  '(agda2-highlight-inductive-constructor-face ((t (:foreground "#dc322f"))))
  '(agda2-highlight-keyword-face ((t (:foreground "#93a1a1" :weight bold))))
  '(agda2-highlight-macro-face ((t (:foreground "#2aa198"))))
@@ -426,7 +432,7 @@ you should place your code here."
  '(agda2-highlight-primitive-type-face ((t (:foreground "#268bd2"))))
  '(agda2-highlight-record-face ((t (:foreground "#268bd2"))))
  '(agda2-highlight-string-face ((t (:foreground "#dc322f"))))
- '(agda2-highlight-symbol-face ((t (:foreground "#839496"))))
+ '(agda2-highlight-symbol-face ((t nil)))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 

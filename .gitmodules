@@ -19,3 +19,6 @@
 [submodule "zsh/zsh-git-prompt"]
 	path = zsh/zsh-git-prompt
 	url = https://github.com/olivierverdier/zsh-git-prompt
+[submodule "doom.d"]
+	path = doom.d
+	url = git@github.com:laMudri/doom.d.git
