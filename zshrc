@@ -1,5 +1,7 @@
 source ~/.zprofile
 
+PATH="/home/james/bin:$PATH"
+
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
@@ -227,10 +229,10 @@ function nix-shell-prefix {
 #export PROMPT='$(nix-shell-prefix)%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
 export PROMPT='%(?..%B%F{red}?%?%f%b|)%(1j.%B%F{green}j%j%f%b|.)%F{blue}%n@%m%f|%F{cyan}%~%f$(git_super_status)%(60l.
 .)%(!.⇒.→) '
-export NIX_PROMPT=
+#export NIX_PROMPT=
 
 # Used by termite
-export BROWSER=qutebrowser
+export BROWSER=firefox
 export EDITOR=nvim
 
 alias aaa='setxkbmap james progwide_dh -keycodes james'
@@ -238,3 +240,5 @@ alias qqq='xkbcomp -I$HOME/.xkb ~/.xkb/map.xkb $DISPLAY'
 
 alias y='xclip -selection clipboard'
 alias p='xclip -o -selection clipboard'
+
+alias doom='sh /home/james/repos/doom-emacs/bin/doom'
