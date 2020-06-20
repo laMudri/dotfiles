@@ -1,8 +1,10 @@
 {-# LANGUAGE QuasiQuotes #-}
 
 module Main where
+
 import XMonad
 import XMonad.Actions.CycleRecentWS (cycleRecentWS)
+--import XMonad.Actions.FocusAndShiftMaster (focusDownAndShiftMaster)
 import XMonad.Actions.GridSelect
 import XMonad.Actions.GroupNavigation
 --import XMonad.Actions.Volume
@@ -13,12 +15,14 @@ import XMonad.Config.Xfce (xfceConfig)
 --import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
+import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Hooks.UrgencyHook (focusUrgent)
+import XMonad.Layout.MruMaster
 import XMonad.Layout.GridVariants (Grid(..))
 import XMonad.Layout.Fullscreen
-  (fullscreenFull, fullscreenManageHook, fullscreenEventHook)
+  (fullscreenFull, fullscreenSupport, fullscreenManageHook, fullscreenEventHook)
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
 --import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Spacing (smartSpacing)
@@ -41,7 +45,7 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce (spawnOnce)
 
 import System.Exit
-import System.Taffybar.Hooks.PagerHints (pagerHints)
+--import System.Taffybar.Hooks.PagerHints (pagerHints)
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -195,10 +199,10 @@ myKeys =
   --, ((myModMask, xK_r),
   --   captureWorkspacesWhen defaultPredicate defaultHook horizontally)
 
-  --, ((myModMask              , xK_u     ),
-  --  namedScratchpadAction scratchpads "terminal")
-  --, ((myModMask              , xK_v     ),
-  --  namedScratchpadAction scratchpads "volume")
+  , ((myModMask              , xK_t     ),
+    namedScratchpadAction scratchpads "terminal")
+  , ((myModMask              , xK_v     ),
+    namedScratchpadAction scratchpads "volume")
   ]
   ++
 
@@ -255,7 +259,7 @@ myMouseBindings =
 myLayoutHook' =
   smartSpacing 1 . avoidStruts . workspaceDir "/home/james" . fullscreenFull .
     smartBorders $
-      (grid ||| Mirror tiled ||| myTabbed ||| fullscreen)
+      (grid ||| myTabbed ||| Mirror tiled ||| fullscreen)
   where
     grid = Grid (17/10)
     -- default tiling algorithm partitions the screen into two panes
@@ -267,7 +271,7 @@ myLayoutHook' =
     -- Percent of screen to increment by when resizing panes
     delta = 1/30
     -- Tabbed layout
-    myTabbed = tabbedLeft shrinkText (def
+    myTabbed = autoShiftMaster $ tabbedLeft shrinkText (def
      { activeColor = solarizedBase02
      , inactiveColor = solarizedBase03
      , urgentColor = solarizedBase3
@@ -286,7 +290,7 @@ myLayoutHook' =
      })
     --myTabbed = simpleTabbedLeft
     -- Get rid of the unnecessary borders
-    fullscreen = Full --noBorders (fullscreenFull Full)
+    fullscreen = Full
 
 myLayoutHook = desktopLayoutModifiers myLayoutHook'
 
@@ -324,18 +328,30 @@ myManageHook = composeAll
   , manageDocks
   , namedScratchpadManageHook scratchpads
   , fullscreenManageHook
+  , backgroudTabsManageHook
   ]
 
-role :: Query String
-role = stringProperty "WM_WINDOW_ROLE"
+backgroudTabsManageHook :: ManageHook
+backgroudTabsManageHook =
+  liftX (gets (("Tabbed" `isInfixOf`) . description . W.layout . W.workspace
+                                      . W.current . windowset))
+  --> insertPosition Below Older
+
+myLogHook :: X ()
+myLogHook = fadeInactiveLogHook (3 / 4)
 
 scratchpads :: [NamedScratchpad]
 scratchpads =
-  [ NS "terminal" "urxvtc -name terminalSP"
+  [ NS "terminal" "termite --name=terminalSP"
        (appName =? "terminalSP") manageTerminalSP
-  , NS "volume" "urxvtc -name volumeSP -e alsamixer"
+  , NS "volume" "termite --name=volumeSP -e alsamixer"
        (appName =? "volumeSP") manageVolumeSP
   ]
+  -- [ NS "terminal" "urxvtc -name terminalSP"
+  --      (appName =? "terminalSP") manageTerminalSP
+  -- , NS "volume" "urxvtc -name volumeSP -e alsamixer"
+  --      (appName =? "volumeSP") manageVolumeSP
+  -- ]
 
 manageTerminalSP :: ManageHook
 manageTerminalSP = customFloating (W.RationalRect l t w h)
@@ -371,12 +387,12 @@ myConfig = baseConfig
   , layoutHook = myLayoutHook
   , handleEventHook = handleEventHook baseConfig <+> fullscreenEventHook
   , manageHook = manageHook baseConfig <+> myManageHook
-  , logHook = logHook baseConfig <+> fadeInactiveLogHook (3 / 4)
+  , logHook = logHook baseConfig <+> myLogHook
   }
   `additionalKeys` myKeys
   `additionalMouseBindings` myMouseBindings
 
 main :: IO ()
 main = do
-  --initCapturing
-  xmonad . ewmh . pagerHints $ myConfig
+  --initCapturing pagerHints
+  xmonad . ewmh $ myConfig
